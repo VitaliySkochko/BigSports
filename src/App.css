@@ -1,0 +1,402 @@
+
+ /* Основні стилі */
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  font-family: 'Arial', sans-serif;
+  background-color:antiquewhite;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px;
+  flex: 1;
+}
+
+  /*Header*/
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: blue;
+  color: yellow;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 10px 10px 10px blue;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  
+}
+
+.logo {
+  width: 80px;
+  height: 80px;
+  margin-right: 15px;
+  border: 3px yellow solid;
+}
+
+.site-title {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 90px;
+  font-weight: bold;
+  letter-spacing: 5px;
+}
+
+.admin-button {
+  background-color: yellow;
+  color: #007bff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.admin-button:hover {
+  background-color: #0056b3;
+  color: #ffffff;
+}
+
+  /*Menu*/
+
+.menu {
+  display: flex;
+  justify-content: space-around;
+  background-color: yellow;
+  padding: 5px 0;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 10px 10px 10px blue;
+}
+
+.menu a {
+  color: blue;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.menu a:hover {
+  background-color: blue;
+  color: yellow;
+  border-radius: 4px;
+} 
+
+/* Main */
+
+main {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 20px;
+  }
+
+  /*АДМІН*/
+
+  /*Сторінка адміна*/
+
+  .admin_panel {
+    margin-bottom: 100px;
+    box-shadow: 10px 10px 10px blue;
+  }
+
+  .admin_panel h2{
+    font-size: 20px;
+    padding: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+    background-color: blue;
+    color: yellow;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px blue;
+  }
+
+  /*Стилі для новин адміна*/
+
+  .news-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: space-around; 
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    padding-bottom: 20px;
+  }
+  
+  .news-item:hover {
+    transform: translateY(-8px);
+  }
+  
+  .news-item img {
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    border-radius: 8px 8px 0 0;
+  }
+  
+  .news-item-content {
+    padding: 20px;
+  }
+  
+  .news-item h3 {
+    margin: 10px;
+    font-size: 40px;
+    color: black;
+  }
+  
+  .news-item p {
+    margin: 10px;
+    color: black;
+  }
+  
+  .news-item button {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: blue;
+    color: yellow;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    
+  }
+  
+  .news-item button:hover {
+    background-color: yellow;
+    color: blue;
+  }
+  
+    /*Стилі для входу до адмін панелі*/
+
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+  }
+  .modal-content h2{
+    color: blue;
+  }
+  
+  .modal-content form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .modal-content input {
+    margin-bottom: 10px;
+    padding: 10px;
+    width: 200px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .modal-content button {
+    padding: 10px 20px;
+    margin-top: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+/* Стилі для форм  */
+form {
+  margin-bottom: 20px;
+}
+
+form input,
+form textarea,
+form select {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+form input[type="file"] {
+  padding: 0;
+}
+
+form button {
+  padding: 10px 20px;
+  background-color: blue;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  
+}
+
+form button:hover {
+  background-color: yellow;
+  color: blue;
+}
+
+/*Стилі для стрічки новин*/
+
+.panel {
+  padding: 20px;
+ margin-bottom: 100px;
+}
+.panel h1{
+  font-size: 20px;
+  padding: 20px;
+  margin-bottom: 30px;
+  text-align: center;
+  background-color: blue;
+  color: yellow;
+  border-radius: 10px;
+  box-shadow: 10px 10px 10px blue;
+}
+
+.panel h2 {
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 25px;
+  color: black;
+  margin-bottom: 8px;
+  font-style: italic;
+}
+
+.panel h2:hover{
+  color: yellow;
+  background-color: #007bff;
+  border-radius: 10px;
+}
+
+.panel p {
+  font-size: 14px;
+  color:blue;
+  margin-bottom: 20px;
+}
+
+.panel a {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
+}
+   
+  
+   /*Стилі для новини*/
+   
+.news_details {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin-bottom: 100px;
+  max-width: 800px;
+}
+
+.news_details h2 {
+  font-size: 30px;
+  color: black;
+  margin-bottom: 20px;
+  font-weight: 900;
+}
+
+.news_details p {
+  font-size: 16px;
+  color: black;
+  margin-bottom: 10px;
+}
+
+.news_details img {
+  width: 600px;
+  height: 400px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+  /* Стилі для пагінації сторінок */
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 60px; 
+    background-color: blue;
+    padding: 10px 0; 
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Важливо для накладення над іншими елементами */
+  }
+  
+  .pagination button {
+    padding: 10px 20px;
+    margin: 0 5px;
+    background-color: blue;
+    color: yellow;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .pagination button:hover {
+    background-color: yellow;
+    color: blue;
+  }
+  
+  .pagination span {
+    color: blue;
+    font-size: 20px;
+    margin: 0 10px;
+  }
+  
+  /* Footer */
+  
+  .footer {
+    background-color: blue;
+    color: yellow;
+    text-align: center;
+    font-size: 15px;
+    padding: 20px 0;
+    width: 100%;
+    box-shadow: 10px 10px 10px blue;
+    position: fixed; /* Фіксована позиція для залишання внизу сторінки */
+    bottom: 0;
+  }
+  
+  
+
+
