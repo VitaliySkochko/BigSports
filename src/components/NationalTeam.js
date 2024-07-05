@@ -15,7 +15,7 @@ const NationalTeam = () => {
     setCurrentPage(page);
   };
 
-  const filteredNews = newsList.filter((news) => news.category === 'Національна Збірна');
+  const filteredNews = newsList.filter((news) => news.category === 'Збірна');
   const indexOfLastNews = currentPage * newsPerPage;
   const indexOfFirstNews = indexOfLastNews - newsPerPage;
   const currentNewsList = filteredNews.slice(indexOfFirstNews, indexOfLastNews);
