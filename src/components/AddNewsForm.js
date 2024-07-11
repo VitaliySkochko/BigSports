@@ -4,12 +4,12 @@
 import React, { useState } from 'react';
 
 const AddNewsForm = ({ onAdd }) => {
-  const [title, setTitle] = useState(''); // Відображення стану заголовка
-  const [content, setContent] = useState(''); // Відображення стану змісту
-  const [category, setCategory] = useState(''); // Відображення стану категорії
-  const [image, setImage] = useState(null); // Відображення стану зображення
+  const [title, setTitle] = useState(''); // Состояние для заголовка
+  const [content, setContent] = useState(''); // Состояние для содержимого
+  const [category, setCategory] = useState(''); // Состояние для категории
+  const [image, setImage] = useState(null); // Состояние для изображения
 
-  const getCurrentDate = () => { // Функція для отримання поточної дати
+  const getCurrentDate = () => {
     const currentDate = new Date();
     const year = currentDate.getFullYear();
     const month = ('0' + (currentDate.getMonth() + 1)).slice(-2);
@@ -17,11 +17,10 @@ const AddNewsForm = ({ onAdd }) => {
     return { year, month, day };
   };
 
-  const handleSubmit = (e) => { // Функція, яка викликається при поданні форми
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const { year, month, day } = getCurrentDate();
     const newNews = {
-      id: Math.random().toString(36).substr(2, 9),
       title,
       content,
       category,
@@ -30,14 +29,14 @@ const AddNewsForm = ({ onAdd }) => {
       month,
       day
     };
-    onAdd(newNews);
-    setTitle('');
+    onAdd(newNews); // Передача новости для добавления
+    setTitle(''); // Сброс полей формы после добавления
     setContent('');
     setCategory('');
     setImage(null);
   };
 
-  const handleImageChange = (e) => { // Функція, яка викликається при виборі файлу для зображення
+  const handleImageChange = (e) => {
     setImage(URL.createObjectURL(e.target.files[0]));
   };
 
@@ -51,13 +50,13 @@ const AddNewsForm = ({ onAdd }) => {
         required
       />
       <textarea
-        placeholder="Зміст"
+        placeholder="Содержимое"
         value={content}
         onChange={(e) => setContent(e.target.value)}
         required
       />
       <select value={category} onChange={(e) => setCategory(e.target.value)} required>
-        <option value="">Виберіть категорію</option>
+        <option value="">Выберите категорию</option>
         <option value="УПЛ">УПЛ</option>
         <option value="Перша Ліга">Перша Ліга</option>
         <option value="Друга Ліга">Друга Ліга</option>
@@ -65,12 +64,13 @@ const AddNewsForm = ({ onAdd }) => {
         <option value="Єврокубки">Єврокубки</option>
       </select>
       <input type="file" onChange={handleImageChange} required />
-      <button type="submit">Додати</button>
+      <button type="submit">Добавить</button>
     </form>
   );
 };
 
 export default AddNewsForm;
+
 
 
 

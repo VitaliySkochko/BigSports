@@ -19,28 +19,21 @@ export const NewsProvider = ({ children }) => {
       const newsCollection = collection(db, 'news');
       const newsSnapshot = await getDocs(newsCollection);
       const newsData = newsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      newsData.sort((a, b) => b.timestamp - a.timestamp);
+
       setNewsList(newsData);
     };
 
     fetchNews();
-  }, []);
+  }, []); 
 
   const addNews = async (newNews) => {
     try {
       const docRef = await addDoc(collection(db, 'news'), newNews);
       const newsWithId = { id: docRef.id, ...newNews };
-      setNewsList([newsWithId, ...newsList]);
+      setNewsList(prevNewsList => [newsWithId, ...prevNewsList]);
     } catch (error) {
       console.error('Error adding news: ', error);
-    }
-  };
-
-  const deleteNews = async (id) => {
-    try {
-      await deleteDoc(doc(db, 'news', id));
-      setNewsList(newsList.filter(news => news.id !== id));
-    } catch (error) {
-      console.error('Error deleting news: ', error);
     }
   };
 
@@ -48,9 +41,24 @@ export const NewsProvider = ({ children }) => {
     try {
       const newsDoc = doc(db, 'news', updatedNews.id);
       await updateDoc(newsDoc, updatedNews);
-      setNewsList(newsList.map(news => (news.id === updatedNews.id ? updatedNews : news)));
+      setNewsList(prevNewsList => {
+        const updatedList = prevNewsList.map(news => (news.id === updatedNews.id ? updatedNews : news));
+        updatedList.sort((a, b) => b.timestamp - a.timestamp); 
+        return updatedList;
+      });
     } catch (error) {
       console.error('Error updating news: ', error);
+    }
+  };
+  
+  const deleteNews = async (id) => {
+    try {
+      await deleteDoc(doc(db, 'news', id));
+
+      // Удаление новости из списка
+      setNewsList(prevNewsList => prevNewsList.filter(news => news.id !== id));
+    } catch (error) {
+      console.error('Error deleting news: ', error);
     }
   };
 
@@ -60,4 +68,3 @@ export const NewsProvider = ({ children }) => {
     </NewsContext.Provider>
   );
 };
-

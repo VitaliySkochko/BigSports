@@ -13,6 +13,12 @@ import NewsDetails from './components/NewsDetails';
 import { NewsProvider } from './components/NewsContext';
 import Footer from './components/Footer';
 import './App.css';
+import logo from './img/logo.png';
+
+const link = document.createElement('link');
+link.rel = 'icon';
+link.href = logo;
+document.head.appendChild(link);
 
 const Main = () => {
   return (

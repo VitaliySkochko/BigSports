@@ -8,7 +8,7 @@ const EditNewsForm = ({ news, onEdit }) => {
   const [category, setCategory] = useState(news.category);
   const [image, setImage] = useState(news.image);
 
-  const handleSubmit = (e) => { //Функція для обробки подання форми
+  const handleSubmit = (e) => {
     e.preventDefault();
     const updatedNews = {
       ...news,
@@ -17,16 +17,15 @@ const EditNewsForm = ({ news, onEdit }) => {
       category,
       image
     };
-    onEdit(updatedNews);
+    onEdit(updatedNews); // Передача отредактированной новости для сохранения
   };
 
-  const handleImageChange = (e) => { // Функція для зміни зображення
+  const handleImageChange = (e) => {
     setImage(URL.createObjectURL(e.target.files[0]));
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      
       <input
         type="text"
         placeholder="Заголовок"
@@ -35,13 +34,13 @@ const EditNewsForm = ({ news, onEdit }) => {
         required
       />
       <textarea
-        placeholder="Зміст"
+        placeholder="Содержимое"
         value={content}
         onChange={(e) => setContent(e.target.value)}
         required
       />
       <select value={category} onChange={(e) => setCategory(e.target.value)} required>
-        <option value="">Виберіть категорію</option>
+        <option value="">Выберите категорию</option>
         <option value="УПЛ">УПЛ</option>
         <option value="Перша Ліга">Перша Ліга</option>
         <option value="Друга Ліга">Друга Ліга</option>
@@ -49,7 +48,7 @@ const EditNewsForm = ({ news, onEdit }) => {
         <option value="Єврокубки">Єврокубки</option>
       </select>
       <input type="file" onChange={handleImageChange} />
-      <button type="submit">Зберегти</button>
+      <button type="submit">Сохранить</button>
     </form>
   );
 };
