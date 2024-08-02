@@ -9,7 +9,7 @@
 
 .App {
   font-family: 'Arial', sans-serif;
-  background-color:antiquewhite;
+  background-color:white;
   margin: 0;
   display: flex;
   flex-direction: column;
@@ -30,29 +30,28 @@
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  background-color: blue;
+  background-color: black;
   color: yellow;
   border-radius: 8px;
   margin-bottom: 20px;
-  box-shadow: 10px 10px 10px blue;
+  box-shadow: 10px 10px 10px black;
 }
 
 .logo-container {
   display: flex;
   align-items: center;
-  
 }
 
 .logo {
-  width: 80px;
-  height: 80px;
+  width: 220px;
+  height: 60px;
   margin-right: 15px;
   border: 3px yellow solid;
 }
 
 .site-title {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 90px;
+  font-size: 50px;
   font-weight: bold;
   letter-spacing: 5px;
 }
@@ -78,15 +77,15 @@
 .menu {
   display: flex;
   justify-content: space-around;
-  background-color: yellow;
+  background-color:yellow;
   padding: 5px 0;
   border-radius: 8px;
   margin-bottom: 20px;
-  box-shadow: 10px 10px 10px blue;
+  box-shadow: 10px 10px 10px black;
 }
 
 .menu a {
-  color: blue;
+  color: black;
   text-decoration: none;
   font-weight: bold;
   padding: 10px;
@@ -94,8 +93,8 @@
 }
 
 .menu a:hover {
-  background-color: blue;
-  color: yellow;
+  background-color: black;
+  color: white;
   border-radius: 4px;
 } 
 
@@ -115,7 +114,7 @@ main {
 
   .admin_panel {
     margin-bottom: 100px;
-    box-shadow: 10px 10px 10px blue;
+    box-shadow: 10px 10px 10px black;
   }
 
   .admin_panel h2{
@@ -123,10 +122,10 @@ main {
     padding: 20px;
     margin-bottom: 30px;
     text-align: center;
-    background-color: blue;
+    background-color: black;
     color: yellow;
     border-radius: 10px;
-    box-shadow: 10px 10px 10px blue;
+    box-shadow: 10px 10px 10px black;
   }
 
   /*Стилі для новин адміна*/
@@ -136,7 +135,7 @@ main {
     flex-direction: column;
     align-items: center; 
     justify-content: space-around; 
-    background-color: #fff;
+    background-color:rgb(244, 209, 184);
     border-radius: 8px;
     overflow: hidden;
     transition: transform 0.3s ease;
@@ -162,6 +161,7 @@ main {
     margin: 10px;
     font-size: 40px;
     color: black;
+
   }
   
   .news-item p {
@@ -172,7 +172,7 @@ main {
   .news-item button {
     display: inline-block;
     padding: 8px 16px;
-    background-color: blue;
+    background-color: black;
     color: yellow;
     border: none;
     border-radius: 4px;
@@ -183,7 +183,7 @@ main {
   
   .news-item button:hover {
     background-color: yellow;
-    color: blue;
+    color: black;
   }
   
     /*Стилі для входу до адмін панелі*/
@@ -283,10 +283,10 @@ form button:hover {
   padding: 20px;
   margin-bottom: 30px;
   text-align: center;
-  background-color: blue;
+  background-color: black;
   color: yellow;
   border-radius: 10px;
-  box-shadow: 10px 10px 10px blue;
+  box-shadow: 10px 10px 10px black;
 }
 
 .panel h2 {
@@ -386,7 +386,7 @@ form button:hover {
   /* Footer */
   
   .footer {
-    background-color: blue;
+    background-color: black;
     color: yellow;
     text-align: center;
     font-size: 15px;

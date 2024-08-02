@@ -29,7 +29,7 @@ const NewsItem = ({ news, onDelete, onEdit }) => {
       {onDelete && <button onClick={handleDelete}>Видалити</button>}
       {onEdit && <button onClick={handleEdit}>Редагувати</button>}
     </div>
-  );
+  ); 
 };
 
 export default NewsItem;

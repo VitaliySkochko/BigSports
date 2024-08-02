@@ -12,7 +12,7 @@ const Header = () => {
   const handleAdminClick = () => {
     setIsModalOpen(true);
   };
-
+ 
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
@@ -30,7 +30,7 @@ const Header = () => {
     <header className="header">
       <div className="logo-container">
         <img src={logo} alt="Site logo" className="logo" />
-        <h1 className="site-title">UKRAINIANFOOTBALL</h1>
+        <h1 className="site-title">BigSPORTS</h1>
       </div>
       <button className="admin-button" onClick={handleAdminClick}>ADMIN</button>
       <PasswordModal

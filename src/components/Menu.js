@@ -8,11 +8,11 @@ const Menu = () => {
   return (
     <nav className="menu">
       <Link to="/">Головна</Link>
-      <Link to="/upl">УПЛ</Link>
-      <Link to="/first-league">Перша Ліга</Link>
-      <Link to="/second-league">Друга Ліга</Link>
-      <Link to="/national-team">Збірна</Link>
-      <Link to="/euro-cups">Єврокубки</Link>
+      <Link to="/football-ukraine">Футбол України</Link>
+      <Link to="/world-football">Світовий Футбол</Link>
+      <Link to="/boxing">Бокс</Link>
+      <Link to="/tennis">Теніс</Link>
+      <Link to="/biathlon">Біатлон</Link>
     </nav>
   );
 };

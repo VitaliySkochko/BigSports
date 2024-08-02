@@ -1,4 +1,4 @@
-/*цей компонент надає сторінку з новинами про Другу Лігу, 
+/*цей компонент надає сторінку з новинами про збірну України, 
 де відображаються заголовок, опис та список новин у зворотньому порядку (новіші вгорі). */
 
 import React, { useState } from 'react';
@@ -6,24 +6,24 @@ import { Link } from 'react-router-dom';
 import { useNews } from './NewsContext';
 import Pagination from './Pagination';
 
-const SecondLeague = () => {
+const Tennis = () => {
   const { newsList } = useNews();
   const [currentPage, setCurrentPage] = useState(1);
-  const newsPerPage = 10;
+  const newsPerPage = 10; 
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
 
-  const filteredNews = newsList.filter((news) => news.category === 'Друга Ліга');
+  const filteredNews = newsList.filter((news) => news.category === 'Теніс');
   const indexOfLastNews = currentPage * newsPerPage;
   const indexOfFirstNews = indexOfLastNews - newsPerPage;
   const currentNewsList = filteredNews.slice(indexOfFirstNews, indexOfLastNews);
-  const totalPages = Math.ceil(filteredNews.length / newsPerPage);
+  const totalPages = Math.ceil(filteredNews.length / newsPerPage); 
 
   return (
     <div className='panel'>
-      <h1>Друга Ліга</h1>
+      <h1>ТЕНІС</h1>
       {currentNewsList.map((news) => (
         <div key={news.id}>
           <Link to={`/news/${news.id}`}>
@@ -43,8 +43,7 @@ const SecondLeague = () => {
   );
 };
 
-export default SecondLeague;
-
+export default Tennis;
 
 
 

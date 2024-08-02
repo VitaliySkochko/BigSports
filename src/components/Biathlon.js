@@ -1,12 +1,12 @@
-/*цей компонент надає сторінку з новинами про Першу Лігу, 
+/*цей компонент надає сторінку з новинами про європейські кубкові змагання, 
 де відображаються заголовок, опис та список новин у зворотньому порядку (новіші вгорі). */
 
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNews } from './NewsContext';
-import Pagination from './Pagination';
+import Pagination from './Pagination'; 
 
-const FirstLeague = () => {
+const Biathlon = () => {
   const { newsList } = useNews();
   const [currentPage, setCurrentPage] = useState(1);
   const newsPerPage = 10;
@@ -15,7 +15,7 @@ const FirstLeague = () => {
     setCurrentPage(page);
   };
 
-  const filteredNews = newsList.filter((news) => news.category === 'Перша Ліга');
+  const filteredNews = newsList.filter((news) => news.category === 'Біатлон');
   const indexOfLastNews = currentPage * newsPerPage;
   const indexOfFirstNews = indexOfLastNews - newsPerPage;
   const currentNewsList = filteredNews.slice(indexOfFirstNews, indexOfLastNews);
@@ -23,7 +23,7 @@ const FirstLeague = () => {
 
   return (
     <div className='panel'>
-      <h1>Перша Ліга</h1>
+      <h1>БІАТЛОН</h1>
       {currentNewsList.map((news) => (
         <div key={news.id}>
           <Link to={`/news/${news.id}`}>
@@ -43,12 +43,7 @@ const FirstLeague = () => {
   );
 };
 
-export default FirstLeague;
-
-
-
-
-
+export default Biathlon ;
 
 
 

@@ -1,4 +1,4 @@
-/*цей компонент надає сторінку з новинами про Українську Прем'єр Лігу, 
+/*цей компонент надає сторінку з новинами про Другу Лігу, 
 де відображаються заголовок, опис та список новин у зворотньому порядку (новіші вгорі). */
 
 import React, { useState } from 'react';
@@ -6,16 +6,16 @@ import { Link } from 'react-router-dom';
 import { useNews } from './NewsContext';
 import Pagination from './Pagination';
 
-const UPL = () => {
+const Boxing = () => {
   const { newsList } = useNews();
   const [currentPage, setCurrentPage] = useState(1);
   const newsPerPage = 10;
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
-  };
+  }; 
 
-  const filteredNews = newsList.filter((news) => news.category === 'УПЛ');
+  const filteredNews = newsList.filter((news) => news.category === 'Бокс');
   const indexOfLastNews = currentPage * newsPerPage;
   const indexOfFirstNews = indexOfLastNews - newsPerPage;
   const currentNewsList = filteredNews.slice(indexOfFirstNews, indexOfLastNews);
@@ -23,7 +23,7 @@ const UPL = () => {
 
   return (
     <div className='panel'>
-      <h1>Українська Прем'єр Ліга</h1>
+      <h1>БОКС</h1>
       {currentNewsList.map((news) => (
         <div key={news.id}>
           <Link to={`/news/${news.id}`}>
@@ -43,7 +43,7 @@ const UPL = () => {
   );
 };
 
-export default UPL;
+export default Boxing;
 
 
 

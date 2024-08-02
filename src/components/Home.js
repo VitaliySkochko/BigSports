@@ -25,7 +25,7 @@ const Home = () => {
 
   return (
     <div className='panel'>
-      <h1>Останні новини футболу України</h1>
+      <h1>ОСТАННІ НОВИНИ</h1> 
       {currentNewsList.map((news) => (
         <div key={news.id}>
           <Link to={`/news/${news.id}`}>

@@ -1,12 +1,12 @@
-/*цей компонент надає сторінку з новинами про європейські кубкові змагання, 
+/*цей компонент надає сторінку з новинами про Українську Прем'єр Лігу, 
 де відображаються заголовок, опис та список новин у зворотньому порядку (новіші вгорі). */
 
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNews } from './NewsContext';
-import Pagination from './Pagination';
+import Pagination from './Pagination'; 
 
-const EuroCups = () => {
+const FootballUkraine = () => {
   const { newsList } = useNews();
   const [currentPage, setCurrentPage] = useState(1);
   const newsPerPage = 10;
@@ -15,7 +15,7 @@ const EuroCups = () => {
     setCurrentPage(page);
   };
 
-  const filteredNews = newsList.filter((news) => news.category === 'Єврокубки');
+  const filteredNews = newsList.filter((news) => news.category === 'Футбол України');
   const indexOfLastNews = currentPage * newsPerPage;
   const indexOfFirstNews = indexOfLastNews - newsPerPage;
   const currentNewsList = filteredNews.slice(indexOfFirstNews, indexOfLastNews);
@@ -23,7 +23,7 @@ const EuroCups = () => {
 
   return (
     <div className='panel'>
-      <h1>Єврокубки</h1>
+      <h1>Футбол України</h1>
       {currentNewsList.map((news) => (
         <div key={news.id}>
           <Link to={`/news/${news.id}`}>
@@ -43,7 +43,7 @@ const EuroCups = () => {
   );
 };
 
-export default EuroCups;
+export default FootballUkraine ;
 
 
 

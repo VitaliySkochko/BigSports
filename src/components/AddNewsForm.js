@@ -50,21 +50,21 @@ const AddNewsForm = ({ onAdd }) => {
         required
       />
       <textarea
-        placeholder="Содержимое"
+        placeholder="Зміст"
         value={content}
         onChange={(e) => setContent(e.target.value)}
         required
       />
       <select value={category} onChange={(e) => setCategory(e.target.value)} required>
-        <option value="">Выберите категорию</option>
-        <option value="УПЛ">УПЛ</option>
-        <option value="Перша Ліга">Перша Ліга</option>
-        <option value="Друга Ліга">Друга Ліга</option>
-        <option value="Збірна">Збірна</option>
-        <option value="Єврокубки">Єврокубки</option>
+        <option value="">Оберіть категорію</option>
+        <option value="Футбол України">Футбол України</option>
+        <option value="Світовий Футбол">Світовий Футбол</option>
+        <option value="Бокс">Бокс</option>
+        <option value="Теніс">Теніс</option>
+        <option value="Біатлон">Біатлон</option>
       </select>
       <input type="file" onChange={handleImageChange} required />
-      <button type="submit">Добавить</button>
+      <button type="submit">Додати</button>
     </form>
   );
 };

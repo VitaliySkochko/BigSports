@@ -2,15 +2,15 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import AdminPanel from './components/AdminPanel';
 import Home from './components/Home';
-import UPL from './components/UPL';
-import FirstLeague from './components/FirstLeague';
-import SecondLeague from './components/SecondLeague';
-import NationalTeam from './components/NationalTeam';
-import EuroCups from './components/EuroCups';
+import FootballUkraine from './components/FootballUkraine'; 
+import WorldFootball  from './components/WorldFootball';
+import Boxing from './components/Boxing';
+import Tennis from './components/Tennis';
+import Biathlon  from './components/Biathlon';
 import Menu from './components/Menu';
 import Header from './components/Header';
 import NewsDetails from './components/NewsDetails';
-import { NewsProvider } from './components/NewsContext';
+import { NewsProvider } from './components/NewsContext'; 
 import Footer from './components/Footer';
 import './App.css';
 import logo from './img/logo.png';
@@ -20,16 +20,16 @@ link.rel = 'icon';
 link.href = logo;
 document.head.appendChild(link);
 
-const Main = () => {
+const Main = () => { 
   return (
     <div className="container">
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/upl" element={<UPL />} />
-        <Route path="/first-league" element={<FirstLeague />} />
-        <Route path="/second-league" element={<SecondLeague />} />
-        <Route path="/national-team" element={<NationalTeam />} />
-        <Route path="/euro-cups" element={<EuroCups />} />
+        <Route path="/football-ukraine" element={<FootballUkraine  />} />
+        <Route path="/world-football" element={<WorldFootball  />} />
+        <Route path="/boxing" element={<Boxing />} />
+        <Route path="/tennis" element={<Tennis />} />
+        <Route path="/biathlon" element={<Biathlon  />} />
         <Route path="/admin" element={<AdminPanel />} />
         <Route path="/news/:id" element={<NewsDetails />} />
       </Routes>

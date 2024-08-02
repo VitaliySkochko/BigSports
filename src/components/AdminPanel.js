@@ -42,17 +42,17 @@ const AdminPanel = () => {
 
   return (
     <div className="admin_panel">
-      <h2>Добавить новость</h2>
+      <h2>Добавити новину</h2>
       <AddNewsForm onAdd={addNews} />
 
       {editingNews && (
         <>
-          <h2>Редактировать новость</h2>
+          <h2>Редагувати новину</h2>
           <EditNewsForm news={editingNews} onEdit={handleEditNews} />
         </>
       )}
 
-      <h2>Список новостей</h2>
+      <h2>Список новин</h2>
       {currentNewsList.map((news) => (
         <NewsItem key={news.id} news={news} onDelete={handleDeleteNews} onEdit={handleEditClick} />
       ))}

@@ -1,4 +1,4 @@
-/*цей компонент надає сторінку з новинами про збірну України, 
+/*цей компонент надає сторінку з новинами про Першу Лігу, 
 де відображаються заголовок, опис та список новин у зворотньому порядку (новіші вгорі). */
 
 import React, { useState } from 'react';
@@ -6,16 +6,16 @@ import { Link } from 'react-router-dom';
 import { useNews } from './NewsContext';
 import Pagination from './Pagination';
 
-const NationalTeam = () => {
+const WorldFootball = () => {
   const { newsList } = useNews();
   const [currentPage, setCurrentPage] = useState(1);
-  const newsPerPage = 10; 
+  const newsPerPage = 10;
 
   const handlePageChange = (page) => {
-    setCurrentPage(page);
+    setCurrentPage(page); 
   };
 
-  const filteredNews = newsList.filter((news) => news.category === 'Збірна');
+  const filteredNews = newsList.filter((news) => news.category === 'Світовий Футбол');
   const indexOfLastNews = currentPage * newsPerPage;
   const indexOfFirstNews = indexOfLastNews - newsPerPage;
   const currentNewsList = filteredNews.slice(indexOfFirstNews, indexOfLastNews);
@@ -23,7 +23,7 @@ const NationalTeam = () => {
 
   return (
     <div className='panel'>
-      <h1>Національна Збірна</h1>
+      <h1>СВІТОВИЙ ФУТБОЛ</h1>
       {currentNewsList.map((news) => (
         <div key={news.id}>
           <Link to={`/news/${news.id}`}>
@@ -43,7 +43,13 @@ const NationalTeam = () => {
   );
 };
 
-export default NationalTeam;
+export default WorldFootball ;
+
+
+
+
+
+
 
 
 
