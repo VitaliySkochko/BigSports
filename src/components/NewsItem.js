@@ -19,7 +19,11 @@ const NewsItem = ({ news, onDelete, onEdit }) => {
     <div className="news-item">
       <h3>{news.title}</h3>
       <p><strong>Категорія:</strong> {news.category}</p>
-      <p><strong>Дата:</strong> {news.day}.{news.month}.{news.year}</p>
+      <p>
+        <strong>Дата:</strong> 
+        {news.day}.{news.month}.{news.year} 
+        {news.hours && ` ${news.hours}:${news.minutes}:${news.seconds}`}
+      </p>
       {news.image && <img src={news.image} alt="news" />}
       <div className="news-content">
         {news.content.split('\n').map((paragraph, index) => (

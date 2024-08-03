@@ -6,34 +6,37 @@ import { useNews } from './NewsContext';
 import Pagination from './Pagination';
 import '../App.css'
 
-
 const Home = () => {
-  const { newsList } = useNews(); // для отримання списку новин
-  const [currentPage, setCurrentPage] = useState(1); // визначає початкову сторінку для відображення.
-  const newsPerPage = 10; // встановлено кількість новин на сторінку
+  const { newsList } = useNews();
+  const [currentPage, setCurrentPage] = useState(1);
+  const newsPerPage = 10;
 
-  const handlePageChange = (page) => { //Змінює поточну сторінку при виборі нової сторінки в компоненті пагінації.
+  const handlePageChange = (page) => {
     setCurrentPage(page);
   };
 
-  // Розрахунок новин, які мають бути відображені на поточній сторінці, і кількість сторінок для пагінації
-
-  const indexOfLastNews = currentPage * newsPerPage; //Обчислює індекс останньої новини на поточній сторінці.
-  const indexOfFirstNews = indexOfLastNews - newsPerPage; //Обчислює індекс першої новини на поточній сторінці.
-  const currentNewsList = newsList.slice(indexOfFirstNews, indexOfLastNews); // Отримання новин для відображення на поточній сторінці.
-  const totalPages = Math.ceil(newsList.length / newsPerPage); // Розрахунок загальної кількості сторінок для пагінації 
+  const indexOfLastNews = currentPage * newsPerPage;
+  const indexOfFirstNews = indexOfLastNews - newsPerPage;
+  const currentNewsList = newsList.slice(indexOfFirstNews, indexOfLastNews);
+  const totalPages = Math.ceil(newsList.length / newsPerPage);
 
   return (
     <div className='panel'>
       <h1>ОСТАННІ НОВИНИ</h1> 
-      {currentNewsList.map((news) => (
-        <div key={news.id}>
-          <Link to={`/news/${news.id}`}>
-            <h2>{news.title}</h2>
-          </Link>
-          <p>Дата: {news.day}.{news.month}.{news.year}</p>
-        </div>
-      ))}
+      <div className='news-grid'>
+        {currentNewsList.map((news) => (
+          <div key={news.id} className='news-item'>
+            <img src={news.imageUrl} alt={news.title} className='news-image' />
+            <div className='news-details'>
+              <span className='news-category'>{news.category}</span>
+              <span className='news-date'>{news.day}.{news.month}.{news.year} {news.time}</span>
+              <Link to={`/news/${news.id}`}>
+                <h2 className='news-title'>{news.title}</h2>
+              </Link>
+            </div>
+          </div>
+        ))}
+      </div>
       {newsList.length > 10 && (
         <Pagination
           currentPage={currentPage}
@@ -46,6 +49,8 @@ const Home = () => {
 };
 
 export default Home;
+
+
 
 
 

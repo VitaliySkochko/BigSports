@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNews } from './NewsContext';
 import Pagination from './Pagination';
+import '../App.css'
 
 const WorldFootball = () => {
   const { newsList } = useNews();
@@ -24,14 +25,20 @@ const WorldFootball = () => {
   return (
     <div className='panel'>
       <h1>СВІТОВИЙ ФУТБОЛ</h1>
-      {currentNewsList.map((news) => (
-        <div key={news.id}>
-          <Link to={`/news/${news.id}`}>
-            <h2>{news.title}</h2>
-          </Link>
-          <p>Дата: {news.day}.{news.month}.{news.year}</p>
-        </div>
-      ))}
+      <div className='news-grid'>
+        {currentNewsList.map((news) => (
+          <div key={news.id} className='news-item'>
+            <img src={news.imageUrl} alt={news.title} className='news-image' />
+            <div className='news-details'>
+              <span className='news-category'>{news.category}</span>
+              <span className='news-date'>{news.day}.{news.month}.{news.year} {news.time}</span>
+              <Link to={`/news/${news.id}`}>
+                <h2 className='news-title'>{news.title}</h2>
+              </Link>
+            </div>
+          </div>
+        ))}
+      </div>
       {filteredNews.length > 10 && (
         <Pagination
           currentPage={currentPage}
@@ -43,7 +50,8 @@ const WorldFootball = () => {
   );
 };
 
-export default WorldFootball ;
+export default WorldFootball;
+
 
 
 

@@ -274,7 +274,7 @@ form button:hover {
 
 /*Стилі для стрічки новин*/
 
-.panel {
+.panel { 
   padding: 20px;
  margin-bottom: 100px;
 }
@@ -289,30 +289,60 @@ form button:hover {
   box-shadow: 10px 10px 10px black;
 }
 
-.panel h2 {
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  font-size: 25px;
-  color: black;
-  margin-bottom: 8px;
-  font-style: italic;
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
 }
 
-.panel h2:hover{
-  color: yellow;
-  background-color: #007bff;
-  border-radius: 10px;
+.news-item {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
 }
 
-.panel p {
+.news-item:hover {
+  transform: translateY(-5px);
+}
+
+.news-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.news-details {
+  padding: 15px;
+}
+
+.news-category {
   font-size: 14px;
-  color:blue;
-  margin-bottom: 20px;
+  color: #007bff;
+  text-transform: uppercase;
+  margin-bottom: 5px;
 }
 
-.panel a {
-  text-decoration: none;
-  color: #007bff;
+.news-date {
+  font-size: 12px;
+  color: #6c757d;
+  margin-bottom: 10px;
+}
+
+.news-title {
+  font-size: 18px;
   font-weight: bold;
+  color: #333;
+  margin: 0;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.news-title:hover {
+  color: #007bff;
 }
    
   
@@ -355,7 +385,7 @@ form button:hover {
     justify-content: center;
     align-items: center;
     bottom: 60px; 
-    background-color: blue;
+    background-color: black;
     padding: 10px 0; 
     box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
     z-index: 1000; /* Важливо для накладення над іншими елементами */
@@ -364,8 +394,8 @@ form button:hover {
   .pagination button {
     padding: 10px 20px;
     margin: 0 5px;
-    background-color: blue;
-    color: yellow;
+    background-color: white;
+    color: black;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -374,11 +404,11 @@ form button:hover {
   
   .pagination button:hover {
     background-color: yellow;
-    color: blue;
+    color: black;
   }
   
   .pagination span {
-    color: blue;
+    color: yellow;
     font-size: 20px;
     margin: 0 10px;
   }

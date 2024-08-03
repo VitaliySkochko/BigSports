@@ -9,17 +9,20 @@ const AddNewsForm = ({ onAdd }) => {
   const [category, setCategory] = useState(''); // Состояние для категории
   const [image, setImage] = useState(null); // Состояние для изображения
 
-  const getCurrentDate = () => {
+  const getCurrentDateTime = () => {
     const currentDate = new Date();
     const year = currentDate.getFullYear();
     const month = ('0' + (currentDate.getMonth() + 1)).slice(-2);
     const day = ('0' + currentDate.getDate()).slice(-2);
-    return { year, month, day };
+    const hours = ('0' + currentDate.getHours()).slice(-2);
+    const minutes = ('0' + currentDate.getMinutes()).slice(-2);
+    const seconds = ('0' + currentDate.getSeconds()).slice(-2);
+    return { year, month, day, hours, minutes, seconds };
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { year, month, day } = getCurrentDate();
+    const { year, month, day, hours, minutes, seconds } = getCurrentDateTime();
     const newNews = {
       title,
       content,
@@ -27,7 +30,10 @@ const AddNewsForm = ({ onAdd }) => {
       image,
       year,
       month,
-      day
+      day,
+      hours,
+      minutes,
+      seconds
     };
     onAdd(newNews); // Передача новости для добавления
     setTitle(''); // Сброс полей формы после добавления
