@@ -33,7 +33,8 @@ const AddNewsForm = ({ onAdd }) => {
       day,
       hours,
       minutes,
-      seconds
+      seconds,
+      timestamp: new Date() // Временная метка для отсортированного порядка
     };
     onAdd(newNews); // Передача новости для добавления
     setTitle(''); // Сброс полей формы после добавления
@@ -76,6 +77,7 @@ const AddNewsForm = ({ onAdd }) => {
 };
 
 export default AddNewsForm;
+
 
 
 

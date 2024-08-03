@@ -2,7 +2,7 @@
 а також функцій для додавання, редагування та видалення новин*/
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { collection, addDoc, deleteDoc, doc, updateDoc, getDocs } from 'firebase/firestore';
+import { collection, addDoc, deleteDoc, doc, updateDoc, getDocs, serverTimestamp } from 'firebase/firestore';
 import { db } from '../firebase';
 
 const NewsContext = createContext();
@@ -19,7 +19,7 @@ export const NewsProvider = ({ children }) => {
       const newsCollection = collection(db, 'news');
       const newsSnapshot = await getDocs(newsCollection);
       const newsData = newsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-      newsData.sort((a, b) => b.timestamp - a.timestamp);
+      newsData.sort((a, b) => b.timestamp.seconds - a.timestamp.seconds); // Сортировка по временной метке
 
       setNewsList(newsData);
     };
@@ -29,9 +29,13 @@ export const NewsProvider = ({ children }) => {
 
   const addNews = async (newNews) => {
     try {
-      const docRef = await addDoc(collection(db, 'news'), newNews);
-      const newsWithId = { id: docRef.id, ...newNews };
-      setNewsList(prevNewsList => [newsWithId, ...prevNewsList]);
+      const newsWithTimestamp = {
+        ...newNews,
+        timestamp: serverTimestamp() // Добавление временной метки
+      };
+      const docRef = await addDoc(collection(db, 'news'), newsWithTimestamp);
+      const newsWithId = { id: docRef.id, ...newsWithTimestamp };
+      setNewsList(prevNewsList => [newsWithId, ...prevNewsList]); // Добавление новости в начало списка
     } catch (error) {
       console.error('Error adding news: ', error);
     }
@@ -43,7 +47,7 @@ export const NewsProvider = ({ children }) => {
       await updateDoc(newsDoc, updatedNews);
       setNewsList(prevNewsList => {
         const updatedList = prevNewsList.map(news => (news.id === updatedNews.id ? updatedNews : news));
-        updatedList.sort((a, b) => b.timestamp - a.timestamp); 
+        updatedList.sort((a, b) => b.timestamp.seconds - a.timestamp.seconds); 
         return updatedList;
       });
     } catch (error) {
@@ -54,8 +58,6 @@ export const NewsProvider = ({ children }) => {
   const deleteNews = async (id) => {
     try {
       await deleteDoc(doc(db, 'news', id));
-
-      // Удаление новости из списка
       setNewsList(prevNewsList => prevNewsList.filter(news => news.id !== id));
     } catch (error) {
       console.error('Error deleting news: ', error);
