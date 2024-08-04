@@ -28,7 +28,7 @@ const Biathlon = () => {
       <div className='news-grid'>
         {currentNewsList.map((news) => (
           <div key={news.id} className='news-item'>
-            <img src={news.imageUrl} alt={news.title} className='news-image' />
+            <img src={news.image} alt={news.title} className='news-image' />
             <div className='news-details'>
               <span className='news-category'>{news.category}</span>
               <span className='news-date'>{news.day}.{news.month}.{news.year} {news.time}</span>
