@@ -1,6 +1,8 @@
 /* Цей код представляє компонент для редагування новин. */
 
 import React, { useState } from 'react';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 const EditNewsForm = ({ news, onEdit }) => {
   const [title, setTitle] = useState(news.title);
@@ -33,10 +35,10 @@ const EditNewsForm = ({ news, onEdit }) => {
         onChange={(e) => setTitle(e.target.value)}
         required
       />
-      <textarea
-        placeholder="Зміст"
+      <ReactQuill
         value={content}
-        onChange={(e) => setContent(e.target.value)}
+        onChange={setContent}
+        placeholder="Зміст"
         required
       />
       <select value={category} onChange={(e) => setCategory(e.target.value)} required>
@@ -54,4 +56,5 @@ const EditNewsForm = ({ news, onEdit }) => {
 };
 
 export default EditNewsForm;
+
 

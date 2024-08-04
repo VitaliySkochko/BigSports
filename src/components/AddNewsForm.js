@@ -4,6 +4,8 @@
 import React, { useState } from 'react';
 import { storage } from '../firebase'; // импортируйте ваш экземпляр Firebase Storage
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css'; // импортируйте стиль Quill
 
 const AddNewsForm = ({ onAdd }) => {
   const [title, setTitle] = useState('');
@@ -19,13 +21,12 @@ const AddNewsForm = ({ onAdd }) => {
       day: ('0' + currentDate.getDate()).slice(-2),
       hours: ('0' + currentDate.getHours()).slice(-2),
       minutes: ('0' + currentDate.getMinutes()).slice(-2),
-      seconds: ('0' + currentDate.getSeconds()).slice(-2),
     };
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { year, month, day, hours, minutes, seconds } = getCurrentDateTime();
+    const { year, month, day, hours, minutes } = getCurrentDateTime();
 
     let imageUrl = '';
     if (image) {
@@ -42,12 +43,10 @@ const AddNewsForm = ({ onAdd }) => {
       year,
       month,
       day,
-      hours,
-      minutes,
-      seconds,
+      time: `${hours}:${minutes}`, 
       timestamp: new Date(),
     };
-    
+
     onAdd(newNews);
     setTitle('');
     setContent('');
@@ -68,10 +67,10 @@ const AddNewsForm = ({ onAdd }) => {
         onChange={(e) => setTitle(e.target.value)}
         required
       />
-      <textarea
-        placeholder="Зміст"
+      <ReactQuill
         value={content}
-        onChange={(e) => setContent(e.target.value)}
+        onChange={setContent}
+        placeholder="Зміст"
         required
       />
       <select value={category} onChange={(e) => setCategory(e.target.value)} required>
@@ -89,6 +88,8 @@ const AddNewsForm = ({ onAdd }) => {
 };
 
 export default AddNewsForm;
+
+
 
 
 
