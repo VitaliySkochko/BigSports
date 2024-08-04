@@ -2,49 +2,61 @@
 включаючи заголовок, зміст, категорію та зображення, та передає цю інформацію у вигляді об'єкта новини через функцію onAdd.*/
 
 import React, { useState } from 'react';
+import { storage } from '../firebase'; // импортируйте ваш экземпляр Firebase Storage
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
 const AddNewsForm = ({ onAdd }) => {
-  const [title, setTitle] = useState(''); // Состояние для заголовка
-  const [content, setContent] = useState(''); // Состояние для содержимого
-  const [category, setCategory] = useState(''); // Состояние для категории
-  const [image, setImage] = useState(null); // Состояние для изображения
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
+  const [category, setCategory] = useState('');
+  const [image, setImage] = useState(null);
 
   const getCurrentDateTime = () => {
     const currentDate = new Date();
-    const year = currentDate.getFullYear();
-    const month = ('0' + (currentDate.getMonth() + 1)).slice(-2);
-    const day = ('0' + currentDate.getDate()).slice(-2);
-    const hours = ('0' + currentDate.getHours()).slice(-2);
-    const minutes = ('0' + currentDate.getMinutes()).slice(-2);
-    const seconds = ('0' + currentDate.getSeconds()).slice(-2);
-    return { year, month, day, hours, minutes, seconds };
+    return {
+      year: currentDate.getFullYear(),
+      month: ('0' + (currentDate.getMonth() + 1)).slice(-2),
+      day: ('0' + currentDate.getDate()).slice(-2),
+      hours: ('0' + currentDate.getHours()).slice(-2),
+      minutes: ('0' + currentDate.getMinutes()).slice(-2),
+      seconds: ('0' + currentDate.getSeconds()).slice(-2),
+    };
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { year, month, day, hours, minutes, seconds } = getCurrentDateTime();
+
+    let imageUrl = '';
+    if (image) {
+      const imageRef = ref(storage, `images/${image.name}`);
+      await uploadBytes(imageRef, image);
+      imageUrl = await getDownloadURL(imageRef);
+    }
+
     const newNews = {
       title,
       content,
       category,
-      image,
+      image: imageUrl,
       year,
       month,
       day,
       hours,
       minutes,
       seconds,
-      timestamp: new Date() // Временная метка для отсортированного порядка
+      timestamp: new Date(),
     };
-    onAdd(newNews); // Передача новости для добавления
-    setTitle(''); // Сброс полей формы после добавления
+    
+    onAdd(newNews);
+    setTitle('');
     setContent('');
     setCategory('');
     setImage(null);
   };
 
   const handleImageChange = (e) => {
-    setImage(URL.createObjectURL(e.target.files[0]));
+    setImage(e.target.files[0]);
   };
 
   return (
@@ -77,8 +89,6 @@ const AddNewsForm = ({ onAdd }) => {
 };
 
 export default AddNewsForm;
-
-
 
 
 
