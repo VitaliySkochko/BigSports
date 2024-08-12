@@ -24,7 +24,7 @@ const EditNewsForm = ({ news, onEdit }) => {
 
   const handleImageChange = (e) => {
     setImage(URL.createObjectURL(e.target.files[0]));
-  };
+  }; 
 
   return (
     <form onSubmit={handleSubmit}>

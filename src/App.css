@@ -56,9 +56,43 @@
   letter-spacing: 5px;
 }
 
-.admin-button {
+.login-button{
+  margin-right: 20px;
   background-color: yellow;
-  color: #007bff;
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.login-button:hover {
+  background-color: white;
+  color: black;
+}
+
+.register-button {
+  background-color: yellow;
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.register-button:hover {
+  background-color: white;
+  color: black;
+}
+
+.admin-button{
+  margin-left: 20px;
+  margin-right: 20px;
+  background-color: yellow;
+  color: black;
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
@@ -68,8 +102,30 @@
 }
 
 .admin-button:hover {
-  background-color: #0056b3;
-  color: #ffffff;
+  background-color: white;
+  color: black;
+}
+
+.exit-button{
+  margin-left: 10px;
+  background-color: yellow;
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.exit-button:hover {
+  background-color: white;
+  color: black;
+}
+
+span{
+  font-size: 20px;
+  font-style: italic;
 }
 
   /*Menu*/
@@ -186,7 +242,7 @@ main {
     color: black;
   }
   
-    /*Стилі для входу до адмін панелі*/
+    /*Стилі для входу та реєстрації*/
 
   .modal-overlay {
     position: fixed;
@@ -195,6 +251,7 @@ main {
     right: 0;
     bottom: 0;
     background: rgba(0, 0, 0, 0.5);
+    background-color: black;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -207,7 +264,8 @@ main {
     text-align: center;
   }
   .modal-content h2{
-    color: blue;
+    color: black;
+    font-weight: 900;
   }
   
   .modal-content form {
@@ -227,7 +285,7 @@ main {
   .modal-content button {
     padding: 10px 20px;
     margin-top: 10px;
-    background-color: #007bff;
+    background-color: black;
     color: white;
     border: none;
     border-radius: 4px;
