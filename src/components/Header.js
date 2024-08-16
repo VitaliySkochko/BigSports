@@ -2,12 +2,13 @@
 
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { onAuthStateChanged, signOut } from 'firebase/auth'; // Убедитесь, что signOut импортирован
+import { onAuthStateChanged, signOut } from 'firebase/auth';
 import PasswordModal from './PasswordModal';
 import RegistrationModal from './RegistrationModal';
-import { auth, db } from '../firebase'; // Импортируйте auth
+import { auth, db } from '../firebase';
 import logo from '../img/logo.png';
 import { doc, getDoc } from 'firebase/firestore';
+import SearchBar from './SearchBar'; // Импортируем компонент поиска
 
 const Header = () => {
   const [isPasswordModalOpen, setIsPasswordModalOpen] = useState(false);
@@ -67,6 +68,7 @@ const Header = () => {
         <img src={logo} alt="Site logo" className="logo" />
         <h1 className="site-title">BigSPORTS</h1>
       </div>
+      <SearchBar /> {/* Добавляем компонент поиска */}
       {userData ? (
         <div>
           <span>{userData.username}</span>

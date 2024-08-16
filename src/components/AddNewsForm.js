@@ -24,6 +24,10 @@ const AddNewsForm = ({ onAdd }) => {
     };
   };
 
+  const extractKeywords = (title) => {
+    return title.toLowerCase().split(' ').filter(word => word.length > 2); // Простейшая функция для извлечения ключевых слов
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { year, month, day, hours, minutes } = getCurrentDateTime();
@@ -35,6 +39,8 @@ const AddNewsForm = ({ onAdd }) => {
       imageUrl = await getDownloadURL(imageRef);
     }
 
+    const keywords = extractKeywords(title); // Генерация ключевых слов из заголовка
+
     const newNews = {
       title,
       content,
@@ -45,6 +51,7 @@ const AddNewsForm = ({ onAdd }) => {
       day,
       time: `${hours}:${minutes}`, 
       timestamp: new Date(),
+      keywords // Добавление ключевых слов
     };
 
     onAdd(newNews);

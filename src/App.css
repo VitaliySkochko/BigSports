@@ -56,6 +56,45 @@
   letter-spacing: 5px;
 }
 
+/* SearchBar.css */
+.search-bar {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 4px;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.search-bar input {
+  flex: 1;
+  border: none;
+  padding: 6px;
+  border-radius: 4px;
+  outline: none;
+  font-size: 14px;
+}
+
+.search-bar button {
+  background-color: yellow;
+  color: black;
+  border: none;
+  padding: 6px 12px;
+  margin-left: 4px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.search-bar button:hover {
+  background-color: white;
+}
+
+.search-bar input::placeholder {
+  color: #888;
+}
+
 .login-button{
   margin-right: 20px;
   background-color: yellow;
@@ -346,6 +385,20 @@ form button:hover {
   border-radius: 10px;
   box-shadow: 10px 10px 10px black;
 }
+.search-results{
+  padding: 20px;
+  margin-bottom: 100px;
+}
+.search-results h1{
+  font-size: 20px;
+  padding: 20px;
+  margin-bottom: 30px;
+  text-align: center;
+  background-color: black;
+  color: yellow;
+  border-radius: 10px;
+  box-shadow: 10px 10px 10px black;
+}
 
 .news-grid {
   display: grid;
@@ -387,7 +440,7 @@ form button:hover {
   text-decoration: none; /* Убирает подчеркивание у ссылок */
 }
 
-.news-category {
+.news-category { 
   font-size: 14px;
   color: yellow;
   background-color: black;

@@ -11,6 +11,7 @@ import Menu from './components/Menu';
 import Header from './components/Header';
 import NewsDetails from './components/NewsDetails';
 import Footer from './components/Footer';
+import SearchResults from './components/SearchResults'; 
 import { NewsProvider } from './components/NewsContext'; 
 import { UserProvider } from './components/UserContext'; 
 import RequireAuth from './components/RequireAuth'; 
@@ -39,6 +40,7 @@ const Main = () => {
           </RequireAuth>
         } />
         <Route path="/news/:id" element={<NewsDetails />} />
+        <Route path="/search" element={<SearchResults />} /> 
       </Routes>
     </div>
   );
