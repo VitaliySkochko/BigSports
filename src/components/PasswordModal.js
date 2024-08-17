@@ -4,11 +4,13 @@ import React, { useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth, db } from '../firebase';
 import { collection, query, where, getDocs } from 'firebase/firestore';
+import { useNavigate } from 'react-router-dom'; // Импортируем useNavigate
 
 const PasswordModal = ({ isOpen, onClose, onLoginSuccess }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate(); // Создаем экземпляр navigate
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -31,6 +33,7 @@ const PasswordModal = ({ isOpen, onClose, onLoginSuccess }) => {
       await signInWithEmailAndPassword(auth, email, password);
       onLoginSuccess(userDoc.id); // id пользователя
       onClose();
+      navigate('/'); // Перенаправляем на главную страницу
     } catch (error) {
       setError(`Ошибка при входе: ${error.message}`);
     }

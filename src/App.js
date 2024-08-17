@@ -16,6 +16,7 @@ import { NewsProvider } from './components/NewsContext';
 import { UserProvider } from './components/UserContext'; 
 import RequireAuth from './components/RequireAuth'; 
 import './App.css';
+import './Responsive.css';
 import logo from './img/logo.png';
 
 // Установка иконки сайта

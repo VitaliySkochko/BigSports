@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth, db } from '../firebase';
 import { doc, setDoc, getDocs, query, collection, where } from 'firebase/firestore';
+import { useNavigate } from 'react-router-dom'; // Импортируйте useNavigate
 
 const RegistrationModal = ({ isOpen, onClose }) => {
   const [email, setEmail] = useState('');
@@ -12,6 +13,8 @@ const RegistrationModal = ({ isOpen, onClose }) => {
   const [city, setCity] = useState('');
   const [error, setError] = useState('');
   const [passwordStrength, setPasswordStrength] = useState('');
+
+  const navigate = useNavigate(); // Инициализируйте useNavigate
 
   const validatePassword = (password) => {
     if (password.length < 6) {
@@ -34,7 +37,6 @@ const RegistrationModal = ({ isOpen, onClose }) => {
       return;
     }
 
-    // Email validation
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailPattern.test(email)) {
       setError('Некоректний формат email');
@@ -42,7 +44,6 @@ const RegistrationModal = ({ isOpen, onClose }) => {
     }
 
     try {
-      // Перевірка на унікальність імені користувача
       const q = query(collection(db, 'users'), where('username', '==', username));
       const querySnapshot = await getDocs(q);
 
@@ -51,7 +52,6 @@ const RegistrationModal = ({ isOpen, onClose }) => {
         return;
       }
 
-      // Реєстрація користувача
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
 
@@ -61,11 +61,10 @@ const RegistrationModal = ({ isOpen, onClose }) => {
         country: country,
         city: city,
         createdAt: new Date(),
-        role: 'user', // По умолчанию роль будет user
+        role: 'user', // Роль по умолчанию
       });
 
       alert('Реєстрація пройшла успішно!');
-      // Очистка полів форми
       setEmail('');
       setPassword('');
       setConfirmPassword('');
@@ -75,6 +74,8 @@ const RegistrationModal = ({ isOpen, onClose }) => {
       setError('');
       setPasswordStrength('');
       onClose();
+      
+      navigate('/'); // Перенаправление на главную страницу
     } catch (error) {
       console.error('Помилка при реєстрації: ', error);
       setError('Помилка при реєстрації: ' + error.message);
@@ -144,3 +145,4 @@ const RegistrationModal = ({ isOpen, onClose }) => {
 };
 
 export default RegistrationModal;
+

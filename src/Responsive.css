@@ -1,0 +1,322 @@
+ 
+ /* Базовые стили для всех устройств */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+ 
+ /* Мобильные стили */
+ @media (max-width: 768px) {
+    /* Header */
+    .header {
+      flex-direction: column;
+      align-items: center; /* Центрируем заголовок и логотип */
+      padding: 10px;
+    }
+  
+    .logo {
+      width: 150px; /* Уменьшаем размер логотипа на мобильных устройствах */
+      height: auto;
+    }
+  
+    .site-title {
+      font-size: 30px; /* Уменьшаем размер заголовка на мобильных устройствах */
+    }
+  
+    /* Меню */
+    .menu {
+      flex-direction: column;
+      align-items: center; /* Центрируем меню */
+    }
+  
+    .menu a {
+      padding: 15px;
+      font-size: 16px;
+    }
+  
+    /* Новости в панели администратора */
+    .news-grid {
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Центрируем новости */
+      gap: 10px; /* Добавляем промежуток между новостями */
+    }
+  
+    .news-item {
+      width: 100%; /* Новости занимают всю ширину контейнера */
+      max-width: 600px; /* Ограничиваем максимальную ширину новости */
+      flex-direction: column;
+      text-align: center; /* Центрируем текст внутри новости */
+    }
+  
+    .news-item img {
+      width: 100%; /* Изображения занимают всю ширину новости */
+      height: auto;
+    }
+  
+    .news-item-content {
+      padding: 10px;
+    }
+  
+    .news-item h3 {
+      font-size: 24px; /* Уменьшаем размер заголовка новости */
+    }
+  
+    .news-item p {
+      font-size: 14px; /* Уменьшаем размер текста новости */
+    }
+  
+    /* Стили для новостей */
+    .news_details {
+      padding: 15px;
+    }
+  
+    .news_details img {
+      width: 100%; /* Изображение новости занимает всю ширину */
+      height: auto;
+    }
+  
+    .news_details h2 {
+      font-size: 24px; /* Уменьшаем размер заголовка новости */
+    }
+  
+    .news_details p {
+      font-size: 14px; /* Уменьшаем размер текста новости */
+    }
+  
+    /* Комментарии */
+    .comments-container {
+      padding: 1rem;
+    }
+  
+    .comments-header {
+      font-size: 1.25rem; /* Уменьшаем размер заголовка комментариев */
+    }
+  
+    .comment-item {
+      padding: 0.5rem;
+    }
+  
+    .comment-actions button {
+      padding: 0.5rem;
+      font-size: 14px; /* Уменьшаем размер кнопок действий */
+    }
+  
+    .reply-section {
+      padding: 1rem;
+    }
+  
+    .reply-section textarea {
+      font-size: 14px; /* Уменьшаем размер текста в текстовом поле */
+    }
+  
+    .reply-section button {
+      padding: 0.5rem;
+      font-size: 14px; /* Уменьшаем размер кнопки ответа */
+    }
+  
+    /* Footer */
+    .footer {
+      padding: 10px 0;
+      text-align: center; /* Центрируем содержимое футера */
+    }
+  
+    .footer-logo img {
+      width: 150px; /* Уменьшаем размер логотипа футера */
+    }
+  
+    .footer-links {
+      flex-direction: column;
+      align-items: center; /* Центрируем ссылки футера */
+    }
+  
+    .footer-links a {
+      margin: 5px 0;
+    }
+  }
+  
+  /* Стили для очень маленьких экранов (например, телефоны) */
+  @media (max-width: 480px) {
+    .header {
+      padding: 5px;
+    }
+  
+    .menu a {
+      padding: 10px;
+      font-size: 14px;
+    }
+  
+    .news-item h3 {
+      font-size: 20px; /* Уменьшаем размер заголовка новости */
+    }
+  
+    .news-item p {
+      font-size: 12px; /* Уменьшаем размер текста новости */
+    }
+  
+    .news_details h2 {
+      font-size: 20px; /* Уменьшаем размер заголовка новости */
+    }
+  
+    .news_details p {
+      font-size: 12px; /* Уменьшаем размер текста новости */
+    }
+  
+    .comments-header {
+      font-size: 1rem; /* Уменьшаем размер заголовка комментариев */
+    }
+  
+    .comment-item {
+      padding: 0.5rem;
+    }
+  
+    .comment-actions button {
+      padding: 0.5rem;
+      font-size: 12px; /* Уменьшаем размер кнопок действий */
+    }
+  
+    .reply-section textarea {
+      font-size: 12px; /* Уменьшаем размер текста в текстовом поле */
+    }
+  
+    .reply-section button {
+      padding: 0.5rem;
+      font-size: 12px; /* Уменьшаем размер кнопки ответа */
+    }
+  
+    .footer-logo img {
+      width: 100px; /* Уменьшаем размер логотипа футера */
+    }
+  }
+  
+  /* Стили для планшетов (iPad и аналогичные устройства) */
+  @media (min-width: 769px) and (max-width: 1024px) {
+    /* Header */
+    .header {
+      flex-direction: row;
+      align-items: center; /* Центрируем элементы заголовка */
+      padding: 15px;
+    }
+  
+    .logo {
+      width: 200px; /* Размер логотипа для планшетов */
+      height: auto;
+    }
+  
+    .site-title {
+      font-size: 36px; /* Размер заголовка для планшетов */
+    }
+  
+    /* Меню */
+    .menu {
+      flex-direction: row;
+      align-items: center; /* Центрируем элементы меню */
+    }
+  
+    .menu a {
+      padding: 10px 20px;
+      font-size: 18px; /* Размер шрифта меню */
+    }
+  
+    /* Новости в панели администратора */
+    .news-grid {
+      display: flex;
+      flex-direction: column; /* Вертикальное размещение новостей */
+      align-items: center; /* Центрируем новости по горизонтали */
+      gap: 15px; /* Промежуток между новостями */
+    }
+  
+    .news-item {
+      width: calc(100% - 30px); /* Новости занимают всю ширину контейнера с отступами */
+      max-width: 800px; /* Максимальная ширина новости для удобства чтения */
+      text-align: center; /* Центрируем текст внутри новости */
+      margin: 0 auto; /* Центрируем новость по горизонтали */
+    }
+  
+    .news-item img {
+      width: 100%; /* Изображения занимают всю ширину новости */
+      height: auto;
+    }
+  
+    .news-item-content {
+      padding: 15px;
+    }
+  
+    .news-item h3 {
+      font-size: 28px; /* Размер заголовка новости */
+      word-wrap: break-word; /* Перенос длинных слов на новую строку */
+    }
+  
+    .news-item p {
+      font-size: 16px; /* Размер текста новости */
+    }
+  
+    /* Стили для новостей */
+    .news_details {
+      padding: 20px;
+    }
+  
+    .news_details img {
+      width: 100%; /* Изображение новости занимает всю ширину */
+      height: auto;
+    }
+  
+    .news_details h2 {
+      font-size: 28px; /* Размер заголовка новости */
+    }
+  
+    .news_details p {
+      font-size: 16px; /* Размер текста новости */
+    }
+  
+    /* Комментарии */
+    .comments-container {
+      padding: 1.5rem;
+    }
+  
+    .comments-header {
+      font-size: 1.5rem; /* Размер заголовка комментариев */
+    }
+  
+    .comment-item {
+      padding: 0.75rem;
+    }
+  
+    .comment-actions button {
+      padding: 0.75rem;
+      font-size: 16px; /* Размер кнопок действий */
+    }
+  
+    .reply-section {
+      padding: 1.5rem;
+    }
+  
+    .reply-section textarea {
+      font-size: 16px; /* Размер текста в текстовом поле */
+    }
+  
+    .reply-section button {
+      padding: 0.75rem;
+      font-size: 16px; /* Размер кнопки ответа */
+    }
+  
+    /* Footer */
+    .footer {
+      padding: 15px 0;
+      text-align: center; /* Центрируем содержимое футера */
+    }
+  
+    .footer-logo img {
+      width: 200px; /* Размер логотипа футера */
+    }
+  
+    .footer-links {
+      flex-direction: row;
+      justify-content: center; /* Центрируем ссылки футера */
+    }
+  
+    .footer-links a {
+      margin: 0 10px;
+    }
+  }
