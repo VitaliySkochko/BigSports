@@ -2,19 +2,17 @@
 включаючи заголовок, зміст, категорію та зображення, та передає цю інформацію у вигляді об'єкта новини через функцію onAdd.*/
 
 import React, { useState } from 'react';
-import { storage } from '../firebase'; 
+import { storage } from '../firebase'; // импортируйте ваш экземпляр Firebase Storage
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css'; 
+import 'react-quill/dist/quill.snow.css'; // импортируйте стиль Quill
 
-// Компонент форми для додавання новин
 const AddNewsForm = ({ onAdd }) => {
-  const [title, setTitle] = useState(''); // Стан для заголовка новини
-  const [content, setContent] = useState(''); // Стан для змісту новини
-  const [category, setCategory] = useState(''); // Стан для категорії новини
-  const [image, setImage] = useState(null); // Стан для зображення новини
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
+  const [category, setCategory] = useState('');
+  const [image, setImage] = useState(null);
 
-// Функція для отримання поточної дати та часу
   const getCurrentDateTime = () => {
     const currentDate = new Date();
     return {
@@ -26,28 +24,23 @@ const AddNewsForm = ({ onAdd }) => {
     };
   };
 
-  // Функція для витягування ключових слів з заголовка новини
   const extractKeywords = (title) => {
-    return title.toLowerCase().split(' ').filter(word => word.length > 2); 
+    return title.toLowerCase().split(' ').filter(word => word.length > 2); // Простейшая функция для извлечения ключевых слов
   };
 
-  // Функція для обробки відправки форми
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Зупинка перезавантаження сторінки при відправці форми
-    const { year, month, day, hours, minutes } = getCurrentDateTime(); // Отримання поточної дати та часу
+    e.preventDefault();
+    const { year, month, day, hours, minutes } = getCurrentDateTime();
 
     let imageUrl = '';
-    // Завантаження зображення в Firebase Storage, якщо воно є
     if (image) {
       const imageRef = ref(storage, `images/${image.name}`);
       await uploadBytes(imageRef, image);
       imageUrl = await getDownloadURL(imageRef);
     }
 
-// Генерація ключових слів з заголовка новини
     const keywords = extractKeywords(title); // Генерация ключевых слов из заголовка
 
-    // Об'єкт новини
     const newNews = {
       title,
       content,
@@ -58,10 +51,9 @@ const AddNewsForm = ({ onAdd }) => {
       day,
       time: `${hours}:${minutes}`, 
       timestamp: new Date(),
-      keywords 
+      keywords // Добавление ключевых слов
     };
 
-    // Виклик функції onAdd для додавання новини
     onAdd(newNews);
     setTitle('');
     setContent('');
@@ -69,7 +61,6 @@ const AddNewsForm = ({ onAdd }) => {
     setImage(null);
   };
 
-  // Функція для обробки зміни зображення
   const handleImageChange = (e) => {
     setImage(e.target.files[0]);
   };
