@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import { useNews } from './NewsContext';
 import Comments from './Comments';
 import CommentForm from './CommentForm';
+import '../styles/NewsDetails.css'
 
 const NewsDetails = () => {
   const { newsList } = useNews();

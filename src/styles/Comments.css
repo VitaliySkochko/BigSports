@@ -1,0 +1,112 @@
+.comments-container {
+    padding: 1.5rem;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .comments-header {
+    font-size: 1.75rem;
+    font-weight: 600;
+    font-style: italic;
+    color: #333;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 0.5rem;
+  }
+  
+  .comments-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .comment-item {
+    border-bottom: 1px solid #e0e0e0;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .comment-header {
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 0.5rem;
+  }
+  
+  .comment-body {
+    margin-bottom: 0.5rem;
+    color: #444;
+  }
+  
+  .comment-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+  
+  .comment-actions button {
+    background-color: black;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .comment-actions button:hover {
+    color: black;
+    background-color: yellow;
+  }
+  
+  .comment-actions button.dislike {
+    background-color: #dc3545;
+  }
+  
+  .comment-actions button.dislike:hover {
+    background-color: #c82333;
+  }
+  
+  .reply-section {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background-color: #f1f1f1;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .reply-section h4 {
+    margin-bottom: 1rem;
+    color: #333;
+  }
+  
+  .reply-section form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .reply-section textarea {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    resize: vertical;
+  }
+  
+  .reply-section button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .reply-section button:hover {
+    background-color: #0056b3;
+  }

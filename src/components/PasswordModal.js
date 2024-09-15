@@ -4,7 +4,8 @@ import React, { useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth, db } from '../firebase';
 import { collection, query, where, getDocs } from 'firebase/firestore';
-import { useNavigate } from 'react-router-dom'; // Импортируем useNavigate
+import { useNavigate } from 'react-router-dom'; 
+import '../styles/PasswordModal.css'
 
 const PasswordModal = ({ isOpen, onClose, onLoginSuccess }) => {
   const [username, setUsername] = useState('');

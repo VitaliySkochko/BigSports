@@ -8,7 +8,8 @@ import RegistrationModal from './RegistrationModal';
 import { auth, db } from '../firebase';
 import logo from '../img/logo.png';
 import { doc, getDoc } from 'firebase/firestore';
-import SearchBar from './SearchBar'; // Импортируем компонент поиска
+import SearchBar from './SearchBar'; 
+import '../styles/Header.css'
 
 const Header = () => {
   const [isPasswordModalOpen, setIsPasswordModalOpen] = useState(false);

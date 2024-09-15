@@ -3,7 +3,7 @@ import { collection, query, where, orderBy, onSnapshot, doc, deleteDoc, updateDo
 import { db } from '../firebase';
 import { useUser } from './UserContext';
 import { format } from 'date-fns';
-import '../App.css'; // Подключаем CSS файл
+import '../styles/Comments.css'
 
 const Comments = ({ newsId }) => {
   const [comments, setComments] = useState([]);
@@ -93,7 +93,7 @@ const Comments = ({ newsId }) => {
               )}
             </div>
           </li>
-        ))}
+        ))} 
       </ul>
     </div>
   );

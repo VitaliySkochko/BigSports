@@ -1,0 +1,102 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: black;
+    color: yellow;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 10px 10px 10px black;
+  }
+  
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo {
+    width: 220px;
+    height: 60px;
+    margin-right: 15px;
+    border: 3px yellow solid;
+  }
+  
+  .site-title {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 50px;
+    font-weight: bold;
+    letter-spacing: 5px;
+  }
+  .login-button{
+    margin-right: 20px;
+    background-color: yellow;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .login-button:hover {
+    background-color: white;
+    color: black;
+  }
+  
+  .register-button {
+    background-color: yellow;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .register-button:hover {
+    background-color: white;
+    color: black;
+  }
+  
+  .admin-button{
+    margin-left: 20px;
+    margin-right: 20px;
+    background-color: yellow;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .admin-button:hover {
+    background-color: white;
+    color: black;
+  }
+  
+  .exit-button{
+    margin-left: 10px;
+    background-color: yellow;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .exit-button:hover {
+    background-color: white;
+    color: black;
+  }
+  
+  span{
+    font-size: 20px;
+    font-style: italic;
+  }

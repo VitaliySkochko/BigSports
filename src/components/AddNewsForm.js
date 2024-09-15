@@ -6,6 +6,7 @@ import { storage } from '../firebase'; // импортируйте ваш экз
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css'; // импортируйте стиль Quill
+import '../styles/AddNewsForm.css'
 
 const AddNewsForm = ({ onAdd }) => {
   const [title, setTitle] = useState('');

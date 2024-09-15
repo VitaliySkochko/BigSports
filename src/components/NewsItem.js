@@ -1,6 +1,7 @@
 /* Цей код представляє компонент NewsItem на React, який відображає окрему новину в адмін-панелі */
 
 import React from 'react';
+import '../styles/NewsItem.css'
 
 const NewsItem = ({ news, onDelete, onEdit }) => {
   const handleDelete = () => {

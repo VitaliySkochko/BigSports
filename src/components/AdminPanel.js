@@ -7,6 +7,7 @@
  import NewsItem from "./NewsItem";
  import Pagination from "./Pagination";
  import { useNews } from "./NewsContext";
+ import '../styles/AdminPanel.css'
  
  const AdminPanel = () => {
    const { newsList, addNews, deleteNews, editNews } = useNews();
