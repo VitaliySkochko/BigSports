@@ -1,39 +1,52 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
-import { collection, query, where, getDocs } from 'firebase/firestore';
+import { collection, query, getDocs, where } from 'firebase/firestore';
 import { db } from '../firebase';
 import '../App.css'; // Импортируем стили для использования классов
 
 const SearchResults = () => {
   const [results, setResults] = useState([]);
+  const [filteredResults, setFilteredResults] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
   const location = useLocation();
-  const searchTerm = new URLSearchParams(location.search).get('q');
 
   useEffect(() => {
-    const searchArticles = async () => {
-      if (searchTerm) {
-        const q = query(
-          collection(db, 'news'),
-          where('keywords', 'array-contains', searchTerm.toLowerCase())
-        );
-        const querySnapshot = await getDocs(q);
-        const articles = [];
-        querySnapshot.forEach((doc) => {
-          articles.push({ id: doc.id, ...doc.data() });
-        });
-        setResults(articles);
-      }
+    const fetchArticles = async () => {
+      const q = query(collection(db, 'news'));
+      const querySnapshot = await getDocs(q);
+      const articles = [];
+      querySnapshot.forEach((doc) => {
+        articles.push({ id: doc.id, ...doc.data() });
+      });
+      setResults(articles);
     };
 
-    searchArticles();
-  }, [searchTerm]);
+    fetchArticles();
+  }, []);
+
+  useEffect(() => {
+    setSearchTerm(new URLSearchParams(location.search).get('q') || '');
+  }, [location.search]);
+
+  useEffect(() => {
+    if (searchTerm) {
+      setFilteredResults(
+        results.filter(article =>
+          article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          article.content.toLowerCase().includes(searchTerm.toLowerCase())
+        )
+      );
+    } else {
+      setFilteredResults(results);
+    }
+  }, [searchTerm, results]);
 
   return (
     <div className='search-results'>
       <h1>Результати пошуку для "{searchTerm}":</h1>
-      {results.length > 0 ? (
+      {filteredResults.length > 0 ? (
         <div className='news-grid'>
-          {results.map((article) => (
+          {filteredResults.map((article) => (
             <div key={article.id} className='news-item'>
               <img src={article.image} alt={article.title} className='news-image' />
               <div className='news-details'>
