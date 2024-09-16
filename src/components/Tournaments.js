@@ -1,6 +1,3 @@
-/*цей компонент надає сторінку з новинами про європейські кубкові змагання, 
-де відображаються заголовок, опис та список новин у зворотньому порядку (новіші вгорі). */
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNews } from './NewsContext';
@@ -8,16 +5,16 @@ import Pagination from './Pagination';
 import Subsections from './Subsections';
 import '../App.css'
 
-const Biathlon = () => {
-  const { newsList } = useNews();
+const Tournaments = () => {
+  const { newsList } = useNews(); 
   const [currentPage, setCurrentPage] = useState(1);
   const newsPerPage = 10;
 
   const handlePageChange = (page) => {
-    setCurrentPage(page);
+    setCurrentPage(page); 
   };
 
-  const filteredNews = newsList.filter((news) => news.category === 'Біатлон');
+  const filteredNews = newsList.filter((news) => news.category === 'Турніри');
   const indexOfLastNews = currentPage * newsPerPage;
   const indexOfFirstNews = indexOfLastNews - newsPerPage;
   const currentNewsList = filteredNews.slice(indexOfFirstNews, indexOfLastNews);
@@ -25,8 +22,8 @@ const Biathlon = () => {
 
   return (
     <div className='panel'>
-      <h1>БІАТЛОН</h1>
-      <Subsections category="Біатлон" />
+      <h1>Турніри</h1>
+      <Subsections category="Турніри" />
       <div className='news-grid'>
         {currentNewsList.map((news) => (
           <div key={news.id} className='news-item'>
@@ -52,16 +49,4 @@ const Biathlon = () => {
   );
 };
 
-export default Biathlon;
-
-
-
-
-
-
-
-
-
-
-
-
+export default Tournaments;

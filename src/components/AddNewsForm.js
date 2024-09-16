@@ -12,7 +12,16 @@ const AddNewsForm = ({ onAdd }) => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [category, setCategory] = useState('');
+  const [section, setSection] = useState('');
   const [image, setImage] = useState(null);
+
+  const sectionsByCategory = {
+    'Футбол України': ['УПЛ', 'Збірна України', 'Шахтар', 'Динамо Київ', 'Олександрія', 'Кривбас', 'Зоря', 'Чорноморець', 'Оболонь', 'Колос', 'Рух', 'ЛНЗ', 'Карпати', 'Інгулець', 'Ворскла', 'Полісся', 'Лівий Берег', 'Верес'],
+    'Футбол Європи': ['Англійська Премʼєр-ліга', 'Іспанська Ла Ліга', 'Німецька Бундесліга', 'Французька Ліга 1', 'Італійська Серія А', 'Європейські новини'],
+    'Біатлон': ['Новини', 'Кубок Світу','Кубок IBU','Чемпіонат Світу'],
+    'Види спорту': ['Бокс', 'Теніс', 'MMA','Футзал'],
+    'Турніри': ['Чемпіонат Світу 2024 з футзалу'],
+  };
 
   const getCurrentDateTime = () => {
     const currentDate = new Date();
@@ -46,6 +55,7 @@ const AddNewsForm = ({ onAdd }) => {
       title,
       content,
       category,
+      section, // Добавляем раздел
       image: imageUrl,
       year,
       month,
@@ -59,6 +69,7 @@ const AddNewsForm = ({ onAdd }) => {
     setTitle('');
     setContent('');
     setCategory('');
+    setSection('');
     setImage(null);
   };
 
@@ -81,14 +92,25 @@ const AddNewsForm = ({ onAdd }) => {
         placeholder="Зміст"
         required
       />
-      <select value={category} onChange={(e) => setCategory(e.target.value)} required>
+      <select value={category} onChange={(e) => {
+        setCategory(e.target.value);
+        setSection(''); // Сбрасываем раздел при изменении категории
+      }} required>
         <option value="">Оберіть категорію</option>
         <option value="Футбол України">Футбол України</option>
-        <option value="Світовий Футбол">Світовий Футбол</option>
-        <option value="Бокс">Бокс</option>
-        <option value="Теніс">Теніс</option>
+        <option value="Футбол Європи">Футбол Європи</option>
         <option value="Біатлон">Біатлон</option>
+        <option value="Турніри">Турніри</option>
+        <option value="Види спорту">Види спорту</option>
       </select>
+      {category && (
+        <select value={section} onChange={(e) => setSection(e.target.value)} required>
+          <option value="">Оберіть розділ</option>
+          {sectionsByCategory[category].map((sec) => (
+            <option key={sec} value={sec}>{sec}</option>
+          ))}
+        </select>
+      )}
       <input type="file" onChange={handleImageChange} required />
       <button type="submit">Додати</button>
     </form>
@@ -96,6 +118,8 @@ const AddNewsForm = ({ onAdd }) => {
 };
 
 export default AddNewsForm;
+
+
 
 
 

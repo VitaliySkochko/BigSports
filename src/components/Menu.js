@@ -10,10 +10,10 @@ const Menu = () => {
     <nav className="menu">
       <Link to="/">Головна</Link>
       <Link to="/football-ukraine">Футбол України</Link>
-      <Link to="/world-football">Світовий Футбол</Link>
-      <Link to="/boxing">Бокс</Link>
-      <Link to="/tennis">Теніс</Link>
+      <Link to="/world-football">Футбол Європи</Link>
       <Link to="/biathlon">Біатлон</Link>
+      <Link to="/tournaments">Турніри</Link> 
+      <Link to="/sports">Види спорту</Link> 
     </nav>
   );
 };

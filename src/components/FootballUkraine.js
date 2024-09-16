@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNews } from './NewsContext';
 import Pagination from './Pagination';
+import Subsections from './Subsections';
 import '../App.css';
 
 const FootballUkraine = () => {
@@ -25,6 +26,7 @@ const FootballUkraine = () => {
   return (
     <div className='panel'>
       <h1>Футбол України</h1>
+      <Subsections category="Футбол України" />
       <div className='news-grid'>
         {currentNewsList.map((news) => (
           <div key={news.id} className='news-item'>

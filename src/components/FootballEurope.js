@@ -5,9 +5,10 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNews } from './NewsContext';
 import Pagination from './Pagination';
+import Subsections from './Subsections';
 import '../App.css'
 
-const WorldFootball = () => {
+const FootballEurope = () => {
   const { newsList } = useNews();
   const [currentPage, setCurrentPage] = useState(1);
   const newsPerPage = 10;
@@ -16,7 +17,7 @@ const WorldFootball = () => {
     setCurrentPage(page); 
   };
 
-  const filteredNews = newsList.filter((news) => news.category === 'Світовий Футбол');
+  const filteredNews = newsList.filter((news) => news.category === 'Футбол Європи');
   const indexOfLastNews = currentPage * newsPerPage;
   const indexOfFirstNews = indexOfLastNews - newsPerPage;
   const currentNewsList = filteredNews.slice(indexOfFirstNews, indexOfLastNews);
@@ -24,7 +25,8 @@ const WorldFootball = () => {
 
   return (
     <div className='panel'>
-      <h1>СВІТОВИЙ ФУТБОЛ</h1>
+      <h1>ФУТБОЛ ЄВРОПИ</h1>
+      <Subsections category="Футбол Європи" />
       <div className='news-grid'>
         {currentNewsList.map((news) => (
           <div key={news.id} className='news-item'>
@@ -50,7 +52,7 @@ const WorldFootball = () => {
   );
 };
 
-export default WorldFootball;
+export default FootballEurope;
 
 
 
