@@ -1,37 +1,53 @@
+/* NewsDetails.css */
 .news_details {
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 100px;
-    max-width: 800px;
-  }
-  
-  .header-section {
-    text-align: center; /* Центрирует текст и изображение */
-    margin-bottom: 20px;
-  }
-  
-  .news_details h2 {
-    font-size: 30px;
-    color: black;
-    margin-bottom: 10px;
-    font-weight: 900;
-  }
-  
-  .news_details p {
-    font-size: 16px;
-    color: black;
-    margin-bottom: 5px;
-  }
-  
-  .news_details img {
-    width: 600px;
-    height: 400px;
-    margin: 0 auto 10px; /* Центрирует изображение и добавляет нижний отступ */
-    border-radius: 10px;
-  }
-  
-  .news-content {
-    text-align: left; /* Текст новости выровнен по левому краю */
-  }
+  padding: 20px;
+  background: #f9f9f9; 
+  border: 2px solid black;  
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 0 auto; /* Центрирование контейнера */
+  max-width: 90%; /* Максимальная ширина */
+  overflow: hidden; /* Скрытие содержимого за пределами контейнера */
+}
+
+.header-section {
+  text-align: center; /* Центрирует текст и изображение */
+  margin-bottom: 20px;
+}
+
+.news_details h2 {
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 40px; /* Размер шрифта в относительных единицах */
+  color: black; /* Цвет текста для заголовка */
+  margin-bottom: 10px;
+  font-weight: bold; /* Увеличение жирности шрифта */
+}
+
+.news_details p {
+  font-size: 1rem;
+  color: #333; /* Цвет текста для параграфов */
+  margin-bottom: 10px; /* Увеличение отступов между абзацами */
+}
+
+.news_details img {
+  max-width: 80%; /* Уменьшение размера изображения */
+  height: auto; /* Автоматическая высота */
+  border-radius: 8px; /* Радиус закругления углов */
+  margin: 0 auto 10px; /* Центрирует изображение и добавляет нижний отступ */
+  display: block; /* Отображение как блочный элемент */
+}
+
+.image-placeholder {
+  background-color: #ddd; /* Светлый фон для заглушки */
+  color: #999; /* Текст заглушки */
+  padding: 20px;
+  border-radius: 8px; /* Радиус закругления углов */
+  text-align: center;
+  font-style: italic; /* Курсив для текста заглушки */
+}
+
+.news-content {
+  line-height: 1.6; /* Увеличение межстрочного интервала */
+  font-size: 1rem;
+  color: #333; /* Цвет текста для лучшей читаемости */
+}

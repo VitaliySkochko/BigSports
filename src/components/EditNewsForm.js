@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-import { storage } from '../firebase'; // Импортируйте ваш экземпляр Firebase Storage
+import { storage } from '../firebase';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
 const EditNewsForm = ({ news, onEdit }) => {
@@ -15,15 +15,32 @@ const EditNewsForm = ({ news, onEdit }) => {
   const [imageUrl, setImageUrl] = useState(news.image);
 
   const sectionsByCategory = {
-   'Футбол України': ['УПЛ', 'Збірна України', 'Шахтар', 'Динамо Київ', 'Олександрія', 'Кривбас', 'Зоря', 'Чорноморець', 'Оболонь', 'Колос', 'Рух', 'ЛНЗ', 'Карпати', 'Інгулець', 'Ворскла', 'Полісся', 'Лівий Берег', 'Верес'],
+    'Футбол України': ['УПЛ', 'Збірна України', 'Шахтар', 'Динамо Київ', 'Олександрія', 'Кривбас', 'Зоря', 'Чорноморець', 'Оболонь', 'Колос', 'Рух', 'ЛНЗ', 'Карпати', 'Інгулець', 'Ворскла', 'Полісся', 'Лівий Берег', 'Верес'],
     'Футбол Європи': ['Англійська Премʼєр-ліга', 'Іспанська Ла Ліга', 'Німецька Бундесліга', 'Французька Ліга 1', 'Італійська Серія А', 'Європейські новини'],
-    'Біатлон': ['Новини', 'Кубок Світу','Кубок IBU','Чемпіонат Світу'],
-    'Види спорту': ['Бокс', 'Теніс', 'MMA','Футзал'],
+    'Біатлон': ['Новини', 'Кубок Світу', 'Кубок IBU', 'Чемпіонат Світу'],
+    'Види спорту': ['Бокс', 'Теніс', 'MMA', 'Футзал'],
     'Турніри': ['Чемпіонат Світу 2024 з футзалу'],
   };
 
+  const modules = {
+    toolbar: [
+      [{ 'header': '1' }, { 'header': '2' }, { 'font': [] }],
+      [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+      ['bold', 'italic', 'underline', 'strike'],
+      ['link', 'image'],
+      [{ 'table': 'insert-table' }], // Включаем вставку таблицы
+      ['clean'], // Очистка форматирования
+    ],
+  };
+
+  const formats = [
+    'header', 'font', 'list', 'bullet',
+    'bold', 'italic', 'underline', 'strike',
+    'link', 'image', 'table',
+  ];
+
   const extractKeywords = (title) => {
-    return title.toLowerCase().split(' ').filter(word => word.length > 2); // Простейшая функция для извлечения ключевых слов
+    return title.toLowerCase().split(' ').filter(word => word.length > 2);
   };
 
   const handleSubmit = async (e) => {
@@ -41,16 +58,16 @@ const EditNewsForm = ({ news, onEdit }) => {
       title,
       content,
       category,
-      section, // Обновляем раздел
+      section,
       image: updatedImageUrl,
-      keywords: extractKeywords(title) // Обновление ключевых слов при редактировании
+      keywords: extractKeywords(title),
     };
-    onEdit(updatedNews); // Передача отредактированной новости для сохранения
+    onEdit(updatedNews);
   };
 
   const handleImageChange = (e) => {
     setImage(e.target.files[0]);
-    setImageUrl(URL.createObjectURL(e.target.files[0])); // Обновляем локальный URL для предварительного просмотра
+    setImageUrl(URL.createObjectURL(e.target.files[0]));
   };
 
   return (
@@ -66,6 +83,8 @@ const EditNewsForm = ({ news, onEdit }) => {
         value={content}
         onChange={setContent}
         placeholder="Зміст"
+        modules={modules}
+        formats={formats}
         required
       />
       <select value={category} onChange={(e) => {
@@ -73,16 +92,14 @@ const EditNewsForm = ({ news, onEdit }) => {
         setSection(''); // Сбрасываем раздел при изменении категории
       }} required>
         <option value="">Оберіть категорію</option>
-        <option value="Футбол України">Футбол України</option>
-        <option value="Футбол Європи">Футбол Європи</option>
-        <option value="Біатлон">Біатлон</option>
-        <option value="Турніри">Турніри</option>
-        <option value="Види спорту">Види спорту</option>
+        {Object.keys(sectionsByCategory).map((cat) => (
+          <option key={cat} value={cat}>{cat}</option>
+        ))}
       </select>
       {category && (
         <select value={section} onChange={(e) => setSection(e.target.value)} required>
           <option value="">Оберіть розділ</option>
-          {sectionsByCategory[category].map((sec) => (
+          {(sectionsByCategory[category] || []).map((sec) => (
             <option key={sec} value={sec}>{sec}</option>
           ))}
         </select>
@@ -95,3 +112,5 @@ const EditNewsForm = ({ news, onEdit }) => {
 };
 
 export default EditNewsForm;
+
+

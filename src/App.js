@@ -18,13 +18,14 @@ import { UserProvider } from './components/UserContext';
 import RequireAuth from './components/RequireAuth'; 
 import './App.css';
 import './Responsive.css';
-import logo from './img/logo.png';
+import logoSait from './img/logo-w.jpg'
+
 
 
 // Установка иконки сайта
 const link = document.createElement('link');
 link.rel = 'icon';
-link.href = logo;
+link.href = logoSait;
 document.head.appendChild(link);
 
 const Main = () => { 

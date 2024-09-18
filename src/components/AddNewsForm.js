@@ -2,11 +2,11 @@
 включаючи заголовок, зміст, категорію та зображення, та передає цю інформацію у вигляді об'єкта новини через функцію onAdd.*/
 
 import React, { useState } from 'react';
-import { storage } from '../firebase'; // импортируйте ваш экземпляр Firebase Storage
+import { storage } from '../firebase';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css'; // импортируйте стиль Quill
-import '../styles/AddNewsForm.css'
+import '../styles/AddNewsForm.css';
 
 const AddNewsForm = ({ onAdd }) => {
   const [title, setTitle] = useState('');
@@ -18,10 +18,27 @@ const AddNewsForm = ({ onAdd }) => {
   const sectionsByCategory = {
     'Футбол України': ['УПЛ', 'Збірна України', 'Шахтар', 'Динамо Київ', 'Олександрія', 'Кривбас', 'Зоря', 'Чорноморець', 'Оболонь', 'Колос', 'Рух', 'ЛНЗ', 'Карпати', 'Інгулець', 'Ворскла', 'Полісся', 'Лівий Берег', 'Верес'],
     'Футбол Європи': ['Англійська Премʼєр-ліга', 'Іспанська Ла Ліга', 'Німецька Бундесліга', 'Французька Ліга 1', 'Італійська Серія А', 'Європейські новини'],
-    'Біатлон': ['Новини', 'Кубок Світу','Кубок IBU','Чемпіонат Світу'],
-    'Види спорту': ['Бокс', 'Теніс', 'MMA','Футзал'],
+    'Біатлон': ['Новини', 'Кубок Світу', 'Кубок IBU', 'Чемпіонат Світу'],
+    'Види спорту': ['Бокс', 'Теніс', 'MMA', 'Футзал'],
     'Турніри': ['Чемпіонат Світу 2024 з футзалу'],
   };
+
+  const modules = {
+    toolbar: [
+      [{ 'header': '1' }, { 'header': '2' }, { 'font': [] }],
+      [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+      ['bold', 'italic', 'underline', 'strike'],
+      ['link', 'image'],
+      [{ 'table': 'insert-table' }], // Включаем вставку таблицы
+      ['clean'], // Очистка форматирования
+    ],
+  };
+
+  const formats = [
+    'header', 'font', 'list', 'bullet',
+    'bold', 'italic', 'underline', 'strike',
+    'link', 'image', 'table',
+  ];
 
   const getCurrentDateTime = () => {
     const currentDate = new Date();
@@ -35,7 +52,7 @@ const AddNewsForm = ({ onAdd }) => {
   };
 
   const extractKeywords = (title) => {
-    return title.toLowerCase().split(' ').filter(word => word.length > 2); // Простейшая функция для извлечения ключевых слов
+    return title.toLowerCase().split(' ').filter(word => word.length > 2);
   };
 
   const handleSubmit = async (e) => {
@@ -49,20 +66,20 @@ const AddNewsForm = ({ onAdd }) => {
       imageUrl = await getDownloadURL(imageRef);
     }
 
-    const keywords = extractKeywords(title); // Генерация ключевых слов из заголовка
+    const keywords = extractKeywords(title);
 
     const newNews = {
       title,
       content,
       category,
-      section, // Добавляем раздел
+      section,
       image: imageUrl,
       year,
       month,
       day,
-      time: `${hours}:${minutes}`, 
+      time: `${hours}:${minutes}`,
       timestamp: new Date(),
-      keywords // Добавление ключевых слов
+      keywords,
     };
 
     onAdd(newNews);
@@ -90,18 +107,18 @@ const AddNewsForm = ({ onAdd }) => {
         value={content}
         onChange={setContent}
         placeholder="Зміст"
+        modules={modules}
+        formats={formats}
         required
       />
       <select value={category} onChange={(e) => {
         setCategory(e.target.value);
-        setSection(''); // Сбрасываем раздел при изменении категории
+        setSection('');
       }} required>
         <option value="">Оберіть категорію</option>
-        <option value="Футбол України">Футбол України</option>
-        <option value="Футбол Європи">Футбол Європи</option>
-        <option value="Біатлон">Біатлон</option>
-        <option value="Турніри">Турніри</option>
-        <option value="Види спорту">Види спорту</option>
+        {Object.keys(sectionsByCategory).map((cat) => (
+          <option key={cat} value={cat}>{cat}</option>
+        ))}
       </select>
       {category && (
         <select value={section} onChange={(e) => setSection(e.target.value)} required>
@@ -118,6 +135,8 @@ const AddNewsForm = ({ onAdd }) => {
 };
 
 export default AddNewsForm;
+
+
 
 
 

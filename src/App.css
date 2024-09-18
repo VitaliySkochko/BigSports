@@ -33,7 +33,6 @@ main {
   margin-top: 20px;
   }
 
-  /*Стилі для новин адміна*/ 
   .news-item {
     display: flex;
     flex-direction: column;
@@ -90,12 +89,11 @@ main {
     color: black;
   }
   
-/*Стилі для стрічки новин*/
 
 .panel { 
   padding: 20px;
- margin-bottom: 100px;
-}
+  margin-bottom: 100px;
+} 
 .panel h1{
   font-size: 20px;
   padding: 20px;
@@ -145,6 +143,7 @@ main {
   width: 150px; 
   height: auto; 
   margin-right: 10px; 
+  border-radius: 5px;
 }
 
 .news-image {
@@ -168,7 +167,13 @@ main {
   text-transform: uppercase;
   margin-bottom: 5px;
 }
-
+.news-section{
+  font-size: 14px;
+  color: black;
+  background-color: yellow;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
 .news-date {
   font-size: 12px;
   color: black;
@@ -186,9 +191,9 @@ main {
 }
 
 .news-title:hover {
-  color: black; /* Цвет при наведении */
-  background-color: white;
+  font-style: italic;
   transform: translateY(-3px); /* Поднимает заголовок при наведении для эффекта */
+  border-radius: 5px;
 }
    
   /* Стилі для пагінації сторінок */

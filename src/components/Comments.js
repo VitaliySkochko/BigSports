@@ -3,7 +3,7 @@ import { collection, query, where, orderBy, onSnapshot, doc, deleteDoc, updateDo
 import { db } from '../firebase';
 import { useUser } from './UserContext';
 import { format } from 'date-fns';
-import '../styles/Comments.css'
+import '../styles/Comments.css';
 
 const Comments = ({ newsId }) => {
   const [comments, setComments] = useState([]);
@@ -86,8 +86,12 @@ const Comments = ({ newsId }) => {
             </div>
             <p className="comment-body">{comment.comment}</p>
             <div className="comment-actions">
-              <button onClick={() => handleLike(comment.id)}>Нравится ({comment.likes?.length || 0})</button>
-              <button onClick={() => handleDislike(comment.id)}>Не нравится ({comment.dislikes?.length || 0})</button>
+              <button onClick={() => handleLike(comment.id)} className="like-button">
+                👍 ({comment.likes?.length || 0})
+              </button>
+              <button onClick={() => handleDislike(comment.id)} className="dislike-button">
+                👎 ({comment.dislikes?.length || 0})
+              </button>
               {userData?.role === 'admin' && (
                 <button onClick={() => handleDeleteComment(comment.id)}>Видалити</button>
               )}

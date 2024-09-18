@@ -6,12 +6,12 @@ import { Link } from 'react-router-dom';
 import { useNews } from './NewsContext';
 import Pagination from './Pagination';
 import Subsections from './Subsections';
-import '../App.css'
+import '../App.css';
 
 const FootballEurope = () => {
   const { newsList } = useNews();
   const [currentPage, setCurrentPage] = useState(1);
-  const newsPerPage = 10;
+  const newsPerPage = 20;
 
   const handlePageChange = (page) => {
     setCurrentPage(page); 
@@ -33,6 +33,7 @@ const FootballEurope = () => {
             <img src={news.image} alt={news.title} className='news-image' />
             <div className='news-details'>
               <span className='news-category'>{news.category}</span>
+              <span className='news-section'>{news.section}</span>
               <span className='news-date'>{news.day}.{news.month}.{news.year} {news.time}</span>
               <Link to={`/news/${news.id}`}>
                 <h2 className='news-title'>{news.title}</h2>
@@ -41,7 +42,7 @@ const FootballEurope = () => {
           </div>
         ))}
       </div>
-      {filteredNews.length > 10 && (
+      {totalPages > 1 && (
         <Pagination
           currentPage={currentPage}
           totalPages={totalPages}

@@ -1,20 +1,20 @@
 {
   "short_name": "BigSports",
   "name": "BigSports - Спортивні новини",
-  "version": "1.0",
+  "version": "2.0",
   "icons": [
     {
-      "src": "logo64.png",
+      "src": "logo-w64.png",
       "sizes": "64x64",
       "type": "image/png"
     },
     {
-      "src": "logo192.png",
+      "src": "logo-w192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "logo512.png",
+      "src": "logo-w512.png",
       "type": "image/png",
       "sizes": "512x512"
     }

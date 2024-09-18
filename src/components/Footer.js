@@ -1,7 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../img/logo.png'; 
-import '../styles/Footer.css'
+import '../styles/Footer.css';
+
+// Импортируйте иконки FontAwesome
+import { FaInstagram } from 'react-icons/fa'; 
 
 const Footer = () => {
   return (
@@ -12,14 +15,19 @@ const Footer = () => {
         </div>
         <div className="footer-links">
           <Link to="/football-ukraine">Футбол України</Link>
-          <Link to="/world-football">Світовий футбол</Link>
-          <Link to="/boxing">Бокс</Link>
-          <Link to="/tennis">Теніс</Link>
+          <Link to="/world-football">Футбол Європи</Link>
           <Link to="/biathlon">Біатлон</Link>
+          <Link to="/sports">Спортивні новини</Link>
+          <Link to="/tournaments">Турніри</Link>
+        </div>
+        <div className="footer-social">
+          <p>Соціальні мережі:</p>
+          <a href="https://www.instagram.com/bigsports_uk/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <FaInstagram />
+          </a>
         </div>
         <div className="footer-contact">
           <p>Пишіть нам: bigsportssait@gmail.com</p>
-          <p>Всі права на матеріали, що знаходяться на сайті охороняються відповідно до законодавства України.</p>
           <p>&copy; BigSports {new Date().getFullYear()}</p>
         </div>
       </div>
@@ -28,5 +36,6 @@ const Footer = () => {
 };
 
 export default Footer;
+
 
 

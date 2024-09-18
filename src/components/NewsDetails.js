@@ -17,10 +17,11 @@ const NewsDetails = () => {
   }
 
   return (
-    <div className='news_details'>
+    <div className='news_details'> 
       <div className='header-section'>
         <h2>{news.title}</h2>
         <p><strong>Категорія:</strong> {news.category}</p>
+        <p><strong>Розділ:</strong> {news.section}</p> {/* Отображение раздела */}
         <p><strong>Дата:</strong> {news.day}.{news.month}.{news.year}</p>
         {news.image ? (
           <img src={news.image} alt="news" />

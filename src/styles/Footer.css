@@ -53,3 +53,13 @@
   .footer-contact a:hover {
     text-decoration: underline;
   }
+  .footer-social a {
+    margin: 0 15px; /* Зменшено відстань між іконками */
+    color: #333;
+    font-size: 30px; /* Збільшено розмір іконок */
+    text-decoration: none;
+  }
+  
+  .footer-social a:hover {
+    color: #007bff; /* Цвет при наведении */
+  }
