@@ -54,9 +54,10 @@ const SubsectionContent = ({ section }) => {
           )}
         </div>
   
-        {totalPages > 1 > newsPerPage && (
-          <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />
-        )}
+        {totalPages > 1 && (
+  <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />
+)}
+
       </div>
     );
   };

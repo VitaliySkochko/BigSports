@@ -1,21 +1,21 @@
 {
   "short_name": "BigSports",
   "name": "BigSports - Спортивні новини",
-  "version": "2.0",
+  "version": "2.1",
   "icons": [
     {
-      "src": "logo-w64.png",
+      "src": "img/logo-w64.jpg",
       "sizes": "64x64",
-      "type": "image/png"
+      "type": "image/jpeg"
     },
     {
-      "src": "logo-w192.png",
-      "type": "image/png",
+      "src": "img/logo-w192.jpg",
+      "type": "image/jpeg",
       "sizes": "192x192"
     },
     {
-      "src": "logo-w512.png",
-      "type": "image/png",
+      "src": "img/logo-w512.jpg",
+      "type": "image/jpeg",
       "sizes": "512x512"
     }
   ],
@@ -24,3 +24,4 @@
   "theme_color": "#000000",
   "background_color": "#ffffff"
 }
+
