@@ -1,0 +1,38 @@
+/* Кнопка дії */
+.news-item button {
+    padding: 5px 10px; /* Менший розмір кнопки */
+    background-color: black;
+    color: yellow;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Додано трансформацію */
+  }
+  
+  .news-item button:hover {
+    background-color: yellow;
+    color: black;
+    transform: translateY(-2px); /* Ефект підняття кнопки */
+  }
+  
+  
+  
+  /* Стиль для результатів пошуку */
+  .search-results {
+    padding: 10px;
+    margin-bottom: 50px;
+  }
+  
+  .search-results h1 {
+    font-size: 18px;
+    padding: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    background-color: black;
+    color: yellow;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Додано тінь */
+  }
+  
+  
+  

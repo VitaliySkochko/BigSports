@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { useNews } from './NewsContext';
 import Pagination from './Pagination';
 import { Link } from 'react-router-dom';
-import '../App.css';
+import '../styles/SubsectionContent.css';
 
 const SubsectionContent = ({ section }) => {
     const { newsList } = useNews();
     const [currentPage, setCurrentPage] = useState(1);
-    const newsPerPage = 20;
+    const newsPerPage = 25;
   
     const handlePageChange = (page) => {
       setCurrentPage(page);

@@ -4,19 +4,19 @@
   "version": "2.1",
   "icons": [
     {
-      "src": "img/logo-w64.jpg",
+      "src": "/logo-w64.png",
       "sizes": "64x64",
-      "type": "image/jpeg"
+      "type": "image/png"
     },
     {
-      "src": "img/logo-w192.jpg",
-      "type": "image/jpeg",
-      "sizes": "192x192"
+      "src": "/logo-w192.png",
+      "sizes": "192x192",
+      "type": "image/png"
     },
     {
-      "src": "img/logo-w512.jpg",
-      "type": "image/jpeg",
-      "sizes": "512x512"
+      "src": "/logo-w512.png",
+      "sizes": "512x512",
+      "type": "image/png"
     }
   ],
   "start_url": ".",

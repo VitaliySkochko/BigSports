@@ -1,0 +1,269 @@
+ /* Загальний стиль для головного контейнера */
+main {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 10px;
+    margin-top: 10px;
+  }
+  
+  /* Стиль для картки новини */
+  .news-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(244, 209, 184);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Додано box-shadow до transition */
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 100%; /* Зберігаємо новину на всю ширину */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Додано тінь */
+
+  }
+  
+  .news-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2); /* Збільшена тінь при наведенні */
+  }
+  
+  /* Стиль для зображення новини */
+  .news-item img {
+    width: 80px; /* Зменшення зображення */
+    height: 80px; /* Пропорційно зменшуємо висоту */
+    margin-right: 10px; 
+    border-radius: 8px;
+    border: 2px solid #ddd; /* Додано рамку */
+    transition: transform 0.3s ease; /* Додано трансформацію */
+  }
+  
+  .news-item img:hover {
+    transform: scale(1.05); /* Ефект збільшення зображення при наведенні */
+  }
+  
+  /* Контент новини */
+  .news-item-content {
+    flex: 1; /* Розтягування контенту на доступну ширину */
+  }
+  
+  /* Заголовок новини */
+  .news-item h3 {
+    font-size: 20px; /* Зменшуємо розмір шрифту */
+    color: black;
+    margin: 5px 0;
+  }
+  
+  .news-item p {
+    color: black;
+    margin: 5px 0;
+    font-size: 14px; /* Зменшуємо розмір шрифту */
+  }
+ 
+ /* Сітка новин */
+.news-grid {
+    display: block; /* Відображаємо новини одна за одною */
+  }
+  
+  .news-item {
+    display: flex;
+    flex-direction: row;
+    background-color: whitesmoke;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    width: 100%; /* Новина на всю ширину контейнера */
+    margin-bottom: 10px;
+  }
+  
+  .news-item:hover {
+    transform: translateY(-3px); /* Менше підняття */
+  }
+  
+  /* Стиль для деталей новини */
+  .news-item img {
+    width: 140px; /* Зменшення зображення */
+    height: auto;
+    margin-right: 10px;
+    border-radius: 5px;
+  }
+  
+  /* Додаткові деталі новини */
+  .news-details {
+    padding: 10px;
+    flex: 1;
+  }
+  
+  .news-details a {
+    text-decoration: none;
+  }
+  
+  /* Категорії та секції новин */
+  .news-category {
+    font-size: 12px;
+    color: yellow;
+    background-color: black;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+  
+  .news-section {
+    font-size: 12px;
+    color: black;
+    background-color: yellow;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+  
+  .news-date {
+    font-size: 12px;
+    color: black;
+    background-color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+  
+  /* Заголовок новини */
+  .news-title {
+    font-size: 20px; /* Зменшуємо розмір заголовку */
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+    transition: color 0.3s ease, transform 0.3s ease;
+    line-height: 1.2;
+  }
+  
+  .news-title:hover {
+    font-style: italic;
+    transform: translateY(-2px);
+    border-radius: 5px;
+    padding: 2px; /* Додано відступи */
+  }
+
+ /* Стилі для пагінації сторінок */
+
+ .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 60px; 
+    background-color: black;
+    padding: 10px 0; 
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000; 
+  }
+  
+  .pagination button {
+    padding: 10px 20px;
+    margin: 0 5px;
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .pagination button:hover {
+    background-color: yellow;
+    color: black;
+  }
+  
+  .pagination span {
+    color: yellow;
+    font-size: 20px;
+    margin: 0 10px;
+  }
+
+  /*Медіазапити*/
+  /* Медіазапити для блоку новин */
+
+/* Екран менше 768px (мобільні пристрої) */
+@media (max-width: 768px) {
+  .latest-news-block {
+    flex-direction: column; /* Змінюємо на стовпчик для мобільних */
+  }
+  
+  .large-news {
+    flex: none; /* Забороняємо займати більше місця */
+    margin-bottom: 10px; /* Відступ між новинами */
+  }
+  
+  .small-news {
+    flex: none; /* Забороняємо займати більше місця */
+  }
+}
+
+/* Екран від 768px до 1024px (таблетки) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .latest-news-block {
+    gap: 20px; /* Збільшуємо відстань між новинами */
+  }
+
+  .large-news {
+    flex: 2; /* Зменшуємо ширину великої новини */
+  }
+
+  .small-news {
+    flex: 1; /* Зменшуємо ширину маленьких новин */
+  }
+}
+
+
+
+
+/* Медіазапити для основного контейнера */
+
+/* Екран менше 768px (мобільні пристрої) */
+@media (max-width: 768px) {
+  main {
+    padding: 5px; /* Зменшуємо відступи для мобільних */
+  }
+
+  .news-item {
+    flex-direction: column; /* Змінюємо на стовпчик для мобільних */
+    align-items: flex-start; /* Вирівнюємо по лівому краю */
+  }
+
+  .news-item img {
+    width: 100%; /* Зображення на всю ширину */
+    height: auto; /* Автоматична висота */
+  }
+
+  .news-title {
+    font-size: 18px; /* Зменшуємо розмір заголовку */
+  }
+}
+
+/* Екран від 768px до 1024px (таблети) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  main {
+    padding: 10px; /* Відступи для планшетів */
+  }
+
+  .news-item {
+    flex-direction: row; /* Відображення в ряд для планшетів */
+  }
+
+  .news-item img {
+    width: 100px; /* Зменшена ширина зображення */
+    height: 100px; /* Фіксована висота */
+  }
+
+  .news-title {
+    font-size: 19px; /* Зменшуємо заголовок */
+  }
+}
+
+

@@ -21,3 +21,44 @@
     color: white;
     border-radius: 4px;
   } 
+  /* Медіа-запити */
+
+/* Маленькі телефони (до 480px) */
+@media (max-width: 480px) {
+  .menu {
+      flex-direction: column; /* Вертикальне вирівнювання меню */
+      align-items: center; /* Центрування */
+      padding: 5px 0;
+  }
+
+  .menu a {
+      font-size: 16px; /* Менший шрифт для мобільних */
+      padding: 5px 0; /* Відступи між пунктами */
+  }
+}
+
+/* Більші телефони (481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .menu {
+      flex-direction: row; /* Горизонтальне вирівнювання меню */
+      justify-content: space-between; /* Розподіл між пунктами меню */
+  }
+
+  .menu a {
+      font-size: 18px; /* Зберігаємо шрифт для більших телефонів */
+      padding: 10px; /* Відступи між пунктами */
+  }
+}
+
+/* Планшети (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .menu {
+      justify-content: space-around; /* Рівномірний розподіл між пунктами */
+  }
+
+  .menu a {
+      font-size: 20px; /* Збільшення шрифту для планшетів */
+      padding: 10px 15px; /* Відступи між пунктами */
+  }
+}
+

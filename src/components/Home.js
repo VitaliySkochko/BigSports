@@ -1,55 +1,33 @@
 /*Цей код представляє компонент на React, який відображає головну сторінку веб-сайту з новинами про футбол. */
 
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
 import { useNews } from './NewsContext';
-import Pagination from './Pagination';
-import '../App.css'
+import LatestNews from './LatestNews';
+import NewsListWithPagination from './NewsListWithPagination';
 
 const Home = () => {
   const { newsList } = useNews();
-  const [currentPage, setCurrentPage] = useState(1);
-  const newsPerPage = 20;
+  const newsPerPage = 30;
 
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
-  };
-
-  const indexOfLastNews = currentPage * newsPerPage;
-  const indexOfFirstNews = indexOfLastNews - newsPerPage;
-  const currentNewsList = newsList.slice(indexOfFirstNews, indexOfLastNews);
-  const totalPages = Math.ceil(newsList.length / newsPerPage);
+  // Фільтрація останніх 5 новин для окремого блоку
+  const latestNews = newsList.slice(0, 5);
 
   return (
     <div className='panel'>
-      <h1>ОСТАННІ НОВИНИ</h1> 
-      <div className='news-grid'>
-        {currentNewsList.map((news) => (
-          <div key={news.id} className='news-item'>
-            <img src={news.image} alt={news.title} className='news-image' />
-            <div className='news-details'>
-              <span className='news-category'>{news.category}</span>
-              <span className='news-section'>{news.section}</span>
-              <span className='news-date'>{news.day}.{news.month}.{news.year} {news.time}</span>
-              <Link to={`/news/${news.id}`}>
-                <h2 className='news-title'>{news.title}</h2>
-              </Link>
-            </div>
-          </div>
-        ))}
-      </div>
-      {totalPages > 1 && (
-        <Pagination
-          currentPage={currentPage}
-          totalPages={totalPages}
-          onPageChange={handlePageChange}
-        />
-      )}
+      <h1>ОСТАННІ НОВИНИ</h1>
+      
+      {/* Компонент з 4 останніми новинами */}
+      <LatestNews latestNews={latestNews} />
+
+      {/* Компонент з іншими новинами і пагінацією */}
+      <NewsListWithPagination newsList={newsList.slice(5)} newsPerPage={newsPerPage} />
     </div>
   );
 };
 
 export default Home;
+
+
 
 
 

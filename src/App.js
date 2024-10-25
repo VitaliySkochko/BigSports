@@ -17,7 +17,6 @@ import { NewsProvider } from './components/NewsContext';
 import { UserProvider } from './components/UserContext'; 
 import RequireAuth from './components/RequireAuth'; 
 import './App.css';
-import './Responsive.css';
 import logoSait from './img/logo-w.jpg'
 
 

@@ -9,7 +9,7 @@ import { auth, db } from '../firebase';
 import logo from '../img/logo.png';
 import { doc, getDoc } from 'firebase/firestore';
 import SearchBar from './SearchBar'; 
-import '../styles/Header.css'
+import '../styles/Header.css';
 
 const Header = () => {
   const [isPasswordModalOpen, setIsPasswordModalOpen] = useState(false);
@@ -63,10 +63,14 @@ const Header = () => {
     });
   };
 
+  const handleLogoClick = () => {
+    navigate('/');
+  };
+
   return (
     <header className="header">
       <div className="logo-container">
-        <img src={logo} alt="Site logo" className="logo" />
+        <img src={logo} alt="Site logo" className="logo" onClick={handleLogoClick} style={{ cursor: 'pointer' }} />
         <h1 className="site-title">BigSPORTS</h1>
       </div>
       <SearchBar /> {/* Добавляем компонент поиска */}

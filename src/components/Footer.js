@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../img/logo.png'; 
+import logo from '../img/logo.png';
 import '../styles/Footer.css';
 
 // Импортируйте иконки FontAwesome
-import { FaInstagram } from 'react-icons/fa'; 
+import { FaInstagram, FaYoutube } from 'react-icons/fa'; // Додано іконку YouTube
 
 const Footer = () => {
   return (
@@ -25,6 +25,9 @@ const Footer = () => {
           <a href="https://www.instagram.com/bigsports_uk/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
             <FaInstagram />
           </a>
+          <a href="https://www.youtube.com/@BigSPORTSTV" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+            <FaYoutube /> {/* Іконка YouTube */}
+          </a>
         </div>
         <div className="footer-contact">
           <p>Пишіть нам: bigsportssait@gmail.com</p>
@@ -36,6 +39,7 @@ const Footer = () => {
 };
 
 export default Footer;
+
 
 
 
