@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Pagination from './Pagination';
-import '../styles/NewsListWithPagination.css'
+import '../App.css'
 
 const NewsListWithPagination = ({ newsList, newsPerPage }) => {
   const [currentPage, setCurrentPage] = useState(1);

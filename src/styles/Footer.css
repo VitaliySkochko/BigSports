@@ -63,3 +63,58 @@
   .footer-social a:hover {
     color: #007bff; /* Цвет при наведении */
   }
+
+  /* Дуже малий екран (мобільні телефони) */
+@media (max-width: 575px) {
+  .footer {
+    padding: 10px 0;
+    flex-direction: column;
+  }
+  .footer-content {
+    padding: 0 10px;
+  }
+  .footer-logo img {
+    width: 120px;
+  }
+  .footer-links {
+    flex-direction: column;
+    align-items: center;
+  }
+  .footer-links a {
+    margin: 5px 0;
+  }
+  .footer-social a {
+    font-size: 22px;
+  }
+}
+/* Малий екран (планшети в портретній орієнтації та великі мобільні телефони) */
+@media (min-width: 576px) and (max-width: 767px) {
+  .footer {
+    padding: 15px 0;
+    flex-direction: column;
+  }
+  .footer-logo img {
+    width: 150px;
+  }
+  .footer-links a {
+    margin: 10px;
+  }
+  .footer-social a {
+    font-size: 25px;
+  }
+}
+/* Середній екран (планшети в горизонтальній орієнтації) */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .footer {
+    padding: 20px 0;
+  }
+  .footer-logo img {
+    width: 180px;
+  }
+  .footer-links {
+    justify-content: space-around;
+  }
+  .footer-social a {
+    font-size: 28px;
+  }
+}
