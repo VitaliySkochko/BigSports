@@ -9,8 +9,8 @@ const Home = () => {
   const { newsList } = useNews();
   const newsPerPage = 30;
 
-  // Фільтрація останніх 5 новин для окремого блоку
-  const latestNews = newsList.slice(0, 5);
+  // Фільтрація останніх 4 новин для окремого блоку
+  const latestNews = newsList.slice(0, 4);
 
   return (
     <div className='panel'>
@@ -20,7 +20,7 @@ const Home = () => {
       <LatestNews latestNews={latestNews} />
 
       {/* Компонент з іншими новинами і пагінацією */}
-      <NewsListWithPagination newsList={newsList.slice(5)} newsPerPage={newsPerPage} />
+      <NewsListWithPagination newsList={newsList.slice(4)} newsPerPage={newsPerPage} />
     </div>
   );
 };
