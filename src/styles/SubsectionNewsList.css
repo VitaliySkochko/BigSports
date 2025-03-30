@@ -1,0 +1,88 @@
+/* Контейнер для новин у підрозділі */
+.subsection-news-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 2 колонки */
+  gap: 20px;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 10px;
+  margin-bottom: 20px;
+}
+
+/* Картка новини */
+.subsection-news-card {
+  display: flex;
+  align-items: center;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  padding: 10px;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.subsection-news-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Зображення новини */
+.subsection-news-image {
+  width: 200px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-right: 15px;
+}
+
+/* Контент */
+.subsection-news-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Заголовок новини */
+.subsection-news-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #222;
+  text-decoration: none;
+}
+
+.subsection-news-title:hover {
+  text-decoration: underline;
+}
+
+/* Метадата (дата, розділ) */
+.subsection-news-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+/* Дата */
+.subsection-news-date {
+  font-size: 12px;
+  color: black;
+}
+
+/* 📱 Адаптивність */
+@media (max-width: 768px) {
+  .subsection-news-container {
+    grid-template-columns: 1fr; /* Одна колонка на мобілках */
+  }
+
+  .subsection-news-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .subsection-news-image {
+    width: 100%;
+    height: 160px;
+    margin-bottom: 10px;
+  }
+}

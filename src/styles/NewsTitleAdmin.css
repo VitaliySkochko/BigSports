@@ -1,0 +1,22 @@
+.news-title {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd; /* Розділення між заголовками */
+    transition: background 0.3s ease-in-out;
+  }
+  
+  .news-title:hover {
+    background: #f9f9f9; /* Легка підсвітка при наведенні */
+  }
+  
+  .news-title-link {
+    font-size: 20px;
+    font-weight: bold;
+    color: #222;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .news-title-link:hover {
+    color: #ff9900; /* Зміна кольору при наведенні */
+  }
+  

@@ -1,112 +1,132 @@
+/* Контейнер для всього блоку коментарів */
 .comments-container {
-    padding: 1.5rem;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 1200px;
+  margin: 20px auto;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 25px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Заголовок блоку коментарів */
+.comments-header {
+  font-size: 22px;
+  font-weight: bold;
+  color: #222;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+/* Список коментарів */
+.comments-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Окремий коментар */
+.comment-item {
+  background: #f9f9f9;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Хедер коментаря (користувач + дата) */
+.comment-header {
+  font-size: 14px;
+  font-weight: bold;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+/* Текст коментаря */
+.comment-body {
+  font-size: 16px;
+  color: #333;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+/* Блок дій з коментарем (лайки, дизлайки, видалення) */
+.comment-actions {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: 10px;
+}
+
+/* Кнопки */
+.like-button, .dislike-button, .delete-button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border: none;
+  background: none;
+  font-size: 14px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.like-button:hover, .dislike-button:hover, .delete-button:hover {
+  transform: scale(1.1);
+}
+
+/* Іконки */
+.like-button {
+  color: #008CBA;
+}
+
+.dislike-button {
+  color: #FF4500;
+}
+
+.delete-button {
+  color: red;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .comments-container {
+    padding: 15px;
+    border-radius: 15px;
+    margin: 15px 10px;
   }
-  
+
   .comments-header {
-    font-size: 1.75rem;
-    font-weight: 600;
-    font-style: italic;
-    color: #333;
-    margin-bottom: 1rem;
-    border-bottom: 2px solid #ddd;
-    padding-bottom: 0.5rem;
+    font-size: 20px;
+    margin-bottom: 12px;
   }
-  
-  .comments-list {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-  }
-  
+
   .comment-item {
-    border-bottom: 1px solid #e0e0e0;
-    padding: 1rem;
-    margin-bottom: 1rem;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 12px;
+    border-radius: 6px;
   }
-  
+
   .comment-header {
-    font-weight: bold;
-    color: #555;
-    margin-bottom: 0.5rem;
+    font-size: 13px;
   }
-  
+
   .comment-body {
-    margin-bottom: 0.5rem;
-    color: #444;
+    font-size: 15px;
   }
-  
+
   .comment-actions {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 6px;
+    margin-top: 8px;
   }
-  
-  .comment-actions button {
-    background-color: black;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+
+  .like-button,
+  .dislike-button,
+  .delete-button {
+    font-size: 13px;
+    padding: 4px 8px;
   }
-  
-  .comment-actions button:hover {
-    color: black;
-    background-color: yellow;
-  }
-  
-  .comment-actions button.dislike {
-    background-color: #dc3545;
-  }
-  
-  .comment-actions button.dislike:hover {
-    background-color: #c82333;
-  }
-  
-  .reply-section {
-    margin-top: 1.5rem;
-    padding: 1rem;
-    background-color: #f1f1f1;
-    border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  }
-  
-  .reply-section h4 {
-    margin-bottom: 1rem;
-    color: #333;
-  }
-  
-  .reply-section form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .reply-section textarea {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 0.5rem;
-    margin-bottom: 1rem;
-    font-size: 1rem;
-    resize: vertical;
-  }
-  
-  .reply-section button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .reply-section button:hover {
-    background-color: #0056b3;
-  }
+}

@@ -1,0 +1,91 @@
+.club-info-card {
+  display: flex;
+  gap: 30px;
+  padding: 20px;
+  border-radius: 15px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.club-logo-wrapper {
+  flex: 0 0 120px;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+}
+
+.club-logo {
+  width: 100px;
+  height: auto;
+  border-radius: 8px;
+}
+
+.club-info-text {
+  flex: 1;
+  font-size: 16px;
+}
+
+.club-info-text p {
+  margin: 6px 0;
+}
+
+.club-info-text a {
+  color: #007acc;
+  text-decoration: none;
+}
+
+.club-info-text a:hover {
+  text-decoration: underline;
+}
+
+.club-achievements {
+  flex: 1;
+  font-size: 15px;
+  line-height: 1.6;
+  background: #fffefc;
+  padding: 15px;
+  border-left: 4px solid #007acc;
+
+  /* ✅ Важливо: не робити весь текст жирним */
+  font-weight: normal;
+}
+
+/* ✅ Жирним лише strong */
+.club-achievements strong {
+  font-weight: bold;
+}
+
+  
+  /* 📱 Адаптація для мобільних */
+  @media (max-width: 768px) {
+    .club-info-card {
+      flex-direction: column;
+      padding: 15px;
+      gap: 20px;
+    }
+  
+    .club-logo-wrapper {
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+  
+    .club-logo {
+      width: 90px;
+    }
+  
+    .club-info-text,
+    .club-achievements {
+      width: 100%;
+    }
+  
+    .club-info-text {
+      font-size: 15px;
+    }
+  
+    .club-achievements {
+      font-size: 14px;
+      padding: 12px;
+      border-left: 3px solid #007acc;
+    }
+  }
+  

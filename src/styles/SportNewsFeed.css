@@ -1,0 +1,64 @@
+.ukraine-news-box {
+    max-width: 400px;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .ukraine-news-title {
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+
+
+  .main-ukraine-news {
+    display: block;
+    text-decoration: none;
+    color: black;
+    margin-bottom: 20px;
+  }
+  
+  .main-ukraine-news img {
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .main-ukraine-news h3 {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .main-ukraine-news h3:hover {
+    text-decoration: underline;
+  }
+  
+  .ukraine-news-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+  }
+  
+  .ukraine-news-list li {
+    margin-bottom: 12px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+  }
+  
+  .ukraine-news-list a {
+    text-decoration: none;
+    color: #000;
+    font-size: 15px;
+    display: block;
+  }
+
+  .ukraine-news-list a:hover {
+    text-decoration: underline;
+  }
+  
+  .ukraine-news-time {
+    display: block;
+    font-size: 13px;
+    color: #888;
+    margin-top: 4px;
+  }
+  

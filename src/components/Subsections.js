@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Subsections.css';
-import upl from '../img/upl.png'
-import ukraine from '../img/ukraine.png'
+import upl from '../img/upl.png';
+import firstLeague from '../img/firstLeague.png';
+import secondLeague from '../img/secondLeague.png';
+import ukraine from '../img/ukraine.png';
 import shakhtarLogo from '../img/shakhtarLogo.png';
 import dynamoLogo from '../img/dynamoLogo.png';
 import oleksandriyaLogo from '../img/oleksandriyaLogo.png';
@@ -23,8 +25,12 @@ import eplLogo from '../img/eplLogo.png';
 import laLigaLogo from '../img/laLigaLogo.png'; 
 import bundesligaLogo from '../img/bundesligaLogo.png'; 
 import ligue1Logo from '../img/ligue1Logo.png'; 
-import europeNewsLogo from '../img/europeNewsLogo.png'; 
+import europeNewsLogo from '../img/europeNewsLogo.png';
+import worldFootballLogo from '../img/worldFootballLogo.png'; 
 import SeriaALogo from '../img/SeriaALogo.png';
+import championsLeagueLogo from '../img/championsLeagueLogo.png'
+import europaLeagueLogo from '../img/europaLeagueLogo.png'
+import conferenceLeagueLogo from '../img/conferenceLeagueLogo.png'
 import worldCupImage from '../img/worldCupImage.jpg'; 
 import ibuCupImage from '../img/ibuCupImage.png'; 
 import worldChampionshipImage from '../img/worldChampionshipImage.png'; 
@@ -33,11 +39,14 @@ import boxingImage from '../img/boxingImage.png';
 import tennisImage from '../img/tennisImage.png'; 
 import mmaImage from '../img/mmaImage.png'; 
 import futsalImage from '../img/futsalImage.png'; 
-import wc2024futsalImage from '../img/wc2024futsalImage.png'; 
+import wc2024futsalImage from '../img/wc2024futsalImage.png';
+import clubWorldCupImage from '../img/clubWorldCupImage.png' 
 
 
 const footballUkraineSubsections =[
   { name: 'Українська Премєр Ліга', image: upl, link: '/football-ukraine/upl' },
+  { name: 'Перша Ліга', image: firstLeague, link: '/football-ukraine/first-league' },
+  { name: 'Друга Ліга', image: secondLeague, link: '/football-ukraine/second-league' },
   { name: 'Збірна України', image: ukraine, link: '/football-ukraine/zbirna' },
   { name: 'Шахтар', image: shakhtarLogo, link: '/football-ukraine/shakhtar' },
   { name: 'Динамо Київ', image: dynamoLogo, link: '/football-ukraine/dynamo' },
@@ -57,14 +66,22 @@ const footballUkraineSubsections =[
   { name: 'Верес', image: veresLogo, link: '/football-ukraine/veres' }
 ];
 
-const footballEuropeSubsections = [
-  { name: 'Європейські новини', image: europeNewsLogo, link: '/world-football/europe-news' },
-  { name: 'Англійська Премʼєр-ліга', image: eplLogo, link: '/world-football/epl' },
-  { name: 'Іспанська Ла Ліга', image: laLigaLogo, link: '/world-football/la-liga' },
-  { name: 'Італійська Серія А', image: SeriaALogo, link: '/world-football/seriaA' },
-  { name: 'Німецька Бундесліга', image: bundesligaLogo, link: '/world-football/bundesliga' },
-  { name: 'Французька Ліга 1', image: ligue1Logo, link: '/world-football/ligue1' }
+const championshipsSubsections = [
+  { name: 'Європейські новини', image: europeNewsLogo, link: '/championships/europe-news' },
+  { name: 'Світовий футбол', image: worldFootballLogo, link: '/world-football/global' },
+  { name: 'Англійська Премʼєр-ліга', image: eplLogo, link: '/championships/epl' },
+  { name: 'Іспанська Ла Ліга', image: laLigaLogo, link: '/championships/la-liga' },
+  { name: 'Італійська Серія А', image: SeriaALogo, link: '/championships/seriaA' },
+  { name: 'Німецька Бундесліга', image: bundesligaLogo, link: '/championships/bundesliga' },
+  { name: 'Французька Ліга 1', image: ligue1Logo, link: '/championships/ligue1' }
 ];
+
+const euroCupsSubsections = [
+  { name: 'Ліга Чемпіонів', image: championsLeagueLogo, link: '/eurocups/champions-league' },
+  { name: 'Ліга Європи', image: europaLeagueLogo, link: '/eurocups/europa-league' },
+  { name: 'Ліга Конференцій', image: conferenceLeagueLogo, link: '/eurocups/conference-league' }
+];
+
 
 const biathlonSubsections = [
   { name: 'Новини', image: newsBiathlonImage, link: '/biathlon/news-biathlon' },
@@ -82,13 +99,15 @@ const sportsSubsections = [
 
 const tournamentsSubsections = [
   { name: 'Чемпіонат Світу 2024 з футзалу', image: wc2024futsalImage, link: '/tournaments/worldcup2024-futsal' },
+  { name: 'Клубний чемпіонат світу 2025', image: clubWorldCupImage, link: '/tournaments/club-world-cup-2025' },
 ];
 
 const Subsections = ({category}) => {
   const categoryMap = {
     'Біатлон': biathlonSubsections,
     'Футбол України': footballUkraineSubsections,
-    'Футбол Європи': footballEuropeSubsections,
+    'Чемпіонати': championshipsSubsections,
+    'Єврокубки': euroCupsSubsections,
     'Види спорту': sportsSubsections,
     'Турніри' : tournamentsSubsections,
   };

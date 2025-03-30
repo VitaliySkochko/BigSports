@@ -1,247 +1,93 @@
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    background-color: black;
-    color: yellow;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    box-shadow: 10px 10px 10px black;
-  }
-  
-  .logo-container {
-    display: flex;
-    align-items: center;
-  }
-  
-  .logo {
-    width: 220px;
-    height: 60px;
-    margin-right: 15px;
-    border: 3px yellow solid;
-  }
-  
-  .site-title {
-    font-family: 'Arial', Helvetica, sans-serif;
-    font-size: 50px;
-    font-weight: bold;
-    letter-spacing: 5px;
-    color: yellow; /* Зелений колір */
-    text-transform: uppercase; /* Великі літери */
-    border-bottom: 2px solid #FFD700; /* Обводка знизу */
-    padding-bottom: 10px; /* Відступ знизу */
-  }
-  
-  
-  
-  .login-button{
-    margin-right: 20px;
-    background-color: yellow;
-    color: black;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .login-button:hover {
-    background-color: white;
-    color: black;
-  }
-  
-  .register-button {
-    background-color: yellow;
-    color: black;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .register-button:hover {
-    background-color: white;
-    color: black;
-  }
-  
-  .admin-button{
-    margin-left: 20px;
-    margin-right: 20px;
-    background-color: yellow;
-    color: black;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .admin-button:hover {
-    background-color: white;
-    color: black;
-  }
-  
-  .exit-button{
-    margin-left: 10px;
-    background-color: yellow;
-    color: black;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .exit-button:hover {
-    background-color: white;
-    color: black;
-  }
-  
-  span{
-    font-size: 20px;
-    font-style: italic;
-  }
-  
-  /* Базові стилі для всіх пристроїв */
-.header {
+.header-container {
+  background-color: white;
+  color: yellow;
+  padding: 10px 0px;
+}
+
+/* Основна секція хедера */
+.header-section-logo {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
-  background-color: black;
-  color: yellow;
-  border-radius: 8px;
-  margin-bottom: 20px;
-  box-shadow: 10px 10px 10px black;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
-.logo {
-  width: 220px;
-  height: 60px;
-  border: 3px yellow solid;
+.search-bar-wrapper {
+  display: block;
 }
 
-.site-title {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 50px;
-  font-weight: bold;
-  letter-spacing: 5px;
+/* Логотип */
+.logo-header {
+  width: 200px;
+  height: auto;
+  margin-right: 15px;
 }
 
-.login-button,
-.register-button,
-.admin-button,
-.exit-button {
-  background-color: yellow;
-  color: black;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+/* Блок з кнопками */
+.header-section-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
 }
 
-.login-button:hover,
-.register-button:hover,
-.admin-button:hover,
-.exit-button:hover {
-  background-color: white;
+/* Блок з ім’ям користувача */
+.header-user-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
   color: black;
 }
 
+/* Стиль тексту (наприклад ім'я) */
 span {
-  font-size: 20px;
+  font-size: 25px;
   font-style: italic;
+  font-weight: bold;
 }
 
-/* Медіа-запити */
+/* ---------- Адаптація ---------- */
 
-/* Маленькі телефони (до 480px) */
-@media (max-width: 480px) {
-  .header {
-      flex-direction: column;
-      align-items: center;
-      padding: 10px;
+@media (max-width: 768px) {
+  .header-section-logo {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
   }
 
-  .logo {
-      width: 150px;
-      height: 40px;
-      margin-bottom: 10px;
+  .logo-header {
+    width: 140px;
+    margin: 0 auto 10px auto;
+    display: block;
   }
 
-  .site-title {
-      font-size: 24px;
-      letter-spacing: 2px;
-      text-align: center;
+  .search-bar-wrapper {
+    display: none;
+  }
+
+  .header-section-button {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 3px;
+  }
+
+  .header-user-section span {
+    font-size: 12px;
   }
 
   .login-button,
   .register-button,
   .admin-button,
+  .profile-button,
   .exit-button {
-      width: 100%; /* Кнопки на всю ширину */
-      padding: 8px;
-      font-size: 14px;
-      margin: 5px 0; /* Відступи між кнопками */
-  }
-}
-
-/* Більші телефони (481px - 768px) */
-@media (min-width: 481px) and (max-width: 768px) {
-  .header {
-      padding: 15px;
-  }
-
-  .logo {
-      width: 180px;
-      height: 50px;
-  }
-
-  .site-title {
-      font-size: 32px;
-      letter-spacing: 3px;
-  }
-
-  .login-button,
-  .register-button,
-  .admin-button,
-  .exit-button {
-      padding: 10px 15px;
-      font-size: 16px;
-      margin: 0 5px; /* Відступи між кнопками */
-  }
-}
-
-/* Планшети (769px - 1024px) */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .header {
-      padding: 20px;
-  }
-
-  .logo {
-      width: 200px;
-      height: 60px;
-  }
-
-  .site-title {
-      font-size: 40px;
-      letter-spacing: 4px;
-  }
-
-  .login-button,
-  .register-button,
-  .admin-button,
-  .exit-button {
-      padding: 10px 20px;
-      font-size: 18px;
-      margin: 0 10px; /* Відступи між кнопками */
+    padding: 3px 9px;
+    font-size: 10px;
+    border-radius: 10px;
+    margin-right: 10px;
   }
 }

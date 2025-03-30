@@ -1,35 +1,35 @@
-form {
-    margin-bottom: 20px;
-  }
-  
-  form input,
-  form textarea,
-  form select {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  form input[type="file"] {
-    padding: 0;
-  }
-  
-  form button {
-    padding: 10px 20px;
-    background-color: black;
-    color: yellow;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    
-  }
-  
-  form button:hover {
-    background-color: yellow;
-    color: black;
-  }
+.add-news-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  margin-bottom: 50px;
+}
+
+.add-news-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.add-news-table label {
+  font-weight: bold;
+}
+
+.add-news-table input,
+.add-news-table select,
+.add-news-table .ql-container {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.add-news-table .ql-container {
+  height: 150px;
+}
+
+
+.table-submit-cell {
+  text-align: center;
+  padding-top: 10px;
+}
+

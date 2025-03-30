@@ -1,0 +1,90 @@
+/* Фонова затемнена підкладка */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Затемнення фону */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  /* Контейнер модального вікна */
+  .modal-content {
+    background: white;
+    padding: 30px;
+    width: 100%;
+    max-width: 400px; /* Максимальна ширина */
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    position: relative;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  /* Анімація появи */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* Заголовок */
+  .modal-content h2 {
+    color: black;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  /* Поля введення */
+  .modal-content input {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+  }
+  
+  .modal-content input:focus {
+    border-color: black;
+    outline: none;
+  }
+  
+  /* Помилка та підказка для пароля */
+  .error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  
+  .password-strength {
+    color: orange;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  
+
+  
+
+  
+  /* 📱 Адаптивність */
+  @media (max-width: 480px) {
+    .modal-content {
+      width: 90%;
+      padding: 20px;
+    }
+  
+    .modal-content h2 {
+      font-size: 20px;
+    }
+  
+    .register-button {
+      font-size: 14px;
+    }
+  }
+  

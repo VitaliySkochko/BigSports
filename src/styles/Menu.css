@@ -1,26 +1,44 @@
 .menu {
     display: flex;
-    justify-content: space-around;
-    background-color:yellow;
-    padding: 5px 0;
-    border-radius: 8px;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    background-color:black;
+    padding: 10px 20px;
     margin-bottom: 20px;
-    box-shadow: 10px 10px 10px black;
+    
   }
   
   .menu a {
-    color: black;
+    color: white;
     text-decoration: none;
     font-weight: bold;
     padding: 10px;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
+    position: relative;
   }
   
-  .menu a:hover {
-    background-color: black;
-    color: white;
-    border-radius: 4px;
-  } 
+  /* Біла лінія при наведенні та активному стані */
+  .menu a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 100%;
+    background-color: white;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+  
+  .menu a:hover::after,
+  .menu a.active::after {
+    transform: scaleX(1);
+  }
+  
   /* Медіа-запити */
 
 /* Маленькі телефони (до 480px) */

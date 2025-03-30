@@ -1,57 +1,51 @@
 .admin_panel {
-    margin-bottom: 100px;
-    box-shadow: 10px 10px 10px black;
+    max-width: 1400px;
   }
 
-  .admin_panel h2{
-    font-size: 20px;
-    padding: 20px;
-    margin-bottom: 30px;
-    text-align: center;
-    background-color: black;
-    color: yellow;
-    border-radius: 10px;
-    box-shadow: 10px 10px 10px black;
-  }
-
-  /* Середній екран (планшети в горизонтальній орієнтації) */
-@media (min-width: 768px) and (max-width: 1199px) {
+  /* 📱 Адаптація під мобільні */
+@media (max-width: 768px) {
   .admin_panel {
-    margin-bottom: 80px;
-    box-shadow: 8px 8px 12px black;
-  }
-  .admin_panel h2 {
-    font-size: 22px;
-    padding: 20px;
-    margin-bottom: 30px;
-    border-radius: 10px;
-  }
-}
-
-/* Малий екран (планшети в портретній орієнтації та великі мобільні телефони) */
-@media (min-width: 576px) and (max-width: 767px) {
-  .admin_panel {
-    margin-bottom: 60px;
-    box-shadow: 6px 6px 8px black;
-  }
-  .admin_panel h2 {
-    font-size: 20px;
-    padding: 15px;
-    margin-bottom: 25px;
-    border-radius: 8px;
-  }
-}
-
-/* Дуже малий екран (мобільні телефони) */
-@media (max-width: 575px) {
-  .admin_panel {
-    margin-bottom: 50px;
-    box-shadow: 4px 4px 6px black;
-  }
-  .admin_panel h2 {
-    font-size: 18px;
     padding: 10px;
+  }
+
+  .admin_panel h1 {
+    font-size: 20px;
+    text-align: center;
+    margin: 15px 0;
+  }
+
+  .add-news-table,
+  .edit-news-table,
+  .news-table {
+    font-size: 14px;
+    overflow-x: auto;
+    display: block;
+    width: 100%;
+  }
+
+  .add-news-table td,
+  .edit-news-table td,
+  .news-table td,
+  .news-table th {
+    padding: 6px;
+    text-align: left;
+    word-break: break-word;
+  }
+
+  .news-table button,
+  .profile-button,
+  .exit-button {
+    font-size: 13px;
+    padding: 6px 10px;
+    margin: 2px;
+  }
+
+  .panel {
     margin-bottom: 20px;
-    border-radius: 6px;
+  }
+
+  .image-preview {
+    max-width: 100%;
+    height: auto;
   }
 }

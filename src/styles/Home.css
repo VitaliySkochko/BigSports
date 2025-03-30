@@ -1,0 +1,125 @@
+/* Загальний контейнер */
+.home-container {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+/* Основна сітка: 38% ліворуч (Останні новини), 62% праворуч (слайдер + розділи) */
+.home-layout {
+  display: grid;
+  grid-template-columns: 38% 62%;
+  gap: 15px;
+  max-width: 1400px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+/* Ліва колонка (Останні новини) */
+.home-column-left {
+  display: flex;
+  flex-direction: column;
+  
+}
+
+/* Права колонка */
+.home-column-right {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  
+}
+
+
+
+/* Сітка з 2 колонками: SportNewsFeed + SectionNewsFeed */
+.double-blocks-grid {
+  display: flex;
+  gap: 20px;
+}
+
+/* Sport column (лівий) */
+.sport-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-left: 9px;
+}
+
+/* Section column (правий) */
+.section-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+
+/* Заголовок */
+.panel h1 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+/* Адаптивність */
+@media (max-width: 768px) {
+  /* Основна сітка: 1 колонка */
+  .home-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .home-column-left,
+  .home-column-right {
+    width: 100%;
+  }
+
+  /* Контейнер з блоками Sport/Section → вертикально */
+  .double-blocks-grid {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  /* Вирівнювання колонок */
+  .sport-column,
+  .section-column {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  /* Контейнер */
+  .home-container {
+    padding: 10px;
+  }
+
+  /* Заголовки */
+  .panel h1 {
+    font-size: 18px;
+  }
+
+  /* Слайдер — зменшена висота */
+  .top-slider-block {
+    display: none;
+  }
+
+  .slider-image {
+    height: 250px !important;
+    object-fit: cover;
+  }
+
+  /* Зменшити відступи у картках новин (опціонально) */
+  .news-card-general {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .news-title-general {
+    font-size: 16px;
+  }
+
+  .news-meta-general {
+    font-size: 12px;
+    flex-direction: column;
+    gap: 4px;
+  }
+}

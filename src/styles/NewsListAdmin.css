@@ -1,0 +1,22 @@
+.news-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: white; 
+  }
+  
+  .news-table th, .news-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .news-table th {
+    background: #f4f4f4;
+    font-weight: bold;
+  }
+  
+  .news-table tr:hover {
+    background: #f9f9f9;
+  }
+  

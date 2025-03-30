@@ -1,0 +1,70 @@
+/* Форма для коментаря */
+.comment-form {
+    width: 100%;
+    max-width: 800px;
+    background: white;
+    padding: 10px;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    margin-top: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Поле вводу */
+  .comment-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    padding: 10px 15px;
+    border-radius: 25px;
+  }
+  
+  /* Кнопка відправки */
+  .comment-submit-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    transition: color 0.3s ease;
+  }
+  
+  .comment-submit-btn:hover {
+    color: #007bff;
+  }
+  
+  /* Іконка надсилання */
+  .send-icon {
+    font-size: 20px;
+  }
+  
+  /* Повідомлення про авторизацію */
+  .comment-login-message {
+    text-align: center;
+    color: #666;
+    font-size: 16px;
+    margin-top: 20px;
+  }
+  
+  /* 📱 Адаптивність */
+  @media (max-width: 600px) {
+    .comment-form {
+      max-width: 100%;
+    }
+  
+    .comment-input {
+      font-size: 14px;
+      padding: 8px 10px;
+    }
+  
+    .send-icon {
+      font-size: 18px;
+    }
+  }
+  
