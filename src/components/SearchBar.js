@@ -20,7 +20,7 @@ const SearchBar = () => {
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
       handleSearch();
-    }
+    } 
   };
 
   // Закриття пошуку при кліку поза ним
