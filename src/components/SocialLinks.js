@@ -15,7 +15,7 @@ const SocialLinks = () => {
         <FaInstagram />
       </a>
       <a 
-        href="https://www.youtube.com/@BigSPORTSTV" 
+        href="https://www.youtube.com/@BigSport-TV1" 
         target="_blank" 
         rel="noopener noreferrer" 
         className="social-icon youtube"
