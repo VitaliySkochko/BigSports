@@ -71,7 +71,6 @@ const Main = () => {
             <Route path="/sports/futsal" element={<SubsectionContent section="Футзал" />} />  
 
          <Route path="/tournaments" element={<Tournaments />} />
-            <Route path="/tournaments/worldcup2024-futsal" element={<SubsectionContent section="Чемпіонат Світу 2024 з футзалу" />} />
             <Route path="/tournaments/club-world-cup-2025" element={<SubsectionContent section="Клубний чемпіонат світу 2025" />} />  
 
 

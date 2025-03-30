@@ -39,7 +39,6 @@ import boxingImage from '../img/boxingImage.png';
 import tennisImage from '../img/tennisImage.png'; 
 import mmaImage from '../img/mmaImage.png'; 
 import futsalImage from '../img/futsalImage.png'; 
-import wc2024futsalImage from '../img/wc2024futsalImage.png';
 import clubWorldCupImage from '../img/clubWorldCupImage.png' 
 
 
@@ -98,7 +97,6 @@ const sportsSubsections = [
 ];
 
 const tournamentsSubsections = [
-  { name: 'Чемпіонат Світу 2024 з футзалу', image: wc2024futsalImage, link: '/tournaments/worldcup2024-futsal' },
   { name: 'Клубний чемпіонат світу 2025', image: clubWorldCupImage, link: '/tournaments/club-world-cup-2025' },
 ];
 

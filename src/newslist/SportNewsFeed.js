@@ -4,12 +4,16 @@ import '../styles/SportNewsFeed.css';
 
 const SportNewsFeed = ({ title, category, section, newsList }) => {
   const filteredNews = newsList
-    .filter(news => {
-      if (section) {
-        return news.section?.toLowerCase() === section.toLowerCase();
-      }
-      return news.category === category;
-    })
+  .filter(news => {
+    if (section) {
+      return (
+        news.section?.toLowerCase() === section.toLowerCase() ||
+        news.sections?.some(sec => sec.toLowerCase() === section.toLowerCase())
+      );
+    }
+    return news.category === category;
+  })
+
     .sort((a, b) => b.timestamp?.seconds - a.timestamp?.seconds)
     .slice(0, 7);
 
