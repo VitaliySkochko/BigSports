@@ -23,6 +23,7 @@ const Main = () => {
 
         <Route path="/football-ukraine" element={<FootballUkraine />} />
           <Route path="/football-ukraine/upl" element={<SubsectionContent section="УПЛ" />} />
+          <Route path="/football-ukraine/cup" element={<SubsectionContent section="Кубок України" />} />
           <Route path="/football-ukraine/zbirna" element={<SubsectionContent section="Збірна України" />} />
           <Route path="/football-ukraine/first-league" element={<SubsectionContent section="Перша Ліга" />} />
           <Route path="/football-ukraine/second-league" element={<SubsectionContent section="Друга Ліга" />} />
@@ -42,6 +43,9 @@ const Main = () => {
           <Route path="/football-ukraine/polissya" element={<SubsectionContent section="Полісся" />} />
           <Route path="/football-ukraine/lberig" element={<SubsectionContent section="Лівий Берег" />} />
           <Route path="/football-ukraine/veres" element={<SubsectionContent section="Верес" />} />
+          <Route path="/football-ukraine/bukovyna" element={<SubsectionContent section="Буковина" />} />
+          <Route path="/football-ukraine/viktoriya" element={<SubsectionContent section="Вікторія" />} />
+
 
           <Route path="/championships" element={<Championships />} />
             <Route path="/championships/europe-news" element={<SubsectionContent section="Європейські новини" />} />
@@ -88,5 +92,5 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default Main; 
 

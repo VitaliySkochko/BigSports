@@ -14,6 +14,8 @@ import vorsklaLogo from '../img/vorsklaLogo.png';
 import polissyaLogo from '../img/polissyaLogo.png';
 import lberigLogo from '../img/lberigLogo.png';
 import veresLogo from '../img/veresLogo.png';
+import bukovynaLogo from '../img/bukovynaLogo.png';
+import viktoriyaLogo from '../img/viktoriyaLogo.png';
 
 export const ClubInfoMap = {
   'Динамо Київ': {
@@ -300,6 +302,39 @@ export const ClubInfoMap = {
     <strong> Досягнення:</strong><br/> 
       <strong>Чемпіонат Першої Ліги:</strong> Чемпіон (2) - 1992, 2020/21, Бронзовий призер (1) - 2016/17<br/>
       <strong>Чемпіонат Другої Ліги:</strong> Срібний призер  (1) - 2015/16<br/>
+    `
+  },
+
+   'Буковина': {
+    logo: bukovynaLogo,
+    name: 'Буковина',
+    founded: '22 червня 1958',
+    city: 'Чернівці, Україна',
+    stadium: '«Буковина»',
+    president: 'Андрій Сафроняк',
+    coach: 'Григорій Чурілов в.о',
+    league: 'Перша ліга',
+    website: 'https://bukfc.com',
+    achievements: `
+    <strong> Досягнення:</strong><br/> 
+      <strong>Чемпіонат Першої Ліги:</strong> Срібний призер (1) - 1996<br/>
+      <strong>Чемпіонат Другої Ліги:</strong> Чемпіон  (2) - 2000, 2010<br/>
+    `
+  },
+
+  'Вікторія': {
+    logo: viktoriyaLogo,
+    name: 'Вікторія',
+    founded: '2015',
+    city: 'Суми, Україна',
+    stadium: '«Ювілейний»',
+    president: 'Сергій Бондаренко',
+    coach: 'Анатолій Безсмертний',
+    league: 'Перша ліга',
+    website: 'https://fcviktoria.sumy.ua',
+    achievements: `
+    <strong> Досягнення:</strong><br/> 
+      <strong>-</strong> 
     `
   },
 };

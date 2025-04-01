@@ -2,25 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Subsections.css';
 import upl from '../img/upl.png';
+import cupOfUkraineLogo from '../img/cupOfUkraineLogo.png';
 import firstLeague from '../img/firstLeague.png';
 import secondLeague from '../img/secondLeague.png';
 import ukraine from '../img/ukraine.png';
-import shakhtarLogo from '../img/shakhtarLogo.png';
-import dynamoLogo from '../img/dynamoLogo.png';
-import oleksandriyaLogo from '../img/oleksandriyaLogo.png';
-import kryvbasLogo from '../img/kryvbasLogo.png';
-import zoryaLogo from '../img/zoryaLogo.png';
-import chornomoretsLogo from '../img/chornomoretsLogo.jpg';
-import obolonLogo from '../img/obolonLogo.png';
-import kolosLogo from '../img/kolosLogo.png';
-import rukhLogo from '../img/rukhLogo.png';
-import lnzLogo from '../img/lnzLogo.png';
-import karpatyLogo from '../img/karpatyLogo.png';
-import ingulecLogo from '../img/ingulecLogo.png';
-import vorsklaLogo from '../img/vorsklaLogo.png';
-import polissyaLogo from '../img/polissyaLogo.png';
-import lberigLogo from '../img/lberigLogo.png';
-import veresLogo from '../img/veresLogo.png';
 import eplLogo from '../img/eplLogo.png'; 
 import laLigaLogo from '../img/laLigaLogo.png'; 
 import bundesligaLogo from '../img/bundesligaLogo.png'; 
@@ -44,25 +29,10 @@ import clubWorldCupImage from '../img/clubWorldCupImage.png'
 
 const footballUkraineSubsections =[
   { name: 'Українська Премєр Ліга', image: upl, link: '/football-ukraine/upl' },
+  { name: 'Кубок України', image: cupOfUkraineLogo, link: '/football-ukraine/cup' },
   { name: 'Перша Ліга', image: firstLeague, link: '/football-ukraine/first-league' },
   { name: 'Друга Ліга', image: secondLeague, link: '/football-ukraine/second-league' },
-  { name: 'Збірна України', image: ukraine, link: '/football-ukraine/zbirna' },
-  { name: 'Шахтар', image: shakhtarLogo, link: '/football-ukraine/shakhtar' },
-  { name: 'Динамо Київ', image: dynamoLogo, link: '/football-ukraine/dynamo' },
-  { name: 'Олександрія', image: oleksandriyaLogo, link: '/football-ukraine/oleksandriya' },
-  { name: 'Кривбас', image: kryvbasLogo, link: '/football-ukraine/kryvbas' },
-  { name: 'Зоря', image: zoryaLogo, link: '/football-ukraine/zorya' },
-  { name: 'Чорноморець', image: chornomoretsLogo, link: '/football-ukraine/chornomorets' },
-  { name: 'Оболонь', image: obolonLogo, link: '/football-ukraine/obolon' },
-  { name: 'Колос', image: kolosLogo, link: '/football-ukraine/kolos' },
-  { name: 'Рух', image: rukhLogo, link: '/football-ukraine/rukh' },
-  { name: 'ЛНЗ', image: lnzLogo, link: '/football-ukraine/lnz' },
-  { name: 'Карпати', image: karpatyLogo, link: '/football-ukraine/karpaty' },
-  { name: 'Інгулець', image: ingulecLogo, link: '/football-ukraine/ingulec' },
-  { name: 'Ворскла', image: vorsklaLogo, link: '/football-ukraine/vorskla' },
-  { name: 'Полісся', image: polissyaLogo, link: '/football-ukraine/polissya' },
-  { name: 'Лівий Берег', image: lberigLogo, link: '/football-ukraine/lberig' },
-  { name: 'Верес', image: veresLogo, link: '/football-ukraine/veres' }
+  { name: 'Збірна України', image: ukraine, link: '/football-ukraine/zbirna' }
 ];
 
 const championshipsSubsections = [
@@ -124,4 +94,4 @@ const Subsections = ({category}) => {
   );
 };
 
-export default Subsections;   
+export default Subsections;    

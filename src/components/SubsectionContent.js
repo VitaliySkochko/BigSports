@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 import { useNews } from './NewsContext';
 import Pagination from './Pagination';
 import SubsectionNewsList from '../newslist/SubsectionNewsList';
+import UplClubs from './UplClubs';
 import '../styles/SubsectionContent.css';
 import ClubInfoCard from '../infocard/ClubInfoCard';
-import { ClubInfoMap } from '../infocard/ClubInfoMap'; 
+import { ClubInfoMap } from '../infocard/ClubInfoMap';
+import FirstLeagueClubs from './FirstLeagueClubs';
+import SecondLeagueClubs from './SecondLeagueClubs';
 
 const SubsectionContent = ({ section }) => {
   const { newsList } = useNews();
@@ -15,13 +18,11 @@ const SubsectionContent = ({ section }) => {
     setCurrentPage(page);
   };
 
-  // Фільтрація новин за підрозділом
-  const filteredNews = newsList.filter((news) => {
-    if (Array.isArray(news.sections)) {
-      return news.sections.includes(section);
-    }
-    return news.section?.trim() === section.trim();
-  });
+  const filteredNews = newsList.filter((news) =>
+    Array.isArray(news.sections)
+      ? news.sections.includes(section)
+      : news.section?.trim() === section.trim()
+  );
 
   const totalPages = Math.ceil(filteredNews.length / newsPerPage);
 
@@ -29,7 +30,12 @@ const SubsectionContent = ({ section }) => {
     <div className="panel">
       <h1>{section}</h1>
 
-      {/* Інформаційна картка клубу (якщо є) */}
+      {/* Показуємо клуби тільки для УПЛ */}
+      {section === 'УПЛ' && <UplClubs />}
+      {section === 'Перша Ліга' && <FirstLeagueClubs />}
+      {/*{section === 'Друга Ліга' && <SecondLeagueClubs />}*/}
+
+      {/* Інформація про клуб (тільки якщо є) */}
       {ClubInfoMap[section] && <ClubInfoCard club={ClubInfoMap[section]} />}
 
       <SubsectionNewsList
@@ -49,5 +55,6 @@ const SubsectionContent = ({ section }) => {
 };
 
 export default SubsectionContent;
+
 
 
