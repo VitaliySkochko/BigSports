@@ -1,7 +1,7 @@
 {
-  "short_name": "BigSports",
-  "name": "BigSports - Спортивні новини",
-  "version": "2.1",
+  "short_name": "BigSport",
+  "name": "BigSport - Спортивні новини",
+  "version": "4.0",
   "icons": [
     {
       "src": "/logo-w64.png",
