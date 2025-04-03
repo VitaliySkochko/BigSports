@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNews } from '../components/NewsContext';
 import Pagination from '../components/Pagination';
-import Subsections from '../components/Subsections';
+import Subsections from '../subsections/Subsections';
 import NewsList from '../newslist/NewsList'; // Додаємо NewsList
 import '../App.css';
 

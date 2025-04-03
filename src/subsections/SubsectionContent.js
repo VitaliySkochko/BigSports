@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useNews } from './NewsContext';
-import Pagination from './Pagination';
+import { useNews } from '../components/NewsContext';
+import Pagination from '../components/Pagination';
 import SubsectionNewsList from '../newslist/SubsectionNewsList';
 import UplClubs from './UplClubs';
 import '../styles/SubsectionContent.css';
@@ -33,7 +33,7 @@ const SubsectionContent = ({ section }) => {
       {/* Показуємо клуби тільки для УПЛ */}
       {section === 'УПЛ' && <UplClubs />}
       {section === 'Перша Ліга' && <FirstLeagueClubs />}
-      {/*{section === 'Друга Ліга' && <SecondLeagueClubs />}*/}
+      {section === 'Друга Ліга' && <SecondLeagueClubs />}
 
       {/* Інформація про клуб (тільки якщо є) */}
       {ClubInfoMap[section] && <ClubInfoCard club={ClubInfoMap[section]} />}

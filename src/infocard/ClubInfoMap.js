@@ -16,6 +16,11 @@ import lberigLogo from '../img/lberigLogo.png';
 import veresLogo from '../img/veresLogo.png';
 import bukovynaLogo from '../img/bukovynaLogo.png';
 import viktoriyaLogo from '../img/viktoriyaLogo.png';
+import agrobiznesLogo from '../img/agrobiznesLogo.png';
+import epitsenterLogo from '../img/epitsenterLogo.png';
+import kreminLogo from '../img/kreminLogo.png';
+import chernihivLogo from '../img/chernihivLogo.png';
+import hirnykLogo from '../img/hirnykLogo.png';
 
 export const ClubInfoMap = {
   'Динамо Київ': {
@@ -123,9 +128,9 @@ export const ClubInfoMap = {
     city: 'Одеса, Україна',
     stadium: '«Чорноморець»',
     president: 'Леонід Клімов',
-    coach: 'Олександр Бабич',
+    coach: 'Олександр Кучер',
     league: 'Прем\'єр-ліга',
-    website: 'https://chornomorets.football',
+    website: 'https://chornomorets.ua/',
     achievements: `
     <strong> Досягнення:</strong><br/> 
       <strong>Чемпіонат України:</strong> Срібний призер (2) - 1994/1995, 1995/1996, Бронзовий призер (3) - 1992/1993, 1993/1994, 2005/2006<br/>
@@ -335,6 +340,87 @@ export const ClubInfoMap = {
     achievements: `
     <strong> Досягнення:</strong><br/> 
       <strong>-</strong> 
+    `
+  },
+
+  'Агробізнес': {
+    logo: agrobiznesLogo,
+    name: 'Агробізнес',
+    founded: 'грудень 2015',
+    city: 'Волочиськ, Україна',
+    stadium: '«Юність»',
+    president: 'Людмила Собуцька',
+    coach: 'Олександр Чижевський',
+    league: 'Перша ліга',
+    website: 'https://fcab.com.ua',
+    achievements: `
+    <strong> Досягнення:</strong><br/> 
+      <strong>Чемпіонат Другої Ліги:</strong> Чемпіон  (1) - 2017/18<br/>
+    `
+  },
+
+  'Епіцентр': {
+    logo: epitsenterLogo,
+    name: 'Епіцентр',
+    founded: '2019',
+    city: "Кам'янець-Подільський, Україна",
+    stadium: 'імені Г. Тонкочеєва',
+    president: 'Іван Черноног',
+    coach: 'Сергій Нагорняк',
+    league: 'Перша ліга',
+    website: 'https://fcepicentr.com.ua',
+    achievements: `
+    <strong> Досягнення:</strong><br/> 
+      <strong>-</strong> 
+    `
+  },
+
+  'Кремінь': {
+    logo: kreminLogo ,
+    name: 'Кремінь',
+    founded: '1959, 1986, 2003',
+    city: "Кременчук, Україна",
+    stadium: '«Кремінь-Арена»',
+    president: 'Сергій Ковнір',
+    coach: 'Ігор Климовський',
+    league: 'Перша ліга',
+    website: 'https://fckremen.com.ua',
+    achievements: `
+    <strong> Досягнення:</strong><br/> 
+      <strong>Чемпіонат Другої Ліги:</strong> Чемпіон  (1) - 2018/19, Бронзовий призер (3) - 2009/10, 2014/15, 2016/17<br/>
+    `
+  },
+
+  'Чернігів': {
+    logo: chernihivLogo ,
+    name: 'Чернігів',
+    founded: '	18 червня 2003',
+    city: "Чернігів, Україна",
+    stadium: '«Чернігів-Арена»',
+    president: 'Юрій Синиця',
+    coach: 'Валерій Чорний',
+    league: 'Друга ліга',
+    website: 'https://chernigiv.ua',
+    achievements: `
+    <strong> Досягнення:</strong><br/> 
+      <strong>-</strong> 
+    `
+  },
+
+  'Гірник-Спорт': {
+    logo: hirnykLogo,
+    name: 'Гірник-Спорт',
+    founded: '1989',
+    city: "Горішні Плавні, Україна",
+    stadium: '«Юність»',
+    president: 'Петро Каплун',
+    coach: 'Валерій Куценко',
+    league: 'Друга ліга',
+    website: 'https://gornyak-sport.com',
+    achievements: `
+    <strong> Досягнення:</strong><br/> 
+      <strong>Чемпіонат Першої Ліги:</strong> Бронзовий призер (1) - 2014/15<br/>
+      <strong>Чемпіонат Другої Ліги:</strong> Чемпіон  (1) - 2013/14<br/>
     `
   },
 };

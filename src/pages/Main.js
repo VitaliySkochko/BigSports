@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import AdminPanel from '../admin/AdminPanel';
 import Home from '../sections/Home';
 import FootballUkraine from '../sections/FootballUkraine'; 
-import SubsectionContent from '../components/SubsectionContent';
+import SubsectionContent from '../subsections/SubsectionContent';
 import Сhampionships from '../sections/Championships';
 import EuroCups from '../sections/EuroCups'
 import Tournaments from '../sections/Tournaments';
@@ -45,6 +45,12 @@ const Main = () => {
           <Route path="/football-ukraine/veres" element={<SubsectionContent section="Верес" />} />
           <Route path="/football-ukraine/bukovyna" element={<SubsectionContent section="Буковина" />} />
           <Route path="/football-ukraine/viktoriya" element={<SubsectionContent section="Вікторія" />} />
+          <Route path="/football-ukraine/agrobiznes" element={<SubsectionContent section="Агробізнес" />} />
+          <Route path="/football-ukraine/epitsenter" element={<SubsectionContent section="Епіцентр" />} />
+          <Route path="/football-ukraine/kremin" element={<SubsectionContent section="Кремінь" />} />
+          <Route path="/football-ukraine/chernihiv" element={<SubsectionContent section="Чернігів" />} />
+          <Route path="/football-ukraine/hirnyk-sport" element={<SubsectionContent section="Гірник-Спорт" />} />
+
 
 
           <Route path="/championships" element={<Championships />} />
