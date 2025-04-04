@@ -28,9 +28,10 @@
 /* Заголовок */
 .single-news-title {
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  font-size: 45px;
-  font-weight: bold;
-  text-align: center;
+  text-align: left;
+  font-size: 40px;
+  border-left: 6px solid #000;
+  padding-left: 15px;
 }
 /* Окреме зображення новини */
 .single-news-image-container {
@@ -65,7 +66,7 @@
 }
 /* Основний контент */
 .single-news-content {
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.6;
   padding-bottom: 20px;
 }

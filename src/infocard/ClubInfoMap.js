@@ -21,6 +21,10 @@ import epitsenterLogo from '../img/epitsenterLogo.png';
 import kreminLogo from '../img/kreminLogo.png';
 import chernihivLogo from '../img/chernihivLogo.png';
 import hirnykLogo from '../img/hirnykLogo.png';
+import yuksaLogo from '../img/yuksaLogo.png';
+import poltavaLogo from '../img/poltavaLogo.png';
+import kudrivkaLogo from '../img/kudrivkaLogo.png';
+import podillyaLogo from '../img/podillyaLogo.png';
 
 export const ClubInfoMap = {
   'Динамо Київ': {
@@ -195,7 +199,7 @@ export const ClubInfoMap = {
     logo: lnzLogo,
     name: 'ЛНЗ',
     founded: '2006',
-    city: 'Черкаси, Україна Україна',
+    city: 'Черкаси, Україна',
     stadium: '«Черкаси-Арена»',
     president: 'Віктор Кравченко',
     coach: 'Роман Григорчук',
@@ -310,6 +314,8 @@ export const ClubInfoMap = {
     `
   },
 
+  /*-----ПЕРША ЛІГА-----*/
+
    'Буковина': {
     logo: bukovynaLogo,
     name: 'Буковина',
@@ -390,6 +396,73 @@ export const ClubInfoMap = {
       <strong>Чемпіонат Другої Ліги:</strong> Чемпіон  (1) - 2018/19, Бронзовий призер (3) - 2009/10, 2014/15, 2016/17<br/>
     `
   },
+
+  'ЮКСА': {
+    logo: yuksaLogo,
+    name: 'ЮКСА',
+    founded: '2015',
+    city: "Тарасівка, Україна",
+    stadium: 'НТК імені Віктора Баннікова',
+    president: 'Сергій Леснік',
+    coach: 'Дмитро Чирикал',
+    league: 'Перша ліга',
+    website: 'https://ucsa.com.ua',
+    achievements: `
+    <strong> Досягнення:</strong><br/> 
+      <strong>-</strong> 
+    `
+  },
+
+  'Полтава': {
+    logo: poltavaLogo,
+    name: 'Полтава',
+    founded: '2011',
+    city: "Полтава, Україна",
+    stadium: '«Молодіжний»',
+    president: 'Сергій Іващенко',
+    coach: 'Володимир Сисенко',
+    league: 'Перша ліга',
+    website: 'https://scpoltava.com',
+    achievements: `
+    <strong> Досягнення:</strong><br/> 
+     <strong>-</strong> 
+    `
+  },
+
+  'Кудрівка': {
+    logo: kudrivkaLogo,
+    name: 'Кудрівка',
+    founded: '1982, 2006',
+    city: "Кудрівка, Україна",
+    stadium: '«Кудрівка-Арена»',
+    president: 'Роман Солодаренко',
+    coach: 'Василь Баранов',
+    league: 'Перша ліга',
+    website: 'https://kudrivka.com.ua',
+    achievements: `
+    <strong> Досягнення:</strong><br/> 
+      <strong>-</strong> 
+    `
+  },
+
+  'Поділля': {
+    logo: podillyaLogo,
+    name: 'Поділля',
+    founded: '1960',
+    city: "Хмельницький, Україна",
+    stadium: '«Поділля»',
+    president: 'Євген Бейдерман',
+    coach: 'Сергій Ковалець',
+    league: 'Перша ліга',
+    website: 'https://fcpodillya.com.ua',
+    achievements: `
+    <strong> Досягнення:</strong><br/> 
+      <strong>-</strong> 
+    `
+  },
+
+
+  /*-----ПЕРША ЛІГА-----*/
 
   'Чернігів': {
     logo: chernihivLogo ,

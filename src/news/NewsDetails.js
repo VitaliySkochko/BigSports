@@ -21,7 +21,7 @@ const NewsDetails = () => {
       style={{ backgroundImage: `url(${defaultBackground})` }} // Фіксований фон
     >
       <div className="single-news-overlay">
-        <h2 className="single-news-title">{news.title}</h2> 
+        <h2 className="single-news-title">{news.title}</h2>  
       </div>
 
       {/* Зображення новини */}

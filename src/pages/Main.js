@@ -48,6 +48,10 @@ const Main = () => {
           <Route path="/football-ukraine/agrobiznes" element={<SubsectionContent section="Агробізнес" />} />
           <Route path="/football-ukraine/epitsenter" element={<SubsectionContent section="Епіцентр" />} />
           <Route path="/football-ukraine/kremin" element={<SubsectionContent section="Кремінь" />} />
+          <Route path="/football-ukraine/yuksa" element={<SubsectionContent section="ЮКСА" />} />
+          <Route path="/football-ukraine/poltava" element={<SubsectionContent section="Полтава" />} />
+          <Route path="/football-ukraine/kudrivka" element={<SubsectionContent section="Кудрівка" />} />
+          <Route path="/football-ukraine/podillya" element={<SubsectionContent section="Поділля" />} />
           <Route path="/football-ukraine/chernihiv" element={<SubsectionContent section="Чернігів" />} />
           <Route path="/football-ukraine/hirnyk-sport" element={<SubsectionContent section="Гірник-Спорт" />} />
 
