@@ -15,7 +15,7 @@ const SecondLeagueClubs = () => {
   return (
   <div className="subsections-container">
     {secondLeagueClubs.map(club => (
-      <Link to={club.link} key={club.name} className="subsection-item">
+      <Link to={club.link} key={club.name} className="subsection-item"> 
         <img src={club.image} alt={club.name} className="club-logo-small" />
         <span className="subsection-title">{club.name}</span>
       </Link>
