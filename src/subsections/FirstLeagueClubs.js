@@ -11,6 +11,14 @@ import yuksaLogo from '../img/yuksaLogo.png';
 import poltavaLogo from '../img/poltavaLogo.png';
 import kudrivkaLogo from '../img/kudrivkaLogo.png';
 import podillyaLogo from '../img/podillyaLogo.png';
+import metalist1925Logo from '../img/metalist1925Logo.png';
+import metalistLogo from '../img/metalistLogo.png';
+import nyvaLogo from '../img/nyvaLogo.png';
+import fenixMariupolLogo from '../img/fenixMariupolLogo.png';
+import metalurhLogo from '../img/metalurhLogo.png';
+import prykarpattiaLogo from '../img/prykarpattiaLogo.png';
+import dinazLogo from '../img/dinazLogo.png';
+import minaiLogo from '../img/minaiLogo.png';
 
 const firstLeagueClubs = [
   { name: 'Буковина', image: bukovynaLogo, link: '/football-ukraine/bukovyna'},
@@ -22,6 +30,15 @@ const firstLeagueClubs = [
   { name: 'Полтава', image: poltavaLogo, link: '/football-ukraine/poltava' },
   { name: 'Кудрівка', image: kudrivkaLogo, link: '/football-ukraine/kudrivka' },
   { name: 'Поділля', image: podillyaLogo, link: '/football-ukraine/podillya' },
+  
+  { name: 'Металіст 1925', image: metalist1925Logo, link: '/football-ukraine/metalist1925' },
+  { name: 'Металіст', image: metalistLogo, link: '/football-ukraine/metalist' },
+  { name: 'Нива', image: nyvaLogo, link: '/football-ukraine/nyva' },
+  { name: 'Фенікс-Маріуполь', image: fenixMariupolLogo, link: '/football-ukraine/fenix-mariupol' },
+  { name: 'Металург', image: metalurhLogo, link: '/football-ukraine/metalurh' },
+  { name: 'Прикарпаття', image: prykarpattiaLogo, link: '/football-ukraine/prykarpattia' },
+  { name: 'Діназ', image: dinazLogo, link: '/football-ukraine/dinaz' },
+  { name: 'Минай', image: minaiLogo, link: '/football-ukraine/minai' },
 ];
 
 const FirstLeagueClubs = () => {

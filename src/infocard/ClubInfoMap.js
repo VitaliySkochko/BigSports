@@ -25,6 +25,14 @@ import yuksaLogo from '../img/yuksaLogo.png';
 import poltavaLogo from '../img/poltavaLogo.png';
 import kudrivkaLogo from '../img/kudrivkaLogo.png';
 import podillyaLogo from '../img/podillyaLogo.png';
+import metalist1925Logo from '../img/metalist1925Logo.png';
+import metalistLogo from '../img/metalistLogo.png';
+import nyvaLogo from '../img/nyvaLogo.png';
+import fenixMariupolLogo from '../img/fenixMariupolLogo.png';
+import metalurhLogo from '../img/metalurhLogo.png';
+import prykarpattiaLogo from '../img/prykarpattiaLogo.png';
+import dinazLogo from '../img/dinazLogo.png';
+import minaiLogo from '../img/minaiLogo.png';
 
 export const ClubInfoMap = {
   'Динамо Київ': {
@@ -461,8 +469,139 @@ export const ClubInfoMap = {
     `
   },
 
+  'Металіст 1925': {
+    logo: metalist1925Logo,
+    name: 'Металіст 1925',
+    founded: '17 серпня 2016 року',
+    city: "Харків, Україна",
+    stadium: '«Металіст»',
+    president: 'Володимир Носов',
+    coach: 'Патрік ван Леувен',
+    league: 'Перша ліга',
+    website: 'https://metalist1925.com',
+    achievements: `
+    <strong> Досягнення:</strong><br/> 
+      <strong>Чемпіонат Першої Ліги:</strong> Бронзовий призер (1) - 2020/21<br/>
+      <strong>Чемпіонат Другої Ліги:</strong> Бронзовий призер (1) - 2017/18<br/>
+    `
+  },
 
-  /*-----ПЕРША ЛІГА-----*/
+  'Металіст': {
+    logo: metalistLogo,
+    name: 'Металіст',
+    founded: '10 жовтня 2019',
+    city: "Харків, Україна",
+    stadium: '«Металіст»',
+    president: 'Олександр Ярославський',
+    coach: 'Андрій Аніщенко',
+    league: 'Перша ліга',
+    website: 'https://fcmetalist.com.ua',
+    achievements: `
+    <strong> Досягнення:</strong><br/> 
+      <strong>Чемпіонат Першої Ліги:</strong> Чемпіони (1) - 2021/22<br/>
+      <strong>Чемпіонат Другої Ліги:</strong> Чемпіони (1) - 2020/21<br/>
+    `
+  },
+
+  'Нива': {
+    logo: nyvaLogo,
+    name: 'Нива',
+    founded: '1978',
+    city: "Тернопіль, Україна",
+    stadium: '	Тернопільський міський стадіон імені Романа Шухевича',
+    president: 'Наконечний Дмитро',
+    coach: 'Юрій Вірт',
+    league: 'Перша ліга',
+    website: 'https://fcnyva.com',
+    achievements: `
+    <strong> Досягнення:</strong><br/> 
+      <strong>Чемпіонат Другої Ліги:</strong> Чемпіони (2) - 2008/09, 2019/20, Срібний призер (1) - 2007/08, Бронзовий призер (1) - 2012/13<br/>
+    `
+  },
+
+  'Фенікс-Маріуполь': {
+    logo: fenixMariupolLogo,
+    name: 'Фенікс-Маріуполь',
+    founded: '2007',
+    city: "Маріуполь, Україна",
+    stadium: '«Західний»',
+    president: 'Юрій Павлишин',
+    coach: 'Максим Фещук',
+    league: 'Перша ліга',
+    website: '',
+    achievements: `
+    <strong> Досягнення:</strong><br/> 
+      <strong>-</strong> 
+    `
+  },
+
+  'Металург': {
+    logo: metalurhLogo,
+    name: 'Металург',
+    founded: '2017',
+    city: "Запоріжжя, Україна",
+    stadium: '«Славутич-Арена»',
+    president: 'Максим Лупашко',
+    coach: 'Ілля Близнюк',
+    league: 'Перша ліга',
+    website: '',
+    achievements: `
+    <strong> Досягнення:</strong><br/> 
+      <strong>Чемпіонат Другої Ліги:</strong> Бронзовий призер (1) - 2018/19<br/>
+    `
+  },
+
+  'Прикарпаття': {
+    logo: prykarpattiaLogo,
+    name: 'Прикарпаття',
+    founded: '2016',
+    city: "Івано-Франківськ, Україна",
+    stadium: '«Рух»',
+    president: 'Василь Попович',
+    coach: 'Олег Рипан',
+    league: 'Перша ліга',
+    website: 'https://fc.if.ua',
+    achievements: `
+    <strong> Досягнення:</strong><br/> 
+      <strong>Чемпіонат Другої Ліги:</strong> Срібний призер (1) - 2017/18<br/>
+    `
+  },
+
+  'Діназ': {
+    logo: dinazLogo,
+    name: 'Діназ',
+    founded: '1999',
+    city: "Вишгород, Україна",
+    stadium: '«Діназ» ',
+    president: 'Роман Капаністий',
+    coach: 'Олександр Рябоконь',
+    league: 'Перша ліга',
+    website: '',
+    achievements: `
+    <strong> Досягнення:</strong><br/> 
+      <strong>Чемпіонат Другої Ліги:</strong> Бронзовий призер (1) - 2020/21<br/>
+    `
+  },
+
+  'Минай': {
+    logo: minaiLogo,
+    name: 'Минай',
+    founded: '2015',
+    city: "Минай, Україна",
+    stadium: '«Минай-Арена»',
+    president: 'Валерій Пересоляк',
+    coach: 'Євгеній Калиниченко',
+    league: 'Перша ліга',
+    website: 'https://fcminaj.com',
+    achievements: `
+    <strong> Досягнення:</strong><br/> 
+      <strong>Чемпіонат Першої Ліги:</strong> Чемпіони (1) - 2019/20<br/>
+      <strong>Чемпіонат Другої Ліги:</strong> Срібний призер (1) - 2018/19<br/>
+    `
+  },
+
+
+  /*-----ДРУГА ЛІГА-----*/
 
   'Чернігів': {
     logo: chernihivLogo ,

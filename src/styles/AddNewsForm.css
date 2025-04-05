@@ -24,8 +24,10 @@
 }
 
 .add-news-table .ql-container {
-  height: 150px;
+  height: 350px; /* або навіть 400px+ якщо хочеш більше */
+  min-height: 350px;
 }
+
 
 
 .table-submit-cell {
