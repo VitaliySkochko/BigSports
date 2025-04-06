@@ -4,49 +4,62 @@ import React, { useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth, db } from '../firebase';
 import { collection, query, where, getDocs } from 'firebase/firestore';
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom';
+import amplitude from '../amplitude'; // 🔥 Імпортуємо Amplitude
 
 const PasswordModal = ({ isOpen, onClose, onLoginSuccess }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const navigate = useNavigate(); // Создаем экземпляр navigate
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      // Найти пользователя по имени
       const q = query(collection(db, 'users'), where('username', '==', username));
       const querySnapshot = await getDocs(q);
-      
+
       if (querySnapshot.empty) {
-        setError('Пользователь не найден');
+        setError('Користувача не знайдено');
+        amplitude.track('login_failed', { reason: 'user_not_found', username });
         return;
       }
-      
-      // Получить email из базы данных
+
       const userDoc = querySnapshot.docs[0];
       const email = userDoc.data().email;
 
-      // Попробовать войти по email и паролю
       await signInWithEmailAndPassword(auth, email, password);
-      onLoginSuccess(userDoc.id); // id пользователя
+
+      // 🔥 Відправляємо подію входу
+      amplitude.track('user_logged_in', {
+        userId: userDoc.id,
+        username: userDoc.data().username,
+        email: email,
+        time: new Date().toISOString(),
+      });
+
+      onLoginSuccess(userDoc.id);
       onClose();
-      navigate('/'); // Перенаправляем на главную страницу
+      navigate('/');
     } catch (error) {
-      setError(`Ошибка при входе: ${error.message}`);
+      setError(`Помилка входу: ${error.message}`);
+
+      // 🔥 Подія невдалого входу
+      amplitude.track('login_failed', {
+        username,
+        error: error.message,
+        time: new Date().toISOString(),
+      });
     }
   };
 
-  if (!isOpen) {
-    return null;
-  }
+  if (!isOpen) return null;
 
   return (
     <div className="modal-overlay">
       <div className="modal-content">
-      <button className="close-button" onClick={onClose}>×</button>
+        <button className="close-button" onClick={onClose}>×</button>
         <h2>Вхід</h2>
         <form onSubmit={handleSubmit}>
           <input
@@ -63,8 +76,8 @@ const PasswordModal = ({ isOpen, onClose, onLoginSuccess }) => {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-        <button type="submit" className='profile-button'>Увійти</button>
-        {error && <p style={{ color: 'red' }}>{error}</p>}
+          <button type="submit" className="profile-button">Увійти</button>
+          {error && <p style={{ color: 'red' }}>{error}</p>}
         </form>
       </div>
     </div>
@@ -72,4 +85,5 @@ const PasswordModal = ({ isOpen, onClose, onLoginSuccess }) => {
 };
 
 export default PasswordModal;
+
 
