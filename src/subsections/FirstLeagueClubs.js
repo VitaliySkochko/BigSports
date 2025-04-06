@@ -30,7 +30,6 @@ const firstLeagueClubs = [
   { name: 'Полтава', image: poltavaLogo, link: '/football-ukraine/poltava' },
   { name: 'Кудрівка', image: kudrivkaLogo, link: '/football-ukraine/kudrivka' },
   { name: 'Поділля', image: podillyaLogo, link: '/football-ukraine/podillya' },
-  
   { name: 'Металіст 1925', image: metalist1925Logo, link: '/football-ukraine/metalist1925' },
   { name: 'Металіст', image: metalistLogo, link: '/football-ukraine/metalist' },
   { name: 'Нива', image: nyvaLogo, link: '/football-ukraine/nyva' },

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { doc, getDoc } from 'firebase/firestore';
+import { collection, query, where, doc, getDoc, getDocs } from 'firebase/firestore';
 import { db } from '../firebase';
 import '../styles/ProfilePage.css';
 
@@ -8,6 +8,7 @@ const ProfilePage = () => {
   const { userId } = useParams();
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [articlesCount, setArticlesCount] = useState(0);
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -18,7 +19,19 @@ const ProfilePage = () => {
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {
-          setUserData(docSnap.data());
+          const user = docSnap.data();
+          setUserData(user);
+
+          // Якщо адміністратор — підраховуємо новини
+          if (user.role === 'admin') {
+            const q = query(
+              collection(db, 'news'),
+              where('author', '==', user.username)
+            );
+
+            const querySnapshot = await getDocs(q);
+            setArticlesCount(querySnapshot.size);
+          }
         } else {
           console.log('Користувач не знайдений');
         }
@@ -31,14 +44,6 @@ const ProfilePage = () => {
 
     fetchUserData();
   }, [userId]);
-
-  if (loading) {
-    return <p>Завантаження...</p>;
-  }
-
-  if (!userData) {
-    return <p>Користувач не знайдений</p>;
-  }
 
   const formatDate = (timestamp) => {
     if (timestamp && timestamp.seconds) {
@@ -53,6 +58,14 @@ const ProfilePage = () => {
     }
     return 'Дата невідома';
   };
+
+  if (loading) {
+    return <p>Завантаження...</p>;
+  }
+
+  if (!userData) {
+    return <p>Користувач не знайдений</p>;
+  }
 
   return (
     <div className="profile-container">
@@ -86,6 +99,12 @@ const ProfilePage = () => {
                 {userData.role === 'admin' ? 'Адміністратор' : 'Користувач'}
               </td>
             </tr>
+            {userData.role === 'admin' && (
+              <tr>
+                <th>Кількість написаних новин</th>
+                <td>{articlesCount}</td>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>
@@ -94,6 +113,7 @@ const ProfilePage = () => {
 };
 
 export default ProfilePage;
+
 
 
 

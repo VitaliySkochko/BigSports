@@ -1,19 +1,31 @@
 /* Контейнер всієї новини */
 .single-news-container {
-  width: 100%;
-  min-height: 100vh; /* Фон на всю висоту */
+  position: relative;
+  background-size: 1200px auto;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: #f2f2f2;
+
   display: flex;
   flex-direction: column;
-  align-items: center;
-  position: relative;
-  padding: 20px;
-  color: white;
-  /* Фіксований фон */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed; /* Фон залишається на місці */
+  align-items: center; /* ⬅️ це центр по горизонталі */
 }
+
+
+.single-news-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.6); /* освітлення */
+  z-index: 0;
+}
+
+.single-news-container > * {
+  position: relative;
+  z-index: 1;
+}
+
 /* Затемнення фону */
 .single-news-overlay {
   width: 100%;
@@ -60,7 +72,7 @@
   border-radius: 12px;
   padding: 25px;
   margin-top: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  
   max-height: none;
   min-height: auto;
   overflow: visible;

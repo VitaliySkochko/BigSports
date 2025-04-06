@@ -33,6 +33,8 @@ import metalurhLogo from '../img/metalurhLogo.png';
 import prykarpattiaLogo from '../img/prykarpattiaLogo.png';
 import dinazLogo from '../img/dinazLogo.png';
 import minaiLogo from '../img/minaiLogo.png';
+import probiyLogo from '../img/probiyLogo.jpeg'; 
+import realPharmaLogo from '../img/realPharmaLogo.png'; 
 
 export const ClubInfoMap = {
   'Динамо Київ': {
@@ -633,6 +635,38 @@ export const ClubInfoMap = {
     <strong> Досягнення:</strong><br/> 
       <strong>Чемпіонат Першої Ліги:</strong> Бронзовий призер (1) - 2014/15<br/>
       <strong>Чемпіонат Другої Ліги:</strong> Чемпіон  (1) - 2013/14<br/>
+    `
+  },
+
+  'Пробій': {
+    logo: probiyLogo,
+    name: 'Пробій',
+    founded: '1924',
+    city: "Городенка, Україна",
+    stadium: '«Пробій-Арена»',
+    president: 'Віталій Шевага',
+    coach: 'Володимир Ковалюк',
+    league: 'Друга ліга',
+    website: 'https://nkprobiy.if.ua',
+    achievements: `
+    <strong> Досягнення:</strong><br/> 
+      <strong>-</strong> 
+    `
+  },
+
+  'Реал Фарма': {
+    logo: realPharmaLogo,
+    name: 'Реал Фарма',
+    founded: '2000',
+    city: "Одеса, Україна",
+    stadium: '«Іван»',
+    president: 'Микола Лиховидов',
+    coach: 'Андрій Пархоменко',
+    league: 'Друга ліга',
+    website: 'https://real-farma.com.ua',
+    achievements: `
+    <strong> Досягнення:</strong><br/> 
+      <strong>-</strong> 
     `
   },
 };

@@ -63,6 +63,9 @@ const Main = () => {
 
           <Route path="/football-ukraine/chernihiv" element={<SubsectionContent section="Чернігів" />} />
           <Route path="/football-ukraine/hirnyk-sport" element={<SubsectionContent section="Гірник-Спорт" />} />
+          <Route path="/football-ukraine/probiy" element={<SubsectionContent section="Пробій" />} />
+          <Route path="/football-ukraine/real-pharma" element={<SubsectionContent section="Реал Фарма" />} />
+
 
 
 
