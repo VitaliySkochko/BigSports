@@ -4,6 +4,7 @@ import GeneralNewsList from '../newslist/GeneralNewsList';
 import TopNewsSlider from '../newslist/TopNewsSlider';
 import SportNewsFeed from '../newslist/SportNewsFeed';
 import SectionNewsFeed from '../newslist/SectionNewsFeed';
+import PopularNewsFeed from '../newslist/PopularNewsFeed';
 import '../styles/Home.css';
 
 const Home = () => {
@@ -68,6 +69,7 @@ const Home = () => {
                 section="Клубний чемпіонат світу 2025" 
                 newsList={newsList} 
               />
+              <PopularNewsFeed newsList={newsList} />
             </div>
           </div>
         </div>

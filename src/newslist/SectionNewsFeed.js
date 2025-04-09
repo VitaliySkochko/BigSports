@@ -6,7 +6,7 @@ const SectionNewsFeed = ({ title, section, newsList }) => {
   const filteredNews = newsList
     .filter(news => Array.isArray(news.sections) && news.sections.includes(section))
     .sort((a, b) => b.timestamp?.seconds - a.timestamp?.seconds)
-    .slice(0, 12); // 12 новин
+    .slice(0, 10); // 12 новин
 
   if (filteredNews.length === 0) return null;
 
