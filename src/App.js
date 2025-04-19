@@ -17,18 +17,32 @@ const App = () => {
   useEffect(() => {
     const trackVisit = async () => {
       const user = auth.currentUser;
-
+    
+      // === 1. Визначаємо джерело трафіку ===
+      const referrer = document.referrer;
+      const urlParams = new URLSearchParams(window.location.search);
+      const utmSource = urlParams.get('utm_source');
+    
+      let trafficSource = 'direct';
+      if (utmSource) {
+        trafficSource = utmSource;
+      } else if (referrer.includes('google.')) {
+        trafficSource = 'google';
+      } else if (referrer.includes('youtube.com')) {
+        trafficSource = 'youtube';
+      } else if (referrer.includes('instagram.com')) {
+        trafficSource = 'instagram';
+      }
+    
       if (user) {
         const userDocRef = doc(db, 'users', user.uid);
         const userDocSnap = await getDoc(userDocRef);
-
+    
         if (userDocSnap.exists()) {
           const userData = userDocSnap.data();
-
-          // Встановити userId
+    
           amplitude.setUserId(user.uid);
-
-          // Встановити додаткові атрибути користувача
+    
           amplitude.identify({
             user_id: user.uid,
             username: userData.username,
@@ -37,20 +51,32 @@ const App = () => {
             country: userData.country,
             city: userData.city,
           });
-
-          // Подія перегляду сайту з ідентифікованим користувачем
+    
           amplitude.track('site_visited', {
             user_id: user.uid,
             role: userData.role,
+            traffic_source: trafficSource,
           });
         }
       } else {
-        // Подія перегляду сайту для анонімного користувача
+        // === 2. Унікальний гостьовий ID ===
+        let guestId = localStorage.getItem('guestId');
+        if (!guestId) {
+          guestId = 'guest_' + Math.random().toString(36).substr(2, 9);
+          localStorage.setItem('guestId', guestId);
+        }
+    
+        amplitude.setUserId(guestId);
+        amplitude.setUserProperties({ role: 'guest' });
+    
         amplitude.track('site_visited', {
-          user_id: 'guest',
+          user_id: guestId,
+          role: 'guest',
+          traffic_source: trafficSource,
         });
       }
     };
+    
 
     trackVisit();
   }, []);
