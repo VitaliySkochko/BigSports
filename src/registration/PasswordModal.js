@@ -5,7 +5,8 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth, db } from '../firebase';
 import { collection, query, where, getDocs } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
-import amplitude from '../amplitude'; // 🔥 Імпортуємо Amplitude
+import amplitude from '../amplitude';
+import * as amplitudeLib from '@amplitude/analytics-browser'; // Додано
 
 const PasswordModal = ({ isOpen, onClose, onLoginSuccess }) => {
   const [username, setUsername] = useState('');
@@ -31,11 +32,21 @@ const PasswordModal = ({ isOpen, onClose, onLoginSuccess }) => {
 
       await signInWithEmailAndPassword(auth, email, password);
 
-      // 🔥 Відправляємо подію входу
+      // 🔥 Встановлюємо користувача в Amplitude
+      amplitude.setUserId(userDoc.id);
+
+      const identify = new amplitudeLib.Identify()
+        .set('username', userDoc.data().username)
+        .set('email', email)
+        .set('role', userDoc.data().role);
+
+      amplitude.identify(identify);
+
       amplitude.track('user_logged_in', {
         userId: userDoc.id,
         username: userDoc.data().username,
         email: email,
+        role: userDoc.data().role,
         time: new Date().toISOString(),
       });
 
@@ -44,8 +55,6 @@ const PasswordModal = ({ isOpen, onClose, onLoginSuccess }) => {
       navigate('/');
     } catch (error) {
       setError(`Помилка входу: ${error.message}`);
-
-      // 🔥 Подія невдалого входу
       amplitude.track('login_failed', {
         username,
         error: error.message,
@@ -85,5 +94,6 @@ const PasswordModal = ({ isOpen, onClose, onLoginSuccess }) => {
 };
 
 export default PasswordModal;
+
 
 
