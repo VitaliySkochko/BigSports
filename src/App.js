@@ -12,17 +12,18 @@ import { auth } from './firebase';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from './firebase';
 import amplitude from './amplitude';
+import * as amplitudeLib from '@amplitude/analytics-browser'; // ⬅️ додано
 
 const App = () => {
   useEffect(() => {
     const trackVisit = async () => {
       const user = auth.currentUser;
-    
+
       // === 1. Визначаємо джерело трафіку ===
       const referrer = document.referrer;
       const urlParams = new URLSearchParams(window.location.search);
       const utmSource = urlParams.get('utm_source');
-    
+
       let trafficSource = 'direct';
       if (utmSource) {
         trafficSource = utmSource;
@@ -33,25 +34,26 @@ const App = () => {
       } else if (referrer.includes('instagram.com')) {
         trafficSource = 'instagram';
       }
-    
+
       if (user) {
         const userDocRef = doc(db, 'users', user.uid);
         const userDocSnap = await getDoc(userDocRef);
-    
+
         if (userDocSnap.exists()) {
           const userData = userDocSnap.data();
-    
+
           amplitude.setUserId(user.uid);
-    
-          amplitude.identify({
-            user_id: user.uid,
-            username: userData.username,
-            email: userData.email,
-            role: userData.role,
-            country: userData.country,
-            city: userData.city,
-          });
-    
+
+          // ⬇️ створюємо об'єкт Identify
+          const identify = new amplitudeLib.Identify()
+            .set('username', userData.username)
+            .set('email', userData.email)
+            .set('role', userData.role)
+            .set('country', userData.country)
+            .set('city', userData.city);
+
+          amplitude.identify(identify);
+
           amplitude.track('site_visited', {
             user_id: user.uid,
             role: userData.role,
@@ -59,16 +61,20 @@ const App = () => {
           });
         }
       } else {
-        // === 2. Унікальний гостьовий ID ===
+        // === 2. Гість з унікальним ID ===
         let guestId = localStorage.getItem('guestId');
         if (!guestId) {
           guestId = 'guest_' + Math.random().toString(36).substr(2, 9);
           localStorage.setItem('guestId', guestId);
         }
-    
+
         amplitude.setUserId(guestId);
-        amplitude.setUserProperties({ role: 'guest' });
-    
+
+        const identify = new amplitudeLib.Identify()
+          .set('role', 'guest');
+
+        amplitude.identify(identify);
+
         amplitude.track('site_visited', {
           user_id: guestId,
           role: 'guest',
@@ -76,7 +82,6 @@ const App = () => {
         });
       }
     };
-    
 
     trackVisit();
   }, []);
@@ -98,6 +103,7 @@ const App = () => {
 };
 
 export default App;
+
 
 
 
