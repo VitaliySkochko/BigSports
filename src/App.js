@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Main from './pages/Main';
 import Header from './pages/Header';
@@ -13,9 +13,13 @@ import * as amplitudeLib from '@amplitude/analytics-browser';
 
 const AppContent = () => {
   const { user, userData } = useUser();
+  const trackedRef = useRef(false); // 🔒 Щоб трекати тільки один раз
 
   useEffect(() => {
-    if (user === undefined) return; // ще не готово
+    if (trackedRef.current) return;
+
+    // Якщо юзер є, але userData ще вантажиться — чекаємо
+    if (user && userData === null) return;
 
     const referrer = document.referrer;
     const urlParams = new URLSearchParams(window.location.search);
@@ -47,7 +51,9 @@ const AppContent = () => {
         role: userData.role,
         traffic_source: trafficSource,
       });
-    } else {
+
+      trackedRef.current = true;
+    } else if (!user) {
       let guestId = localStorage.getItem('guestId');
       if (!guestId) {
         guestId = 'guest_' + Math.random().toString(36).substr(2, 9);
@@ -64,6 +70,8 @@ const AppContent = () => {
         role: 'guest',
         traffic_source: trafficSource,
       });
+
+      trackedRef.current = true;
     }
   }, [user, userData]);
 
@@ -88,6 +96,7 @@ const App = () => (
 );
 
 export default App;
+
 
 
 
