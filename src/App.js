@@ -13,10 +13,10 @@ import * as amplitudeLib from '@amplitude/analytics-browser';
 
 const AppContent = () => {
   const { user, userData, loadingUser } = useUser();
-  const trackedRef = useRef(false);
+  const trackedRef = useRef(false); // 🔒 блокує повторну відправку
 
   useEffect(() => {
-    if (trackedRef.current || loadingUser) return; // ❗️чекаємо повного завантаження
+    if (trackedRef.current || loadingUser) return; // ❗ Чекаємо повного завантаження
 
     const referrer = document.referrer;
     const urlParams = new URLSearchParams(window.location.search);
@@ -72,6 +72,11 @@ const AppContent = () => {
     }
   }, [user, userData, loadingUser]);
 
+  // ❗ НЕ рендеримо додаток, поки не завершилось завантаження користувача
+  if (loadingUser) {
+    return <div style={{ textAlign: 'center', paddingTop: '50px' }}>Завантаження...</div>;
+  }
+
   return (
     <div className="App">
       <Header />
@@ -93,6 +98,7 @@ const App = () => (
 );
 
 export default App;
+
 
 
 
