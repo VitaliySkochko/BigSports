@@ -12,14 +12,11 @@ import amplitude from './amplitude';
 import * as amplitudeLib from '@amplitude/analytics-browser';
 
 const AppContent = () => {
-  const { user, userData } = useUser();
-  const trackedRef = useRef(false); // 🔒 Щоб трекати тільки один раз
+  const { user, userData, loadingUser } = useUser();
+  const trackedRef = useRef(false);
 
   useEffect(() => {
-    if (trackedRef.current) return;
-
-    // Якщо юзер є, але userData ще вантажиться — чекаємо
-    if (user && userData === null) return;
+    if (trackedRef.current || loadingUser) return; // ❗️чекаємо повного завантаження
 
     const referrer = document.referrer;
     const urlParams = new URLSearchParams(window.location.search);
@@ -73,7 +70,7 @@ const AppContent = () => {
 
       trackedRef.current = true;
     }
-  }, [user, userData]);
+  }, [user, userData, loadingUser]);
 
   return (
     <div className="App">
@@ -96,6 +93,7 @@ const App = () => (
 );
 
 export default App;
+
 
 
 

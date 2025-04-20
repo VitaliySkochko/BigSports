@@ -10,8 +10,9 @@ export const useUser = () => {
 };
 
 export const UserProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
-  const [userData, setUserData] = useState(null);
+  const [user, setUser] = useState(undefined);       // undefined → ще не знаємо
+  const [userData, setUserData] = useState(undefined);
+  const [loadingUser, setLoadingUser] = useState(true); // 🔥 новий прапорець
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
@@ -26,20 +27,22 @@ export const UserProvider = ({ children }) => {
             setUserData(null);
           }
         } catch (error) {
-          console.error('Ошибка при получении данных пользователя:', error);
+          console.error('Помилка при отриманні userData:', error);
           setUserData(null);
         }
       } else {
         setUserData(null);
       }
+      setLoadingUser(false); // 🔥 сигнал, що все готово
     });
 
     return () => unsubscribe();
   }, []);
 
   return (
-    <UserContext.Provider value={{ user, userData }}>
+    <UserContext.Provider value={{ user, userData, loadingUser }}>
       {children}
     </UserContext.Provider>
   );
 };
+
