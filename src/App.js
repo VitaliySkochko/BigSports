@@ -79,7 +79,6 @@ const App = () => {
       }
     };
 
-    // 🔥 Чекаємо поки Firebase повністю визначить auth
     const unsubscribe = auth.onAuthStateChanged((user) => {
       trackVisit(user);
     });
@@ -104,6 +103,7 @@ const App = () => {
 };
 
 export default App;
+
 
 
 
