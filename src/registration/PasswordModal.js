@@ -6,7 +6,7 @@ import { auth, db } from '../firebase';
 import { collection, query, where, getDocs } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 import amplitude from '../amplitude';
-import * as amplitudeLib from '@amplitude/analytics-browser'; // Додано для Identify
+import * as amplitudeLib from '@amplitude/analytics-browser';
 
 const PasswordModal = ({ isOpen, onClose, onLoginSuccess }) => {
   const [username, setUsername] = useState('');
@@ -18,7 +18,6 @@ const PasswordModal = ({ isOpen, onClose, onLoginSuccess }) => {
     e.preventDefault();
 
     try {
-      // Пошук користувача за username
       const q = query(collection(db, 'users'), where('username', '==', username));
       const querySnapshot = await getDocs(q);
 
@@ -29,30 +28,30 @@ const PasswordModal = ({ isOpen, onClose, onLoginSuccess }) => {
       }
 
       const userDoc = querySnapshot.docs[0];
-      const email = userDoc.data().email;
+      const userData = userDoc.data();
+      const email = userData.email;
 
-      // Авторизація
       await signInWithEmailAndPassword(auth, email, password);
 
-      // 🔄 Очистити guest-сесію
+      // 🔄 Скидаємо гостьову сесію
       amplitude.reset();
 
-      // 🔐 Встановити нового користувача
-      amplitude.setUserId(userDoc.id);
+      // ✅ Встановлюємо `username` як userId
+      amplitude.setUserId(userData.username);
 
       const identify = new amplitudeLib.Identify()
-        .set('username', userDoc.data().username)
+        .set('username', userData.username)
         .set('email', email)
-        .set('role', userDoc.data().role);
+        .set('role', userData.role);
 
       amplitude.identify(identify);
 
-      // 📩 Надіслати подію входу
+      // 📩 Подія входу
       amplitude.track('user_logged_in', {
-        userId: userDoc.id,
-        username: userDoc.data().username,
+        userId: userData.username,
+        username: userData.username,
         email: email,
-        role: userDoc.data().role,
+        role: userData.role,
         time: new Date().toISOString(),
       });
 
@@ -61,7 +60,6 @@ const PasswordModal = ({ isOpen, onClose, onLoginSuccess }) => {
       navigate('/');
     } catch (error) {
       setError(`Помилка входу: ${error.message}`);
-
       amplitude.track('login_failed', {
         username,
         error: error.message,
@@ -101,6 +99,7 @@ const PasswordModal = ({ isOpen, onClose, onLoginSuccess }) => {
 };
 
 export default PasswordModal;
+
 
 
 

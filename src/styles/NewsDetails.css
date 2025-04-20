@@ -146,6 +146,9 @@
   .single-news-content iframe {
     height: 250px;
   }
+  .single-news-content img {
+    max-width: 100% !important; /* ✅ адаптивне зображення */
+  }
 }
 
 /* 📱 Планшети */
