@@ -8,6 +8,7 @@ import { doc, getDoc } from 'firebase/firestore';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import '../styles/AddNewsForm.css';
+import SectionSelector, { sectionsByCategory } from './SectionSelector';
 
 const AddNewsForm = ({ onAdd }) => {
   const [title, setTitle] = useState('');
@@ -34,87 +35,86 @@ const AddNewsForm = ({ onAdd }) => {
     fetchUser();
   }, []);
 
-  const sectionsByCategory = {
-    'Футбол України': ['УПЛ', 'Кубок України', 'Збірна України', 'Перша Ліга', 'Друга Ліга', 'Шахтар', 'Динамо Київ', 'Олександрія', 
-      'Кривбас', 'Зоря', 'Чорноморець', 'Оболонь', 'Колос', 'Рух', 'ЛНЗ', 'Карпати', 'Інгулець', 'Ворскла', 'Полісся', 'Лівий Берег', 
-      'Верес', 'Буковина', 'Вікторія', 'Агробізнес', 'Епіцентр','Кремінь', 'ЮКСА', 'Чернігів', 'Гірник-Спорт', 'Полтава', 'Кудрівка', 
-    'Поділля', 'Металіст 1925', 'Металіст', 'Нива', 'Фенікс-Маріуполь', 'Металург', 'Прикарпаття', 'Діназ', 'Минай', 'Чернігів', 
-    'Гірник-Спорт', 'Пробій', 'Реал Фарма'], 
-    'Чемпіонати': ['Європейські новини', 'Світовий футбол', 'Англійська Премʼєр-ліга', 'Іспанська Ла Ліга', 'Німецька Бундесліга', 
-      'Французька Ліга 1', 'Італійська Серія А'],
-    'Єврокубки': ['Ліга Чемпіонів', 'Ліга Європи', 'Ліга Конференцій'],
-    'Біатлон': ['Новини', 'Кубок Світу', 'Кубок IBU', 'Чемпіонат Світу'],
-    'Види спорту': ['Бокс', 'Теніс', 'MMA', 'Футзал'],
-    'Турніри': ['Клубний чемпіонат світу 2025'],
-  };
-  
   const quillModules = {
     toolbar: [
       [{ 'header': [1, 2, 3, false] }],
       ['bold', 'italic', 'underline', 'strike'],
       [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-      ['link', 'image', 'video'], // додаємо кнопку вставки відео
+      ['link', 'image', 'video'],
       ['clean']
     ]
   };
-  
-  const handleCategoryChange = (e) => {
-    const newCategory = e.target.value;
-    setCategory(newCategory);
-    setSelectedSections([]); // Очистити вибрані при зміні категорії
+
+ const handleCategoryChange = (e) => {
+  const newCategory = e.target.value;
+  setCategory(newCategory);
+  // НЕ очищаємо selectedSections — залишаємо обрані раніше
+};
+
+
+ const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  let imageUrl = '';
+  if (image) {
+    const imageRef = ref(storage, `images/${image.name}`);
+    await uploadBytes(imageRef, image);
+    imageUrl = await getDownloadURL(imageRef);
+  }
+
+  // ⬇️ Групуємо вибрані секції по категоріях
+  const categories = Object.entries(sectionsByCategory)
+    .map(([cat, secs]) => {
+      const filtered = secs.filter((s) => selectedSections.includes(s));
+      return filtered.length ? { category: cat, sections: filtered } : null;
+    })
+    .filter(Boolean);
+
+  // Основна категорія — та, з якої обраний перший розділ
+  const firstSection = selectedSections[0];
+  const mainCategory = Object.entries(sectionsByCategory).find(([_, secs]) =>
+    secs.includes(firstSection)
+  )?.[0] || '';
+
+  const now = new Date();
+  const day = String(now.getDate()).padStart(2, '0');
+  const month = String(now.getMonth() + 1).padStart(2, '0');
+  const year = now.getFullYear();
+  const time = now.toTimeString().slice(0, 5);
+
+  const newNews = {
+    title,
+    content,
+    category: mainCategory,       // ✅ головна категорія
+    sections: selectedSections,   // ✅ всі вибрані розділи
+    categories,                   // ✅ всі категорії з групами
+    image: imageUrl,
+    author,
+    day,
+    month,
+    year,
+    time,
+    timestamp: now,
+    topNews,
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  onAdd(newNews);
 
-    let imageUrl = '';
-    if (image) {
-      const imageRef = ref(storage, `images/${image.name}`);
-      await uploadBytes(imageRef, image);
-      imageUrl = await getDownloadURL(imageRef);
-    }
-
-    const now = new Date();
-    const day = String(now.getDate()).padStart(2, '0');
-    const month = String(now.getMonth() + 1).padStart(2, '0');
-    const year = now.getFullYear();
-    const time = now.toTimeString().slice(0, 5);
-
-    const newNews = {
-      title,
-      content,
-      category,
-      sections: selectedSections,
-      image: imageUrl,
-      author,
-      day,
-      month,
-      year,
-      time,
-      timestamp: now,
-      topNews,
-    };
-
-    onAdd(newNews);
-
-    setTitle('');
-    setContent('');
-    setCategory('');
-    setSelectedSections([]);
-    setImage(null);
-    setTopNews(false);
-  };
+  setTitle('');
+  setContent('');
+  setCategory('');
+  setSelectedSections([]);
+  setImage(null);
+  setTopNews(false);
+};
 
   return (
-    
     <form onSubmit={handleSubmit}>
       <div className="panel">
-          <h1>Додати новину</h1>
-          </div>
+        <h1>Додати новину</h1>
+      </div>
       <table className="add-news-table">
-      
         <tbody>
-        
           <tr>
             <td><label>Заголовок:</label></td>
             <td><input type="text" value={title} onChange={(e) => setTitle(e.target.value)} required /></td>
@@ -133,28 +133,13 @@ const AddNewsForm = ({ onAdd }) => {
           <tr>
             <td><label>Розділи:</label></td>
             <td>
-              {category && sectionsByCategory[category] ? (
-                sectionsByCategory[category].map(sec => (
-                  <label key={sec} style={{ display: 'block', marginBottom: '5px' }}>
-                    <input
-                      type="checkbox"
-                      value={sec}
-                      checked={selectedSections.includes(sec)}
-                      onChange={(e) => {
-                        const value = e.target.value;
-                        setSelectedSections(prev =>
-                          prev.includes(value)
-                            ? prev.filter(s => s !== value)
-                            : [...prev, value]
-                        );
-                      }}
-                    />
-                    {sec}
-                  </label>
-                ))
-              ) : (
-                <p>Оберіть категорію</p>
-              )}
+              <div style={{ maxHeight: '200px', overflowY: 'auto', border: '1px solid #ccc', padding: '5px' }}>
+                <SectionSelector
+                  category={category}
+                  selectedSections={selectedSections}
+                  setSelectedSections={setSelectedSections}
+                />
+              </div>
             </td>
           </tr>
           <tr>
@@ -168,7 +153,13 @@ const AddNewsForm = ({ onAdd }) => {
           <tr>
             <td><label>Зміст статті:</label></td>
             <td>
-              <ReactQuill value={content} onChange={setContent} placeholder="Напишіть зміст статті..." required modules={quillModules} />
+              <ReactQuill
+                value={content}
+                onChange={setContent}
+                placeholder="Напишіть зміст статті..."
+                required
+                modules={quillModules}
+              />
             </td>
           </tr>
           <tr>
@@ -199,4 +190,3 @@ const AddNewsForm = ({ onAdd }) => {
 };
 
 export default AddNewsForm;
-

@@ -7,16 +7,17 @@ import { doc, getDoc } from 'firebase/firestore';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import '../styles/EditNewsForm.css';
+import SectionSelector, { sectionsByCategory } from './SectionSelector';
 
 const EditNewsForm = ({ news, onEdit, onClose }) => {
   const [title, setTitle] = useState(news.title);
   const [content, setContent] = useState(news.content);
-  const [category, setCategory] = useState(news.category);
+  const [category, setCategory] = useState(news.category || '');
   const [sections, setSections] = useState(news.sections || []);
   const [topNews, setTopNews] = useState(news.topNews || false);
   const [image, setImage] = useState(null);
   const [imageUrl, setImageUrl] = useState(news.image);
-  const [author, setAuthor] = useState(news.author || "Невідомий автор");
+  const [author, setAuthor] = useState(news.author || 'Невідомий автор');
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -34,42 +35,20 @@ const EditNewsForm = ({ news, onEdit, onClose }) => {
     fetchUser();
   }, []);
 
-  const sectionsByCategory = {
-    'Футбол України': ['УПЛ', 'Кубок України', 'Збірна України', 'Перша Ліга', 'Друга Ліга', 'Шахтар', 'Динамо Київ', 'Олександрія', 
-      'Кривбас', 'Зоря', 'Чорноморець', 'Оболонь', 'Колос', 'Рух', 'ЛНЗ', 'Карпати', 'Інгулець', 'Ворскла', 'Полісся', 'Лівий Берег', 
-      'Верес', 'Буковина', 'Вікторія', 'Агробізнес', 'Епіцентр','Кремінь', 'ЮКСА', 'Чернігів', 'Гірник-Спорт', 'Полтава', 'Кудрівка', 
-    'Поділля', 'Металіст 1925', 'Металіст', 'Нива', 'Фенікс-Маріуполь', 'Металург', 'Прикарпаття', 'Діназ', 'Минай', 'Чернігів', 
-    'Гірник-Спорт', 'Пробій', 'Реал Фарма'], 
-    'Чемпіонати': ['Європейські новини', 'Світовий футбол', 'Англійська Премʼєр-ліга', 'Іспанська Ла Ліга', 'Німецька Бундесліга', 
-      'Французька Ліга 1', 'Італійська Серія А'],
-    'Єврокубки': ['Ліга Чемпіонів', 'Ліга Європи', 'Ліга Конференцій'],
-    'Біатлон': ['Новини', 'Кубок Світу', 'Кубок IBU', 'Чемпіонат Світу'],
-    'Види спорту': ['Бокс', 'Теніс', 'MMA', 'Футзал'],
-    'Турніри': ['Клубний чемпіонат світу 2025'],
-  };
-
   const quillModules = {
     toolbar: [
-      [{ 'header': [1, 2, 3, false] }],
+      [{ header: [1, 2, 3, false] }],
       ['bold', 'italic', 'underline', 'strike'],
-      [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-      ['link', 'image', 'video'], // додаємо кнопку вставки відео
-      ['clean']
-    ]
+      [{ list: 'ordered' }, { list: 'bullet' }],
+      ['link', 'image', 'video'],
+      ['clean'],
+    ],
   };
 
   const handleCategoryChange = (e) => {
     const newCategory = e.target.value;
     setCategory(newCategory);
-    setSections([]); // скидаємо при зміні категорії
-  };
-
-  const handleSectionToggle = (sec) => {
-    setSections((prev) =>
-      prev.includes(sec)
-        ? prev.filter((s) => s !== sec)
-        : [...prev, sec]
-    );
+    // НЕ очищаємо sections — щоб зберігались усі обрані раніше
   };
 
   const handleImageChange = (e) => {
@@ -87,12 +66,27 @@ const EditNewsForm = ({ news, onEdit, onClose }) => {
       updatedImageUrl = await getDownloadURL(imageRef);
     }
 
+    // Формуємо структуру категорій із вибраних секцій
+    const categories = Object.entries(sectionsByCategory)
+      .map(([cat, secs]) => {
+        const filtered = secs.filter((s) => sections.includes(s));
+        return filtered.length ? { category: cat, sections: filtered } : null;
+      })
+      .filter(Boolean);
+
+    // Основна категорія — за першою обраною секцією
+    const firstSection = sections[0];
+    const mainCategory = Object.entries(sectionsByCategory).find(([_, secs]) =>
+      secs.includes(firstSection)
+    )?.[0] || '';
+
     const updatedNews = {
       ...news,
       title,
       content,
-      category,
       sections,
+      categories,           // нова структура
+      category: mainCategory, // для сумісності
       topNews,
       image: updatedImageUrl,
       author,
@@ -104,11 +98,10 @@ const EditNewsForm = ({ news, onEdit, onClose }) => {
   return (
     <form onSubmit={handleSubmit}>
       <div className="panel">
-                    <h1>Редагувати новину</h1>
-                    </div>
+        <h1>Редагувати новину</h1>
+      </div>
       <table className="edit-news-table">
         <tbody>
-          
           <tr>
             <td><label>Заголовок:</label></td>
             <td><input type="text" value={title} onChange={(e) => setTitle(e.target.value)} required /></td>
@@ -118,7 +111,7 @@ const EditNewsForm = ({ news, onEdit, onClose }) => {
             <td>
               <select value={category} onChange={handleCategoryChange} required>
                 <option value="">Оберіть категорію</option>
-                {Object.keys(sectionsByCategory).map(cat => (
+                {Object.keys(sectionsByCategory).map((cat) => (
                   <option key={cat} value={cat}>{cat}</option>
                 ))}
               </select>
@@ -130,22 +123,18 @@ const EditNewsForm = ({ news, onEdit, onClose }) => {
               <tr>
                 <td><label>Розділи:</label></td>
                 <td>
-                  {sectionsByCategory[category].map((sec) => (
-                    <label key={sec} style={{ display: 'block', marginBottom: '5px' }}>
-                      <input
-                        type="checkbox"
-                        value={sec}
-                        checked={sections.includes(sec)}
-                        onChange={() => handleSectionToggle(sec)}
-                      />
-                      {sec}
-                    </label>
-                  ))}
+                  <div style={{ maxHeight: '200px', overflowY: 'auto', border: '1px solid #ccc', padding: '5px' }}>
+                    <SectionSelector
+                      category={category}
+                      selectedSections={sections}
+                      setSelectedSections={setSections}
+                    />
+                  </div>
                 </td>
               </tr>
               <tr>
                 <td><strong>Вибрані розділи:</strong></td>
-                <td>{sections.join(', ') || 'Жодного розділу не вибрано'}</td>
+                <td>{sections.join(', ') || 'Жодного не вибрано'}</td>
               </tr>
             </>
           )}
@@ -160,8 +149,14 @@ const EditNewsForm = ({ news, onEdit, onClose }) => {
           <tr>
             <td><label>Зміст статті:</label></td>
             <td>
-                          <ReactQuill value={content} onChange={setContent} placeholder="Напишіть зміст статті..." required modules={quillModules} />
-                        </td>
+              <ReactQuill
+                value={content}
+                onChange={setContent}
+                placeholder="Напишіть зміст статті..."
+                required
+                modules={quillModules}
+              />
+            </td>
           </tr>
           <tr>
             <td><label>Автор:</label></td>
@@ -192,10 +187,3 @@ const EditNewsForm = ({ news, onEdit, onClose }) => {
 };
 
 export default EditNewsForm;
-
-
-
-
-
-
-

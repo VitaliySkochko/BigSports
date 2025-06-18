@@ -49,7 +49,7 @@ export const ClubInfoMap = {
     website: 'https://fcdynamo.com',
     achievements: `
     <strong> Досягнення:</strong><br/> 
-      <strong>Чемпіонат України:</strong> Чемпіон (16) — 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2003, 2004, 2007, 2009, 2015, 2016, 2021<br/>
+      <strong>Чемпіонат України:</strong> Чемпіон (16) — 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2003, 2004, 2007, 2009, 2015, 2016, 2021, 2025<br/>
       <strong>Кубок України:</strong> Володар (13)- 1994, 1996, 1998, 1999, 2000, 2003, 2005, 2006, 2007, 2014, 2015, 2020, 2021<br/>
       <strong>Суперкубок України:</strong> Володар (9)- 2004, 2006, 2007, 2009, 2011, 2016, 2018, 2019, 2020<br/>
       <strong>Чемпіонат СРСР:</strong> Чемпіон (13) - 1961, 1966, 1967, 1968, 1971, 1974, 1975, 1977, 1980, 1981, 1985, 1986, 1990<br/>
@@ -67,13 +67,13 @@ export const ClubInfoMap = {
     city: 'Донецьк, Україна',
     stadium: '«Донбас Арена», «Арена Львів» (Львів)',
     president: 'Рінат Ахметов',
-    coach: 'Маріно Пушич',
+    coach: 'Арда Туран',
     league: 'Прем\'єр-ліга',
     website: 'https://shakhtar.com',
     achievements: `
     <strong> Досягнення:</strong><br/> 
       <strong>Чемпіонат України:</strong> Чемпіон (15) — 2001-02, 2004-05, 2005-06, 2007-08, 2009-10, 2010-11, 2011-12, 2012-13, 2013-14, 2016-17, 2017-18, 2018-19, 2019-20, 2022-23, 2023-24<br/>
-      <strong>Кубок України:</strong> Володар (14)- 1994-95, 1996-97, 2000-01, 2001-02, 2003-04, 2007-08, 2010-11, 2011-12, 2012-13, 2015-16, 2016-17, 2017-18, 2018-19, 2023-24<br/>
+      <strong>Кубок України:</strong> Володар (14)- 1994-95, 1996-97, 2000-01, 2001-02, 2003-04, 2007-08, 2010-11, 2011-12, 2012-13, 2015-16, 2016-17, 2017-18, 2018-19, 2023-24, 2024-25<br/>
       <strong>Суперкубок України:</strong> Володар (9)- 2005, 2008, 2010, 2012, 2013, 2014, 2015, 2017, 2021<br/>
       <strong>Кубок СРСР:</strong> Володар (4) - 1961, 1962, 1980, 1983<br/>
       <strong>Суперкубок СРСР:</strong> Володар (1) - 1984<br/>
@@ -89,12 +89,12 @@ export const ClubInfoMap = {
     city: 'Олександрія, Україна',
     stadium: 'КСК «Ніка»',
     president: 'Сергій Кузьменко',
-    coach: 'Руслан Ротань',
+    coach: 'Кирило Нестеренко',
     league: 'Прем\'єр-ліга',
-    website: 'https:/fco.com.ua',
+    website: 'https://fco.com.ua',
     achievements: `
     <strong> Досягнення:</strong><br/> 
-      <strong>Чемпіонат України:</strong> Бронзовий призер (1) - 2018/19<br/>
+      <strong>Чемпіонат України:</strong> Срібний призер (1) - 2024/25, Бронзовий призер (1) - 2018/19<br/>
       <strong>Чемпіонат Першої Ліги:</strong> Чемпіон (2) - 2010/11, 2014/15, Срібний призер (1) - 2013/14, Бронзовий призер (4) - 1993/94, 2000/01, 2008/09, 2012/13<br/>
       <strong>Чемпіонат Другої Ліги:</strong> Срібний призер (1) - 2005/06, Бронзовий призер (1) - 2004/05<br/>
     `
@@ -107,9 +107,9 @@ export const ClubInfoMap = {
     city: 'Кривий Ріг, Україна',
     stadium: '«Гірник»',
     president: 'Костянтин Караманіц',
-    coach: 'Юрій Вернидуб',
+    coach: 'Патрік ван Леувен',
     league: 'Прем\'єр-ліга',
-    website: 'https:/fckryvbas.com',
+    website: 'https://fckryvbas.com',
     achievements: `
     <strong> Досягнення:</strong><br/> 
       <strong>Чемпіонат України:</strong> Бронзовий призер (3) - 1998/1999, 1999/2000, 2023/2024<br/>
@@ -123,34 +123,15 @@ export const ClubInfoMap = {
     city: 'Луганськ, Україна',
     stadium: '«Авангард» (Луганськ), «Динамо» ім. В. Лобановського (Київ)',
     president: 'Євген Геллер',
-    coach: 'Младен Бартулович (в. о.)',
+    coach: 'Віктор Скрипник',
     league: 'Прем\'єр-ліга',
-    website: 'https://zarya-lugansk.com',
+    website: 'https://fczorya.com',
     achievements: `
     <strong> Досягнення:</strong><br/> 
       <strong>Чемпіонат України:</strong> Бронзовий призер (4) - 2016/17, 2019/20, 2020/21, 2022/23<br/>
       <strong>Кубок України:</strong> Фіналіст (2) - 2015/16, 2020/21<br/>
       <strong>Чемпіонат Першої Ліги:</strong> Чемпіон (1) - 2005/06, Бронзовий призер (1) - 2004/05<br/>
       <strong>Чемпіонат Другої Ліги:</strong> Чемпіон (1) - 2002/03, Срібний призер (1) - 1998/99, Бронзовий призер (1) - 1999/00<br/>
-    `
-  },
-
-  'Чорноморець': {
-    logo: chornomoretsLogo,
-    name: 'Чорноморець',
-    founded: '1936',
-    city: 'Одеса, Україна',
-    stadium: '«Чорноморець»',
-    president: 'Леонід Клімов',
-    coach: 'Олександр Кучер',
-    league: 'Прем\'єр-ліга',
-    website: 'https://chornomorets.ua/',
-    achievements: `
-    <strong> Досягнення:</strong><br/> 
-      <strong>Чемпіонат України:</strong> Срібний призер (2) - 1994/1995, 1995/1996, Бронзовий призер (3) - 1992/1993, 1993/1994, 2005/2006<br/>
-      <strong>Кубок України:</strong> Володар (2) - 1992, 1993/1994, Фіналіст (1) - 2012/2013<br/>
-      <strong>Чемпіонат Першої Ліги:</strong> Срібний призер (4) - 1998/1999, 2001/2002, 2010/2011, 2020/2021<br/>
-      <strong>Кубок Інтертото:</strong> Фіналіст (1) - 2007<br/>
     `
   },
 
@@ -161,7 +142,7 @@ export const ClubInfoMap = {
     city: 'Київ, Україна',
     stadium: '«Оболонь-Арена»',
     president: 'Олександр Слободян',
-    coach: 'Валерій Іващенко',
+    coach: '-',
     league: 'Прем\'єр-ліга',
     website: 'https://fc.obolon.ua',
     achievements: `
@@ -195,7 +176,7 @@ export const ClubInfoMap = {
     city: 'Львів, Україна',
     stadium: '«Арена Львів»',
     president: 'Юлія Думанська',
-    coach: 'Віталій Пономарьов',
+    coach: 'Іван Федик',
     league: 'Прем\'єр-ліга',
     website: 'https://fcrukh.com',
     achievements: `
@@ -212,7 +193,7 @@ export const ClubInfoMap = {
     city: 'Черкаси, Україна',
     stadium: '«Черкаси-Арена»',
     president: 'Віктор Кравченко',
-    coach: 'Роман Григорчук',
+    coach: 'Віталій Пономарьов ',
     league: 'Прем\'єр-ліга',
     website: 'https://fc-lnz.com',
     achievements: `
@@ -237,42 +218,6 @@ export const ClubInfoMap = {
     `
   },
 
-  'Інгулець': {
-    logo: ingulecLogo,
-    name: 'Інгулець',
-    founded: '2013',
-    city: 'Петрове, Україна',
-    stadium: '«Інгулець»',
-    president: 'Олександр Поворознюк',
-    coach: 'Василь Кобін',
-    league: 'Прем\'єр-ліга',
-    website: 'https://inhulets.com',
-    achievements: `
-    <strong> Досягнення:</strong><br/> 
-      <strong>Кубок України:</strong> Фіналіст (1) - 2018/19<br/>
-      <strong>Чемпіонат Першої Ліги:</strong> Чемпіон (1) - 2023/24, Бронзовий призер (1) -  2019/20<br/>
-      <strong>Чемпіонат Другої Ліги:</strong> Бронзовий призер  (1) - 2015/16<br/>
-    `
-  },
-
-  'Ворскла': {
-    logo: vorsklaLogo,
-    name: 'Ворскла',
-    founded: '5 січня 1955',
-    city: 'Полтава, Україна',
-    stadium: '«Ворскла» ім. Олексія Бутовського',
-    president: 'Костянтин Жеваго',
-    coach: 'Юрій Максимов',
-    league: 'Прем\'єр-ліга',
-    website: 'https://vorskla.com.ua',
-    achievements: `
-    <strong> Досягнення:</strong><br/> 
-      <strong>Чемпіонат України:</strong> Бронзовий призер (2) - 1996/97, 2017/18<br/>
-      <strong>Кубок України:</strong> Володар (1) - 2008/09, Фіналіст (2) - 2019/20, 2023/24<br/>
-      <strong>Суперкубок України:</strong> Фіналіст (1) - 2009<br/>
-    `
-  },
-
   'Полісся': {
     logo: polissyaLogo,
     name: 'Полісся',
@@ -280,30 +225,13 @@ export const ClubInfoMap = {
     city: 'Житомир, Україна',
     stadium: 'Центральний',
     president: 'Геннадій Буткевич',
-    coach: 'Імад Ашур',
+    coach: 'Руслан Ротань',
     league: 'Прем\'єр-ліга',
     website: 'https://polissyafc.com',
     achievements: `
     <strong> Досягнення:</strong><br/> 
       <strong>Чемпіонат Першої Ліги:</strong> Чемпіон (1) - 2022/23<br/>
       <strong>Чемпіонат Другої Ліги:</strong> Чемпіон (1) - 2000-01, Срібний призер  (2) - 1992/93, 2019/20<br/>
-    `
-  },
-
-  'Лівий Берег': {
-    logo: lberigLogo,
-    name: 'Лівий Берег',
-    founded: '2017',
-    city: 'Київ, Україна',
-    stadium: 'Арена «Лівий берег»',
-    president: 'Микола Лавренко',
-    coach: 'Віталій Первак',
-    league: 'Прем\'єр-ліга',
-    website: 'https://fclb.com.ua',
-    achievements: `
-    <strong> Досягнення:</strong><br/> 
-      <strong>Чемпіонат Першої Ліги:</strong> Бронзовий призер (1) - 2023/24<br/>
-      <strong>Чемпіонат Другої Ліги:</strong> Срібний призер  (1) - 2021/22<br/>
     `
   },
 
@@ -324,7 +252,144 @@ export const ClubInfoMap = {
     `
   },
 
+  'Епіцентр': {
+    logo: epitsenterLogo,
+    name: 'Епіцентр',
+    founded: '2019',
+    city: "Кам'янець-Подільський, Україна",
+    stadium: 'імені Г. Тонкочеєва',
+    president: 'Іван Черноног',
+    coach: 'Сергій Нагорняк',
+    league: 'Перша ліга',
+    website: 'https://fcepicentr.com.ua',
+    achievements: `
+    <strong> Досягнення:</strong><br/> 
+      <strong>Чемпіонат Першої Ліги:</strong> Чемпіон (1) - 2024/25<br/>
+    `
+  },
+
+    'Металіст 1925': {
+    logo: metalist1925Logo,
+    name: 'Металіст 1925',
+    founded: '17 серпня 2016 року',
+    city: "Харків, Україна",
+    stadium: '«Металіст»',
+    president: 'Володимир Носов',
+    coach: '-',
+    league: 'Перша ліга',
+    website: 'https://metalist1925.com',
+    achievements: `
+    <strong> Досягнення:</strong><br/> 
+      <strong>Чемпіонат Першої Ліги:</strong> Бронзовий призер (1) - 2020/21<br/>
+      <strong>Чемпіонат Другої Ліги:</strong> Бронзовий призер (1) - 2017/18<br/>
+    `
+  },
+
+    'Полтава': {
+    logo: poltavaLogo,
+    name: 'Полтава',
+    founded: '2011',
+    city: "Полтава, Україна",
+    stadium: '«Молодіжний»',
+    president: 'Сергій Іващенко',
+    coach: 'Володимир Сисенко',
+    league: 'Перша ліга',
+    website: 'https://scpoltava.com',
+    achievements: `
+    <strong> Досягнення:</strong><br/> 
+     <strong>-</strong> 
+    `
+  },
+
+  'Кудрівка': {
+    logo: kudrivkaLogo,
+    name: 'Кудрівка',
+    founded: '1982, 2006',
+    city: "Кудрівка, Україна",
+    stadium: '«Кудрівка-Арена»',
+    president: 'Роман Солодаренко',
+    coach: 'Василь Баранов',
+    league: 'Перша ліга',
+    website: 'https://kudrivka.com.ua',
+    achievements: `
+    <strong> Досягнення:</strong><br/> 
+      <strong>-</strong> 
+    `
+  },
+
   /*-----ПЕРША ЛІГА-----*/
+
+   'Лівий Берег': {
+    logo: lberigLogo,
+    name: 'Лівий Берег',
+    founded: '2017',
+    city: 'Київ, Україна',
+    stadium: 'Арена «Лівий берег»',
+    president: 'Микола Лавренко',
+    coach: 'Андрій Гаврюшов',
+    league: 'Прем\'єр-ліга',
+    website: 'https://fclb.com.ua',
+    achievements: `
+    <strong> Досягнення:</strong><br/> 
+      <strong>Чемпіонат Першої Ліги:</strong> Бронзовий призер (1) - 2023/24<br/>
+      <strong>Чемпіонат Другої Ліги:</strong> Срібний призер  (1) - 2021/22<br/>
+    `
+  },
+
+    'Ворскла': {
+    logo: vorsklaLogo,
+    name: 'Ворскла',
+    founded: '5 січня 1955',
+    city: 'Полтава, Україна',
+    stadium: '«Ворскла» ім. Олексія Бутовського',
+    president: 'Костянтин Жеваго',
+    coach: 'Юрій Максимов',
+    league: 'Прем\'єр-ліга',
+    website: 'https://vorskla.com.ua',
+    achievements: `
+    <strong> Досягнення:</strong><br/> 
+      <strong>Чемпіонат України:</strong> Бронзовий призер (2) - 1996/97, 2017/18<br/>
+      <strong>Кубок України:</strong> Володар (1) - 2008/09, Фіналіст (2) - 2019/20, 2023/24<br/>
+      <strong>Суперкубок України:</strong> Фіналіст (1) - 2009<br/>
+    `
+  },
+
+   'Інгулець': {
+    logo: ingulecLogo,
+    name: 'Інгулець',
+    founded: '2013',
+    city: 'Петрове, Україна',
+    stadium: '«Інгулець»',
+    president: 'Олександр Поворознюк',
+    coach: 'Василь Кобін',
+    league: 'Прем\'єр-ліга',
+    website: 'https://inhulets.com',
+    achievements: `
+    <strong> Досягнення:</strong><br/> 
+      <strong>Кубок України:</strong> Фіналіст (1) - 2018/19<br/>
+      <strong>Чемпіонат Першої Ліги:</strong> Чемпіон (1) - 2023/24, Бронзовий призер (1) -  2019/20<br/>
+      <strong>Чемпіонат Другої Ліги:</strong> Бронзовий призер  (1) - 2015/16<br/>
+    `
+  },
+
+   'Чорноморець': {
+    logo: chornomoretsLogo,
+    name: 'Чорноморець',
+    founded: '1936',
+    city: 'Одеса, Україна',
+    stadium: '«Чорноморець»',
+    president: 'Леонід Клімов',
+    coach: 'Олександр Кучер',
+    league: 'Прем\'єр-ліга',
+    website: 'https://chornomorets.ua/',
+    achievements: `
+    <strong> Досягнення:</strong><br/> 
+      <strong>Чемпіонат України:</strong> Срібний призер (2) - 1994/1995, 1995/1996, Бронзовий призер (3) - 1992/1993, 1993/1994, 2005/2006<br/>
+      <strong>Кубок України:</strong> Володар (2) - 1992, 1993/1994, Фіналіст (1) - 2012/2013<br/>
+      <strong>Чемпіонат Першої Ліги:</strong> Срібний призер (4) - 1998/1999, 2001/2002, 2010/2011, 2020/2021<br/>
+      <strong>Кубок Інтертото:</strong> Фіналіст (1) - 2007<br/>
+    `
+  },
 
    'Буковина': {
     logo: bukovynaLogo,
@@ -375,37 +440,7 @@ export const ClubInfoMap = {
     `
   },
 
-  'Епіцентр': {
-    logo: epitsenterLogo,
-    name: 'Епіцентр',
-    founded: '2019',
-    city: "Кам'янець-Подільський, Україна",
-    stadium: 'імені Г. Тонкочеєва',
-    president: 'Іван Черноног',
-    coach: 'Сергій Нагорняк',
-    league: 'Перша ліга',
-    website: 'https://fcepicentr.com.ua',
-    achievements: `
-    <strong> Досягнення:</strong><br/> 
-      <strong>-</strong> 
-    `
-  },
-
-  'Кремінь': {
-    logo: kreminLogo ,
-    name: 'Кремінь',
-    founded: '1959, 1986, 2003',
-    city: "Кременчук, Україна",
-    stadium: '«Кремінь-Арена»',
-    president: 'Сергій Ковнір',
-    coach: 'Ігор Климовський',
-    league: 'Перша ліга',
-    website: 'https://fckremen.com.ua',
-    achievements: `
-    <strong> Досягнення:</strong><br/> 
-      <strong>Чемпіонат Другої Ліги:</strong> Чемпіон  (1) - 2018/19, Бронзовий призер (3) - 2009/10, 2014/15, 2016/17<br/>
-    `
-  },
+  
 
   'ЮКСА': {
     logo: yuksaLogo,
@@ -417,38 +452,6 @@ export const ClubInfoMap = {
     coach: 'Дмитро Чирикал',
     league: 'Перша ліга',
     website: 'https://ucsa.com.ua',
-    achievements: `
-    <strong> Досягнення:</strong><br/> 
-      <strong>-</strong> 
-    `
-  },
-
-  'Полтава': {
-    logo: poltavaLogo,
-    name: 'Полтава',
-    founded: '2011',
-    city: "Полтава, Україна",
-    stadium: '«Молодіжний»',
-    president: 'Сергій Іващенко',
-    coach: 'Володимир Сисенко',
-    league: 'Перша ліга',
-    website: 'https://scpoltava.com',
-    achievements: `
-    <strong> Досягнення:</strong><br/> 
-     <strong>-</strong> 
-    `
-  },
-
-  'Кудрівка': {
-    logo: kudrivkaLogo,
-    name: 'Кудрівка',
-    founded: '1982, 2006',
-    city: "Кудрівка, Україна",
-    stadium: '«Кудрівка-Арена»',
-    president: 'Роман Солодаренко',
-    coach: 'Василь Баранов',
-    league: 'Перша ліга',
-    website: 'https://kudrivka.com.ua',
     achievements: `
     <strong> Досягнення:</strong><br/> 
       <strong>-</strong> 
@@ -468,23 +471,6 @@ export const ClubInfoMap = {
     achievements: `
     <strong> Досягнення:</strong><br/> 
       <strong>-</strong> 
-    `
-  },
-
-  'Металіст 1925': {
-    logo: metalist1925Logo,
-    name: 'Металіст 1925',
-    founded: '17 серпня 2016 року',
-    city: "Харків, Україна",
-    stadium: '«Металіст»',
-    president: 'Володимир Носов',
-    coach: 'Патрік ван Леувен',
-    league: 'Перша ліга',
-    website: 'https://metalist1925.com',
-    achievements: `
-    <strong> Досягнення:</strong><br/> 
-      <strong>Чемпіонат Першої Ліги:</strong> Бронзовий призер (1) - 2020/21<br/>
-      <strong>Чемпіонат Другої Ліги:</strong> Бронзовий призер (1) - 2017/18<br/>
     `
   },
 
@@ -537,21 +523,6 @@ export const ClubInfoMap = {
     `
   },
 
-  'Металург': {
-    logo: metalurhLogo,
-    name: 'Металург',
-    founded: '2017',
-    city: "Запоріжжя, Україна",
-    stadium: '«Славутич-Арена»',
-    president: 'Максим Лупашко',
-    coach: 'Ілля Близнюк',
-    league: 'Перша ліга',
-    website: '',
-    achievements: `
-    <strong> Досягнення:</strong><br/> 
-      <strong>Чемпіонат Другої Ліги:</strong> Бронзовий призер (1) - 2018/19<br/>
-    `
-  },
 
   'Прикарпаття': {
     logo: prykarpattiaLogo,
@@ -569,21 +540,6 @@ export const ClubInfoMap = {
     `
   },
 
-  'Діназ': {
-    logo: dinazLogo,
-    name: 'Діназ',
-    founded: '1999',
-    city: "Вишгород, Україна",
-    stadium: '«Діназ» ',
-    president: 'Роман Капаністий',
-    coach: 'Олександр Рябоконь',
-    league: 'Перша ліга',
-    website: '',
-    achievements: `
-    <strong> Досягнення:</strong><br/> 
-      <strong>Чемпіонат Другої Ліги:</strong> Бронзовий призер (1) - 2020/21<br/>
-    `
-  },
 
   'Минай': {
     logo: minaiLogo,
@@ -602,8 +558,21 @@ export const ClubInfoMap = {
     `
   },
 
-
-  /*-----ДРУГА ЛІГА-----*/
+  'Пробій': {
+    logo: probiyLogo,
+    name: 'Пробій',
+    founded: '1924',
+    city: "Городенка, Україна",
+    stadium: '«Пробій-Арена»',
+    president: 'Віталій Шевага',
+    coach: 'Володимир Ковалюк',
+    league: 'Друга ліга',
+    website: 'https://nkprobiy.if.ua',
+    achievements: `
+    <strong> Досягнення:</strong><br/> 
+      <strong>Чемпіонат Другої Ліги:</strong> Чемпіон (1) - 2024/25<br/>
+    `
+  },
 
   'Чернігів': {
     logo: chernihivLogo ,
@@ -617,7 +586,58 @@ export const ClubInfoMap = {
     website: 'https://chernigiv.ua',
     achievements: `
     <strong> Досягнення:</strong><br/> 
-      <strong>-</strong> 
+      <strong>Чемпіонат Другої Ліги:</strong> Бронзовий призер (1) - 2024/25<br/>
+    `
+  },
+
+
+  /*-----ДРУГА ЛІГА-----*/
+
+   'Металург': {
+    logo: metalurhLogo,
+    name: 'Металург',
+    founded: '2017',
+    city: "Запоріжжя, Україна",
+    stadium: '«Славутич-Арена»',
+    president: 'Максим Лупашко',
+    coach: 'Ілля Близнюк',
+    league: 'Перша ліга',
+    website: '',
+    achievements: `
+    <strong> Досягнення:</strong><br/> 
+      <strong>Чемпіонат Другої Ліги:</strong> Бронзовий призер (1) - 2018/19<br/>
+    `
+  },
+
+   'Діназ': {
+    logo: dinazLogo,
+    name: 'Діназ',
+    founded: '1999',
+    city: "Вишгород, Україна",
+    stadium: '«Діназ» ',
+    president: 'Роман Капаністий',
+    coach: 'Олександр Рябоконь',
+    league: 'Перша ліга',
+    website: '',
+    achievements: `
+    <strong> Досягнення:</strong><br/> 
+      <strong>Чемпіонат Другої Ліги:</strong> Бронзовий призер (1) - 2020/21<br/>
+    `
+  },
+
+  'Кремінь': {
+    logo: kreminLogo ,
+    name: 'Кремінь',
+    founded: '1959, 1986, 2003',
+    city: "Кременчук, Україна",
+    stadium: '«Кремінь-Арена»',
+    president: 'Сергій Ковнір',
+    coach: 'Ігор Климовський',
+    league: 'Перша ліга',
+    website: 'https://fckremen.com.ua',
+    achievements: `
+    <strong> Досягнення:</strong><br/> 
+      <strong>Чемпіонат Другої Ліги:</strong> Чемпіон  (1) - 2018/19, Бронзовий призер (3) - 2009/10, 2014/15, 2016/17<br/>
     `
   },
 
@@ -638,21 +658,7 @@ export const ClubInfoMap = {
     `
   },
 
-  'Пробій': {
-    logo: probiyLogo,
-    name: 'Пробій',
-    founded: '1924',
-    city: "Городенка, Україна",
-    stadium: '«Пробій-Арена»',
-    president: 'Віталій Шевага',
-    coach: 'Володимир Ковалюк',
-    league: 'Друга ліга',
-    website: 'https://nkprobiy.if.ua',
-    achievements: `
-    <strong> Досягнення:</strong><br/> 
-      <strong>-</strong> 
-    `
-  },
+  
 
   'Реал Фарма': {
     logo: realPharmaLogo,
