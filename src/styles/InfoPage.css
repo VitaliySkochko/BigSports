@@ -1,0 +1,30 @@
+.info-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #222;
+  background-color: #fff;
+}
+
+.info-page h1 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #000;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 0.5rem;
+}
+
+.info-page p {
+  margin-bottom: 1.2rem;
+}
+
+.info-page a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.info-page a:hover {
+  text-decoration: underline;
+}

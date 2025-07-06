@@ -22,13 +22,19 @@ const Footer = () => {
           <Link to="/eurocups">Єврокубки</Link>
           <Link to="/biathlon">Біатлон</Link>
           <Link to="/sports">Види спорту</Link>
-          <Link to="/tournaments">Турніри</Link>
+          <Link to="/tournaments">Турніри</Link>         
         </div>
 
         {/* Соцмережі */}
         <div className="footer-social">
           <p>Соціальні мережі:</p>
           <SocialLinks />
+        </div>
+
+        <div className='footer-links'>
+          <Link to="/about">Про сайт</Link>
+          <Link to="/contacts">Контакти</Link>
+          <Link to="/privacy-policy">Політика конфіденційності</Link>
         </div>
 
         {/* Контакти */}
@@ -43,6 +49,7 @@ const Footer = () => {
 };
 
 export default Footer;
+
 
 
 

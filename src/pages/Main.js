@@ -14,6 +14,9 @@ import ProfilePage from '../components/ProfilePage';
 import SearchResults from '../components/SearchResults';
 import RequireAuth from '../components/RequireAuth';
 import Championships from '../sections/Championships';
+import About from '../info/About';
+import Contacts from '../info/Contacts';
+import PrivacyPolicy from '../info/PrivacyPolicy';
 
 const Main = () => { 
   return (
@@ -103,6 +106,10 @@ const Main = () => {
         <Route path="/news/:id" element={<NewsDetails />} />
         <Route path="/search" element={<SearchResults />} /> 
         <Route path="/profile/:userId" element={<ProfilePage />} /> 
+
+        <Route path="/about" element={<About />} />
+<Route path="/contacts" element={<Contacts />} />
+<Route path="/privacy-policy" element={<PrivacyPolicy />} />
 
         <Route path="/admin" element={
           <RequireAuth adminOnly={true}>
