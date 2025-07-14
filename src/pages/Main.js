@@ -10,7 +10,7 @@ import Tournaments from '../sections/Tournaments';
 import Sports from '../sections/Sports';
 import Biathlon from '../sections/Biathlon';
 import NewsDetails from '../news/NewsDetails';
-import ProfilePage from '../components/ProfilePage';
+import ProfilePage from '../profile/ProfilePage';
 import SearchResults from '../components/SearchResults';
 import RequireAuth from '../components/RequireAuth';
 import Championships from '../sections/Championships';
@@ -108,8 +108,8 @@ const Main = () => {
         <Route path="/profile/:userId" element={<ProfilePage />} /> 
 
         <Route path="/about" element={<About />} />
-<Route path="/contacts" element={<Contacts />} />
-<Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/contacts" element={<Contacts />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
 
         <Route path="/admin" element={
           <RequireAuth adminOnly={true}>

@@ -25,7 +25,12 @@ const GeneralNewsList = ({ newsList, newsPerPage }) => {
             </Link>
             <div className="news-meta-general">
               <span className="news-date-general">{news.day}.{news.month}.{news.year} {news.time}</span>
-              <span className="news-category-general">{news.category}</span>
+              <span className="news-category-general">
+  {Array.isArray(news.sections) && news.sections.length > 0
+    ? news.sections[0]
+    : news.category}
+</span>
+
             </div>
           </div>
         </div>

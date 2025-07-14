@@ -1,7 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useNews } from '../components/NewsContext';
-import { doc, updateDoc, increment, getDoc } from 'firebase/firestore';
+import {
+  doc,
+  updateDoc,
+  increment,
+  getDoc,
+  collection,
+  query,
+  where,
+  getDocs,
+} from 'firebase/firestore';
 import { db } from '../firebase';
 import Comments from './Comments';
 import CommentForm from './CommentForm';
@@ -13,13 +22,14 @@ const NewsDetails = () => {
   const { newsList } = useNews();
   const { id } = useParams();
   const [views, setViews] = useState(0);
+  const [authorId, setAuthorId] = useState(null);
   const news = newsList.find((n) => n.id === id);
 
   useEffect(() => {
     const logView = async () => {
       if (!news) return;
 
-      // 1. Amplitude: запис події
+      // Amplitude: лог події
       amplitude.track('News Viewed', {
         id: news.id,
         title: news.title,
@@ -29,11 +39,11 @@ const NewsDetails = () => {
         time: news.time,
       });
 
-      // 2. Firestore: інкремент лічильника переглядів
+      // Firestore: збільшення лічильника переглядів
       const newsRef = doc(db, 'news', news.id);
       await updateDoc(newsRef, { views: increment(1) });
 
-      // 3. Отримання актуального значення переглядів
+      // Оновлення кількості переглядів
       const updatedSnap = await getDoc(newsRef);
       if (updatedSnap.exists()) {
         const updatedData = updatedSnap.data();
@@ -42,6 +52,24 @@ const NewsDetails = () => {
     };
 
     logView();
+  }, [news]);
+
+  useEffect(() => {
+    const fetchAuthorId = async () => {
+      if (!news || !news.author) return;
+
+      try {
+        const q = query(collection(db, 'users'), where('username', '==', news.author));
+        const snapshot = await getDocs(q);
+        if (!snapshot.empty) {
+          setAuthorId(snapshot.docs[0].id);
+        }
+      } catch (error) {
+        console.error('Помилка при пошуку автора:', error);
+      }
+    };
+
+    fetchAuthorId();
   }, [news]);
 
   if (!news) {
@@ -57,19 +85,37 @@ const NewsDetails = () => {
         <h2 className="single-news-title">{news.title}</h2>
       </div>
 
-      {news.image && (
-        <div className="single-news-image-container">
-          <img src={news.image} alt="news" className="single-news-article-image" />
-        </div>
-      )}
-
       <div className="single-news-content-wrapper">
-        <div className="single-news-content" dangerouslySetInnerHTML={{ __html: news.content }} />
+        <div className="single-news-content">
+          {news.image && (
+            <img
+              src={news.image}
+              alt="news"
+              className="floating-news-image"
+            />
+          )}
+          <div
+            dangerouslySetInnerHTML={{ __html: news.content }}
+          />
+        </div>
 
         <div className="single-news-meta">
-          <span><strong>Автор:</strong> {news.author}</span>
-          <span>{news.day}.{news.month}.{news.year} {news.time}</span>
-          <span><strong>Переглядів:</strong> {views}</span>
+          <span>
+            <strong>Автор:</strong>{' '}
+            {authorId ? (
+              <Link to={`/profile/${authorId}`} className="author-link">
+                {news.author}
+              </Link>
+            ) : (
+              news.author
+            )}
+          </span>
+          <span>
+            {news.day}.{news.month}.{news.year} {news.time}
+          </span>
+          <span>
+            <strong>Переглядів:</strong> {views}
+          </span>
         </div>
       </div>
 
@@ -80,6 +126,9 @@ const NewsDetails = () => {
 };
 
 export default NewsDetails;
+
+
+
 
 
 

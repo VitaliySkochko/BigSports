@@ -16,6 +16,8 @@ import { useUser } from '../components/UserContext';
 import { format } from 'date-fns';
 import '../styles/Comments.css';
 import { FaTrash, FaThumbsUp, FaThumbsDown } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+
 
 const Comments = ({ newsId }) => {
   const [comments, setComments] = useState([]);
@@ -92,7 +94,15 @@ const Comments = ({ newsId }) => {
         {comments.map((comment) => (
           <li key={comment.id} className="comment-item">
             <div className="comment-header">
-              <strong>{comment.username || 'Анонім'}</strong> | {formatDate(comment.timestamp)}
+              {comment.userId ? (
+  <Link to={`/profile/${comment.userId}`} className="comment-author-link">
+    <strong>{comment.username || 'Анонім'}</strong>
+  </Link>
+) : (
+  <strong>{comment.username || 'Анонім'}</strong>
+)}{' '}
+| {formatDate(comment.timestamp)}
+
             </div>
             <p className="comment-body">{comment.comment}</p>
             <div className="comment-actions">

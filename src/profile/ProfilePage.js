@@ -1,8 +1,11 @@
+// Профайл користувача 
+
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { collection, query, where, doc, getDoc, getDocs } from 'firebase/firestore';
 import { db } from '../firebase';
 import '../styles/ProfilePage.css';
+import AdminArticlesList from './AdminArticlesList';
 
 const ProfilePage = () => {
   const { userId } = useParams();
@@ -107,7 +110,12 @@ const ProfilePage = () => {
             )}
           </tbody>
         </table>
-      </div>
+
+{userData.role === 'admin' && (
+  <AdminArticlesList username={userData.username} />
+)}
+</div>
+
     </div>
   );
 };
