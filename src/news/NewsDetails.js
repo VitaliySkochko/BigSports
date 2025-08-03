@@ -120,7 +120,7 @@ const NewsDetails = () => {
       </div>
 
       <CommentForm newsId={news.id} />
-      <Comments newsId={news.id} />
+      <Comments newsId={news.id} /> 
     </div>
   );
 };

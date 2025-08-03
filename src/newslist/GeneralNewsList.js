@@ -19,17 +19,17 @@ const GeneralNewsList = ({ newsList, newsPerPage }) => {
         <div key={news.id} className="news-card-general">
           <img src={news.image} alt={news.title} className="news-image-general" />
           <div className="news-content-general">
-            
+
             <Link to={`/news/${news.id}`} className="news-title-general">
               {news.title}
             </Link>
             <div className="news-meta-general">
               <span className="news-date-general">{news.day}.{news.month}.{news.year} {news.time}</span>
               <span className="news-category-general">
-  {Array.isArray(news.sections) && news.sections.length > 0
-    ? news.sections[0]
-    : news.category}
-</span>
+                {Array.isArray(news.sections) && news.sections.length > 0
+                  ? news.sections[0]
+                  : news.category}
+              </span>
 
             </div>
           </div>

@@ -142,7 +142,7 @@ export const ClubInfoMap = {
     city: 'Київ, Україна',
     stadium: '«Оболонь-Арена»',
     president: 'Олександр Слободян',
-    coach: '-',
+    coach: 'Олександр Антоненко',
     league: 'Прем\'єр-ліга',
     website: 'https://fc.obolon.ua',
     achievements: `
@@ -159,7 +159,7 @@ export const ClubInfoMap = {
     city: 'Ковалівка, Україна',
     stadium: '«Колос»',
     president: 'Андрій Засуха',
-    coach: 'Руслан Костишин (в. о.)',
+    coach: 'Руслан Костишин',
     league: 'Прем\'єр-ліга',
     website: 'https://koloskovalivka.com',
     achievements: `
@@ -260,7 +260,7 @@ export const ClubInfoMap = {
     stadium: 'імені Г. Тонкочеєва',
     president: 'Іван Черноног',
     coach: 'Сергій Нагорняк',
-    league: 'Перша ліга',
+    league: 'Прем\'єр-ліга',
     website: 'https://fcepicentr.com.ua',
     achievements: `
     <strong> Досягнення:</strong><br/> 
@@ -275,7 +275,7 @@ export const ClubInfoMap = {
     city: "Харків, Україна",
     stadium: '«Металіст»',
     president: 'Володимир Носов',
-    coach: '-',
+    coach: 'Младен Бартулович',
     league: 'Перша ліга',
     website: 'https://metalist1925.com',
     achievements: `
@@ -292,7 +292,7 @@ export const ClubInfoMap = {
     city: "Полтава, Україна",
     stadium: '«Молодіжний»',
     president: 'Сергій Іващенко',
-    coach: 'Володимир Сисенко',
+    coach: 'Павло Матвійченко',
     league: 'Перша ліга',
     website: 'https://scpoltava.com',
     achievements: `
@@ -343,7 +343,7 @@ export const ClubInfoMap = {
     city: 'Полтава, Україна',
     stadium: '«Ворскла» ім. Олексія Бутовського',
     president: 'Костянтин Жеваго',
-    coach: 'Юрій Максимов',
+    coach: 'Олександр Бабич',
     league: 'Прем\'єр-ліга',
     website: 'https://vorskla.com.ua',
     achievements: `
@@ -398,7 +398,7 @@ export const ClubInfoMap = {
     city: 'Чернівці, Україна',
     stadium: '«Буковина»',
     president: 'Андрій Сафроняк',
-    coach: 'Григорій Чурілов в.о',
+    coach: 'Сергій Шищенко',
     league: 'Перша ліга',
     website: 'https://bukfc.com',
     achievements: `
@@ -449,7 +449,7 @@ export const ClubInfoMap = {
     city: "Тарасівка, Україна",
     stadium: 'НТК імені Віктора Баннікова',
     president: 'Сергій Леснік',
-    coach: 'Дмитро Чирикал',
+    coach: 'Андерсон Мендес Рібейро',
     league: 'Перша ліга',
     website: 'https://ucsa.com.ua',
     achievements: `
@@ -548,7 +548,7 @@ export const ClubInfoMap = {
     city: "Минай, Україна",
     stadium: '«Минай-Арена»',
     president: 'Валерій Пересоляк',
-    coach: 'Євгеній Калиниченко',
+    coach: '-',
     league: 'Перша ліга',
     website: 'https://fcminaj.com',
     achievements: `
@@ -600,7 +600,7 @@ export const ClubInfoMap = {
     city: "Запоріжжя, Україна",
     stadium: '«Славутич-Арена»',
     president: 'Максим Лупашко',
-    coach: 'Ілля Близнюк',
+    coach: 'Сергій Рудика',
     league: 'Перша ліга',
     website: '',
     achievements: `
@@ -616,7 +616,7 @@ export const ClubInfoMap = {
     city: "Вишгород, Україна",
     stadium: '«Діназ» ',
     president: 'Роман Капаністий',
-    coach: 'Олександр Рябоконь',
+    coach: 'Олександр Головко',
     league: 'Перша ліга',
     website: '',
     achievements: `
@@ -648,7 +648,7 @@ export const ClubInfoMap = {
     city: "Горішні Плавні, Україна",
     stadium: '«Юність»',
     president: 'Петро Каплун',
-    coach: 'Валерій Куценко',
+    coach: 'Павло Ребенок',
     league: 'Друга ліга',
     website: 'https://gornyak-sport.com',
     achievements: `
@@ -667,7 +667,7 @@ export const ClubInfoMap = {
     city: "Одеса, Україна",
     stadium: '«Іван»',
     president: 'Микола Лиховидов',
-    coach: 'Андрій Пархоменко',
+    coach: 'Валентин Полтавець',
     league: 'Друга ліга',
     website: 'https://real-farma.com.ua',
     achievements: `

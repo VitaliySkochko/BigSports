@@ -71,7 +71,7 @@ const Header = () => {
       <div className='header-section-logo'>
         <img src={logo} alt="Site logo" className="logo-header" onClick={handleLogoClick} style={{ cursor: 'pointer' }} />
         <div className='header-section-button'>
-          <SocialLinks/>
+          {/* <SocialLinks/> */}
         <div className="search-bar-wrapper">
   <SearchBar />
 </div>

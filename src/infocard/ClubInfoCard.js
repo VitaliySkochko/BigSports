@@ -17,7 +17,6 @@ const ClubInfoCard = ({ club }) => {
         <p><strong>Стадіон:</strong> {club.stadium}</p>
         <p><strong>Президент:</strong> {club.president}</p>
         <p><strong>Головний тренер:</strong> {club.coach}</p>
-        <p><strong>Ліга:</strong> {club.league}</p>
         <p><strong>Вебсайт:</strong> <a href={club.website} target="_blank" rel="noopener noreferrer">{club.website}</a></p>
       </div>
 
