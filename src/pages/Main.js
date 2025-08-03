@@ -4,7 +4,6 @@ import AdminPanel from '../admin/AdminPanel';
 import Home from '../sections/Home';
 import FootballUkraine from '../sections/FootballUkraine'; 
 import SubsectionContent from '../subsections/SubsectionContent';
-import Сhampionships from '../sections/Championships';
 import EuroCups from '../sections/EuroCups'
 import Tournaments from '../sections/Tournaments';
 import Sports from '../sections/Sports';

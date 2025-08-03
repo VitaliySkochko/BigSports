@@ -13,12 +13,20 @@ const App = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Імітація завантаження — можна замінити на фактичні запити
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 3500); // 2.5 секунди
-    return () => clearTimeout(timer);
-  }, []);
+  const minDuration = 3000; // мінімум 3 сек
+  const start = Date.now();
+
+  // Імітація завантаження даних (замініть на свої проміси)
+  const loadData = Promise.resolve(); // напр. Promise.all([fetchNews(), fetchUser()])
+
+  loadData.finally(() => {
+    const elapsed = Date.now() - start;
+    const left = Math.max(0, minDuration - elapsed);
+    const t = setTimeout(() => setLoading(false), left);
+    return () => clearTimeout(t);
+  });
+}, []);
+
 
   return (
     <Router>

@@ -1,13 +1,36 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/TopNewsSlider.css'; // Стилі окремо
-import { FiChevronLeft, FiChevronRight } from 'react-icons/fi'; // Іконки для кнопок
+import '../styles/TopNewsSlider.css';
+import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 
 const TopNewsSlider = ({ newsList }) => {
-  const topNews = newsList.filter(news => news.topNews).slice(0, 6);
+  // 1) Безпечний вхід
+  const safeList = Array.isArray(newsList) ? newsList : [];
+
+  // 2) Обчислюємо topNews один раз на зміни вхідних даних
+  const topNews = useMemo(
+    () => safeList.filter(n => n?.topNews).slice(0, 6),
+    [safeList]
+  );
+
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  // 3) Коли topNews змінюється, нормалізуємо currentIndex
   useEffect(() => {
+    if (topNews.length === 0) {
+      setCurrentIndex(0);
+      return;
+    }
+    // якщо індекс вийшов за межі — повертаємо в діапазон
+    if (currentIndex >= topNews.length) {
+      setCurrentIndex(topNews.length - 1);
+    }
+  }, [topNews.length]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // 4) Автоперемикання тільки якщо є що гортати
+  useEffect(() => {
+    if (topNews.length < 2) return;
+
     const timer = setInterval(() => {
       setCurrentIndex(prev => (prev + 1) % topNews.length);
     }, 5000);
@@ -16,11 +39,13 @@ const TopNewsSlider = ({ newsList }) => {
   }, [topNews.length]);
 
   const handleNext = () => {
-    setCurrentIndex((currentIndex + 1) % topNews.length);
+    if (topNews.length === 0) return;
+    setCurrentIndex(prev => (prev + 1) % topNews.length);
   };
 
   const handlePrev = () => {
-    setCurrentIndex((currentIndex - 1 + topNews.length) % topNews.length);
+    if (topNews.length === 0) return;
+    setCurrentIndex(prev => (prev - 1 + topNews.length) % topNews.length);
   };
 
   if (topNews.length === 0) {
@@ -29,25 +54,40 @@ const TopNewsSlider = ({ newsList }) => {
 
   const news = topNews[currentIndex];
 
+  // 5) Додаткова перевірка, якщо раптом елемент відсутній або без id
+  if (!news || !news.id) {
+    return <p className="no-top-news">Дані топ-новин тимчасово недоступні.</p>;
+  }
+
   return (
     <div className="top-slider-container">
       <div className="slider-wrapper">
         <Link to={`/news/${news.id}`} className="slider-link">
-          <img src={news.image} alt={news.title} className="slider-image" />
+          {news.image ? (
+            <img src={news.image} alt={news.title || 'news'} className="slider-image" />
+          ) : null}
           <div className="slider-overlay">
             <div className="slider-meta">
-              <span>{news.day}.{news.month}.{news.year}</span>
-              <span>{news.time}</span>
+              <span>{[news.day, news.month, news.year].filter(Boolean).join('.')}</span>
+              {news.time ? <span>{news.time}</span> : null}
             </div>
-            <h2 className="slider-title">{news.title}</h2>
+            <h2 className="slider-title">{news.title || 'Без назви'}</h2>
           </div>
         </Link>
-        <button className="slider-btn prev" onClick={handlePrev}><FiChevronLeft size={30} /></button>
-        <button className="slider-btn next" onClick={handleNext}><FiChevronRight size={30} /></button>
+
+        {topNews.length > 1 && (
+          <>
+            <button className="slider-btn prev" onClick={handlePrev}>
+              <FiChevronLeft size={30} />
+            </button>
+            <button className="slider-btn next" onClick={handleNext}>
+              <FiChevronRight size={30} />
+            </button>
+          </>
+        )}
       </div>
     </div>
   );
 };
 
 export default TopNewsSlider;
-

@@ -89,7 +89,8 @@
 .single-news-meta {
   margin-top: 30px;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .single-news-meta span {
@@ -119,46 +120,70 @@
 }
 
 /* 📱 Мобільні пристрої */
+/* 📱 Мобільні пристрої */
 @media (max-width: 768px) {
-  .single-news-container {
+  .single-news-container { padding: 12px; }
+
+  /* Загальна ширина та відступи */
+  .single-news-content-wrapper {
     padding: 10px;
+    border-radius: 10px;
   }
 
+  /* Заголовок сторінки (над статтею) */
+  .single-news-overlay { padding: 16px; }
+  .single-news-title {
+    /* або фіксоване: 22px; */
+    font-size: clamp(20px, 5.8vw, 26px);
+    line-height: 1.25;
+  }
+
+  /* Текст статті */
+  .single-news-content {
+    /* або фіксоване: 17px; */
+    font-size: clamp(15px, 4.5vw, 18px);
+    line-height: 1.2;
+  }
+
+  /* Текстові елементи всередині HTML-контенту */
+  .single-news-content p { margin: 0 0 14px; }
+  .single-news-content h1 { font-size: clamp(22px, 6.5vw, 28px); margin: 14px 0; }
+  .single-news-content h2 { font-size: clamp(20px, 6vw, 26px); margin: 12px 0; }
+  .single-news-content h3 { font-size: clamp(18px, 5.2vw, 22px); margin: 10px 0; }
+
+  /* Зображення в тілі статті */
   .single-news-content img:not(.floating-news-image) {
     max-width: 100%;
-    margin: 15px auto;
+    margin: 12px auto;
+    border-radius: 8px;
   }
 
-  .single-news-overlay {
-    padding: 15px;
-  }
-
-  .single-news-title {
-    font-size: 28px;
-  }
-
-  .single-news-meta {
-    font-size: 14px;
-  }
-
-  .single-news-content-wrapper {
-    padding: 15px;
-  }
-
+  /* Головне (плаваюче) зображення */
   .floating-news-image {
     float: none;
     display: block;
-    margin: 0 auto 20px auto;
+    margin: 0 auto 16px;
     width: 100%;
     max-width: 100%;
     height: auto;
   }
 
+  /* Метадані під статтею */
+  .single-news-meta {
+    gap: 6px;
+    font-size: 14px;      /* змінюйте тут, якщо треба крупніше/менше */
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 18px;
+  }
+
+  /* Відео */
   .single-news-content iframe {
-    height: 250px;
     width: 100%;
+    height: 220px;        /* змінюйте при потребі */
   }
 }
+
 
 /* 📱 Планшети */
 @media (min-width: 769px) and (max-width: 1024px) {

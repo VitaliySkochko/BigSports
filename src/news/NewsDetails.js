@@ -101,6 +101,9 @@ const NewsDetails = () => {
 
         <div className="single-news-meta">
           <span>
+            {news.day}.{news.month}.{news.year} {news.time}
+          </span>
+          <span>
             <strong>Автор:</strong>{' '}
             {authorId ? (
               <Link to={`/profile/${authorId}`} className="author-link">
@@ -110,9 +113,7 @@ const NewsDetails = () => {
               news.author
             )}
           </span>
-          <span>
-            {news.day}.{news.month}.{news.year} {news.time}
-          </span>
+          
           <span>
             <strong>Переглядів:</strong> {views}
           </span>
