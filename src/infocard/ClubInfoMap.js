@@ -35,6 +35,10 @@ import dinazLogo from '../img/dinazLogo.png';
 import minaiLogo from '../img/minaiLogo.png';
 import probiyLogo from '../img/probiyLogo.jpeg'; 
 import realPharmaLogo from '../img/realPharmaLogo.png'; 
+import lokomotivLogo from '../img/lokomotivLogo.png'; 
+import lisneLogo from '../img/lisneLogo.png'; 
+import skalaLogo from '../img/skala1911Logo.jpg'; 
+import uzhorodLogo from '../img/uzhorodLogo.png';
 
 export const ClubInfoMap = {
   'Динамо Київ': {
@@ -540,24 +544,6 @@ export const ClubInfoMap = {
     `
   },
 
-
-  'Минай': {
-    logo: minaiLogo,
-    name: 'Минай',
-    founded: '2015',
-    city: "Минай, Україна",
-    stadium: '«Минай-Арена»',
-    president: 'Валерій Пересоляк',
-    coach: '-',
-    league: 'Перша ліга',
-    website: 'https://fcminaj.com',
-    achievements: `
-    <strong> Досягнення:</strong><br/> 
-      <strong>Чемпіонат Першої Ліги:</strong> Чемпіони (1) - 2019/20<br/>
-      <strong>Чемпіонат Другої Ліги:</strong> Срібний призер (1) - 2018/19<br/>
-    `
-  },
-
   'Пробій': {
     logo: probiyLogo,
     name: 'Пробій',
@@ -590,10 +576,7 @@ export const ClubInfoMap = {
     `
   },
 
-
-  /*-----ДРУГА ЛІГА-----*/
-
-   'Металург': {
+  'Металург': {
     logo: metalurhLogo,
     name: 'Металург',
     founded: '2017',
@@ -608,6 +591,9 @@ export const ClubInfoMap = {
       <strong>Чемпіонат Другої Ліги:</strong> Бронзовий призер (1) - 2018/19<br/>
     `
   },
+
+
+  /*-----ДРУГА ЛІГА-----*/
 
    'Діназ': {
     logo: dinazLogo,
@@ -625,21 +611,7 @@ export const ClubInfoMap = {
     `
   },
 
-  'Кремінь': {
-    logo: kreminLogo ,
-    name: 'Кремінь',
-    founded: '1959, 1986, 2003',
-    city: "Кременчук, Україна",
-    stadium: '«Кремінь-Арена»',
-    president: 'Сергій Ковнір',
-    coach: 'Ігор Климовський',
-    league: 'Перша ліга',
-    website: 'https://fckremen.com.ua',
-    achievements: `
-    <strong> Досягнення:</strong><br/> 
-      <strong>Чемпіонат Другої Ліги:</strong> Чемпіон  (1) - 2018/19, Бронзовий призер (3) - 2009/10, 2014/15, 2016/17<br/>
-    `
-  },
+  
 
   'Гірник-Спорт': {
     logo: hirnykLogo,
@@ -658,8 +630,6 @@ export const ClubInfoMap = {
     `
   },
 
-  
-
   'Реал Фарма': {
     logo: realPharmaLogo,
     name: 'Реал Фарма',
@@ -673,6 +643,108 @@ export const ClubInfoMap = {
     achievements: `
     <strong> Досягнення:</strong><br/> 
       <strong>-</strong> 
+    `
+  },
+
+  'Локомотив': {
+  logo: lokomotivLogo,
+  name: 'Локомотив',
+  founded: '1919', 
+  city: "Київ, Україна",
+  stadium: '«НТК імені Віктора Баннікова»',
+  president: 'Олександр Єгоров',
+  coach: 'Сергій Карпенко',
+  league: 'Друга ліга',
+  website: 'https://lokomotyv.com/', // якщо немає офіційного сайту — можна залишити '#'
+  achievements: `
+    <strong>Досягнення:</strong><br/> 
+     <strong>-</strong> 
+  `
+},
+
+'Лісне': {
+  logo: lisneLogo,
+  name: 'Лісне',
+  founded: '2023',              
+  city: 'село Лісне, Київська область',           
+  stadium: 'Бузова-Арена',
+  president: 'Віктор Зеленський',
+  coach: 'Олександр Рябоконь',
+  league: 'Друга ліга',
+  website: '',
+  achievements: `
+    <strong>Досягнення:</strong><br/>
+    <strong>-</strong>
+  `
+},
+
+'Скала 1911': {
+  logo: skalaLogo,
+  name: 'Скала 1911',
+  founded: '1911',
+  city: 'Стрий, Україна',
+  stadium: 'Стадіон "Сокіл"',
+  president: 'Олег Канівець', // можна додати реальні дані
+  coach: 'Степан Матвіїв',     // також можна додати тренера
+  league: 'Друга ліга',
+  website: 'http://fcskala.com', // або офіційний ресурс
+  achievements: `
+    <strong>Досягнення:</strong><br/>
+    <strong>-</strong>
+  `
+},
+
+'ФК Ужгород': {
+  logo: uzhorodLogo,
+  name: 'ФК Ужгород',
+  founded: '2015',
+  city: 'Ужгород, Україна',
+  stadium: 'Стадіон "Авангард"',
+  president: 'Рудольф Балажинець', // можна додати реальні дані
+  coach: 'Яромир Лобода',
+  league: 'Друга ліга',
+  website: 'https://fcuzhhorod.com.ua/', 
+  achievements: `
+    <strong>Досягнення:</strong><br/>
+     <strong>-</strong>
+  `
+},
+
+
+
+
+  /*-----Команди на паузі-----*/
+
+  'Кремінь': {
+    logo: kreminLogo ,
+    name: 'Кремінь',
+    founded: '1959, 1986, 2003',
+    city: "Кременчук, Україна",
+    stadium: '«Кремінь-Арена»',
+    president: 'Сергій Ковнір',
+    coach: 'Ігор Климовський',
+    league: 'Перша ліга',
+    website: 'https://fckremen.com.ua',
+    achievements: `
+    <strong> Досягнення:</strong><br/> 
+      <strong>Чемпіонат Другої Ліги:</strong> Чемпіон  (1) - 2018/19, Бронзовий призер (3) - 2009/10, 2014/15, 2016/17<br/>
+    `
+  },
+
+  'Минай': {
+    logo: minaiLogo,
+    name: 'Минай',
+    founded: '2015',
+    city: "Минай, Україна",
+    stadium: '«Минай-Арена»',
+    president: 'Валерій Пересоляк',
+    coach: '-',
+    league: 'Перша ліга',
+    website: 'https://fcminaj.com',
+    achievements: `
+    <strong> Досягнення:</strong><br/> 
+      <strong>Чемпіонат Першої Ліги:</strong> Чемпіони (1) - 2019/20<br/>
+      <strong>Чемпіонат Другої Ліги:</strong> Срібний призер (1) - 2018/19<br/>
     `
   },
 };

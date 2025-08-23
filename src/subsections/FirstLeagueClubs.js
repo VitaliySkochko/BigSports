@@ -17,7 +17,6 @@ import fenixMariupolLogo from '../img/fenixMariupolLogo.png';
 import probiyLogo from '../img/probiyLogo.jpeg'; 
 import prykarpattiaLogo from '../img/prykarpattiaLogo.png';
 import chernihivLogo from '../img/chernihivLogo.png';
-import minaiLogo from '../img/minaiLogo.png';
 import metalurhLogo from '../img/metalurhLogo.png';
 
 const firstLeagueClubs = [
@@ -32,7 +31,6 @@ const firstLeagueClubs = [
     { name: 'Вікторія', image: viktoriyaLogo, link: '/football-ukraine/viktoriya'},
     { name: 'Прикарпаття', image: prykarpattiaLogo, link: '/football-ukraine/prykarpattia' },
     { name: 'Нива', image: nyvaLogo, link: '/football-ukraine/nyva' },
-    //{ name: 'Минай', image: minaiLogo, link: '/football-ukraine/minai' },
     { name: 'Фенікс-Маріуполь', image: fenixMariupolLogo, link: '/football-ukraine/fenix-mariupol' },
     { name: 'Поділля', image: podillyaLogo, link: '/football-ukraine/podillya' },
     { name: 'Пробій', image: probiyLogo, link: '/football-ukraine/probiy' },

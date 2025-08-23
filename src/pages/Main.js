@@ -16,6 +16,7 @@ import Championships from '../sections/Championships';
 import About from '../info/About';
 import Contacts from '../info/Contacts';
 import PrivacyPolicy from '../info/PrivacyPolicy';
+import Archive from '../components/Archive';
 
 const Main = () => { 
   return (
@@ -67,6 +68,10 @@ const Main = () => {
           <Route path="/football-ukraine/hirnyk-sport" element={<SubsectionContent section="Гірник-Спорт" />} />
           <Route path="/football-ukraine/probiy" element={<SubsectionContent section="Пробій" />} />
           <Route path="/football-ukraine/real-pharma" element={<SubsectionContent section="Реал Фарма" />} />
+          <Route path="/football-ukraine/lokomotiv" element={<SubsectionContent section="Локомотив" />} />
+          <Route path="/football-ukraine/lisne" element={<SubsectionContent section="Лісне" />} />
+          <Route path="/football-ukraine/skala-1911" element={<SubsectionContent section="Скала 1911" />} />
+          <Route path="/football-ukraine/uzhorod" element={<SubsectionContent section="ФК Ужгород" />} />
 
 
 
@@ -109,6 +114,7 @@ const Main = () => {
         <Route path="/about" element={<About />} />
         <Route path="/contacts" element={<Contacts />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/archive" element={<Archive />} />
 
         <Route path="/admin" element={
           <RequireAuth adminOnly={true}>

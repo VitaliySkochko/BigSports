@@ -1,5 +1,5 @@
 .info-page {
-  max-width: 800px;
+  max-width: 900px; /* трохи ширше для зручності */
   margin: 0 auto;
   padding: 3rem 1.5rem;
   font-size: 1.1rem;
@@ -8,18 +8,42 @@
   background-color: #fff;
 }
 
+/* Головний заголовок */
 .info-page h1 {
-  font-size: 2rem;
+  font-size: 2.2rem;
   margin-bottom: 1.5rem;
   color: #000;
-  border-bottom: 2px solid #e0e0e0;
+  border-bottom: 3px solid #e0e0e0;
   padding-bottom: 0.5rem;
 }
 
+/* Підзаголовки */
+.info-page h2 {
+  font-size: 1.4rem;
+  margin-top: 2rem;
+  margin-bottom: 0.8rem;
+  color: #333;
+  border-left: 4px solid #007bff;
+  padding-left: 0.6rem;
+}
+
+/* Абзаци */
 .info-page p {
   margin-bottom: 1.2rem;
 }
 
+/* Списки */
+.info-page ul {
+  margin: 0 0 1.5rem 1.5rem;
+  padding: 0;
+  list-style-type: disc;
+}
+
+.info-page li {
+  margin-bottom: 0.5rem;
+}
+
+/* Посилання */
 .info-page a {
   color: #007bff;
   text-decoration: none;

@@ -1,3 +1,4 @@
+// components/Footer.js
 import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../img/logo.png';
@@ -22,7 +23,8 @@ const Footer = () => {
           <Link to="/eurocups">Єврокубки</Link>
           <Link to="/biathlon">Біатлон</Link>
           <Link to="/sports">Види спорту</Link>
-          <Link to="/tournaments">Турніри</Link>         
+          <Link to="/tournaments">Турніри</Link> 
+          <Link to="/archive">Архів</Link> {/* ✅ Додано */}
         </div>
 
         {/* Соцмережі */}
@@ -49,9 +51,3 @@ const Footer = () => {
 };
 
 export default Footer;
-
-
-
-
-
-
