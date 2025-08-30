@@ -115,7 +115,7 @@ const NewsDetails = () => {
           </span>
           
           <span>
-            <strong>Переглядів:</strong> {views}
+            {/* <strong>Переглядів:</strong> {views} */}
           </span>
         </div>
       </div>

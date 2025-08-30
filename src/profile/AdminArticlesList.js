@@ -61,12 +61,22 @@ const AdminArticlesList = ({ username }) => {
       <ul className="admin-articles-list">
         {currentArticles.map((article) => (
           <li key={article.id}>
-            <Link to={`/news/${article.id}`} className="article-link">
-              {article.title}
-            </Link>{' '}
-            <span className="article-date">
-              ({article.day}.{article.month}.{article.year})
-            </span>
+            {/* Маленьке фото прев’ю */}
+            <img
+              src={article.image || '/default-thumb.jpg'}
+              alt={article.title}
+              className="article-thumb"
+            />
+
+            {/* Інфо про статтю */}
+            <div className="article-info">
+              <Link to={`/news/${article.id}`} className="article-link">
+                {article.title}
+              </Link>
+              <span className="article-date">
+                {article.day}.{article.month}.{article.year}
+              </span>
+            </div>
           </li>
         ))}
       </ul>
@@ -83,4 +93,3 @@ const AdminArticlesList = ({ username }) => {
 };
 
 export default AdminArticlesList;
-

@@ -4,20 +4,20 @@
   justify-content: center;
   padding: 40px 20px;
   min-height: 100vh;
-  background-color: #121212;
+ 
   box-sizing: border-box;
 }
 
 /* 💳 Основна картка профілю */
 .profile-card {
-  background: linear-gradient(145deg, #1e1e1e, #2b2b2b);
+  background: #ffffff; /* Білий фон */
   padding: 40px;
   border-radius: 15px;
   width: 100%;
-  max-width: 1400px;
+  max-width: 1200px;
   animation: fadeIn 0.8s ease-in-out;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
-  border: 1px solid #333;
+  
+  border: 1px solid #ddd;
   box-sizing: border-box;
 }
 
@@ -25,7 +25,7 @@
 .profile-card h1 {
   font-size: 32px;
   font-weight: bold;
-  color: #ffffff;
+  color: #222; /* Чорний текст */
   text-align: center;
   margin-bottom: 30px;
 }
@@ -42,26 +42,26 @@
   padding: 14px 16px;
   text-align: left;
   font-size: 18px;
-  border-bottom: 1px solid #444;
-  color: #f0f0f0;
+  border-bottom: 1px solid #eee; /* Легкі лінії */
+  color: #333; /* Чорний текст */
 }
 
 .profile-table th {
-  background-color: transparent;
+  background-color: #fafafa; /* Легкий сірий фон для заголовків */
   font-weight: bold;
-  color: #999;
+  color: #555;
   width: 35%;
 }
 
 /* 🟢🟥 Стиль ролей */
 .role-admin {
-  color: #ff5252;
+  color: #d32f2f; /* Червоний */
   font-weight: bold;
   text-transform: uppercase;
 }
 
 .role-user {
-  color: #00e676;
+  color: #2e7d32; /* Зелений */
   font-weight: bold;
   text-transform: uppercase;
 }
@@ -108,7 +108,3 @@
     width: 45%;
   }
 }
-
-
-  
-  

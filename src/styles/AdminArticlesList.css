@@ -1,15 +1,15 @@
-/* 📰 Блок зі статтями адміністратора */
+/* 📰 Блок зі статтями адміністратора — світла тема */
 .admin-articles {
   margin-top: 50px;
   padding-top: 30px;
-  border-top: 1px solid #444;
+  border-top: 1px solid #e5e7eb; /* світла лінія */
   width: 100%;
 }
 
 /* 🔠 Заголовок */
 .admin-articles h2 {
   font-size: 24px;
-  color: #ffffff;
+  color: #222;               /* темний текст */
   margin-bottom: 25px;
   text-align: center;
   font-weight: 700;
@@ -25,45 +25,65 @@
   gap: 16px;
 }
 
-/* 📌 Елемент новини */
-.admin-articles-list li {
-  background: linear-gradient(145deg, #202020, #2c2c2c);
-  padding: 18px 24px;
-  border-radius: 12px;
-  border: 1px solid #333;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-  transition: transform 0.2s ease, background 0.2s ease;
+/* 🖼 Мініатюра */
+.article-thumb {
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  object-fit: cover;
+  margin-right: 14px;
+  flex-shrink: 0;
+  border: 1px solid #ddd;
+  background-color: #f0f0f0;
 }
 
-.admin-articles-list li:hover {
-  background: #2f2f2f;
-  transform: translateY(-3px);
+/* 📋 Елемент новини тепер зображення + текст */
+.admin-articles-list li {
+  background: #ffffff;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid #e6e6e6;
+  display: flex;
+  align-items: center;         /* 👈 вирівнюємо фото й текст */
+  gap: 12px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
+  transition: transform .18s ease, background .18s ease, box-shadow .18s ease;
 }
+
+.article-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
 
 /* 🔗 Посилання */
 .article-link {
-  color: white;
+  color: #222;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 17px;
-  max-width: 80%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  transition: color 0.2s ease;
+  line-height: 1.4;
+  transition: color .18s ease, text-decoration-color .18s ease;
+
+  /* прибрані обмеження */
+  max-width: 100%;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
 }
+
 
 .article-link:hover {
   text-decoration: underline;
-  color: #70b7ff;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  color: #0b57d0;           /* акцент при ховері */
 }
 
 /* 📅 Дата */
 .article-date {
-  color: #aaaaaa;
+  color: #666;              /* спокійний сірий */
   font-size: 15px;
   white-space: nowrap;
 }
@@ -104,5 +124,3 @@
     font-size: 13px;
   }
 }
-
-

@@ -23,7 +23,7 @@ const PopularNewsFeed = ({ newsList }) => {
             <div className="popular-news-info">
               <h3 className="popular-news-title">{news.title}</h3>
               <span className="popular-news-meta">
-                {news.day}.{news.month}.{news.year}, {news.time} — {news.views} переглядів
+               {news.day}.{news.month}.{news.year}  {/* {news.time} — {news.views} переглядів */}
               </span>
             </div>
           </Link>

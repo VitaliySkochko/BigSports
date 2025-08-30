@@ -13,10 +13,25 @@ const SearchResults = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const newsPerPage = 12;
 
-  // 🔍 Пошук тільки по заголовках + сортування за датою (останні зверху)
+  // допоміжна функція для коректного отримання мілісекунд з Firestore Timestamp або Date
+  const getMillis = (ts) =>
+    ts?.toMillis?.() ??
+    (typeof ts?.seconds === 'number' ? ts.seconds * 1000 : null) ??
+    (ts instanceof Date ? ts.getTime() : (typeof ts === 'number' ? ts : 0));
+
+  // 🔍 Пошук по title + description + content (якщо є)
   const filteredNews = newsList
-    .filter(news => news.title?.toLowerCase().includes(searchTerm))
-    .sort((a, b) => b.timestamp?.seconds - a.timestamp?.seconds);
+    .filter((n) => {
+      const t = n.title?.toLowerCase() || '';
+      const d = n.description?.toLowerCase() || '';
+      const c = n.content?.toLowerCase() || '';
+      return (
+        t.includes(searchTerm) ||
+        d.includes(searchTerm) ||
+        c.includes(searchTerm)
+      );
+    })
+    .sort((a, b) => getMillis(b.timestamp) - getMillis(a.timestamp));
 
   const totalPages = Math.ceil(filteredNews.length / newsPerPage);
 
@@ -46,7 +61,3 @@ const SearchResults = () => {
 };
 
 export default SearchResults;
-
-
-
-
