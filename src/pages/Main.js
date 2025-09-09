@@ -105,6 +105,7 @@ const Main = () => {
 
          <Route path="/tournaments" element={<Tournaments />} />
             <Route path="/tournaments/club-world-cup-2025" element={<SubsectionContent section="Клубний чемпіонат світу 2025" />} />  
+            <Route path="/tournaments/world-cup-2026" element={<SubsectionContent section="Чемпіонат світу 2026" />} />
 
 
         <Route path="/news/:id" element={<NewsDetails />} />

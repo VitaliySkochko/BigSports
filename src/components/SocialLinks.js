@@ -6,7 +6,7 @@ const SocialLinks = () => {
   return (
     <div className="social-links">
       <a 
-        href="https://www.instagram.com/bigsport_uk/" 
+        href="https://www.instagram.com/bigsport.com.ua/" 
         target="_blank" 
         rel="noopener noreferrer" 
         className="social-icon instagram"

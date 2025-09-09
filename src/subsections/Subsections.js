@@ -24,7 +24,9 @@ import boxingImage from '../img/boxingImage.png';
 import tennisImage from '../img/tennisImage.png'; 
 import mmaImage from '../img/mmaImage.png'; 
 import futsalImage from '../img/futsalImage.png'; 
-import clubWorldCupImage from '../img/clubWorldCupImage.png' 
+import clubWorldCupImage from '../img/clubWorldCupImage.png';
+import WorldCup2026Image from '../img/WorldCup2026Image.png'  
+
 
 
 const footballUkraineSubsections =[
@@ -68,6 +70,7 @@ const sportsSubsections = [
 
 const tournamentsSubsections = [
   { name: 'Клубний чемпіонат світу 2025', image: clubWorldCupImage, link: '/tournaments/club-world-cup-2025' },
+  { name: 'Чемпіонат світу 2026', image: WorldCup2026Image, link: '/tournaments/world-cup-2026' },
 ];
 
 const Subsections = ({category}) => {
