@@ -4,45 +4,41 @@ import Main from './pages/Main';
 import Header from './pages/Header';
 import Footer from './pages/Footer';
 import Menu from './pages/Menu';
-import { NewsProvider } from './components/NewsContext'; 
-import { UserProvider } from './components/UserContext'; 
+import { NewsProvider, useNews } from './components/NewsContext';
+import { UserProvider } from './components/UserContext';
 import SplashScreen from './pages/SplashScreen';
 import './App.css';
 
-const App = () => {
-  const [loading, setLoading] = useState(true);
+function AppInner() {
+  const { firstLoadDone } = useNews();
+  const [minTimeDone, setMinTimeDone] = useState(false);
 
   useEffect(() => {
-  const minDuration = 3000; // мінімум 3 сек
-  const start = Date.now();
-
-  // Імітація завантаження даних (замініть на свої проміси)
-  const loadData = Promise.resolve(); // напр. Promise.all([fetchNews(), fetchUser()])
-
-  loadData.finally(() => {
-    const elapsed = Date.now() - start;
-    const left = Math.max(0, minDuration - elapsed);
-    const t = setTimeout(() => setLoading(false), left);
+    const t = setTimeout(() => setMinTimeDone(true), 3000);
     return () => clearTimeout(t);
-  });
-}, []);
+  }, []);
 
+  const showSplash = !(minTimeDone && firstLoadDone);
+  if (showSplash) return <SplashScreen />;
 
+  return (
+    <div className="App">
+      <Header />
+      <Menu />
+      <Main />
+      <Footer />
+    </div>
+  );
+}
+
+export default function App() {
   return (
     <Router>
       <UserProvider>
         <NewsProvider>
-          {loading && <SplashScreen />}
-          <div className={`App ${loading ? 'hidden' : ''}`}>
-            <Header />
-            <Menu />
-            <Main />
-            <Footer />
-          </div>
+          <AppInner />
         </NewsProvider>
       </UserProvider>
     </Router>
   );
-};
-
-export default App;
+}

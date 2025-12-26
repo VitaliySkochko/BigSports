@@ -11,7 +11,7 @@ const SearchResults = () => {
   const searchTerm = query.get('q')?.toLowerCase() || '';
   const { newsList } = useNews();
   const [currentPage, setCurrentPage] = useState(1);
-  const newsPerPage = 12;
+  const newsPerPage = 30;
 
   // допоміжна функція для коректного отримання мілісекунд з Firestore Timestamp або Date
   const getMillis = (ts) =>
