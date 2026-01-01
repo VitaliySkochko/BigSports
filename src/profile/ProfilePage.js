@@ -11,7 +11,8 @@ import {
   updateDoc,
   writeBatch,
 } from 'firebase/firestore';
-import { db } from '../firebase';
+import { onAuthStateChanged } from 'firebase/auth';
+import { db, auth } from '../firebase';
 import '../styles/ProfilePage.css';
 import AdminArticlesList from './AdminArticlesList';
 
@@ -22,6 +23,10 @@ const ProfilePage = () => {
   const [loading, setLoading] = useState(true);
   const [articlesCount, setArticlesCount] = useState(0);
 
+  // ✅ хто зараз залогінений
+  const [currentUid, setCurrentUid] = useState(null);
+  const [authLoading, setAuthLoading] = useState(true);
+
   // edit state
   const [isEditing, setIsEditing] = useState(false);
   const [form, setForm] = useState({ username: '', city: '', country: '' });
@@ -30,6 +35,18 @@ const ProfilePage = () => {
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+
+  // ✅ слухаємо авторизацію
+  useEffect(() => {
+    const unsub = onAuthStateChanged(auth, (user) => {
+      setCurrentUid(user ? user.uid : null);
+      setAuthLoading(false);
+    });
+    return () => unsub();
+  }, []);
+
+  // ✅ чи може редагувати (тільки власник)
+  const canEdit = !!currentUid && currentUid === userId;
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -70,6 +87,10 @@ const ProfilePage = () => {
       }
     };
 
+    setLoading(true);
+    setIsEditing(false);
+    setError('');
+    setSuccess('');
     fetchUserData();
   }, [userId]);
 
@@ -124,7 +145,6 @@ const ProfilePage = () => {
     const snap = await getDocs(qNews);
     if (snap.empty) return;
 
-    // batch: максимум 500 operations за commit
     const docs = snap.docs;
     let i = 0;
 
@@ -144,6 +164,12 @@ const ProfilePage = () => {
   const saveProfile = async () => {
     setError('');
     setSuccess('');
+
+    // ✅ додатковий захист
+    if (!canEdit) {
+      setError('Ви не можете редагувати чужий профіль.');
+      return;
+    }
 
     const v = validate();
     if (v) {
@@ -190,8 +216,8 @@ const ProfilePage = () => {
     }
   };
 
-  // ✅ Loader для профілю
-  if (loading) {
+  // ✅ Loader (чекаємо і auth, і профіль)
+  if (loading || authLoading) {
     return (
       <div className="profile-container">
         <div className="profile-card">
@@ -226,22 +252,25 @@ const ProfilePage = () => {
           </div>
         )}
 
-        <div className="profile-actions">
-          {!isEditing ? (
-            <button className="profile-btn" onClick={startEdit}>
-              Редагувати
-            </button>
-          ) : (
-            <>
-              <button className="profile-btn primary" onClick={saveProfile} disabled={saving}>
-                {saving ? 'Збереження...' : 'Зберегти'}
+        {/* ✅ кнопки редагування тільки для власника профілю */}
+        {canEdit && (
+          <div className="profile-actions">
+            {!isEditing ? (
+              <button className="profile-btn" onClick={startEdit}>
+                Редагувати
               </button>
-              <button className="profile-btn" onClick={cancelEdit} disabled={saving}>
-                Скасувати
-              </button>
-            </>
-          )}
-        </div>
+            ) : (
+              <>
+                <button className="profile-btn primary" onClick={saveProfile} disabled={saving}>
+                  {saving ? 'Збереження...' : 'Зберегти'}
+                </button>
+                <button className="profile-btn" onClick={cancelEdit} disabled={saving}>
+                  Скасувати
+                </button>
+              </>
+            )}
+          </div>
+        )}
 
         <table className="profile-table">
           <tbody>
