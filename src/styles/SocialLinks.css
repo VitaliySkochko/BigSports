@@ -25,6 +25,11 @@
   .social-icon.youtube {
     background-color: #FF0000;
   }
+
+  .social-icon.linkedin {
+  background-color: #0A66C2; /* офіційний LinkedIn */
+}
+
   
   .social-icon:hover {
     transform: scale(1.1);
