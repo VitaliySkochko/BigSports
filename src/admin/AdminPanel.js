@@ -1,13 +1,16 @@
+// src/admin/AdminPanel.jsx
 import React, { useState } from "react";
 import AddNewsForm from "./AddNewsForm";
 import EditNewsForm from "./EditNewsForm";
 import NewsListAdmin from "./NewsListAdmin";
-import ParsedNewsList from "./ParsedNewsList"; // Додаємо новий компонент
+import ParsedNewsList from "./ParsedNewsList";
+import AuthorsAdminPanel from "./AuthorsAdminPanel"; // ✅ новий компонент
 import { useNews } from "../components/NewsContext";
-import '../styles/AdminPanel.css';
+import "../styles/AdminPanel.css";
 
 const AdminPanel = () => {
   const { newsList, addNews, deleteNews, editNews } = useNews();
+
   const [parsedNews, setParsedNews] = useState([]); // Список новин з парсингу
   const [editingNews, setEditingNews] = useState(null);
 
@@ -42,13 +45,29 @@ const AdminPanel = () => {
 
   return (
     <div className="admin_panel">
+      {/* Додати новину */}
       <AddNewsForm onAdd={addNews} />
+
+      {/* ✅ Керування авторами (звільнити/повернути) */}
+      <AuthorsAdminPanel />
+
+      {/* Редагування новини */}
       {editingNews && (
-        <>
-          <EditNewsForm news={editingNews} onEdit={handleEditNews} onClose={handleCloseEdit} />
-        </>
+        <EditNewsForm
+          news={editingNews}
+          onEdit={handleEditNews}
+          onClose={handleCloseEdit}
+        />
       )}
-      <NewsListAdmin newsList={newsList} onEdit={handleEditClick} onDelete={handleDeleteNews} />
+
+      {/* Список новин сайту */}
+      <NewsListAdmin
+        newsList={newsList}
+        onEdit={handleEditClick}
+        onDelete={handleDeleteNews}
+      />
+
+      {/* Парсинговані новини */}
       <ParsedNewsList
         parsedNews={parsedNews}
         onEdit={handleEditClick}
@@ -60,39 +79,3 @@ const AdminPanel = () => {
 };
 
 export default AdminPanel;
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

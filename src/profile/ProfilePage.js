@@ -72,14 +72,15 @@ const ProfilePage = () => {
           country: user.country || '',
         });
 
-        // count admin articles
-        if (user.role === 'admin' && user.username) {
-          const q1 = query(collection(db, 'news'), where('author', '==', user.username));
-          const snap1 = await getDocs(q1);
-          setArticlesCount(snap1.size);
-        } else {
-          setArticlesCount(0);
-        }
+        // count articles for any author (admin or not)
+if (user.username) {
+  const q1 = query(collection(db, 'news'), where('author', '==', user.username));
+  const snap1 = await getDocs(q1);
+  setArticlesCount(snap1.size);
+} else {
+  setArticlesCount(0);
+}
+
       } catch (e) {
         console.error('Помилка завантаження профілю:', e);
       } finally {
@@ -351,7 +352,12 @@ const ProfilePage = () => {
           </tbody>
         </table>
 
-        {userData.role === 'admin' && <AdminArticlesList username={userData.username} />}
+        <tr>
+  <th>Кількість написаних новин</th>
+  <td>{articlesCount}</td>
+</tr>
+{userData?.username && <AdminArticlesList username={userData.username} />}
+
       </div>
     </div>
   );
