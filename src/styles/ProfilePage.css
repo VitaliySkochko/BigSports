@@ -1,40 +1,106 @@
+/* ================================
+   ProfilePage.css (FULL)
+   ================================ */
+
+/* базові */
+* {
+  box-sizing: border-box;
+}
+
 /* 🌑 Контейнер сторінки профілю */
 .profile-container {
   display: flex;
   justify-content: center;
   padding: 40px 20px;
   min-height: 100vh;
- 
-  box-sizing: border-box;
+  background-color: #f5f5f5; /* легкий контраст, щоб біла картка читалась */
 }
 
 /* 💳 Основна картка профілю */
 .profile-card {
-  background: #ffffff; /* Білий фон */
+  background: #ffffff;
   padding: 40px;
-  border-radius: 15px;
+  border-radius: 16px;
   width: 100%;
   max-width: 1200px;
-  animation: fadeIn 0.8s ease-in-out;
-  
-  border: 1px solid #ddd;
-  box-sizing: border-box;
+  border: 2px solid #000;
 }
 
 /* 👤 Заголовок */
 .profile-card h1 {
   font-size: 32px;
-  font-weight: bold;
-  color: #222; /* Чорний текст */
+  font-weight: 800;
+  color: #000;
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 24px;
+}
+
+/* ✅ Кнопки */
+.profile-actions {
+  display: flex;
+  gap: 12px;
+  margin: 10px 0 20px;
+  flex-wrap: wrap;
+}
+
+/* базова кнопка */
+.profile-btn {
+  background-color: #fff;
+  color: #000;
+  border: 2px solid #000;
+  padding: 10px 20px;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  font-size: 16px;
+}
+
+/* hover */
+.profile-btn:hover {
+  font-weight: bold;
+}
+
+/* primary (Зберегти) */
+.profile-btn.primary {
+  border-color: green;
+}
+
+.profile-btn.primary:hover {
+  color: green;
+}
+
+/* disabled */
+.profile-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ⚠️ Повідомлення */
+.profile-alert {
+  padding: 12px 16px;
+  border-radius: 12px;
+  margin: 0 0 16px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.profile-alert.error {
+  border: 2px solid red;
+  color: red;
+  background-color: #ffecec;
+}
+
+.profile-alert.success {
+  border: 2px solid green;
+  color: green;
+  background-color: #ecffec;
 }
 
 /* 📊 Таблиця */
 .profile-table {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 40px;
+  margin-bottom: 26px;
 }
 
 .profile-table th,
@@ -42,26 +108,47 @@
   padding: 14px 16px;
   text-align: left;
   font-size: 18px;
-  border-bottom: 1px solid #eee; /* Легкі лінії */
-  color: #333; /* Чорний текст */
+  border: 1px solid #000;
+  color: #000;
+  vertical-align: middle;
 }
 
 .profile-table th {
-  background-color: #fafafa; /* Легкий сірий фон для заголовків */
-  font-weight: bold;
-  color: #555;
+  background-color: #f0f0f0;
+  font-weight: 700;
   width: 35%;
+}
+
+/* ✏️ Інпут (редагування) */
+.profile-input {
+  width: 100%;
+  max-width: 360px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 2px solid #000;
+  background-color: #fff;
+  color: #000;
+  font-size: 16px;
+}
+
+.profile-input::placeholder {
+  color: #777;
+}
+
+.profile-input:focus {
+  outline: none;
+  border-color: #1976d2;
 }
 
 /* 🟢🟥 Стиль ролей */
 .role-admin {
-  color: #d32f2f; /* Червоний */
+  color: red;
   font-weight: bold;
   text-transform: uppercase;
 }
 
 .role-user {
-  color: #2e7d32; /* Зелений */
+  color: green;
   font-weight: bold;
   text-transform: uppercase;
 }
@@ -69,7 +156,7 @@
 /* 📱 Адаптивність */
 @media (max-width: 1024px) {
   .profile-card {
-    padding: 30px;
+    padding: 28px;
   }
 
   .profile-card h1 {
@@ -89,13 +176,13 @@
   }
 
   .profile-card {
-    padding: 20px;
-    border-radius: 10px;
+    padding: 18px;
+    border-radius: 12px;
   }
 
   .profile-card h1 {
     font-size: 22px;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
   }
 
   .profile-table th,
@@ -106,5 +193,13 @@
 
   .profile-table th {
     width: 45%;
+  }
+
+  .profile-btn {
+    width: 100%;
+  }
+
+  .profile-input {
+    max-width: 100%;
   }
 }

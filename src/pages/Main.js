@@ -17,6 +17,8 @@ import About from '../info/About';
 import Contacts from '../info/Contacts';
 import PrivacyPolicy from '../info/PrivacyPolicy';
 import Archive from '../components/Archive';
+import AuthorsRankingPage from '../pages/AuthorsRankingPage';
+
 
 const Main = () => { 
   return (
@@ -106,6 +108,8 @@ const Main = () => {
          <Route path="/tournaments" element={<Tournaments />} />
             <Route path="/tournaments/club-world-cup-2025" element={<SubsectionContent section="Клубний чемпіонат світу 2025" />} />  
             <Route path="/tournaments/world-cup-2026" element={<SubsectionContent section="Чемпіонат світу 2026" />} />
+            <Route path="/tournaments/futsal-euro-2026" element={<SubsectionContent section="Чемпіонат Європи з футзалу 2026" />} />
+
 
 
         <Route path="/news/:id" element={<NewsDetails />} />
@@ -114,6 +118,7 @@ const Main = () => {
 
         <Route path="/about" element={<About />} />
         <Route path="/contacts" element={<Contacts />} />
+        <Route path="/authors-ranking" element={<AuthorsRankingPage />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/archive" element={<Archive />} />
 

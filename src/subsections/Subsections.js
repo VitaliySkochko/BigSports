@@ -25,7 +25,8 @@ import tennisImage from '../img/tennisImage.png';
 import mmaImage from '../img/mmaImage.png'; 
 import futsalImage from '../img/futsalImage.png'; 
 import clubWorldCupImage from '../img/clubWorldCupImage.png';
-import WorldCup2026Image from '../img/WorldCup2026Image.png'  
+import WorldCup2026Image from '../img/WorldCup2026Image.png' 
+import FutsalEuro2026Image from '../img/futsalEuro2026.png'; 
 
 
 
@@ -69,8 +70,9 @@ const sportsSubsections = [
 ];
 
 const tournamentsSubsections = [
-  { name: 'Клубний чемпіонат світу 2025', image: clubWorldCupImage, link: '/tournaments/club-world-cup-2025' },
   { name: 'Чемпіонат світу 2026', image: WorldCup2026Image, link: '/tournaments/world-cup-2026' },
+  { name: 'Чемпіонат Європи з футзалу 2026', image: FutsalEuro2026Image, link: '/tournaments/futsal-euro-2026' },
+  { name: 'Клубний чемпіонат світу 2025', image: clubWorldCupImage, link: '/tournaments/club-world-cup-2025' },
 ];
 
 const Subsections = ({category}) => {

@@ -1,0 +1,43 @@
+.authors-ranking-page {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.authors-ranking-page h1 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.ranking-rules {
+  text-align: center;
+  font-size: 14px;
+  opacity: 0.7;
+  margin-bottom: 30px;
+}
+
+.ranking-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 16px;
+}
+
+.ranking-table th {
+  background: black;
+  color: white;
+  padding: 12px;
+  text-align: left;
+}
+
+.ranking-table td {
+  padding: 12px;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.ranking-table tr:nth-child(even) {
+  background: rgba(0,0,0,0.04);
+}
+
+.points {
+  font-weight: bold;
+}

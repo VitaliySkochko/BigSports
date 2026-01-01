@@ -24,7 +24,6 @@ const Footer = () => {
           <Link to="/biathlon">Біатлон</Link>
           <Link to="/sports">Види спорту</Link>
           <Link to="/tournaments">Турніри</Link> 
-          <Link to="/archive">Архів</Link> {/* ✅ Додано */}
         </div>
 
         {/* Соцмережі */}
@@ -35,6 +34,8 @@ const Footer = () => {
 
         <div className='footer-links'>
           <Link to="/about">Про сайт</Link>
+          <Link to="/authors-ranking" className="footer-ranking-btn">Рейтинг авторів</Link>
+          <Link to="/archive">Архів</Link> 
           <Link to="/contacts">Контакти</Link>
           <Link to="/privacy-policy">Політика конфіденційності</Link>
         </div>
@@ -42,7 +43,11 @@ const Footer = () => {
         {/* Контакти */}
         <div className="footer-contact">
           <p>Пишіть нам: <a href="mailto:bigsportssait@gmail.com">bigsportssait@gmail.com</a></p>
-          <p>&copy; BigSport {new Date().getFullYear()}</p>
+          <p>
+  &copy; BigSport 2025
+  {new Date().getFullYear() > 2025 && `–${new Date().getFullYear()}`}
+</p>
+
         </div>
 
       </div>

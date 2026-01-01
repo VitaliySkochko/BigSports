@@ -65,10 +65,11 @@ const Home = () => {
             <div className="section-column">
               
               <SectionNewsFeed 
-                title="Клубний чемпіонат світу 2025" 
-                section="Клубний чемпіонат світу 2025" 
-                newsList={newsList} 
-              />
+  title="Чемпіонат Європи з футзалу 2026" 
+  section="Чемпіонат Європи з футзалу 2026" 
+  newsList={newsList} 
+/>
+
               <PopularNewsFeed newsList={newsList} />
             </div>
           </div>
