@@ -190,7 +190,29 @@ const ProfilePage = () => {
     }
   };
 
-  if (loading) return <p>Завантаження...</p>;
+  // ✅ Loader для профілю
+  if (loading) {
+    return (
+      <div className="profile-container">
+        <div className="profile-card">
+          <div className="profile-loading">
+            <div className="spinner" />
+            <div className="loading-text">Завантажуємо профіль...</div>
+
+            <div className="profile-skeleton">
+              <div className="sk-row" />
+              <div className="sk-row" />
+              <div className="sk-row" />
+              <div className="sk-row" />
+              <div className="sk-row" />
+              <div className="sk-row" />
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   if (!userData) return <p>Користувач не знайдений</p>;
 
   return (
@@ -300,7 +322,6 @@ const ProfilePage = () => {
           </tbody>
         </table>
 
-        {/* ✅ Важливо: після оновлення username, тут прийде вже новий userData.username */}
         {userData.role === 'admin' && <AdminArticlesList username={userData.username} />}
       </div>
     </div>

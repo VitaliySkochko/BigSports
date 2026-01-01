@@ -12,12 +12,24 @@
 .ranking-rules {
   text-align: center;
   font-size: 14px;
-  opacity: 0.7;
-  margin-bottom: 30px;
+  opacity: 0.75;
+  margin-bottom: 20px;
 }
 
+/* ✅ ВАЖЛИВО: обгортка для мобільного горизонтального скролу */
+.ranking-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid rgba(0,0,0,0.12);
+  border-radius: 12px;
+  background: #fff;
+}
+
+/* щоб таблиця не ламалась і мала мінімальну ширину */
 .ranking-table {
   width: 100%;
+  min-width: 760px; /* дозволяє нормально виглядати на моб */
   border-collapse: collapse;
   font-size: 16px;
 }
@@ -27,17 +39,80 @@
   color: white;
   padding: 12px;
   text-align: left;
+  white-space: nowrap;
 }
 
 .ranking-table td {
   padding: 12px;
   border-bottom: 1px solid rgba(0,0,0,0.1);
+  white-space: nowrap;
 }
 
 .ranking-table tr:nth-child(even) {
   background: rgba(0,0,0,0.04);
 }
 
+/* колонки */
+.col-rank,
+.col-num {
+  text-align: center;
+}
+
+.col-date {
+  white-space: nowrap;
+}
+
+/* очки */
 .points {
-  font-weight: bold;
+  font-weight: 900;
+}
+
+/* ✅ лінк автора */
+.author-name {
+  font-weight: 600;
+}
+
+.author-link {
+  color: #0b57d0;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.author-link:hover {
+  text-decoration: underline;
+}
+
+/* 📱 мобільна адаптація */
+@media (max-width: 768px) {
+  .authors-ranking-page {
+    margin: 24px auto;
+    padding: 0 12px;
+  }
+
+  .ranking-rules {
+    font-size: 13px;
+    margin-bottom: 14px;
+  }
+
+  .ranking-table {
+    font-size: 14px;
+    min-width: 700px;
+  }
+
+  .ranking-table th,
+  .ranking-table td {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 420px) {
+  .ranking-table {
+    font-size: 13px;
+    min-width: 660px;
+  }
+
+  .ranking-table th,
+  .ranking-table td {
+    padding: 8px;
+  }
 }

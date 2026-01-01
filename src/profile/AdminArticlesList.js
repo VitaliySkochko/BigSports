@@ -1,5 +1,3 @@
-// Новини написані в профайлі користувача (адміністратор)
-
 import React, { useEffect, useState } from 'react';
 import { collection, query, where, getDocs } from 'firebase/firestore';
 import { db } from '../firebase';
@@ -16,6 +14,7 @@ const AdminArticlesList = ({ username }) => {
 
   useEffect(() => {
     const fetchArticles = async () => {
+      setLoading(true);
       try {
         const q = query(collection(db, 'news'), where('author', '==', username));
         const snapshot = await getDocs(q);
@@ -25,7 +24,6 @@ const AdminArticlesList = ({ username }) => {
           ...doc.data(),
         }));
 
-        // Сортування: новіші спочатку
         const sorted = data.sort((a, b) => {
           const dateA = new Date(`${a.year}-${a.month}-${a.day} ${a.time}`);
           const dateB = new Date(`${b.year}-${b.month}-${b.day} ${b.time}`);
@@ -33,6 +31,7 @@ const AdminArticlesList = ({ username }) => {
         });
 
         setArticles(sorted);
+        setCurrentPage(1); // ✅ якщо автор змінився — починаємо з 1 сторінки
       } catch (error) {
         console.error('Помилка при отриманні статей:', error);
       } finally {
@@ -52,7 +51,27 @@ const AdminArticlesList = ({ username }) => {
     setCurrentPage(pageNumber);
   };
 
-  if (loading) return <p>Завантаження статей...</p>;
+  // ✅ Skeleton loader
+  if (loading) {
+    return (
+      <div className="admin-articles">
+        <h2>Написані новини</h2>
+
+        <ul className="admin-articles-list">
+          {Array.from({ length: 8 }).map((_, i) => (
+            <li key={i} className="article-skeleton-item">
+              <div className="sk-thumb" />
+              <div className="sk-lines">
+                <div className="sk-line sk-line--title" />
+                <div className="sk-line sk-line--date" />
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+  }
+
   if (articles.length === 0) return <p>Адміністратор ще не написав жодної новини.</p>;
 
   return (
@@ -61,14 +80,12 @@ const AdminArticlesList = ({ username }) => {
       <ul className="admin-articles-list">
         {currentArticles.map((article) => (
           <li key={article.id}>
-            {/* Маленьке фото прев’ю */}
             <img
               src={article.image || '/default-thumb.jpg'}
               alt={article.title}
               className="article-thumb"
             />
 
-            {/* Інфо про статтю */}
             <div className="article-info">
               <Link to={`/news/${article.id}`} className="article-link">
                 {article.title}
