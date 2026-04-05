@@ -11,7 +11,7 @@ const SearchBar = () => {
 
   const handleSearch = () => {
     if (searchTerm.trim()) {
-      navigate(`/search?q=${searchTerm}`);
+      navigate(`/search?q=${encodeURIComponent(searchTerm.trim())}`);
       setSearchTerm('');
       setIsOpen(false);
     }
@@ -20,10 +20,9 @@ const SearchBar = () => {
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
       handleSearch();
-    } 
+    }
   };
 
-  // Закриття пошуку при кліку поза ним
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (searchRef.current && !searchRef.current.contains(event.target)) {
@@ -33,8 +32,6 @@ const SearchBar = () => {
 
     if (isOpen) {
       document.addEventListener('mousedown', handleClickOutside);
-    } else {
-      document.removeEventListener('mousedown', handleClickOutside);
     }
 
     return () => {
@@ -45,9 +42,9 @@ const SearchBar = () => {
   return (
     <div className="search-container" ref={searchRef}>
       <div className={`search-bar ${isOpen ? 'open' : ''}`}>
-        <input 
-          type="text" 
-          placeholder="Пошук новин..."
+        <input
+          type="text"
+          placeholder="Пошук по тегах..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           onKeyDown={handleKeyDown}
@@ -56,6 +53,7 @@ const SearchBar = () => {
           <FiSearch size={18} />
         </button>
       </div>
+
       <button onClick={() => setIsOpen(true)} className="search-icon">
         <FiSearch size={24} />
       </button>
@@ -64,5 +62,3 @@ const SearchBar = () => {
 };
 
 export default SearchBar;
-
-

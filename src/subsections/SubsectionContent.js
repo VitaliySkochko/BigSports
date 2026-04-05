@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { useNews } from '../components/NewsContext';
 import Pagination from '../components/Pagination';
 import SubsectionNewsList from '../newslist/SubsectionNewsList';
@@ -11,11 +12,17 @@ import SecondLeagueClubs from './SecondLeagueClubs';
 
 const SubsectionContent = ({ section }) => {
   const { newsList } = useNews();
-  const [currentPage, setCurrentPage] = useState(1);
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const newsPerPage = 24;
+  const currentPage = Number(searchParams.get('page')) || 1;
 
   const handlePageChange = (page) => {
-    setCurrentPage(page);
+    setSearchParams({ page: String(page) });
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
   };
 
   const filteredNews = newsList.filter((news) =>
@@ -27,15 +34,13 @@ const SubsectionContent = ({ section }) => {
   const totalPages = Math.ceil(filteredNews.length / newsPerPage);
 
   return (
-    <div className="panel">
+    <div className="panel panel--spaced">
       <h1>{section}</h1>
 
-      {/* Показуємо клуби тільки для УПЛ */}
       {section === 'УПЛ' && <UplClubs />}
       {section === 'Перша Ліга' && <FirstLeagueClubs />}
       {section === 'Друга Ліга' && <SecondLeagueClubs />}
 
-      {/* Інформація про клуб (тільки якщо є) */}
       {ClubInfoMap[section] && <ClubInfoCard club={ClubInfoMap[section]} />}
 
       <SubsectionNewsList
@@ -43,6 +48,7 @@ const SubsectionContent = ({ section }) => {
         newsPerPage={newsPerPage}
         currentPage={currentPage}
       />
+
       {totalPages > 1 && (
         <Pagination
           currentPage={currentPage}
@@ -55,6 +61,3 @@ const SubsectionContent = ({ section }) => {
 };
 
 export default SubsectionContent;
-
-
-

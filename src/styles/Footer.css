@@ -1,113 +1,160 @@
+/* ===============================
+   FOOTER BASE (FULL WIDTH)
+================================ */
 .footer {
-    background-color: black;
-    color: yellow;
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 20px 0;
-    width: 100%;
-    bottom: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 30px;
-  }
-  
-  .footer-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    max-width: 1200px;
-    width: 100%;
-  }
-  
-  .footer-logo img {
-    width: 200px;
-    margin-bottom: 10px;
-  }
-  
-  .footer-links {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 15px 0;
-  }
-  
-  .footer-links a {
-    margin: 0 15px;
-    color: white;
-    text-decoration: none;
-  }
-  
-  .footer-links a:hover {
-    text-decoration: underline;
-  }
-  
-  .footer-contact p {
-    margin: 5px 0;
-  }
-  
-  .footer-contact a {
-    color: yellow;
-    text-decoration: none;
-  }
-  
-  .footer-contact a:hover {
-    text-decoration: underline;
-  }
- 
+  width: 100%;
+  background: #0f0f10;
+  color: #fff;
 
-  /* Дуже малий екран (мобільні телефони) */
-@media (max-width: 575px) {
-  .footer {
-    padding: 10px 0;
-    flex-direction: column;
-  }
+  margin-top: 40px;
+}
+
+/* внутрішній контейнер */
+.footer-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 20px 30px;
+
+  display: grid;
+  grid-template-columns: 1.2fr 2fr 1.4fr 1.6fr;
+  gap: 30px;
+  align-items: flex-start;
+}
+
+/* ===============================
+   LOGO
+================================ */
+.footer-logo img {
+  width: 180px;
+}
+
+/* ===============================
+   LINKS
+================================ */
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-links a {
+  color: rgba(255,255,255,0.9);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+/* ===============================
+   SOCIAL
+================================ */
+.footer-social p {
+  margin-bottom: 10px;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.footer-social {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+   align-items: flex-start;
+  text-align: left;
+}
+
+/* ===============================
+   CONTACT / COPYRIGHT
+================================ */
+.footer-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  font-size: 14px;
+  text-align: center;
+
+  /* ⬇️ ГОЛОВНЕ */
+  align-items: center;
+  justify-content: center;
+
+  /* ⬇️ розтягуємо на всю ширину футера */
+  grid-column: 1 / -1;
+}
+
+
+.footer-contact a {
+  color: #ffcc00;
+  text-decoration: none;
+}
+
+.footer-contact a:hover {
+  text-decoration: underline;
+}
+
+/* ===============================
+   BOTTOM BAR (COPYRIGHT LINE)
+================================ */
+.footer-contact p:last-child {
+  margin-top: 12px;
+  opacity: 0.7;
+  font-size: 13px;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
+/* планшети */
+@media (max-width: 1024px) {
   .footer-content {
-    padding: 0 10px;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
   }
+
   .footer-logo img {
-    width: 120px;
+    width: 160px;
   }
+}
+
+/* мобільні */
+@media (max-width: 768px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 24px;
+    padding: 30px 16px 24px;
+  }
+
+  .footer-logo {
+    display: flex;
+    justify-content: center;
+  }
+
   .footer-links {
-    flex-direction: column;
     align-items: center;
   }
-  .footer-links a {
-    margin: 5px 0;
+
+  .footer-social {
+    align-items: center;
   }
-  .footer-social a {
-    font-size: 22px;
-  }
-}
-/* Малий екран (планшети в портретній орієнтації та великі мобільні телефони) */
-@media (min-width: 576px) and (max-width: 767px) {
-  .footer {
-    padding: 15px 0;
-    flex-direction: column;
-  }
-  .footer-logo img {
-    width: 150px;
-  }
-  .footer-links a {
-    margin: 10px;
-  }
-  .footer-social a {
-    font-size: 25px;
+
+  .footer-contact {
+    align-items: center;
   }
 }
-/* Середній екран (планшети в горизонтальній орієнтації) */
-@media (min-width: 768px) and (max-width: 1199px) {
-  .footer {
-    padding: 20px 0;
-  }
+
+/* дуже маленькі */
+@media (max-width: 420px) {
   .footer-logo img {
-    width: 180px;
+    width: 140px;
   }
-  .footer-links {
-    justify-content: space-around;
-  }
-  .footer-social a {
-    font-size: 28px;
+
+  .footer-links a {
+    font-size: 13px;
   }
 }

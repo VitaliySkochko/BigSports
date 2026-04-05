@@ -120,6 +120,18 @@
   text-decoration: underline;
 }
 
+.meta-link {
+  color: #c00000;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.meta-link:hover {
+  color: #7a0000;
+  text-decoration: underline;
+}
+
 /* 📱 Мобільні пристрої */
 @media (max-width: 768px) {
   .single-news-container { padding: 12px; }
@@ -195,6 +207,41 @@
 
 }
 
+.news-tags-block {
+  margin-top: 32px;
+}
+
+.news-tags-title {
+  margin-bottom: 16px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #222;
+}
+
+.news-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.news-tag {
+  padding: 5px 13px;
+  border: 1px solid #d9d9d9;
+  border-radius: 12px;
+  background: #fff;
+  color: #222;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.news-tag:hover {
+  border-color: black;
+  color:  white;
+  background: #383530;
+}
+
 
 /* 📱 Планшети */
 @media (min-width: 769px) and (max-width: 1024px) {
@@ -217,4 +264,27 @@
 }
 
 
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  padding: 10px 18px;
+  border: 2px solid #222;
+  border-radius: 30px;
+  background: #fff;
+  color: #222;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
 
+.back-button:hover {
+  background: #222;
+  color: #fff;
+}
+
+.back-button:active {
+  transform: scale(0.97);
+}

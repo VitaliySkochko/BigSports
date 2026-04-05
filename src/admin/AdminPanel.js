@@ -44,7 +44,7 @@ const AdminPanel = () => {
   };
 
   return (
-    <div className="admin_panel">
+    <div className="panel panel--spaced">
       {/* Додати новину */}
       <AddNewsForm onAdd={addNews} />
 

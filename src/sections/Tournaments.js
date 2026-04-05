@@ -1,38 +1,51 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { useNews } from '../components/NewsContext';
 import Pagination from '../components/Pagination';
 import Subsections from '../subsections/Subsections';
-import NewsList from '../newslist/NewsList'; // Додаємо NewsList
+import NewsList from '../newslist/NewsList';
+import AnimatedNewsBlock from '../components/AnimatedNewsBlock';
 import '../App.css';
 
 const Tournaments = () => {
-  const { newsList } = useNews(); 
-  const [currentPage, setCurrentPage] = useState(1);
+  const { newsList } = useNews();
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const newsPerPage = 30;
+  const currentPage = Number(searchParams.get('page')) || 1;
+
+  const filteredNews = newsList.filter(
+    (news) => news.category === 'Турніри'
+  );
+
+  const totalPages = Math.ceil(filteredNews.length / newsPerPage);
 
   const handlePageChange = (page) => {
-    setCurrentPage(page);
+    setSearchParams({ page: String(page) });
+
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
   };
 
-  const filteredNews = newsList.filter((news) => news.category === 'Турніри');
-
   return (
-    <div className='panel'>
+    <div className="panel panel--spaced">
       <h1>ТУРНІРИ</h1>
       <Subsections category="Турніри" />
 
-      {/* Використовуємо NewsList для відображення новин */}
-      <NewsList 
-        newsList={filteredNews} 
-        newsPerPage={newsPerPage} 
-        currentPage={currentPage} 
-      />
+      <AnimatedNewsBlock currentPage={currentPage}>
+        <NewsList
+          newsList={filteredNews}
+          newsPerPage={newsPerPage}
+          currentPage={currentPage}
+        />
+      </AnimatedNewsBlock>
 
-      {/* Пагінація */}
       {filteredNews.length > newsPerPage && (
         <Pagination
           currentPage={currentPage}
-          totalPages={Math.ceil(filteredNews.length / newsPerPage)}
+          totalPages={totalPages}
           onPageChange={handlePageChange}
         />
       )}
@@ -41,5 +54,3 @@ const Tournaments = () => {
 };
 
 export default Tournaments;
-
-

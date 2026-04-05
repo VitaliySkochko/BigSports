@@ -1,5 +1,3 @@
-/* Цей код представляє компонент для редагування новин. */
-
 import React, { useState, useEffect } from 'react';
 import { auth, storage, db } from '../firebase';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
@@ -18,6 +16,9 @@ const EditNewsForm = ({ news, onEdit, onClose }) => {
   const [image, setImage] = useState(null);
   const [imageUrl, setImageUrl] = useState(news.image);
   const [author, setAuthor] = useState(news.author || 'Невідомий автор');
+  const [tagsInput, setTagsInput] = useState(
+    Array.isArray(news.tags) ? news.tags.join(', ') : ''
+  );
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -48,10 +49,10 @@ const EditNewsForm = ({ news, onEdit, onClose }) => {
   const handleCategoryChange = (e) => {
     const newCategory = e.target.value;
     setCategory(newCategory);
-    // НЕ очищаємо sections — щоб зберігались усі обрані раніше
   };
 
   const handleImageChange = (e) => {
+    if (!e.target.files[0]) return;
     setImage(e.target.files[0]);
     setImageUrl(URL.createObjectURL(e.target.files[0]));
   };
@@ -66,7 +67,6 @@ const EditNewsForm = ({ news, onEdit, onClose }) => {
       updatedImageUrl = await getDownloadURL(imageRef);
     }
 
-    // Формуємо структуру категорій із вибраних секцій
     const categories = Object.entries(sectionsByCategory)
       .map(([cat, secs]) => {
         const filtered = secs.filter((s) => sections.includes(s));
@@ -74,22 +74,32 @@ const EditNewsForm = ({ news, onEdit, onClose }) => {
       })
       .filter(Boolean);
 
-    // Основна категорія — за першою обраною секцією
     const firstSection = sections[0];
-    const mainCategory = Object.entries(sectionsByCategory).find(([_, secs]) =>
-      secs.includes(firstSection)
-    )?.[0] || '';
+    const mainCategory =
+      Object.entries(sectionsByCategory).find(([_, secs]) =>
+        secs.includes(firstSection)
+      )?.[0] || '';
+
+    const tags = [
+      ...new Set(
+        tagsInput
+          .split(',')
+          .map((tag) => tag.trim())
+          .filter(Boolean)
+      ),
+    ];
 
     const updatedNews = {
       ...news,
       title,
       content,
       sections,
-      categories,           // нова структура
-      category: mainCategory, // для сумісності
+      categories,
+      category: mainCategory,
       topNews,
       image: updatedImageUrl,
       author,
+      tags,
     };
 
     onEdit(updatedNews);
@@ -100,19 +110,30 @@ const EditNewsForm = ({ news, onEdit, onClose }) => {
       <div className="panel">
         <h1>Редагувати новину</h1>
       </div>
+
       <table className="edit-news-table">
         <tbody>
           <tr>
             <td><label>Заголовок:</label></td>
-            <td><input type="text" value={title} onChange={(e) => setTitle(e.target.value)} required /></td>
+            <td>
+              <input
+                type="text"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                required
+              />
+            </td>
           </tr>
+
           <tr>
             <td><label>Категорія:</label></td>
             <td>
               <select value={category} onChange={handleCategoryChange} required>
                 <option value="">Оберіть категорію</option>
                 {Object.keys(sectionsByCategory).map((cat) => (
-                  <option key={cat} value={cat}>{cat}</option>
+                  <option key={cat} value={cat}>
+                    {cat}
+                  </option>
                 ))}
               </select>
             </td>
@@ -123,7 +144,14 @@ const EditNewsForm = ({ news, onEdit, onClose }) => {
               <tr>
                 <td><label>Розділи:</label></td>
                 <td>
-                  <div style={{ maxHeight: '200px', overflowY: 'auto', border: '1px solid #ccc', padding: '5px' }}>
+                  <div
+                    style={{
+                      maxHeight: '200px',
+                      overflowY: 'auto',
+                      border: '1px solid #ccc',
+                      padding: '5px',
+                    }}
+                  >
                     <SectionSelector
                       category={category}
                       selectedSections={sections}
@@ -132,6 +160,7 @@ const EditNewsForm = ({ news, onEdit, onClose }) => {
                   </div>
                 </td>
               </tr>
+
               <tr>
                 <td><strong>Вибрані розділи:</strong></td>
                 <td>{sections.join(', ') || 'Жодного не вибрано'}</td>
@@ -140,12 +169,30 @@ const EditNewsForm = ({ news, onEdit, onClose }) => {
           )}
 
           <tr>
+            <td><label>Теги:</label></td>
+            <td>
+              <input
+                type="text"
+                value={tagsInput}
+                onChange={(e) => setTagsInput(e.target.value)}
+                placeholder="Наприклад: Рух, ЛНЗ, Віталій Пономарьов"
+              />
+              <small style={{ display: 'block', marginTop: '6px', color: '#666' }}>
+                Вводь теги через кому
+              </small>
+            </td>
+          </tr>
+
+          <tr>
             <td><label>Зображення:</label></td>
             <td>
               <input type="file" onChange={handleImageChange} />
-              {imageUrl && <img src={imageUrl} alt="Preview" className="image-preview" />}
+              {imageUrl && (
+                <img src={imageUrl} alt="Preview" className="image-preview" />
+              )}
             </td>
           </tr>
+
           <tr>
             <td><label>Зміст статті:</label></td>
             <td>
@@ -158,10 +205,14 @@ const EditNewsForm = ({ news, onEdit, onClose }) => {
               />
             </td>
           </tr>
+
           <tr>
             <td><label>Автор:</label></td>
-            <td><input type="text" value={author} readOnly /></td>
+            <td>
+              <input type="text" value={author} readOnly />
+            </td>
           </tr>
+
           <tr>
             <td colSpan="2">
               <label>
@@ -174,10 +225,19 @@ const EditNewsForm = ({ news, onEdit, onClose }) => {
               </label>
             </td>
           </tr>
+
           <tr>
             <td colSpan="2" className="table-submit-cell">
-              <button type="submit" className="profile-button">Зберегти зміни</button>
-              <button type="button" className="exit-button" onClick={onClose}>Закрити</button>
+              <button type="submit" className="profile-button">
+                Зберегти зміни
+              </button>
+              <button
+                type="button"
+                className="exit-button"
+                onClick={onClose}
+              >
+                Закрити
+              </button>
             </td>
           </tr>
         </tbody>

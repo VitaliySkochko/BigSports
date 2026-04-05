@@ -72,7 +72,7 @@ const AdminArticlesList = ({ username }) => {
     );
   }
 
-  if (articles.length === 0) return <p>Адміністратор ще не написав жодної новини.</p>;
+  if (articles.length === 0) return <p></p>;
 
   return (
     <div className="admin-articles">

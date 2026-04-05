@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import AnimatedNewsBlock from '../components/AnimatedNewsBlock';
 import '../styles/GeneralNewsList.css';
 
 const GeneralNewsList = ({ newsList, newsPerPage }) => {
   const [currentPage, setCurrentPage] = useState(1);
+
   const indexOfLastNews = currentPage * newsPerPage;
   const indexOfFirstNews = indexOfLastNews - newsPerPage;
   const currentNewsList = newsList.slice(indexOfFirstNews, indexOfLastNews);
@@ -11,34 +13,47 @@ const GeneralNewsList = ({ newsList, newsPerPage }) => {
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
   };
 
   return (
-    <div className="news-container-general">
-      {currentNewsList.map((news) => (
-        <div key={news.id} className="news-card-general">
-          <img src={news.image} alt={news.title} className="news-image-general" />
-          <div className="news-content-general">
+    <>
+      <AnimatedNewsBlock currentPage={currentPage}>
+        <div className="news-container-general">
+          {currentNewsList.map((news) => (
+            <div key={news.id} className="news-card-general">
+              <img
+                src={news.image}
+                alt={news.title}
+                className="news-image-general"
+              />
 
-            <Link to={`/news/${news.id}`} className="news-title-general">
-              {news.title}
-            </Link>
-            <div className="news-meta-general">
-              <span className="news-date-general">{news.day}.{news.month}.{news.year} {news.time}</span>
-              <span className="news-category-general">
-                {Array.isArray(news.sections) && news.sections.length > 0
-                  ? news.sections[0]
-                  : news.category}
-              </span>
+              <div className="news-content-general">
+                <Link to={`/news/${news.id}`} className="news-title-general">
+                  {news.title}
+                </Link>
 
+                <div className="news-meta-general">
+                  <span className="news-date-general">
+                    {news.day}.{news.month}.{news.year} {news.time}
+                  </span>
+
+                  <span className="news-category-general">
+                    {Array.isArray(news.sections) && news.sections.length > 0
+                      ? news.sections[0]
+                      : news.category}
+                  </span>
+                </div>
+              </div>
             </div>
-          </div>
+          ))}
         </div>
-      ))}
-    </div>
+      </AnimatedNewsBlock>
+    </>
   );
 };
 
 export default GeneralNewsList;
-
-

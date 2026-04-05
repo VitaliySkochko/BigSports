@@ -1,7 +1,8 @@
 {
   "projects": {
     "default": "bigsports-a911c",
-    "bigsport": "bigsports-a911c"
+    "bigsport": "bigsports-a911c",
+    "main": "bigsports-a911c"
   },
   "targets": {},
   "etags": {}

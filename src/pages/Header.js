@@ -1,116 +1,164 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
+import { doc, getDoc } from 'firebase/firestore';
+
+import { auth, db } from '../firebase';
 import PasswordModal from '../registration/PasswordModal';
 import RegistrationModal from '../registration/RegistrationModal';
-import { auth, db } from '../firebase';
+import SearchBar from '../components/SearchBar';
+import Menu from './Menu';
+import MobileMenu from './MobileMenu';
+
 import logo from '../img/logo.png';
-import { doc, getDoc } from 'firebase/firestore';
-import SearchBar from '../components/SearchBar'; 
 import '../styles/Header.css';
-import SocialLinks from '../components/SocialLinks';
 
 const Header = () => {
-  const [isPasswordModalOpen, setIsPasswordModalOpen] = useState(false);
-  const [isRegistrationModalOpen, setIsRegistrationModalOpen] = useState(false);
   const [user, setUser] = useState(null);
   const [userData, setUserData] = useState(null);
+  const [loginOpen, setLoginOpen] = useState(false);
+  const [registerOpen, setRegisterOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   const navigate = useNavigate();
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
+    const unsub = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
-      if (currentUser) {
-        const docRef = doc(db, 'users', currentUser.uid);
-        const docSnap = await getDoc(docRef);
-        if (docSnap.exists()) {
-          setUserData(docSnap.data());
-          console.log('User data:', docSnap.data()); 
-        } else {
-          setUserData(null);
-        }
-      } else {
+
+      if (!currentUser) {
         setUserData(null);
+        return;
       }
+
+      const snap = await getDoc(doc(db, 'users', currentUser.uid));
+      setUserData(snap.exists() ? snap.data() : null);
     });
 
-    return () => unsubscribe();
+    return () => unsub();
   }, []);
 
-  const handlePasswordModalOpen = () => {
-    setIsPasswordModalOpen(true);
-  };
+  useEffect(() => {
+    document.body.style.overflow = mobileMenuOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileMenuOpen]);
 
-  const handlePasswordModalClose = () => {
-    setIsPasswordModalOpen(false);
-  };
-
-  const handleRegistrationModalOpen = () => {
-    setIsRegistrationModalOpen(true);
-  };
-
-  const handleRegistrationModalClose = () => {
-    setIsRegistrationModalOpen(false);
-  };
-
-  const handleLogout = () => {
-    signOut(auth).then(() => {
-      alert('Ви вийшли з профілю');
-      setUserData(null);
-    }).catch((error) => {
-      console.error('Помилка при виході: ', error);
-    });
-  };
-
-  const handleLogoClick = () => {
-    navigate('/');
+  const handleLogout = async () => {
+    await signOut(auth);
+    setUser(null);
+    setUserData(null);
   };
 
   return (
-    <header className="header-container"> 
-      <div className='header-section-logo'>
-        <img src={logo} alt="Site logo" className="logo-header" onClick={handleLogoClick} style={{ cursor: 'pointer' }} />
-        <div className='header-section-button'>
-          {/* <SocialLinks/> */}
-        <div className="search-bar-wrapper">
-  <SearchBar />
-</div>
+    <>
+      <header className="header">
+        <div className="header-inner">
+          <div className="header-left">
+            <div className="header-logo-wrap" onClick={() => navigate('/')}>
+              <img src={logo} alt="BigSport" className="header-logo" />
+            </div>
 
-      {userData ? (
-        <div className='header-user-section'>
-          <span>{userData.username}</span>
-          {userData.role === 'admin' && (
-            <button className="admin-button" onClick={() => navigate('/admin')}>Адмінпанель</button>
-          )}
-          <button className="profile-button" onClick={() => navigate(`/profile/${user?.uid}`)}>Профіль</button>
-          <button className='exit-button' onClick={handleLogout}>Вихід</button>
+            <button
+              className={`burger-btn ${mobileMenuOpen ? 'active' : ''}`}
+              onClick={() => setMobileMenuOpen(true)}
+              aria-label="Відкрити меню"
+            >
+              <span />
+              <span />
+              <span />
+            </button>
+          </div>
+
+          <div className="header-right">
+            <div className="header-topbar">
+              <div className="topbar-right">
+                <div className="desktop-topbar-links">
+                  <Link to="/about" className="topbar-link">
+                    Про нас
+                  </Link>
+
+                  <Link to="/authors-ranking" className="topbar-link">
+                    Рейтинг
+                  </Link>
+                </div>
+
+                <div className="topbar-search">
+                  <SearchBar />
+                </div>
+
+                <div className="desktop-auth">
+                  {userData ? (
+                    <div className="topbar-auth">
+                      <span className="topbar-username">{userData.username}</span>
+
+                      {userData.role === 'admin' && (
+                        <button
+                          className="btn btn--primary btn--sm"
+                          onClick={() => navigate('/admin')}
+                        >
+                          Адмінпанель
+                        </button>
+                      )}
+
+                      <button
+                        className="btn btn--ghost btn--sm"
+                        onClick={() => navigate(`/profile/${user?.uid}`)}
+                      >
+                        Профіль
+                      </button>
+
+                      <button
+                        className="btn btn--danger btn--sm"
+                        onClick={handleLogout}
+                      >
+                        Вихід
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="topbar-auth">
+                      <button
+                        className="btn btn--ghost btn--sm"
+                        onClick={() => setLoginOpen(true)}
+                      >
+                        Вхід
+                      </button>
+
+                      <button
+                        className="btn btn--secondary btn--sm"
+                        onClick={() => setRegisterOpen(true)}
+                      >
+                        Реєстрація
+                      </button>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            <div className="header-menubar">
+              <Menu />
+            </div>
+          </div>
         </div>
-      ) : (
-        <div>
-          <button className="login-button" onClick={handlePasswordModalOpen}>Вхід</button>
-          <button className="register-button" onClick={handleRegistrationModalOpen}>Реєстрація</button>
-        </div>
-      )}
-      <PasswordModal
-        isOpen={isPasswordModalOpen}
-        onClose={handlePasswordModalClose}
-        onLoginSuccess={() => navigate('/profile')}
+
+        <PasswordModal isOpen={loginOpen} onClose={() => setLoginOpen(false)} />
+        <RegistrationModal isOpen={registerOpen} onClose={() => setRegisterOpen(false)} />
+      </header>
+
+      <MobileMenu
+        isOpen={mobileMenuOpen}
+        onClose={() => setMobileMenuOpen(false)}
+        user={user}
+        userData={userData}
+        onLoginOpen={() => setLoginOpen(true)}
+        onRegisterOpen={() => setRegisterOpen(true)}
+        onLogout={handleLogout}
+        onNavigate={navigate}
       />
-      <RegistrationModal
-        isOpen={isRegistrationModalOpen}
-        onClose={handleRegistrationModalClose}
-      />
-      </div>
-      </div>
-    </header>
+    </>
   );
 };
 
 export default Header;
-
-
-
-
-
-
-

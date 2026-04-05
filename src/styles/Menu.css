@@ -1,82 +1,53 @@
 .menu {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    max-width: 1400px;
-    margin: 0 auto;
-    background-color:black;
-    padding: 10px 20px;
-    margin-bottom: 20px;
-    
-  }
-  
-  .menu a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 10px;
-    transition: all 0.3s ease;
-    position: relative;
-  }
-  
-  /* Біла лінія при наведенні та активному стані */
-  .menu a::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 2px;
-    width: 100%;
-    background-color: white;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.3s ease;
-  }
-  
-  .menu a:hover::after,
-  .menu a.active::after {
-    transform: scaleX(1);
-  }
-  
-  /* Медіа-запити */
-
-/* Маленькі телефони (до 480px) */
-@media (max-width: 480px) {
-  .menu {
-      flex-direction: column; /* Вертикальне вирівнювання меню */
-      align-items: center; /* Центрування */
-      padding: 5px 0;
-  }
-
-  .menu a {
-      font-size: 16px; /* Менший шрифт для мобільних */
-      padding: 5px 0; /* Відступи між пунктами */
-  }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  background: transparent;
 }
 
-/* Більші телефони (481px - 768px) */
-@media (min-width: 481px) and (max-width: 768px) {
+/* links */
+.menu a {
+  color: #111;
+  text-decoration: none;
+  font-weight: 900;
+  font-size: 15px;
+  padding: 10px 12px;
+  position: relative;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+/* underline effect */
+.menu a::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 6px;
+  height: 2px;
+  background: #111;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+
+/* hover + active */
+.menu a:hover::after,
+.menu a.active::after {
+  transform: scaleX(1);
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
   .menu {
-      flex-direction: row; /* Горизонтальне вирівнювання меню */
-      justify-content: space-between; /* Розподіл між пунктами меню */
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
   }
 
   .menu a {
-      font-size: 18px; /* Зберігаємо шрифт для більших телефонів */
-      padding: 10px; /* Відступи між пунктами */
+    font-size: 13px;
+    padding: 8px 10px;
   }
 }
-
-/* Планшети (769px - 1024px) */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .menu {
-      justify-content: space-around; /* Рівномірний розподіл між пунктами */
-  }
-
-  .menu a {
-      font-size: 20px; /* Збільшення шрифту для планшетів */
-      padding: 10px 15px; /* Відступи між пунктами */
-  }
-}
-

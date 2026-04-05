@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate, useLocation } from 'react-router-dom';
 import { useNews } from '../components/NewsContext';
 import {
   doc,
@@ -21,6 +21,9 @@ import amplitude from '../amplitude';
 const NewsDetails = () => {
   const { newsList } = useNews();
   const { id } = useParams();
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const [views, setViews] = useState(0);
   const [authorId, setAuthorId] = useState(null);
   const news = newsList.find((n) => n.id === id);
@@ -29,21 +32,18 @@ const NewsDetails = () => {
     const logView = async () => {
       if (!news) return;
 
-      // Amplitude: лог події
       amplitude.track('News Viewed', {
         id: news.id,
         title: news.title,
         author: news.author,
-        section: Array.isArray(news.sections) ? news.sections.join(', ') : news.section,
+        category: news.category,
         date: `${news.day}.${news.month}.${news.year}`,
         time: news.time,
       });
 
-      // Firestore: збільшення лічильника переглядів
       const newsRef = doc(db, 'news', news.id);
       await updateDoc(newsRef, { views: increment(1) });
 
-      // Оновлення кількості переглядів
       const updatedSnap = await getDoc(newsRef);
       if (updatedSnap.exists()) {
         const updatedData = updatedSnap.data();
@@ -76,12 +76,53 @@ const NewsDetails = () => {
     return <p>Новина не знайдена</p>;
   }
 
+  const handleTagClick = (tag) => {
+    navigate(`/search?q=${encodeURIComponent(tag)}`);
+  };
+
+  const handleGoBack = () => {
+    if (location.state?.from) {
+      navigate(location.state.from);
+    } else {
+      navigate(-1);
+    }
+  };
+
+  const getCategoryLink = (category) => {
+    switch (category) {
+      case 'Футбол України':
+        return '/football-ukraine';
+      case 'Єврокубки':
+        return '/eurocups';
+      case 'Чемпіонати':
+        return '/championships';
+      case 'Біатлон':
+        return '/biathlon';
+      case 'Види спорту':
+        return '/sports';
+      case 'Турніри':
+        return '/tournaments';
+      default:
+        return null;
+    }
+  };
+
+  const categoryLink = getCategoryLink(news.category);
+
   return (
     <div
       className="single-news-container"
       style={{ backgroundImage: `url(${defaultBackground})` }}
     >
       <div className="single-news-overlay">
+        <button
+          type="button"
+          onClick={handleGoBack}
+          className="back-button"
+        >
+          ← Назад
+        </button>
+
         <h2 className="single-news-title">{news.title}</h2>
       </div>
 
@@ -94,15 +135,43 @@ const NewsDetails = () => {
               className="floating-news-image"
             />
           )}
-          <div
-            dangerouslySetInnerHTML={{ __html: news.content }}
-          />
+
+          <div dangerouslySetInnerHTML={{ __html: news.content }} />
+
+          {Array.isArray(news.tags) && news.tags.length > 0 && (
+            <div className="news-tags-block">
+              <div className="news-tags">
+                {news.tags.map((tag, index) => (
+                  <button
+                    key={index}
+                    className="news-tag"
+                    onClick={() => handleTagClick(tag)}
+                    type="button"
+                  >
+                    #{tag}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
 
         <div className="single-news-meta">
           <span>
-            {news.day}.{news.month}.{news.year} {news.time}
+            <strong>Дата:</strong> {news.day}.{news.month}.{news.year} {news.time}
           </span>
+
+          <span>
+            <strong>Категорія:</strong>{' '}
+            {categoryLink ? (
+              <Link to={categoryLink} className="meta-link">
+                {news.category}
+              </Link>
+            ) : (
+              news.category || '—'
+            )}
+          </span>
+
           <span>
             <strong>Автор:</strong>{' '}
             {authorId ? (
@@ -113,15 +182,11 @@ const NewsDetails = () => {
               news.author
             )}
           </span>
-          
-          <span>
-            {/* <strong>Переглядів:</strong> {views} */}
-          </span>
         </div>
       </div>
 
       <CommentForm newsId={news.id} />
-      <Comments newsId={news.id} /> 
+      <Comments newsId={news.id} />
     </div>
   );
 };

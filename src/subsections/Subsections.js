@@ -1,36 +1,36 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import AnimatedNewsBlock from '../components/AnimatedNewsBlock';
 import '../styles/Subsections.css';
+
 import upl from '../img/upl.png';
 import cupOfUkraineLogo from '../img/cupOfUkraineLogo.png';
 import firstLeague from '../img/firstLeague.png';
 import secondLeague from '../img/secondLeague.png';
 import ukraine from '../img/ukraine.png';
-import eplLogo from '../img/eplLogo.png'; 
-import laLigaLogo from '../img/laLigaLogo.png'; 
-import bundesligaLogo from '../img/bundesligaLogo.png'; 
-import ligue1Logo from '../img/ligue1Logo.png'; 
+import eplLogo from '../img/eplLogo.png';
+import laLigaLogo from '../img/laLigaLogo.png';
+import bundesligaLogo from '../img/bundesligaLogo.png';
+import ligue1Logo from '../img/ligue1Logo.png';
 import europeNewsLogo from '../img/europeNewsLogo.png';
-import worldFootballLogo from '../img/worldFootballLogo.png'; 
+import worldFootballLogo from '../img/worldFootballLogo.png';
 import SeriaALogo from '../img/SeriaALogo.png';
-import championsLeagueLogo from '../img/championsLeagueLogo.png'
-import europaLeagueLogo from '../img/europaLeagueLogo.png'
-import conferenceLeagueLogo from '../img/conferenceLeagueLogo.png'
-import worldCupImage from '../img/worldCupImage.jpg'; 
-import ibuCupImage from '../img/ibuCupImage.png'; 
-import worldChampionshipImage from '../img/worldChampionshipImage.png'; 
-import newsBiathlonImage from '../img/newsBiathlonImage.png'; 
-import boxingImage from '../img/boxingImage.png'; 
-import tennisImage from '../img/tennisImage.png'; 
-import mmaImage from '../img/mmaImage.png'; 
-import futsalImage from '../img/futsalImage.png'; 
+import championsLeagueLogo from '../img/championsLeagueLogo.png';
+import europaLeagueLogo from '../img/europaLeagueLogo.png';
+import conferenceLeagueLogo from '../img/conferenceLeagueLogo.png';
+import worldCupImage from '../img/worldCupImage.jpg';
+import ibuCupImage from '../img/ibuCupImage.png';
+import worldChampionshipImage from '../img/worldChampionshipImage.png';
+import newsBiathlonImage from '../img/newsBiathlonImage.png';
+import boxingImage from '../img/boxingImage.png';
+import tennisImage from '../img/tennisImage.png';
+import mmaImage from '../img/mmaImage.png';
+import futsalImage from '../img/futsalImage.png';
 import clubWorldCupImage from '../img/clubWorldCupImage.png';
-import WorldCup2026Image from '../img/WorldCup2026Image.png' 
-import FutsalEuro2026Image from '../img/futsalEuro2026.png'; 
+import WorldCup2026Image from '../img/WorldCup2026Image.png';
+import FutsalEuro2026Image from '../img/futsalEuro2026.png';
 
-
-
-const footballUkraineSubsections =[
+const footballUkraineSubsections = [
   { name: 'Українська Премєр Ліга', image: upl, link: '/football-ukraine/upl' },
   { name: 'Кубок України', image: cupOfUkraineLogo, link: '/football-ukraine/cup' },
   { name: 'Перша Ліга', image: firstLeague, link: '/football-ukraine/first-league' },
@@ -54,7 +54,6 @@ const euroCupsSubsections = [
   { name: 'Ліга Конференцій', image: conferenceLeagueLogo, link: '/eurocups/conference-league' }
 ];
 
-
 const biathlonSubsections = [
   { name: 'Новини', image: newsBiathlonImage, link: '/biathlon/news-biathlon' },
   { name: 'Кубок Світу', image: worldCupImage, link: '/biathlon/world-cup' },
@@ -75,28 +74,34 @@ const tournamentsSubsections = [
   { name: 'Клубний чемпіонат світу 2025', image: clubWorldCupImage, link: '/tournaments/club-world-cup-2025' },
 ];
 
-const Subsections = ({category}) => {
+const Subsections = ({ category }) => {
   const categoryMap = {
     'Біатлон': biathlonSubsections,
     'Футбол України': footballUkraineSubsections,
     'Чемпіонати': championshipsSubsections,
     'Єврокубки': euroCupsSubsections,
     'Види спорту': sportsSubsections,
-    'Турніри' : tournamentsSubsections,
+    'Турніри': tournamentsSubsections,
   };
-  
+
   const subsections = categoryMap[category] || [];
-    
+
   return (
-    <div className="subsections-container">
-      {subsections.map((section) => (
-        <Link to={section.link} key={section.name} className="subsection-item">
-          <img src={section.image} alt={section.name} className="subsection-image" />
-          <span className="subsection-title">{section.name}</span>
-        </Link>
-      ))}
-    </div>
+    <AnimatedNewsBlock currentPage={category}>
+      <div className="subsections-container">
+        {subsections.map((section) => (
+          <Link to={section.link} key={section.name} className="subsection-item">
+            <img
+              src={section.image}
+              alt={section.name}
+              className="subsection-image"
+            />
+            <span className="subsection-title">{section.name}</span>
+          </Link>
+        ))}
+      </div>
+    </AnimatedNewsBlock>
   );
 };
 
-export default Subsections;    
+export default Subsections;

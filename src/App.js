@@ -24,7 +24,6 @@ function AppInner() {
   return (
     <div className="App">
       <Header />
-      <Menu />
       <Main />
       <Footer />
     </div>
