@@ -8,7 +8,8 @@ const SearchResults = () => {
   const { newsList } = useNews();
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const searchTerm = searchParams.get('q')?.toLowerCase().trim() || '';
+  const rawSearchTerm = searchParams.get('q')?.trim() || '';
+  const searchTerm = rawSearchTerm.toLowerCase();
   const currentPage = Number(searchParams.get('page')) || 1;
   const newsPerPage = 30;
 
@@ -33,7 +34,7 @@ const SearchResults = () => {
 
   const handlePageChange = (page) => {
     setSearchParams({
-      q: searchTerm,
+      q: rawSearchTerm,
       page: String(page),
     });
 
@@ -45,7 +46,9 @@ const SearchResults = () => {
 
   return (
     <div className="panel panel--spaced">
-      <h1>Результати пошуку</h1>
+      <h1>
+        {rawSearchTerm ? `${rawSearchTerm} - останні новини` : 'Результати пошуку'}
+      </h1>
 
       {filteredNews.length > 0 ? (
         <>
@@ -64,7 +67,11 @@ const SearchResults = () => {
           )}
         </>
       ) : (
-        <p>Нічого не знайдено.</p>
+        <p>
+          {rawSearchTerm
+            ? `За тегом "${rawSearchTerm}" нічого не знайдено.`
+            : 'Нічого не знайдено.'}
+        </p>
       )}
     </div>
   );
