@@ -3,8 +3,9 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth, db } from '../firebase';
 import { doc, setDoc, getDocs, query, collection, where } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
+import amplitude from '../amplitude';
+import logo from '../img/logo.png';
 import '../styles/RegistrationModal.css';
-import amplitude from '../amplitude'; // ✅ Підключаємо Amplitude
 
 const RegistrationModal = ({ isOpen, onClose }) => {
   const [email, setEmail] = useState('');
@@ -15,25 +16,86 @@ const RegistrationModal = ({ isOpen, onClose }) => {
   const [city, setCity] = useState('');
   const [error, setError] = useState('');
   const [passwordStrength, setPasswordStrength] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+
   const navigate = useNavigate();
 
-  const validatePassword = (password) => {
-    if (password.length < 6) {
-      setPasswordStrength('Пароль має містити мінімум 6 символів');
-    } else {
+  const resetForm = () => {
+    setEmail('');
+    setPassword('');
+    setConfirmPassword('');
+    setUsername('');
+    setCountry('');
+    setCity('');
+    setError('');
+    setPasswordStrength('');
+    setIsLoading(false);
+  };
+
+  const handleClose = () => {
+    resetForm();
+    onClose();
+  };
+
+  const validatePassword = (value) => {
+    if (value.length === 0) {
       setPasswordStrength('');
+      return;
+    }
+
+    if (value.length < 6) {
+      setPasswordStrength('Пароль має містити мінімум 6 символів');
+      return;
+    }
+
+    if (value.length < 8) {
+      setPasswordStrength('Середній пароль. Для кращого захисту додай більше символів');
+      return;
+    }
+
+    setPasswordStrength('Надійний пароль');
+  };
+
+  const getFirebaseErrorMessage = (code) => {
+    switch (code) {
+      case 'auth/email-already-in-use':
+        return 'Цей email уже використовується';
+      case 'auth/invalid-email':
+        return 'Некоректний формат email';
+      case 'auth/weak-password':
+        return 'Пароль занадто слабкий';
+      case 'auth/network-request-failed':
+        return 'Помилка мережі. Перевір підключення до інтернету';
+      default:
+        return 'Не вдалося завершити реєстрацію. Спробуй ще раз';
     }
   };
 
   const handleRegistration = async (e) => {
     e.preventDefault();
+    setError('');
+
+    const trimmedUsername = username.trim();
+    const trimmedEmail = email.trim().toLowerCase();
+    const trimmedCountry = country.trim();
+    const trimmedCity = city.trim();
+
+    if (!trimmedUsername || !trimmedEmail || !password || !confirmPassword || !trimmedCountry || !trimmedCity) {
+      setError('Будь ласка, заповни всі поля');
+      return;
+    }
+
+    if (trimmedUsername.length < 3) {
+      setError('Логін має містити мінімум 3 символи');
+      return;
+    }
 
     if (password !== confirmPassword) {
       setError('Паролі не співпадають');
       amplitude.track('registration_failed', {
         reason: 'passwords_do_not_match',
-        username,
-        email,
+        username: trimmedUsername,
+        email: trimmedEmail,
       });
       return;
     }
@@ -42,108 +104,194 @@ const RegistrationModal = ({ isOpen, onClose }) => {
       setError('Пароль має містити мінімум 6 символів');
       amplitude.track('registration_failed', {
         reason: 'weak_password',
-        username,
-        email,
+        username: trimmedUsername,
+        email: trimmedEmail,
       });
       return;
     }
 
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailPattern.test(email)) {
+    if (!emailPattern.test(trimmedEmail)) {
       setError('Некоректний формат email');
       amplitude.track('registration_failed', {
         reason: 'invalid_email_format',
-        username,
-        email,
+        username: trimmedUsername,
+        email: trimmedEmail,
       });
       return;
     }
 
     try {
-      const q = query(collection(db, 'users'), where('username', '==', username));
+      setIsLoading(true);
+
+      const q = query(collection(db, 'users'), where('username', '==', trimmedUsername));
       const querySnapshot = await getDocs(q);
 
       if (!querySnapshot.empty) {
-        setError('Ім\'я користувача вже зайнято');
+        setError("Ім'я користувача вже зайнято");
         amplitude.track('registration_failed', {
           reason: 'username_taken',
-          username,
-          email,
+          username: trimmedUsername,
+          email: trimmedEmail,
         });
+        setIsLoading(false);
         return;
       }
 
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const userCredential = await createUserWithEmailAndPassword(auth, trimmedEmail, password);
       const user = userCredential.user;
 
       await setDoc(doc(db, 'users', user.uid), {
-        username,
-        email,
-        country,
-        city,
+        username: trimmedUsername,
+        email: trimmedEmail,
+        country: trimmedCountry,
+        city: trimmedCity,
         createdAt: new Date(),
         role: 'user',
       });
 
-      // ✅ Подія успішної реєстрації
       amplitude.track('user_registered', {
         userId: user.uid,
-        username,
-        email,
-        country,
-        city,
+        username: trimmedUsername,
+        email: trimmedEmail,
+        country: trimmedCountry,
+        city: trimmedCity,
         time: new Date().toISOString(),
       });
 
-      // Очистка полів
-      setEmail('');
-      setPassword('');
-      setConfirmPassword('');
-      setUsername('');
-      setCountry('');
-      setCity('');
-      setError('');
-      setPasswordStrength('');
+      resetForm();
       onClose();
-
       navigate('/');
     } catch (error) {
-      console.error('Помилка при реєстрації: ', error);
-      setError('Помилка при реєстрації: ' + error.message);
+      console.error('Помилка при реєстрації:', error);
 
-      // ❌ Подія помилки реєстрації
+      const readableMessage = getFirebaseErrorMessage(error.code);
+      setError(readableMessage);
+
       amplitude.track('registration_failed', {
-        reason: error.message,
-        username,
-        email,
+        reason: error.code || error.message,
+        username: trimmedUsername,
+        email: trimmedEmail,
       });
+    } finally {
+      setIsLoading(false);
     }
   };
 
-  return isOpen ? (
-    <div className="modal-overlay">
-      <div className="modal-content">
-        <button className="close-button" onClick={onClose}>×</button>
-        <h2>Реєстрація</h2>
-        <form onSubmit={handleRegistration}>
-          <input type="text" placeholder="Логін" value={username} onChange={(e) => setUsername(e.target.value)} required />
-          <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-          <input type="password" placeholder="Пароль" value={password} onChange={(e) => { setPassword(e.target.value); validatePassword(e.target.value); }} required />
-          <input type="password" placeholder="Повторіть пароль" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
-          <input type="text" placeholder="Країна" value={country} onChange={(e) => setCountry(e.target.value)} required />
-          <input type="text" placeholder="Місто" value={city} onChange={(e) => setCity(e.target.value)} required />
+  if (!isOpen) return null;
 
-          {passwordStrength && <p className="password-strength">{passwordStrength}</p>}
-          {error && <p className="error-message">{error}</p>}
+  return (
+    <div className="registration-modal-overlay" onClick={handleClose}>
+      <div className="registration-modal-content" onClick={(e) => e.stopPropagation()}>
+        <button
+          className="registration-close-button"
+          onClick={handleClose}
+          aria-label="Закрити модальне вікно"
+        >
+          ×
+        </button>
 
-          <button type="submit" className="register-button">Зареєструватися</button>
+        <div className="registration-modal-header">
+          <img src={logo} alt="BigSport" className="registration-logo" />
+          <h2>Створити акаунт</h2>
+          <p>Приєднуйся до BigSport та отримай доступ до персонального профілю</p>
+        </div>
+
+        <form className="registration-form" onSubmit={handleRegistration}>
+          <div className="registration-input-group">
+            <input
+              type="text"
+              placeholder="Логін"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              autoComplete="username"
+              required
+            />
+          </div>
+
+          <div className="registration-input-group">
+            <input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              autoComplete="email"
+              required
+            />
+          </div>
+
+          <div className="registration-input-group">
+            <input
+              type="password"
+              placeholder="Пароль"
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+                validatePassword(e.target.value);
+              }}
+              autoComplete="new-password"
+              required
+            />
+          </div>
+
+          <div className="registration-input-group">
+            <input
+              type="password"
+              placeholder="Повторіть пароль"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              autoComplete="new-password"
+              required
+            />
+          </div>
+
+          <div className="registration-row">
+            <div className="registration-input-group">
+              <input
+                type="text"
+                placeholder="Країна"
+                value={country}
+                onChange={(e) => setCountry(e.target.value)}
+                autoComplete="country-name"
+                required
+              />
+            </div>
+
+            <div className="registration-input-group">
+              <input
+                type="text"
+                placeholder="Місто"
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+                autoComplete="address-level2"
+                required
+              />
+            </div>
+          </div>
+
+          {passwordStrength && (
+            <div
+              className={`registration-message ${
+                passwordStrength === 'Надійний пароль' ? 'success' : 'warning'
+              }`}
+            >
+              {passwordStrength}
+            </div>
+          )}
+
+          {error && <div className="registration-message error">{error}</div>}
+
+          <button
+            type="submit"
+            className={`register-button ${isLoading ? 'loading' : ''}`}
+            disabled={isLoading}
+          >
+            {isLoading ? 'Реєстрація...' : 'Зареєструватися'}
+          </button>
         </form>
       </div>
     </div>
-  ) : null;
+  );
 };
 
 export default RegistrationModal;
-
-
-
