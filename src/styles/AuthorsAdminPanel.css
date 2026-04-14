@@ -103,6 +103,45 @@
   opacity: 0.8;
 }
 
+.authors-admin-block {
+  margin-top: 24px;
+}
+
+.authors-admin-subhead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.authors-admin-subhead h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: #111;
+}
+
+.authors-admin-count {
+  min-width: 34px;
+  height: 34px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: #111;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.authors-admin-empty {
+  text-align: center;
+  padding: 18px;
+  color: #666;
+  font-style: italic;
+}
+
 @media (max-width: 768px) {
   .authors-admin {
     padding: 12px;

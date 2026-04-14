@@ -1,51 +1,95 @@
-.admin_panel {
-    max-width: 1400px;
-  }
+.admin-panel-page {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 28px 20px 40px;
+}
 
-  /* 📱 Адаптація під мобільні */
+.admin-panel-header {
+  margin-bottom: 24px;
+}
+
+.admin-panel-title {
+  margin: 0;
+  font-size: 34px;
+  font-weight: 800;
+  color: #111;
+  line-height: 1.1;
+}
+
+.admin-panel-subtitle {
+  margin: 8px 0 0;
+  font-size: 15px;
+  color: #666;
+  line-height: 1.5;
+}
+
+.admin-tabs-wrap {
+  margin-bottom: 24px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+}
+
+.admin-tabs {
+  display: inline-flex;
+  gap: 12px;
+  min-width: max-content;
+}
+
+.admin-tab {
+  border: none;
+  background: #f3f4f6;
+  color: #222;
+  padding: 14px 22px;
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.admin-tab:hover {
+  background: #e8eaee;
+  transform: translateY(-1px);
+}
+
+.admin-tab.active {
+  background: #111;
+  color: #fff;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+}
+
+.admin-tab-content {
+  background: #fff;
+  border-radius: 22px;
+  padding: 22px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+  border: 1px solid #ececec;
+}
+
 @media (max-width: 768px) {
-  .admin_panel {
-    padding: 10px;
+  .admin-panel-page {
+    padding: 20px 14px 32px;
   }
 
-  .admin_panel h1 {
-    font-size: 20px;
-    text-align: center;
-    margin: 15px 0;
+  .admin-panel-title {
+    font-size: 28px;
   }
 
-  .add-news-table,
-  .edit-news-table,
-  .news-table {
+  .admin-panel-subtitle {
     font-size: 14px;
-    overflow-x: auto;
-    display: block;
-    width: 100%;
   }
 
-  .add-news-table td,
-  .edit-news-table td,
-  .news-table td,
-  .news-table th {
-    padding: 6px;
-    text-align: left;
-    word-break: break-word;
+  .admin-tab {
+    padding: 12px 18px;
+    font-size: 14px;
+    border-radius: 12px;
   }
 
-  .news-table button,
-  .profile-button,
-  .exit-button {
-    font-size: 13px;
-    padding: 6px 10px;
-    margin: 2px;
-  }
-
-  .panel {
-    margin-bottom: 20px;
-  }
-
-  .image-preview {
-    max-width: 100%;
-    height: auto;
+  .admin-tab-content {
+    padding: 16px;
+    border-radius: 18px;
   }
 }
