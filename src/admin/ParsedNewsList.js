@@ -27,35 +27,37 @@ const ParsedNewsList = () => {
   };
 
   const handlePublish = async (news) => {
-    const now = new Date();
-  
-    const publishedNews = {
-      id: news.id,
-      title: news.title || '',
-      category: news.category || '',
-      sections: news.sections || [],
-      image: news.image || '',
-      content: news.content || '',
-      author: news.author || 'Невідомий автор',
-      day: String(now.getDate()).padStart(2, '0'),
-      month: String(now.getMonth() + 1).padStart(2, '0'),
-      year: String(now.getFullYear()),
-      time: now.toTimeString().slice(0, 5),
-      timestamp: now,
-      topNews: news.topNews || false,
-      status: "Опубліковано",
-    };
-  
-    try {
-      await setDoc(doc(db, "news", news.id), publishedNews);
-      await deleteDoc(doc(db, "parsed_news", news.id));
-      setParsedNews(parsedNews.filter((item) => item.id !== news.id));
-      alert("Новину опубліковано!");
-    } catch (error) {
-      console.error("Помилка при публікації новини:", error);
-      alert("Сталася помилка при публікації.");
-    }
+  const now = new Date();
+
+  const publishedNews = {
+    id: news.id,
+    title: news.title || '',
+    category: news.category || '',
+    sections: news.sections || [],
+    categories: news.categories || [],
+    image: news.image || '',
+    content: news.content || '',
+    author: news.author || 'Невідомий автор',
+    day: String(now.getDate()).padStart(2, '0'),
+    month: String(now.getMonth() + 1).padStart(2, '0'),
+    year: String(now.getFullYear()),
+    time: now.toTimeString().slice(0, 5),
+    timestamp: now,
+    topNews: news.topNews || false,
+    tags: Array.isArray(news.tags) ? news.tags : [],
+    status: "Опубліковано",
   };
+
+  try {
+    await setDoc(doc(db, "news", news.id), publishedNews);
+    await deleteDoc(doc(db, "parsed_news", news.id));
+    setParsedNews(parsedNews.filter((item) => item.id !== news.id));
+    alert("Новину опубліковано!");
+  } catch (error) {
+    console.error("Помилка при публікації новини:", error);
+    alert("Сталася помилка при публікації.");
+  }
+};
   
   const handleEditClick = (news) => {
     setEditingNews(news);

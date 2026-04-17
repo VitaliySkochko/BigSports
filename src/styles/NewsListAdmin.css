@@ -1,22 +1,253 @@
 .news-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-top: 20px;
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
+  border: 1px solid #ececec;
+}
+
+.news-table th,
+.news-table td {
+  padding: 14px 16px;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid #efefef;
+}
+
+.news-table th {
+  background: #f7f7f8;
+  font-weight: 800;
+  font-size: 14px;
+  color: #111;
+  white-space: nowrap;
+}
+
+.news-table td {
+  font-size: 14px;
+  color: #222;
+  line-height: 1.5;
+}
+
+.news-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.news-table tbody tr:hover {
+  background: #fafafa;
+}
+
+.news-table td:last-child {
+  min-width: 180px;
+}
+
+/* Кнопки дій */
+.news-table .button {
+  border: none;
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  margin-right: 8px;
+  margin-bottom: 6px;
+}
+
+.news-table .button:last-child {
+  margin-right: 0;
+}
+
+.news-table .edit-button {
+  background: #111;
+  color: #fff;
+}
+
+.news-table .edit-button:hover {
+  background: #2a2a2a;
+  transform: translateY(-1px);
+}
+
+.news-table .delete-button {
+  background: #f3f4f6;
+  color: #b42318;
+}
+
+.news-table .delete-button:hover {
+  background: #fdecec;
+  transform: translateY(-1px);
+}
+
+/* Заголовок новини */
+.news-title {
+  line-height: 1.45;
+}
+
+.news-title-link {
+  color: #111;
+  text-decoration: none;
+  font-weight: 700;
+  transition: color 0.2s ease;
+}
+
+.news-title-link:hover {
+  color: #444;
+  text-decoration: underline;
+}
+
+/* Планшети */
+@media (max-width: 992px) {
+  .news-table th,
+  .news-table td {
+    padding: 12px 12px;
+    font-size: 13px;
+  }
+
+  .news-table td:last-child {
+    min-width: 150px;
+  }
+
+  .news-table .button {
+    padding: 9px 12px;
+    font-size: 12px;
+  }
+}
+
+/* Мобілка — таблиця перетворюється в картки */
+@media (max-width: 768px) {
+  .news-table,
+  .news-table thead,
+  .news-table tbody,
+  .news-table th,
+  .news-table td,
+  .news-table tr {
+    display: block;
     width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    background: white; 
   }
-  
-  .news-table th, .news-table td {
-    border: 1px solid #ddd;
+
+  .news-table {
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    margin-top: 16px;
+  }
+
+  .news-table thead {
+    display: none;
+  }
+
+  .news-table tbody {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .news-table tbody tr {
+    background: #fff;
+    border: 1px solid #ececec;
+    border-radius: 18px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+    padding: 12px;
+  }
+
+  .news-table tbody tr:hover {
+    background: #fff;
+  }
+
+  .news-table td {
+    border: none;
+    padding: 8px 0;
+    min-width: unset;
+  }
+
+  .news-table td:last-child {
+    min-width: unset;
+  }
+
+  /* Підписи до кожного поля */
+  .news-table td:nth-child(1)::before {
+    content: "Заголовок";
+  }
+
+  .news-table td:nth-child(2)::before {
+    content: "Категорія";
+  }
+
+  .news-table td:nth-child(3)::before {
+    content: "Розділ";
+  }
+
+  .news-table td:nth-child(4)::before {
+    content: "Автор";
+  }
+
+  .news-table td:nth-child(5)::before {
+    content: "Дата";
+  }
+
+  .news-table td:nth-child(6)::before {
+    content: "Час";
+  }
+
+  .news-table td:nth-child(7)::before {
+    content: "Дії";
+  }
+
+  .news-table td::before {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #6b7280;
+  }
+
+  .news-table .button {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 8px;
+    min-height: 42px;
+    border-radius: 12px;
+  }
+
+  .news-table .button:last-child {
+    margin-bottom: 0;
+  }
+
+  .news-title-link {
+    font-size: 15px;
+    line-height: 1.45;
+  }
+}
+
+/* Маленькі телефони */
+@media (max-width: 480px) {
+  .news-table tbody tr {
     padding: 10px;
-    text-align: left;
+    border-radius: 16px;
   }
-  
-  .news-table th {
-    background: #f4f4f4;
-    font-weight: bold;
+
+  .news-table td {
+    padding: 7px 0;
+    font-size: 13px;
   }
-  
-  .news-table tr:hover {
-    background: #f9f9f9;
+
+  .news-table td::before {
+    font-size: 11px;
+    margin-bottom: 5px;
   }
-  
+
+  .news-table .button {
+    min-height: 40px;
+    font-size: 12px;
+    padding: 10px 12px;
+  }
+
+  .news-title-link {
+    font-size: 14px;
+  }
+}

@@ -1,9 +1,10 @@
 .authors-admin {
   margin-top: 20px;
-  padding: 16px;
-  border: 2px solid #000;
-  border-radius: 14px;
+  padding: 18px;
+  border: 1px solid #ececec;
+  border-radius: 20px;
   background: #fff;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.05);
 }
 
 .authors-admin-head {
@@ -11,96 +12,41 @@
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  margin-bottom: 10px;
+  margin-bottom: 14px;
 }
 
 .authors-admin-head h2 {
   margin: 0;
-  font-size: 18px;
+  font-size: 22px;
+  font-weight: 800;
+  color: #111;
 }
 
 .authors-admin-refresh {
   background: #fff;
-  border: 2px solid #000;
-  padding: 8px 14px;
+  border: 1px solid #111;
+  padding: 10px 16px;
   border-radius: 12px;
   cursor: pointer;
-  font-weight: 700;
+  font-weight: 800;
+  font-size: 14px;
+  transition: all 0.25s ease;
+}
+
+.authors-admin-refresh:hover {
+  background: #111;
+  color: #fff;
 }
 
 .authors-admin-error {
-  margin: 10px 0;
-  padding: 10px 12px;
-  border: 2px solid red;
-  background: #ffecec;
-  color: red;
-  border-radius: 12px;
+  margin: 12px 0;
+  padding: 12px 14px;
+  border: 1px solid #ef4444;
+  background: #fff1f2;
+  color: #b42318;
+  border-radius: 14px;
   font-weight: 700;
-}
-
-.authors-admin-table-wrap {
-  width: 100%;
-  overflow-x: auto;
-  border: 1px solid rgba(0,0,0,0.12);
-  border-radius: 12px;
-}
-
-.authors-admin-table {
-  width: 100%;
-  min-width: 900px;
-  border-collapse: collapse;
   font-size: 14px;
-}
-
-.authors-admin-table th {
-  background: #000;
-  color: #fff;
-  text-align: left;
-  padding: 10px;
-  white-space: nowrap;
-}
-
-.authors-admin-table td {
-  padding: 10px;
-  border-top: 1px solid rgba(0,0,0,0.08);
-  white-space: nowrap;
-}
-
-.col-author {
-  font-weight: 800;
-}
-
-.btn-fire, .btn-restore {
-  border: 2px solid #000;
-  background: #fff;
-  padding: 8px 12px;
-  border-radius: 12px;
-  cursor: pointer;
-  font-weight: 800;
-}
-
-.btn-fire {
-  border-color: #d32f2f;
-  color: #d32f2f;
-}
-
-.btn-fire:hover {
-  background: #ffecec;
-}
-
-.btn-restore {
-  border-color: #2e7d32;
-  color: #2e7d32;
-}
-
-.btn-restore:hover {
-  background: #ecffec;
-}
-
-.authors-admin-hint {
-  margin-top: 10px;
-  font-size: 12px;
-  opacity: 0.8;
 }
 
 .authors-admin-block {
@@ -111,13 +57,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 12px;
   margin-bottom: 12px;
 }
 
 .authors-admin-subhead h3 {
   margin: 0;
-  font-size: 20px;
-  font-weight: 700;
+  font-size: 18px;
+  font-weight: 800;
   color: #111;
 }
 
@@ -132,7 +79,115 @@
   align-items: center;
   justify-content: center;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 800;
+}
+
+.authors-admin-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid #ececec;
+  border-radius: 16px;
+  background: #fff;
+}
+
+.authors-admin-table {
+  width: 100%;
+  min-width: 900px;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 14px;
+}
+
+.authors-admin-table th {
+  background: #111;
+  color: #fff;
+  text-align: left;
+  padding: 12px 14px;
+  white-space: nowrap;
+  font-weight: 800;
+  font-size: 14px;
+}
+
+.authors-admin-table td {
+  padding: 12px 14px;
+  border-top: 1px solid #efefef;
+  white-space: nowrap;
+  color: #222;
+  vertical-align: middle;
+}
+
+.authors-admin-table tbody tr:hover {
+  background: #fafafa;
+}
+
+.col-author {
+  font-weight: 800;
+  color: #111;
+}
+
+.col-email {
+  color: #555;
+}
+
+.role-admin,
+.role-user {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.role-admin {
+  background: #facc15;
+  color: #111;  
+}
+
+.role-user {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.btn-fire,
+.btn-restore {
+  border: 1px solid transparent;
+  background: #fff;
+  padding: 10px 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 800;
+  font-size: 13px;
+  transition: all 0.25s ease;
+}
+
+.btn-fire {
+  border-color: #dc2626;
+  color: #dc2626;
+}
+
+.btn-fire:hover {
+  background: #fff1f2;
+}
+
+.btn-restore {
+  border-color: #15803d;
+  color: #15803d;
+}
+
+.btn-restore:hover {
+  background: #f0fdf4;
+}
+
+.btn-fire:disabled,
+.btn-restore:disabled,
+.authors-admin-refresh:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 .authors-admin-empty {
@@ -142,8 +197,191 @@
   font-style: italic;
 }
 
+.authors-admin-hint {
+  margin-top: 14px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #666;
+}
+
+/* Планшети */
+@media (max-width: 992px) {
+  .authors-admin {
+    padding: 14px;
+    border-radius: 18px;
+  }
+
+  .authors-admin-head h2 {
+    font-size: 20px;
+  }
+
+  .authors-admin-subhead h3 {
+    font-size: 17px;
+  }
+
+  .authors-admin-table th,
+  .authors-admin-table td {
+    padding: 11px 12px;
+    font-size: 13px;
+  }
+}
+
+/* Мобілка */
 @media (max-width: 768px) {
   .authors-admin {
     padding: 12px;
+    border-radius: 16px;
+  }
+
+  .authors-admin-head {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .authors-admin-head h2 {
+    font-size: 18px;
+  }
+
+  .authors-admin-refresh {
+    width: 100%;
+    min-height: 44px;
+  }
+
+  .authors-admin-subhead {
+    align-items: center;
+    gap: 10px;
+  }
+
+  .authors-admin-subhead h3 {
+    font-size: 16px;
+    line-height: 1.3;
+  }
+
+  /* Таблиця -> картки */
+  .authors-admin-table,
+  .authors-admin-table thead,
+  .authors-admin-table tbody,
+  .authors-admin-table th,
+  .authors-admin-table td,
+  .authors-admin-table tr {
+    display: block;
+    width: 100%;
+  }
+
+  .authors-admin-table {
+    min-width: unset;
+    background: transparent;
+  }
+
+  .authors-admin-table thead {
+    display: none;
+  }
+
+  .authors-admin-table-wrap {
+    overflow: visible;
+    border: none;
+    background: transparent;
+  }
+
+  .authors-admin-table tbody {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .authors-admin-table tr {
+    background: #fff;
+    border: 1px solid #ececec;
+    border-radius: 16px;
+    padding: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+  }
+
+  .authors-admin-table td {
+    border: none;
+    padding: 7px 0;
+    white-space: normal;
+  }
+
+  .authors-admin-table td::before {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #6b7280;
+  }
+
+  .authors-admin-table td:nth-child(1)::before {
+    content: "Ім’я";
+  }
+
+  .authors-admin-table td:nth-child(2)::before {
+    content: "Email";
+  }
+
+  .authors-admin-table td:nth-child(3)::before {
+    content: "Роль";
+  }
+
+  .authors-admin-table td:nth-child(4)::before {
+    content: "Створено";
+  }
+
+  .authors-admin-table td:nth-child(5)::before {
+    content: "Дата";
+  }
+
+  .authors-admin-table td:nth-child(6)::before {
+    content: "Дія";
+  }
+
+  .btn-fire,
+  .btn-restore {
+    width: 100%;
+    min-height: 42px;
+    margin-top: 4px;
+  }
+
+  .authors-admin-hint {
+    font-size: 12px;
+  }
+}
+
+/* Маленькі телефони */
+@media (max-width: 480px) {
+  .authors-admin {
+    padding: 10px;
+    border-radius: 14px;
+  }
+
+  .authors-admin-head h2 {
+    font-size: 17px;
+  }
+
+  .authors-admin-subhead h3 {
+    font-size: 15px;
+  }
+
+  .authors-admin-count {
+    min-width: 30px;
+    height: 30px;
+    font-size: 12px;
+  }
+
+  .authors-admin-table tr {
+    padding: 10px;
+    border-radius: 14px;
+  }
+
+  .authors-admin-table td {
+    font-size: 13px;
+  }
+
+  .btn-fire,
+  .btn-restore,
+  .authors-admin-refresh {
+    font-size: 13px;
   }
 }

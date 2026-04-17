@@ -122,17 +122,17 @@ const AdminPanel = () => {
         </div>
       </div>
 
-      <div className="admin-tab-content">
-        {renderTabContent()}
-      </div>
-
       {editingNews && (
-        <EditNewsForm
-          news={editingNews}
-          onEdit={handleEditNews}
-          onClose={handleCloseEdit}
-        />
-      )}
+  <EditNewsForm
+    news={editingNews}
+    onEdit={handleEditNews}
+    onClose={handleCloseEdit}
+  />
+)}
+
+<div className="admin-tab-content">
+  {renderTabContent()}
+</div>
     </div>
   );
 };
