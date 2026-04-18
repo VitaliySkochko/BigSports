@@ -1,0 +1,163 @@
+.tournament-slider-box {
+  max-width: 400px;
+  width: 100%;
+  font-family: 'Arial', sans-serif;
+  margin-bottom: 30px;
+}
+
+.tournament-slider {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  background: #fff;
+  border-radius: 8px;
+  padding: 14px 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.tournament-track {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  width: max-content;
+  animation: tournamentScroll 22s linear infinite;
+}
+
+.tournament-slider:hover .tournament-track {
+  animation-play-state: paused;
+}
+
+.tournament-item {
+  flex: 0 0 auto;
+  width: 110px;
+  text-decoration: none;
+  color: #111;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  transition: transform 0.3s ease;
+}
+
+.tournament-item:hover {
+  transform: translateY(-2px);
+}
+
+.tournament-item img {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.tournament-item span {
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.3;
+  padding: 0 4px;
+  min-height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes tournamentScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+
+
+/* =========================
+   TABLET
+   ========================= */
+@media (max-width: 992px) {
+  .tournament-slider-box {
+    max-width: 100%;
+  }
+
+  .tournament-item {
+    width: 100px;
+  }
+
+  .tournament-item img {
+    width: 66px;
+    height: 66px;
+  }
+
+  .tournament-item span {
+    font-size: 12px;
+    min-height: 32px;
+  }
+}
+
+/* =========================
+   MOBILE
+   ========================= */
+@media (max-width: 768px) {
+  .tournament-slider-box {
+    max-width: 100%;
+    margin-bottom: 24px;
+  }
+
+  .tournament-slider {
+    padding: 12px 0;
+    border-radius: 6px;
+  }
+
+  .tournament-track {
+    gap: 14px;
+    animation-duration: 18s;
+  }
+
+  .tournament-item {
+    width: 90px;
+  }
+
+  .tournament-item img {
+    width: 58px;
+    height: 58px;
+    margin-bottom: 6px;
+  }
+
+  .tournament-item span {
+    font-size: 11px;
+    line-height: 1.25;
+    min-height: 30px;
+  }
+}
+
+/* =========================
+   SMALL MOBILE
+   ========================= */
+@media (max-width: 480px) {
+  .tournament-slider {
+    padding: 10px 0;
+  }
+
+  .tournament-track {
+    gap: 12px;
+    animation-duration: 16s;
+  }
+
+  .tournament-item {
+    width: 82px;
+  }
+
+  .tournament-item img {
+    width: 52px;
+    height: 52px;
+  }
+
+  .tournament-item span {
+    font-size: 10px;
+    min-height: 28px;
+    padding: 0 2px;
+  }
+}

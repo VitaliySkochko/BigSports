@@ -14,6 +14,7 @@ import {
 import { db } from '../firebase';
 import Comments from './Comments';
 import CommentForm from './CommentForm';
+import RelatedNewsSlider from '../sections/RelatedNewsSlider';
 import '../styles/NewsDetails.css';
 import defaultBackground from '../img/news-background.jpg';
 import amplitude from '../amplitude';
@@ -26,28 +27,33 @@ const NewsDetails = () => {
 
   const [views, setViews] = useState(0);
   const [authorId, setAuthorId] = useState(null);
+
   const news = newsList.find((n) => n.id === id);
 
   useEffect(() => {
     const logView = async () => {
       if (!news) return;
 
-      amplitude.track('News Viewed', {
-        id: news.id,
-        title: news.title,
-        author: news.author,
-        category: news.category,
-        date: `${news.day}.${news.month}.${news.year}`,
-        time: news.time,
-      });
+      try {
+        amplitude.track('News Viewed', {
+          id: news.id,
+          title: news.title,
+          author: news.author,
+          category: news.category,
+          date: `${news.day}.${news.month}.${news.year}`,
+          time: news.time,
+        });
 
-      const newsRef = doc(db, 'news', news.id);
-      await updateDoc(newsRef, { views: increment(1) });
+        const newsRef = doc(db, 'news', news.id);
+        await updateDoc(newsRef, { views: increment(1) });
 
-      const updatedSnap = await getDoc(newsRef);
-      if (updatedSnap.exists()) {
-        const updatedData = updatedSnap.data();
-        setViews(updatedData.views || 1);
+        const updatedSnap = await getDoc(newsRef);
+        if (updatedSnap.exists()) {
+          const updatedData = updatedSnap.data();
+          setViews(updatedData.views || 1);
+        }
+      } catch (error) {
+        console.error('Помилка при оновленні переглядів:', error);
       }
     };
 
@@ -61,6 +67,7 @@ const NewsDetails = () => {
       try {
         const q = query(collection(db, 'users'), where('username', '==', news.author));
         const snapshot = await getDocs(q);
+
         if (!snapshot.empty) {
           setAuthorId(snapshot.docs[0].id);
         }
@@ -131,7 +138,7 @@ const NewsDetails = () => {
           {news.image && (
             <img
               src={news.image}
-              alt="news"
+              alt={news.title}
               className="floating-news-image"
             />
           )}
@@ -182,8 +189,14 @@ const NewsDetails = () => {
               news.author
             )}
           </span>
+
+          <span>
+            <strong>Перегляди:</strong> {views}
+          </span>
         </div>
       </div>
+
+      <RelatedNewsSlider currentNews={news} newsList={newsList} />
 
       <CommentForm newsId={news.id} />
       <Comments newsId={news.id} />

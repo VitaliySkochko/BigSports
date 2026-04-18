@@ -21,7 +21,9 @@
   /* робить текст "щільнішим", як у UAF */
   letter-spacing: -0.01em;
 }
-
+html, body {
+  overflow-x: hidden;
+}
 /* ---- CONTAINER ---- */
 .container {
   width: 100%;
