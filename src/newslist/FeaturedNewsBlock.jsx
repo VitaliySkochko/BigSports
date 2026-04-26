@@ -7,7 +7,9 @@ const FeaturedNewsBlock = ({ newsList }) => {
 
   const featuredNews = useMemo(() => {
     const safeList = Array.isArray(newsList) ? newsList : [];
-    return safeList.filter((item) => item?.topNews && item?.id).slice(0, 5);
+    return safeList
+      .filter((item) => item?.topNews && item?.id)
+      .slice(0, 9);
   }, [newsList]);
 
   const [activeIndex, setActiveIndex] = useState(0);
@@ -38,15 +40,15 @@ const FeaturedNewsBlock = ({ newsList }) => {
   }
 
   const activeNews = featuredNews[activeIndex];
-  const sideNews = featuredNews.filter((_, index) => index !== activeIndex);
+  const otherNews = featuredNews.filter((_, index) => index !== activeIndex);
+
+  const sideNews = otherNews.slice(0, 4);
+  const bottomNews = otherNews.slice(4, 8);
 
   return (
     <section className="featured-news-section">
-      <div className="featured-news-header">
-        
-      </div>
-
       <div className="featured-news-layout">
+        {/* 🔥 ГОЛОВНА НОВИНА */}
         <Link
           to={`/news/${activeNews.id}`}
           state={{ from: location.pathname + location.search }}
@@ -71,7 +73,9 @@ const FeaturedNewsBlock = ({ newsList }) => {
             <h3 className="featured-main-title">{activeNews.title}</h3>
 
             {activeNews.description && (
-              <p className="featured-main-description">{activeNews.description}</p>
+              <p className="featured-main-description">
+                {activeNews.description}
+              </p>
             )}
 
             <div className="featured-main-dots">
@@ -79,7 +83,9 @@ const FeaturedNewsBlock = ({ newsList }) => {
                 <button
                   key={index}
                   type="button"
-                  className={`featured-dot ${index === activeIndex ? 'active' : ''}`}
+                  className={`featured-dot ${
+                    index === activeIndex ? 'active' : ''
+                  }`}
                   onClick={(e) => {
                     e.preventDefault();
                     setActiveIndex(index);
@@ -91,33 +97,56 @@ const FeaturedNewsBlock = ({ newsList }) => {
           </div>
         </Link>
 
+        {/* 🔥 ПРАВІ 4 */}
         <div className="featured-side-list">
-          {sideNews.map((item) => {
-            const originalIndex = featuredNews.findIndex((n) => n.id === item.id);
+          {sideNews.map((item) => (
+            <Link
+              key={item.id}
+              to={`/news/${item.id}`}
+              state={{ from: location.pathname + location.search }}
+              className="featured-side-card"
+            >
+              {item.image && (
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="featured-side-image"
+                />
+              )}
 
-            return (
-              <button
-                key={item.id}
-                type="button"
-                className="featured-side-card"
-                onClick={() => setActiveIndex(originalIndex)}
-              >
-                {item.image && (
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="featured-side-image"
-                  />
-                )}
-
-                <div className="featured-side-overlay">
-                  <h4 className="featured-side-title">{item.title}</h4>
-                </div>
-              </button>
-            );
-          })}
+              <div className="featured-side-overlay">
+                <h4 className="featured-side-title">{item.title}</h4>
+              </div>
+            </Link>
+          ))}
         </div>
       </div>
+
+      {/* 🔥 НИЖНІ 4 */}
+      {bottomNews.length > 0 && (
+        <div className="featured-bottom-list">
+          {bottomNews.map((item) => (
+            <Link
+              key={item.id}
+              to={`/news/${item.id}`}
+              state={{ from: location.pathname + location.search }}
+              className="featured-bottom-card"
+            >
+              {item.image && (
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="featured-bottom-image"
+                />
+              )}
+
+              <div className="featured-bottom-overlay">
+                <h4 className="featured-bottom-title">{item.title}</h4>
+              </div>
+            </Link>
+          ))}
+        </div>
+      )}
     </section>
   );
 };
