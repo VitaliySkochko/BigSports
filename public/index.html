@@ -2,33 +2,88 @@
 <html lang="uk">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="author" content="Vitaliy Skochko" />
-    <meta name="description" content="Сайт з новинами про український та світовий спорт: футбол, біатлон, бокс, теніс, футзал та інші види спорту. Читайте найсвіжіші спортивні новини українською мовою." />
-    <meta name="keywords" content="український футбол, УПЛ, Збірна України, Перша Ліга, Друга Ліга, Шахтар, Динамо Київ, світовий футбол, англійська прем'єр-ліга, ла ліга, серія а, єврокубки, ліга чемпіонів, біатлон, бокс, теніс, MMA, футзал, чемпіонат світу з футзалу, клубний чемпіонат світу, спортивні новини, BigSport, новини спорту, спорт в Україні, футбол в Європі, спортивна аналітика" />
-    <meta name="language" content="uk" />
-    <link rel="manifest" href="/manifest.json">
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" type="image/x-icon" />
-    <meta name="robots" content="index, follow" />
-    <!-- Open Graph Tags -->
-    <meta property="og:title" content="BigSPORT" />
-    <meta property="og:description" content="Сайт з новинами про український футбол, європейський футбол, біатлон, бокс, теніс, футзал. Всі новини на українській мові." />
-    <meta property="og:image" content="/logo.png" />
-    <meta property="og:url" content="https://bigsports-a911c.web.app" />
-    <meta property="og:type" content="website" />
-    <!-- Twitter Card Tags -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="BigSPORT" />
-    <meta name="twitter:image" content="/logo.png" />
-    <link rel="apple-touch-icon" href="/logo.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <title>BigSPORT</title>
+    <!-- VIEWPORT -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+
+    <!-- TITLE -->
+    <title>BigSPORT — спортивні новини України та світу</title>
+
+    <!-- SEO -->
+    <meta
+      name="description"
+      content="BigSPORT — український сайт спортивних новин. Футбол України (УПЛ), єврокубки, збірна України, біатлон, бокс, теніс, MMA та світовий спорт."
+    />
+
+    <meta
+      name="keywords"
+      content="BigSPORT, спортивні новини, новини спорту, УПЛ, футбол України, Динамо Київ, Шахтар, єврокубки, Ліга чемпіонів, АПЛ, Ла Ліга, Серія А, Бундесліга, біатлон, бокс, теніс, MMA"
+    />
+
+    <meta name="author" content="Vitaliy Skochko" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- CANONICAL -->
+    <link rel="canonical" href="https://bigsport.com.ua/" />
+
+    <!-- FAVICON -->
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+    <!-- OPEN GRAPH (Facebook, Telegram) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="BigSPORT — спортивні новини України та світу" />
+    <meta
+      property="og:description"
+      content="Читайте останні новини футболу, УПЛ, єврокубків, біатлону, боксу, тенісу та світового спорту українською мовою."
+    />
+    <meta property="og:url" content="https://bigsport.com.ua/" />
+    <meta property="og:image" content="https://bigsport.com.ua/logo.png" />
+    <meta property="og:site_name" content="BigSPORT" />
+    <meta property="og:locale" content="uk_UA" />
+
+    <!-- TWITTER -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="BigSPORT — спортивні новини України та світу" />
+    <meta
+      name="twitter:description"
+      content="Останні новини спорту: футбол, УПЛ, єврокубки, біатлон, бокс, теніс та MMA."
+    />
+    <meta name="twitter:image" content="https://bigsport.com.ua/logo.png" />
+
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- STRUCTURED DATA (ДУЖЕ ВАЖЛИВО ДЛЯ GOOGLE) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "NewsMediaOrganization",
+        "name": "BigSPORT",
+        "url": "https://bigsport.com.ua/",
+        "logo": "https://bigsport.com.ua/logo.png",
+        "founder": {
+          "@type": "Person",
+          "name": "Vitaliy Skochko"
+        },
+        "sameAs": [],
+        "description": "BigSPORT — український сайт спортивних новин про футбол, біатлон, бокс, теніс, MMA та інші види спорту."
+      }
+    </script>
   </head>
+
   <body>
+    <noscript>
+      Для коректної роботи сайту BigSPORT потрібно увімкнути JavaScript.
+    </noscript>
+
     <div id="root"></div>
   </body>
 </html>
-

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+>
+  <url>
+    <loc>https://bigsport.com.ua/</loc>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://bigsport.com.ua/news</loc>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://bigsport.com.ua/football-ukraine</loc>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://bigsport.com.ua/football-ukraine/upl</loc>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://bigsport.com.ua/football-ukraine/cup</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://bigsport.com.ua/football-ukraine/first-league</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://bigsport.com.ua/football-ukraine/second-league</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://bigsport.com.ua/football-ukraine/zbirna</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://bigsport.com.ua/championships</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://bigsport.com.ua/championships/epl</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://bigsport.com.ua/championships/la-liga</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://bigsport.com.ua/championships/seriaA</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://bigsport.com.ua/championships/bundesliga</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://bigsport.com.ua/championships/ligue1</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://bigsport.com.ua/eurocups</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://bigsport.com.ua/eurocups/champions-league</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://bigsport.com.ua/eurocups/europa-league</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://bigsport.com.ua/eurocups/conference-league</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://bigsport.com.ua/biathlon</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://bigsport.com.ua/sports/boxing</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://bigsport.com.ua/sports/tennis</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://bigsport.com.ua/sports/mma</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://bigsport.com.ua/sports/futsal</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://bigsport.com.ua/tournaments/world-cup-2026</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://bigsport.com.ua/tournaments/futsal-euro-2026</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://bigsport.com.ua/tournaments/club-world-cup-2025</loc>
+    <priority>0.7</priority>
+  </url>
+</urlset>

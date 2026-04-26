@@ -11,25 +11,45 @@ import './App.css';
 
 function AppInner() {
   const { firstLoadDone } = useNews();
+
   const [minTimeDone, setMinTimeDone] = useState(false);
+  const [showSplash, setShowSplash] = useState(true);
+  const [hideSplash, setHideSplash] = useState(false);
 
   useEffect(() => {
-    const t = setTimeout(() => setMinTimeDone(true), 3000);
-    return () => clearTimeout(t);
+    const timer = setTimeout(() => {
+      setMinTimeDone(true);
+    }, 3000);
+
+    return () => clearTimeout(timer);
   }, []);
 
-  const showSplash = !(minTimeDone && firstLoadDone);
-  if (showSplash) return <SplashScreen />;
+  useEffect(() => {
+    if (minTimeDone && firstLoadDone) {
+      setHideSplash(true);
+
+      const timer = setTimeout(() => {
+        setShowSplash(false);
+      }, 650);
+
+      return () => clearTimeout(timer);
+    }
+  }, [minTimeDone, firstLoadDone]);
 
   return (
-    <div className="App">
-      <Header />
-      <Main />
-      <Footer />
-    </div>
+    <>
+      {showSplash && <SplashScreen hide={hideSplash} />}
+
+      {!showSplash && (
+        <div className="App">
+          <Header />
+          <Main />
+          <Footer />
+        </div>
+      )}
+    </>
   );
 }
-
 export default function App() {
   return (
     <Router>

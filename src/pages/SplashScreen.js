@@ -1,6 +1,5 @@
 // Анімація завантаження сайту
 
-// src/pages/SplashScreen.jsx
 import React from "react";
 import "../styles/SplashScreen.css";
 import logoUrl from "../img/logo.png";
@@ -8,28 +7,25 @@ import logoUrl from "../img/logo.png";
 const SplashScreen = ({ hide = false }) => {
   return (
     <div className={`splash ${hide ? "splash--hide" : ""}`}>
-      <div className="splash__bg" />
-      <div className="splash__grain" />
+      <div className="splash__orb splash__orb--one" />
+      <div className="splash__orb splash__orb--two" />
+      <div className="splash__grid" />
 
       <div className="splash__content" role="status" aria-live="polite">
-        <div className="splash__logoWrap">
-          <img src={logoUrl} alt="BigSport" className="splash__logo" />
-          <div className="splash__glow" />
+        <div className="splash__logoBox">
+          <div className="splash__ring" />
+          <img src={logoUrl} alt="BigSPORT" className="splash__logo" />
         </div>
 
-        <div className="splash__title" aria-hidden="true">
-          <span className="glitch" data-text="BIGSPORT">BIGSPORT</span>
-        </div>
+        <h1 className="splash__title">BigSPORT</h1>
 
-        <div className="splash__sub"></div>
+<span className="splash__version">v5.0</span>
 
-        <div className="progress">
-          <div className="progress__bar" />
-        </div>
+<p className="splash__subtitle">
+  Спортивні новини України та світу
+</p>
 
-        <div className="dots" aria-hidden="true">
-          <span />
-          <span />
+        <div className="splash__loader">
           <span />
         </div>
       </div>

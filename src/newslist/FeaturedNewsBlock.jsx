@@ -7,6 +7,7 @@ const FeaturedNewsBlock = ({ newsList }) => {
 
   const featuredNews = useMemo(() => {
     const safeList = Array.isArray(newsList) ? newsList : [];
+
     return safeList
       .filter((item) => item?.topNews && item?.id)
       .slice(0, 9);
@@ -42,13 +43,13 @@ const FeaturedNewsBlock = ({ newsList }) => {
   const activeNews = featuredNews[activeIndex];
   const otherNews = featuredNews.filter((_, index) => index !== activeIndex);
 
-  const sideNews = otherNews.slice(0, 4);
-  const bottomNews = otherNews.slice(4, 8);
+  const smallNews = otherNews.slice(0, 8);
+  const sideNews = smallNews.slice(0, 4);
+  const bottomNews = smallNews.slice(4, 8);
 
   return (
     <section className="featured-news-section">
       <div className="featured-news-layout">
-        {/* 🔥 ГОЛОВНА НОВИНА */}
         <Link
           to={`/news/${activeNews.id}`}
           state={{ from: location.pathname + location.search }}
@@ -97,7 +98,6 @@ const FeaturedNewsBlock = ({ newsList }) => {
           </div>
         </Link>
 
-        {/* 🔥 ПРАВІ 4 */}
         <div className="featured-side-list">
           {sideNews.map((item) => (
             <Link
@@ -122,7 +122,6 @@ const FeaturedNewsBlock = ({ newsList }) => {
         </div>
       </div>
 
-      {/* 🔥 НИЖНІ 4 */}
       {bottomNews.length > 0 && (
         <div className="featured-bottom-list">
           {bottomNews.map((item) => (
@@ -147,6 +146,29 @@ const FeaturedNewsBlock = ({ newsList }) => {
           ))}
         </div>
       )}
+
+      <div className="featured-mobile-list">
+        {smallNews.map((item) => (
+          <Link
+            key={item.id}
+            to={`/news/${item.id}`}
+            state={{ from: location.pathname + location.search }}
+            className="featured-mobile-card"
+          >
+            {item.image && (
+              <img
+                src={item.image}
+                alt={item.title}
+                className="featured-mobile-image"
+              />
+            )}
+
+            <div className="featured-mobile-overlay">
+              <h4 className="featured-mobile-title">{item.title}</h4>
+            </div>
+          </Link>
+        ))}
+      </div>
     </section>
   );
 };
