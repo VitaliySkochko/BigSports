@@ -3,7 +3,7 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth, db } from '../firebase';
 import { doc, setDoc, getDocs, query, collection, where } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
-import amplitude from '../amplitude';
+import { identifyUser, trackEvent } from '../amplitude';
 import logo from '../img/logo.png';
 import '../styles/RegistrationModal.css';
 
@@ -92,7 +92,7 @@ const RegistrationModal = ({ isOpen, onClose }) => {
 
     if (password !== confirmPassword) {
       setError('Паролі не співпадають');
-      amplitude.track('registration_failed', {
+      trackEvent('registration_failed', {
         reason: 'passwords_do_not_match',
         username: trimmedUsername,
         email: trimmedEmail,
@@ -102,7 +102,7 @@ const RegistrationModal = ({ isOpen, onClose }) => {
 
     if (password.length < 6) {
       setError('Пароль має містити мінімум 6 символів');
-      amplitude.track('registration_failed', {
+      trackEvent('registration_failed', {
         reason: 'weak_password',
         username: trimmedUsername,
         email: trimmedEmail,
@@ -113,7 +113,7 @@ const RegistrationModal = ({ isOpen, onClose }) => {
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailPattern.test(trimmedEmail)) {
       setError('Некоректний формат email');
-      amplitude.track('registration_failed', {
+      trackEvent('registration_failed', {
         reason: 'invalid_email_format',
         username: trimmedUsername,
         email: trimmedEmail,
@@ -129,7 +129,7 @@ const RegistrationModal = ({ isOpen, onClose }) => {
 
       if (!querySnapshot.empty) {
         setError("Ім'я користувача вже зайнято");
-        amplitude.track('registration_failed', {
+        trackEvent('registration_failed', {
           reason: 'username_taken',
           username: trimmedUsername,
           email: trimmedEmail,
@@ -150,7 +150,14 @@ const RegistrationModal = ({ isOpen, onClose }) => {
         role: 'user',
       });
 
-      amplitude.track('user_registered', {
+      identifyUser(user.uid, {
+  username: trimmedUsername,
+  country: trimmedCountry,
+  city: trimmedCity,
+  role: 'user',
+});
+
+      trackEvent('user_registered', {
         userId: user.uid,
         username: trimmedUsername,
         email: trimmedEmail,
@@ -168,7 +175,7 @@ const RegistrationModal = ({ isOpen, onClose }) => {
       const readableMessage = getFirebaseErrorMessage(error.code);
       setError(readableMessage);
 
-      amplitude.track('registration_failed', {
+      trackEvent('registration_failed', {
         reason: error.code || error.message,
         username: trimmedUsername,
         email: trimmedEmail,

@@ -3,8 +3,7 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth, db } from '../firebase';
 import { collection, query, where, getDocs } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
-import amplitude from '../amplitude';
-import * as amplitudeLib from '@amplitude/analytics-browser';
+import { identifyUser, trackEvent, resetUser } from '../amplitude';
 import logo from '../img/logo.png';
 import '../styles/RegistrationModal.css';
 
@@ -61,11 +60,11 @@ const PasswordModal = ({ isOpen, onClose, onLoginSuccess }) => {
 
       if (querySnapshot.empty) {
         setError('Користувача не знайдено');
-        amplitude.track('login_failed', {
-          reason: 'user_not_found',
-          username: trimmedUsername,
-          time: new Date().toISOString(),
-        });
+        trackEvent('login_failed', {
+    reason: 'user_not_found',
+    username: trimmedUsername,
+    time: new Date().toISOString(),
+  });
         setIsLoading(false);
         return;
       }
@@ -76,17 +75,15 @@ const PasswordModal = ({ isOpen, onClose, onLoginSuccess }) => {
 
       await signInWithEmailAndPassword(auth, email, password);
 
-      amplitude.reset();
-      amplitude.setUserId(userData.username);
+      resetUser();
 
-      const identify = new amplitudeLib.Identify()
-        .set('username', userData.username)
-        .set('email', email)
-        .set('role', userData.role);
+identifyUser(userData.username, {
+  username: userData.username,
+  email,
+  role: userData.role,
+});
 
-      amplitude.identify(identify);
-
-      amplitude.track('user_logged_in', {
+      trackEvent('user_logged_in', {
         userId: userData.username,
         username: userData.username,
         email,
@@ -107,11 +104,11 @@ const PasswordModal = ({ isOpen, onClose, onLoginSuccess }) => {
       const readableMessage = getFirebaseLoginError(error.code);
       setError(readableMessage);
 
-      amplitude.track('login_failed', {
-        username: trimmedUsername,
-        error: error.code || error.message,
-        time: new Date().toISOString(),
-      });
+      trackEvent('login_failed', {
+  username: trimmedUsername,
+  error: error.code || error.message,
+  time: new Date().toISOString(),
+});
     } finally {
       setIsLoading(false);
     }

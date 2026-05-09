@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useParams, Link, useNavigate, useLocation } from 'react-router-dom';
 import { useNews } from '../components/NewsContext';
 import {
@@ -17,7 +17,7 @@ import CommentForm from './CommentForm';
 import RelatedNewsSlider from '../sections/RelatedNewsSlider';
 import '../styles/NewsDetails.css';
 import defaultBackground from '../img/news-background.jpg';
-import amplitude from '../amplitude';
+import { trackEvent } from '../amplitude';
 
 const NewsDetails = () => {
   const { newsList } = useNews();
@@ -27,38 +27,43 @@ const NewsDetails = () => {
 
   const [views, setViews] = useState(0);
   const [authorId, setAuthorId] = useState(null);
+  const trackedNewsIdRef = useRef(null);
 
   const news = newsList.find((n) => n.id === id);
 
   useEffect(() => {
-    const logView = async () => {
-      if (!news) return;
+  const logView = async () => {
+    if (!news) return;
 
-      try {
-        amplitude.track('News Viewed', {
-          id: news.id,
-          title: news.title,
-          author: news.author,
-          category: news.category,
-          date: `${news.day}.${news.month}.${news.year}`,
-          time: news.time,
-        });
+    if (trackedNewsIdRef.current === news.id) return;
+    trackedNewsIdRef.current = news.id;
 
-        const newsRef = doc(db, 'news', news.id);
-        await updateDoc(newsRef, { views: increment(1) });
+    try {
+      trackEvent('news_view', {
+        news_id: news.id,
+        title: news.title,
+        author: news.author,
+        category: news.category,
+        section: news.section || null,
+        publish_date: `${news.day}.${news.month}.${news.year}`,
+        publish_time: news.time,
+      });
 
-        const updatedSnap = await getDoc(newsRef);
-        if (updatedSnap.exists()) {
-          const updatedData = updatedSnap.data();
-          setViews(updatedData.views || 1);
-        }
-      } catch (error) {
-        console.error('Помилка при оновленні переглядів:', error);
+      const newsRef = doc(db, 'news', news.id);
+      await updateDoc(newsRef, { views: increment(1) });
+
+      const updatedSnap = await getDoc(newsRef);
+      if (updatedSnap.exists()) {
+        const updatedData = updatedSnap.data();
+        setViews(updatedData.views || 1);
       }
-    };
+    } catch (error) {
+      console.error('Помилка при оновленні переглядів:', error);
+    }
+  };
 
-    logView();
-  }, [news]);
+  logView();
+}, [news]);
 
   useEffect(() => {
     const fetchAuthorId = async () => {

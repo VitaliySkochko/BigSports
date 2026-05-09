@@ -7,6 +7,7 @@ import Menu from './pages/Menu';
 import { NewsProvider, useNews } from './components/NewsContext';
 import { UserProvider } from './components/UserContext';
 import SplashScreen from './pages/SplashScreen';
+import { initAmplitude, trackEvent } from './amplitude';
 import './App.css';
 
 function AppInner() {
@@ -15,6 +16,20 @@ function AppInner() {
   const [minTimeDone, setMinTimeDone] = useState(false);
   const [showSplash, setShowSplash] = useState(true);
   const [hideSplash, setHideSplash] = useState(false);
+
+  useEffect(() => {
+  initAmplitude();
+
+  const alreadyTracked = sessionStorage.getItem("app_open_tracked");
+
+  if (!alreadyTracked) {
+    trackEvent("app_open", {
+      page: "home",
+    });
+
+    sessionStorage.setItem("app_open_tracked", "true");
+  }
+}, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -50,6 +65,7 @@ function AppInner() {
     </>
   );
 }
+
 export default function App() {
   return (
     <Router>

@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useNews } from './NewsContext';
 import NewsList from '../newslist/NewsList';
 import Pagination from './Pagination';
+import { trackEvent } from '../amplitude';
 
 const SearchResults = () => {
   const { newsList } = useNews();
@@ -12,6 +13,7 @@ const SearchResults = () => {
   const searchTerm = rawSearchTerm.toLowerCase();
   const currentPage = Number(searchParams.get('page')) || 1;
   const newsPerPage = 30;
+  const trackedSearchRef = useRef(null);
 
   const getMillis = (ts) =>
     ts?.toMillis?.() ??
@@ -43,6 +45,20 @@ const SearchResults = () => {
       behavior: 'smooth',
     });
   };
+
+  useEffect(() => {
+  if (!searchTerm) return;
+
+  if (trackedSearchRef.current === searchTerm) return;
+
+  trackedSearchRef.current = searchTerm;
+
+  trackEvent('search', {
+    query: searchTerm,
+    results_count: filteredNews.length,
+    source: 'tag_search',
+  });
+}, [searchTerm, filteredNews.length]);
 
   return (
     <div className="panel panel--spaced">
